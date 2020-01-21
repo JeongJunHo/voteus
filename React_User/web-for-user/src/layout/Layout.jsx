@@ -1,16 +1,17 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import Header from './Header';
+import Footer from './Footer';
 import VoteTab from './VoteTab';
 
-class Layout extends Component {
-    render() {
-        return (
-            <Fragment>
-                <Header />
-                <VoteTab />
-            </Fragment>
-        );
-    }
+const Layout = props => {
+    return (
+        <Fragment>
+            <Header />
+            <VoteTab />
+            Layout
+            <Footer />
+        </Fragment>
+    );
 }
 
 export default Layout;
