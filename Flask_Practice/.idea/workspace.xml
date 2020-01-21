@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e7ea171d-9c8a-4f3d-83fa-0f4ea2137688" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/examples/knn_ImageFile_TF.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/test/00000.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/test/00005.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/test/adrian.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/test/alex_lacamoire1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/test/inho.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/test/iu.jfif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/test/jang.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/test/johnsnow_test1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/test/jsp.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/test/kim.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/test/kit_with_rose.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/test/obama1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/test/obama_and_biden.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/test/park.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/test/patrick_bateman.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/test/sana.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/test/shb.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/test/sunjpg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/test/trisha_adrian.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/adrian/00000.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/adrian/00001.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/adrian/00002.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/adrian/00003.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/adrian/00004.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/adrian/00005.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/alex_lacamoire/img1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/biden/biden.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/biden/biden2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/inho/00000.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/inho/00001.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/inho/00002.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/inho/00003.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/inho/00004.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/inho/00005.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/inho/00006.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/iu/00001.jfif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/iu/00002.jfif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/iu/00003.jfif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/iu/00005.jfif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/iu/00006.jfif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/kim/00000.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/kim/00001.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/kim/00002.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/kim/00003.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/kim/00004.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/kim/00005.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/kit_harington/john1.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/kit_harington/john2.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/obama/jsp.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/obama/obama.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/obama/obama2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/parkjongsue/00000.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/parkjongsue/00001.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/parkjongsue/00002.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/parkjongsue/00003.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/parkjongsue/jsp.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/rose_leslie/img1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/rose_leslie/img2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/sun/00000.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/sun/00001.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/sun/00002.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/sun/00003.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/sun/00004.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/trisha/00000.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/trisha/00001.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/trisha/00002.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/trisha/00003.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/trisha/00004.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_examples/train/trisha/00005.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/knn_video.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/trained_knn_model.clf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/start_flask.py" beforeDir="false" afterPath="$PROJECT_DIR$/start_flask.py" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-1438214856">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.open.time.0" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="py" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="Python" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="py" value="296" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="Python" value="296" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/start_flask.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="118">
+              <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+              <folding>
+                <element signature="e#0#23#0" expanded="true" />
+                <marker date="1579595029134" expanded="true" signature="211:303" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/examples/knn_video.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="308">
+              <caret line="188" lean-forward="true" selection-start-line="33" selection-end-line="188" />
+              <folding>
+                <element signature="e#1494#1505#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/examples/knn_ImageFile_TF.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="232">
+              <caret line="147" column="7" lean-forward="true" selection-start-line="147" selection-start-column="7" selection-end-line="148" selection-end-column="52" />
+              <folding>
+                <element signature="e#61#72#0" expanded="true" />
+                <marker date="1579596041151" expanded="true" signature="5039:5061" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/start_flask.py" />
+        <option value="$PROJECT_DIR$/examples/knn_ImageFile_TF.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="952" />
+    <option name="width" value="977" />
+    <option name="height" value="1038" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Flask_Practice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Flask_Practice" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Flask_Practice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Flask_Practice" type="462c0819:PsiDirectoryNode" />
+              <item name="examples" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../face_recognition" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\source\s02p12c101\Flask_Practice\examples" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Python.knn_video">
+    <configuration name="knn_video" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Flask_Practice" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/examples" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/examples/knn_video.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="start_flask" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Flask_Practice" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/start_flask.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.start_flask" />
+      <item itemvalue="Python.knn_video" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.knn_video" />
+        <item itemvalue="Python.start_flask" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e7ea171d-9c8a-4f3d-83fa-0f4ea2137688" name="Default Changelist" comment="" />
+      <created>1579593705924</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1579593705924</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Favorites" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24983476" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Python Console" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32954547" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/start_flask.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="118">
+          <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+            <marker date="1579595029134" expanded="true" signature="211:303" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/knn_video.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="188" lean-forward="true" selection-start-line="33" selection-end-line="188" />
+          <folding>
+            <element signature="e#1494#1505#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/knn_ImageFile_TF.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="147" column="7" lean-forward="true" selection-start-line="147" selection-start-column="7" selection-end-line="148" selection-end-column="52" />
+          <folding>
+            <element signature="e#61#72#0" expanded="true" />
+            <marker date="1579596041151" expanded="true" signature="5039:5061" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
