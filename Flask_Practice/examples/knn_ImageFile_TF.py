@@ -17,13 +17,13 @@ import face_recognition
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'jfif'}
 
-video_capture = cv2.VideoCapture(0)
-ret, frame = video_capture.read()
-X_img = frame[:, :, ::-1]  # np.array(frame)
+#video_capture = cv2.VideoCapture(0)
+#ret, frame = video_capture.read()
+#X_img; #= frame[:, :, ::-1]  # np.array(frame)
 ans = 0
 
 
-def predict(knn_clf=None, model_path=None, distance_threshold=0.6):
+def predict(X_img, knn_clf=None, model_path=None, distance_threshold=0.6):
     """
     Recognizes faces in given image using a trained KNN classifier
 
@@ -53,7 +53,9 @@ def predict(knn_clf=None, model_path=None, distance_threshold=0.6):
     # X_img = frame[:, :, ::-1] #np.array(frame)
     # print("X_img")
     # print(X_img)
-    # X_img = face_recognition.load_image_file(frame)
+    X_img = face_recognition.load_image_file(X_img)
+    print(X_img)
+
     X_face_locations = face_recognition.face_locations(X_img)
     print(len(X_face_locations))
     # cv2.imshow("asdf", X_face_locations)
@@ -131,33 +133,36 @@ def show_prediction_labels_on_image(predictions):
     # pil_image.show()
 
 def get_name(img):
-    cv2.imshow(img)
+    #cv2.imshow(img)
+    X_img = img;
+    predictions = predict(X_img, model_path="examples/trained_knn_model.clf")
+    return show_prediction_labels_on_image(predictions)
 
-if __name__ == "__main__":
-    # STEP 1: Train the KNN classifier and save it to disk
-    # Once the model is trained and saved, you can skip this step next time.
-    # video_capture = cv2.VideoCapture(0)
-    cnt = 0
-    ans = 0
-    while True:
-        if cnt > 10:
-            break;
-        ret, frame = video_capture.read()
-
-        X_img = frame[:, :, ::-1]  # np.array(frame)
-        predictions = predict(model_path="trained_knn_model.clf")
-        show_prediction_labels_on_image(predictions)
-        cv2.imshow("video", frame)
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break;
-        cnt += 1
-
-    if ans > 5:
-        print("맞")
-    else:
-        print("아니")
-    video_capture.release()
-    cv2.destroyAllWindows()
+# if __name__ == "__main__":
+#     # STEP 1: Train the KNN classifier and save it to disk
+#     # Once the model is trained and saved, you can skip this step next time.
+#     # video_capture = cv2.VideoCapture(0)
+#     cnt = 0
+#     ans = 0
+#     while True:
+#         if cnt > 10:
+#             break;
+#         ret, frame = video_capture.read()
+#
+#         X_img = frame[:, :, ::-1]  # np.array(frame)
+#         predictions = predict(model_path="trained_knn_model.clf")
+#         show_prediction_labels_on_image(predictions)
+#         cv2.imshow("video", frame)
+#         if cv2.waitKey(1) & 0xFF == ord('q'):
+#             break;
+#         cnt += 1
+#
+#     if ans > 5:
+#         print("맞")
+#     else:
+#         print("아니")
+#     video_capture.release()
+#     cv2.destroyAllWindows()
 
 
 
