@@ -28,13 +28,13 @@ class VoteMain extends Component {
                     voteList: res.data.voteList
                 });
                 console.log(this.state.voteList)
-                {this.state.voteList.map((voteitem, index) => {
+                this.state.voteList.map((voteitem, index) => {
                     if (voteitem.valid === 1 && this.state.cnt === 0) {
                         console.log(index)
                         this.setState({cnt: 1})
                         this.setState({first: index})
                     }
-                })}
+                })
                 
             })
             .catch(error => {
