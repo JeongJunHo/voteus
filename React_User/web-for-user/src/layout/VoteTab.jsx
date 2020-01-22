@@ -1,23 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
-class VoteTab extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            click: 0
-        }
+const VoteTab = props => {
+    // console.log(props.click, props.i)
+    let classes = 'tab_vote'
+    if (props.click === props.i) {
+        classes = 'tab_vote on'
     }
+    // console.log(typeof props.click, typeof props.i, classes)
 
-    render() {
-        return (
-            <li key={this.props.i}>
-                {/* {this.props.first} {this.state.click} {this.props.i} */}
-                {/* { `/${this.props.name}` } */}
-                <Link to='/' className={ this.props.first === this.props.i ? 'tab_vote on' : 'tab_vote' }>{this.props.name}</Link>
-            </li>
-        )
-    }
+    return (
+        <li key={props.i}>
+            {/* { `/${this.props.name}` } */}
+            {/* click: {props.click} i: {props.i} cnt: {props.cnt} */}
+            <Link to={`/?vote=${props.i}`} className={ classes }>{props.name}</Link>
+        </li>
+    )
 }
 
 export default VoteTab;
