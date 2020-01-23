@@ -1,0 +1,124 @@
+{
+    "candidateList": [
+        {
+            "id": 1,
+            "name": "김대선",
+            "party": "1번당",
+            "votelist": 1
+        },
+        {
+            "id": 2,
+            "name": "박대선",
+            "party": "2번당",
+            "votelist": 1
+        },
+        {
+            "id": 3,
+            "name": "선대선",
+            "party": "3번당",
+            "votelist": 1
+        },
+        {
+            "id": 4,
+            "name": "장대선",
+            "party": "4번당",
+            "votelist": 1
+        },
+        {
+            "id": 5,
+            "name": "정대선",
+            "party": "5번당",
+            "votelist": 1
+        },
+        {
+            "id": 6,
+            "name": "강총선",
+            "party": "1번당",
+            "votelist": 2
+        },
+        {
+            "id": 7,
+            "name": "모총선",
+            "party": "2번당",
+            "votelist": 2
+        },
+        {
+            "id": 8,
+            "name": "공비례",
+            "party": "1번당",
+            "votelist": 3
+        },
+        {
+            "id": 9,
+            "name": "안비례",
+            "party": "2번당",
+            "votelist": 3
+        },
+        {
+            "id": 10,
+            "name": "전비례",
+            "party": "3번당",
+            "votelist": 3
+        },
+        {
+            "id": 11,
+            "name": "곽시장",
+            "party": "1번당",
+            "votelist": 4
+        },
+        {
+            "id": 12,
+            "name": "이시장",
+            "party": "3번당",
+            "votelist": 4
+        },
+        {
+            "id": 13,
+            "name": "최시장",
+            "party": "4번당",
+            "votelist": 4
+        },
+        {
+            "id": 14,
+            "name": "양의원",
+            "party": "1번당",
+            "votelist": 5
+        },
+        {
+            "id": 15,
+            "name": "조의원",
+            "party": "2번당",
+            "votelist": 5
+        },
+        {
+            "id": 16,
+            "name": "진의원",
+            "party": "3번당",
+            "votelist": 5
+        },
+        {
+            "id": 17,
+            "name": "허의원",
+            "party": "4번당",
+            "votelist": 5
+        },
+        {
+            "id": 18,
+            "name": "구교육",
+            "party": "보수",
+            "votelist": 6
+        },
+        {
+            "id": 19,
+            "name": "윤교육",
+            "party": "중도",
+            "votelist": 6
+        },
+        {
+            "id": 20,
+            "name": "임교육",
+            "party": "진보",
+            "votelist": 6
+        }
+    ]
+}
