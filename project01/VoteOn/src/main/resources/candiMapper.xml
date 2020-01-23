@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="candi">
+
+	<select id="getCandiAllList" resultType="candi">
+		select * from candidate;
+	</select>
+	<insert id="insertCandi" parameterType="candi">
+		insert into candidate(code, name, area) 
+		values(#{code}, #{name}, #{area});
+	</insert>
+	<delete id="delCandi" parameterType="int">
+		delete from candidate 
+		where code = #{code};
+	</delete>
+	<update id="updateCandi" parameterType="candi">
+		update candidate 
+		set name = #{name}, area = #{area}
+		where code = #{code};
+	</update>
+</mapper>
