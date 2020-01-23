@@ -1,0 +1,8 @@
+라즈베리파이와 연동하는 방법
+https://m.blog.naver.com/simjk98/221264293761
+ - 연결 전 library 세팅
+https://tutorials-raspberrypi.com/how-to-use-raspberry-pi-fingerprint-sensor-authentication/
+ - USB connector 사용해 연결하기
+
+라즈베리파이와 연결 하게 되면
+할일 : 지문이미지 인식 및 전송
