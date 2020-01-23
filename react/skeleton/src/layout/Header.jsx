@@ -9,6 +9,8 @@ import {
 import MenuIcon from "@material-ui/icons/Menu";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import { CommonContext } from "../context/CommonContext";
+import Drawer from "./Drawer";
+import Link from "@material-ui/core/Link";
 
 const useStyles = makeStyles(theme => ({
   appBar: {
@@ -28,17 +30,17 @@ const Header = props => {
   const {} = useContext(CommonContext);
 
   const onClickDrawerOpenHandler = () => {
-    alert("open Drawer");
+    // TemporaryDrawer.toggleDrawer("left", true);
   };
 
   const onClickSignInDialogOpenHandler = () => {
-    alert("open signIn Dialog");
+    // alert("open signIn Dialog");
   };
 
   return (
     <AppBar position="fixed" className={classes.appBar}>
       <Toolbar>
-        <IconButton
+        {/* <IconButton
           color="inherit"
           aria-label="open drawer"
           onClick={onClickDrawerOpenHandler}
@@ -46,20 +48,23 @@ const Header = props => {
           className={classes.menuButton}
         >
           <MenuIcon />
-        </IconButton>
+        </IconButton> */}
+        <Drawer />
         <Typography variant="h6" className={classes.title}>
-          VoteOn
+          Vote Admin ver.1
         </Typography>
-        <IconButton
-          aria-label="account of current user"
-          aria-controls="menu-appbar"
-          aria-haspopup="true"
-          onClick={onClickSignInDialogOpenHandler}
-          color="inherit"
-          size="medium"
-        >
-          <AccountCircle />
-        </IconButton>
+        <Link href="/" color="inherit">
+          <IconButton
+            aria-label="account of current user"
+            aria-controls="menu-appbar"
+            aria-haspopup="true"
+            onClick={onClickSignInDialogOpenHandler}
+            color="inherit"
+            size="medium"
+          >
+            <AccountCircle />
+          </IconButton>
+        </Link>
       </Toolbar>
     </AppBar>
   );

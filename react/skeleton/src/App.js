@@ -6,6 +6,7 @@ import { CommonContext } from "./context/CommonContext";
 import NotFound from "./pages/NotFound";
 import VoteMain from "./pages/VoteMain";
 import SignInSide from "./pages/SignInSide";
+import VoteList from "./pages/VoteList";
 
 import "./index.css";
 
@@ -40,6 +41,7 @@ const App = () => {
             <Route exact path="/" component={SignInSide} />
             <Route path="/SignInSide" component={SignInSide} />
             <Route path="/VoteMain" component={VoteMain} />
+            <Route path="/VoteList" component={VoteList} />
             <Route path="/not-found" component={NotFound} />
             <Redirect to="/not-found" />
           </Switch>

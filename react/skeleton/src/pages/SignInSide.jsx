@@ -101,15 +101,18 @@ export default function SignInSide() {
               control={<Checkbox value="remember" color="primary" />}
               label="아이디 기억"
             />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-            >
-              로그인
-            </Button>
+            <Link href="/VoteMain">
+              <Button
+                // type="submit"
+                type="button"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+              >
+                로그인
+              </Button>
+            </Link>
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">

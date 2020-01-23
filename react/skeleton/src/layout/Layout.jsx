@@ -1,6 +1,7 @@
 import React, { Fragment, useContext } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
+import Drawer from "./Drawer";
 
 import { CssBaseline, Container, makeStyles } from "@material-ui/core";
 import { CommonContext } from "../context/CommonContext";
