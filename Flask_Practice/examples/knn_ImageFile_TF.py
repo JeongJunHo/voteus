@@ -137,7 +137,7 @@ def show_prediction_labels_on_image(predictions):
 def get_name(img):
     #cv2.imshow(img)
     X_img = img;
-    predictions = predict(X_img, model_path="examples/trained_knn_model.clf")
+    predictions = predict(X_img, model_path="trained_knn_model.clf")
     return show_prediction_labels_on_image(predictions)
 
 # if __name__ == "__main__":
