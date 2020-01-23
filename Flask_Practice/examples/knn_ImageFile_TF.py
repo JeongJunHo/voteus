@@ -42,8 +42,10 @@ def predict(X_img, knn_clf=None, model_path=None, distance_threshold=0.6):
     #     raise Exception("Must supply knn classifier either thourgh knn_clf or model_path")
     #
     # # Load a trained KNN model (if one was passed in)
+    print(model_path)
     if knn_clf is None:
         with open(model_path, 'rb') as f:
+            print(f)
             knn_clf = pickle.load(f)
 
     # Grab a single frame of video

@@ -1,7 +1,11 @@
 from flask import Flask, request
 import json
 import examples.knn_ImageFile_TF as knn
+from flask_cors import CORS
 app = Flask(__name__)
+CORS(app)
+
+
 
 
 @app.route('/')
@@ -27,6 +31,10 @@ def put_img():
     print(3)
     return data
 
+@app.route('/getJJ', methods=['post'])
+def jj():
+    data = json.dumps({"jun":"asdf"})
+    return data
 
 
 if __name__ == '__main__':
