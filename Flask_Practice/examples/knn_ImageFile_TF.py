@@ -137,6 +137,7 @@ def show_prediction_labels_on_image(predictions):
 def get_name(img):
     #cv2.imshow(img)
     X_img = img;
+    print("예측 전 디버그")
     predictions = predict(X_img, model_path="trained_knn_model.clf")
     return show_prediction_labels_on_image(predictions)
 
