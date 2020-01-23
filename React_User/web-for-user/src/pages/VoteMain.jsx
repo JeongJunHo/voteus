@@ -55,8 +55,10 @@ class VoteMain extends Component {
                 this.state.voteList.map((voteitem, index) => {
                     if (voteitem.valid === 1 && this.state.cnt === 0) {
                         // console.log('호출')
-                        this.setState({cnt: 1})
-                        this.setState({click: index})
+                        return this.setState({cnt: 1, click: index})
+                        // this.setState({click: index})
+                    } else {
+                        return null
                     }
                 })
                 
@@ -75,7 +77,7 @@ class VoteMain extends Component {
                 this.setState({
                     candidateList: res.data.candidateList
                 });
-                console.log(this.state.candidateList)
+                // console.log(this.state.candidateList)
             })
             .catch(error => {
                 console.log(error)
@@ -94,6 +96,8 @@ class VoteMain extends Component {
                         if (vote.valid) {
                             // return <Vote i={i} name={vote.name} click={this.state.click} />
                             return <VoteTab key={vote.id} i={i} name={vote.name} click={this.state.click} cnt={this.state.cnt} />
+                        } else {
+                            return null
                         }
                     })}
                 </ul>
