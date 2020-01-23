@@ -21,5 +21,20 @@ public class VoteServiceImpl implements IVoteService {
 		return man.getVoteAllList();
 	}
 
+	@Override
+	public boolean insertVote(String name, String middlepart, String start, String end) {
+		return man.insertVote(name, middlepart, start, end);
+	}
+
+	@Override
+	public boolean delVote(int code) {
+		return man.delVote(code);
+	}
+
+	@Override
+	public boolean updateVote(int code, String name, String middlepart, String start, String end) {
+		return man.updateVote(code, name, middlepart, start, end);
+	}
+
 
 }

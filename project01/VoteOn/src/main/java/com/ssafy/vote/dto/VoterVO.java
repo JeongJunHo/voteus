@@ -45,7 +45,11 @@ public class VoterVO {
 		this.name = name;
 		this.area = area;
 	}
-
+	
+	public VoterVO(String name, String area) {
+		this.name = name;
+		this.area = area;
+	}
 
 	@Override
 	public String toString() {

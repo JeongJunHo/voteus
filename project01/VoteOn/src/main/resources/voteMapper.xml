@@ -5,7 +5,18 @@
 <mapper namespace="vote">
 
 	<select id="getVoteAllList" resultType="vote">
-		select * from vote
+		select * from vote;
 	</select>
-
+	<insert id="insertVote" parameterType="vote">
+		insert into vote(name, middlepart, start, end)
+		values(#{name}, #{middlepart}, #{start}, #{end});
+	</insert>
+	<delete id="delVote" parameterType="int">
+		delete from vote where code = #{code};
+	</delete>
+	<update id="updateVote" parameterType="vote">
+		update vote 
+		set name = #{name}, middlepart = #{middlepart}, start =#{start}, end=#{end} 
+		where code = #{code};
+	</update>
 </mapper>

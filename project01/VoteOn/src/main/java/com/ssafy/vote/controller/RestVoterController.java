@@ -15,79 +15,51 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ssafy.vote.dto.VoteVO;
-import com.ssafy.vote.service.IVoteService;
+import com.ssafy.vote.dto.VoterVO;
+import com.ssafy.vote.service.IVoterService;
 
 import io.swagger.annotations.ApiOperation;
 
-/*
-create database voteon;
-use voteon;
-
-create table vote(
-	code int auto_increment primary key,
-    name varchar(200),
-    middlepart varchar(200) not null,
-    start datetime,
-    end datetime
-);
-
-create table candidate(
-	code int auto_increment primary key,
-    name varchar(200),
-    num varchar(100),
-    party varchar(100),
-    votecode int,
-    pick int
-);
-
-create table voter(
-	code int primary key,
-    name varchar(200),
-    area varchar(100)
-);*/
-
 @CrossOrigin(origins = {"*"}, maxAge = 6000)
 @RestController
-@RequestMapping("/api/vote")
-public class RestVoteController {
+@RequestMapping("/api/voter")
+public class RestVoterController {
 	@Autowired
-	private IVoteService ser;
-
-	@ApiOperation(value = "모든 투표 데이터를 조회합니다.")
-	@GetMapping("/getVoteAllList")
-	public ResponseEntity<List<VoteVO>> getVoteAllList() {
-		ResponseEntity<List<VoteVO>> re = null;
+	private IVoterService ser;
+	
+	@ApiOperation(value = "모든 투표자를 조회합니다.")
+	@GetMapping("/getVoterAllList")
+	public ResponseEntity<List<VoterVO>> getVoterAllList() {
+		ResponseEntity<List<VoterVO>> re = null;
 		try {
-			List<VoteVO> list = ser.getVoteAllList();
-			re = new ResponseEntity<List<VoteVO>>(list, HttpStatus.OK);
+			List<VoterVO> list = ser.getVoterAllList();
+			re = new ResponseEntity<List<VoterVO>>(list, HttpStatus.OK);
 		} catch (Exception e) {
 			re = new ResponseEntity("모든 투표 데이터 조회 실패 문제가 생겼다!", HttpStatus.OK);
 		}
 		return re;
 	}
 
-	@ApiOperation(value = "투표를 등록합니다.")
-	@PostMapping("/insertVote")
-	public ResponseEntity<String> insertVote(@RequestBody VoteVO vote) {
+	@ApiOperation(value = "투표자를 등록합니다.")
+	@PostMapping("/insertVoter")
+	public ResponseEntity<String> insertVoter(@RequestBody VoterVO voter) {
 		ResponseEntity<String> re = null;
 		try {
-			ser.insertVote(vote.getName(), vote.getMiddlepart(), vote.getStart(), vote.getEnd());
+			ser.insertVoter(voter.getCode(),voter.getName(), voter.getArea());
 			re = new ResponseEntity<String>("잘 들어 갔어용~", HttpStatus.OK);
 		} catch (Exception e) {
-			// HttpStatus 통신은 제대로 된거니까 OK
 			re = new ResponseEntity<String>("입력 실패 문제가 생겼다!", HttpStatus.OK);
 		}
 		return re;
 	}
 
-	@ApiOperation(value = "투표를 삭제합니다.")
-	@DeleteMapping(value = "/delVote/{code}")
-	public ResponseEntity<String> delVote(@PathVariable String code) {
+	@ApiOperation(value = "투표자를 삭제합니다.")
+	@DeleteMapping(value = "/delVoter/{code}")
+	public ResponseEntity<String> delVoter(@PathVariable String code) {
 		ResponseEntity<String> re = null;
 		try {
 			int ncode = Integer.parseInt(code);
-			ser.delVote(ncode);
+			ser.delVoter(ncode);
 			re = new ResponseEntity<String>("잘 들어 갔어용~", HttpStatus.OK);
 		} catch (Exception e) {
 			re = new ResponseEntity<String>("삭제 실패 문제가 생겼다!", HttpStatus.OK);
@@ -95,12 +67,12 @@ public class RestVoteController {
 		return re;
 	}
 
-	@ApiOperation(value = "투표를 수정합니다.")
-	@PutMapping(value = "/updateVote")
-	public ResponseEntity<String> updateVote(@RequestBody VoteVO vote) {
+	@ApiOperation(value = "투표자를 수정합니다.")
+	@PutMapping(value = "/updateVoter")
+	public ResponseEntity<String> updateVoter(@RequestBody VoterVO voter) {
 		ResponseEntity<String> re = null;
 		try {
-			ser.updateVote(vote.getCode(), vote.getName(), vote.getMiddlepart(), vote.getStart(), vote.getEnd());
+			ser.updateVoter(voter.getCode(), voter.getName(), voter.getArea());
 			re = new ResponseEntity<String>("업데이트 성공 ", HttpStatus.OK);
 		} catch (Exception e) {
 			re = new ResponseEntity<String>("업데이트 실패", HttpStatus.OK);

@@ -17,4 +17,19 @@ public interface IVoteService {
 	 * @Date : 2020. 1. 22.
 	 */
 	public boolean insertVote(String name, String middlepart, String start, String end);
+	/**
+	 * @author : 선한빛
+	 * 기능 : 투표를 삭제하는 함수
+	 * @Date : 2020. 1. 23.
+	 */
+	public boolean delVote(int code);
+	/**
+	 * @author : 선한빛
+	 * 기능 : 투표를 수정하는 함수
+	 * @Date : 2020. 1. 23.
+	 */
+	public boolean updateVote(int code, String name, String middlepart, String start, String end);
+
+
+
 }
