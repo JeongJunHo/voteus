@@ -1,2 +1,0 @@
-branch test
-Deep Learning으로 지문을 학습한 모델 저장
