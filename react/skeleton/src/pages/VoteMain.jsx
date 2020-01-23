@@ -15,6 +15,8 @@ const VoteMain = props => {
   const classes = useStyles();
   const index = 0;
 
+  console.log("Main");
+
   return (
     <ViewContext.Provider value={{}}>
       <Layout>

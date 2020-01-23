@@ -68,7 +68,7 @@ export default function TemporaryDrawer() {
             url: "/"
           }
         ].map((obj, index) => (
-          <Link href={obj.url} color="inherit">
+          <Link key={index} href={obj.url} color="inherit">
             <ListItem button key={obj.name}>
               <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}

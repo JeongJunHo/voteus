@@ -43,6 +43,7 @@ const App = () => {
             <Route path="/VoteMain" component={VoteMain} />
             <Route path="/VoteList" component={VoteList} />
             <Route path="/not-found" component={NotFound} />
+            {/* <Route path="/CandidateList" component={CandidateList} /> */}
             <Redirect to="/not-found" />
           </Switch>
         </BrowserRouter>

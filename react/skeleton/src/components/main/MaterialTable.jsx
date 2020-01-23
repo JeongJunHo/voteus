@@ -1,26 +1,32 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import MaterialTable from "material-table";
+
+import axios from "axios";
 
 export default function MaterialTableDemo() {
   const [state, setState] = React.useState({
     columns: [
+      {
+        title: "코드",
+        field: "code"
+      },
       {
         title: "투표명",
         field: "name"
       },
       {
         title: "분류",
-        field: "type",
-        lookup: { jiseon: "지선", daeseon: "대선" }
+        field: "middlepart",
+        lookup: { string: "지선", 11: "대선" }
       },
       {
         title: "시작일자",
-        field: "startDate"
+        field: "start"
         // type: "numeric"
       },
       {
         title: "종료일자",
-        field: "endDate"
+        field: "end"
       }
     ],
     data: [
@@ -62,6 +68,28 @@ export default function MaterialTableDemo() {
       }
     ]
   });
+
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    //async를 사용하는 함수 따로 선언
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const response = await axios.get(
+          "http://192.168.100.73:8080/api/vote/getVoteAllList"
+        );
+        console.log(state.data);
+        console.log(response.data);
+        setState(...state.data, response.data);
+      } catch (e) {
+        console.log(e);
+      }
+      setLoading(false);
+    };
+    fetchData();
+  }, []);
 
   return (
     <MaterialTable

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Layout from "../layout/Layout";
 
 import { makeStyles } from "@material-ui/core";
@@ -14,17 +14,10 @@ const useStyles = makeStyles(theme => ({}));
 const VoteList = props => {
   const classes = useStyles();
 
-  const axiosAction = () => {
-    axios.post("http://192.168.100.71:5000/getJJ").then(response => {
-      console.log(response);
-    });
-  };
-
   return (
     <ViewContext.Provider value={{}}>
       <Layout>
         <MaterialTable />
-        <button onClick={axiosAction}>axiosTest</button>
       </Layout>
     </ViewContext.Provider>
   );
