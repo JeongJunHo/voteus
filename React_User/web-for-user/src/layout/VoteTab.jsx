@@ -8,7 +8,6 @@ const VoteTab = props => {
     //     classes = 'tab_vote on'
     // }
     // console.log(typeof props.click, typeof props.i, classes)
-
     return (
         <li key={props.i}>
             {/* { `/${this.props.name}` } */}

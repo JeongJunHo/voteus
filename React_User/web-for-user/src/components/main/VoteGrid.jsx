@@ -29,17 +29,21 @@ const VoteGrid = props => {
         <Fragment>
         <CssBaseline />
         <Container>
-            <Typography component="div" style={{ height: '100vh', padding: '10px' }}>
+            {/* height: '100vh' */}
+            <Typography component="div" style={{ height: '75vh', padding: '10px' }}>
                 <Grid container>
                 {
                     candidateList.map((candidate) => {
                         return (
-                            <Grid item xs={6} key={candidate.id}>
+                            <Grid item xs={6} key={candidate.name}>
                                 <VoteCard name={candidate.name} party={candidate.party} />
                             </Grid>
                         )
                     })
                 }
+                    <Grid item xs={6} key="select-none">
+                        <VoteCard name="선택 안함" party="없음" />
+                    </Grid>
                 </Grid>
             </Typography>
         </Container>

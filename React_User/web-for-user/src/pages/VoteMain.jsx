@@ -1,11 +1,13 @@
 import React, { Component, Fragment } from 'react';
 import Header from '../layout/Header';
 import VoteTab from '../layout/VoteTab';
+import Select from '../layout/Select';
 import Footer from '../layout/Footer';
 import axios from 'axios'
 // import VoteCandidate from '../components/main/VoteCandidate.jsx';
 import VoteGrid from '../components/main/VoteGrid';
 
+import VoteContext from '../context/VoteContext';
 import CandidateContext from '../context/CandidateContext';
 
 class VoteMain extends Component {
@@ -115,6 +117,9 @@ class VoteMain extends Component {
                 {/* <VoteCandidate list={this.state.candidateList.filter(candidate => (
                     candidate.votelist === this.state.click
                 ))} /> */}
+                <VoteContext.Provider value={this.state.voteList.filter(vote => vote.valid === 1)}>
+                    <Select />
+                </VoteContext.Provider>
                 <Footer />
             </Fragment>
         )
