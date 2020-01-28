@@ -45,9 +45,9 @@ def predict(X_img, knn_clf=None, model_path=None, distance_threshold=0.6):
     print(model_path)
     if knn_clf is None:
         with open(model_path, 'rb') as f:
-            print(f)
+            print(f + "before open")
             knn_clf = pickle.load(f)
-
+            print("is_open?")
 
     # Grab a single frame of video
     # ret, frame = X_img_path.read()
