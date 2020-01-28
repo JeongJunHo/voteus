@@ -92,34 +92,37 @@ class VoteMain extends Component {
         return (
             <Fragment>
                 <Header />
-                {/* <VoteTab /> */}
-                <ul className="votetab">
-                    {this.state.voteList.map((vote, i) => {
-                        if (vote.valid) {
-                            // return <Vote i={i} name={vote.name} click={this.state.click} />
-                            return <VoteTab key={vote.id} i={i} name={vote.name} click={this.state.click} cnt={this.state.cnt} />
-                        } else {
-                            return null
-                        }
-                    })}
-                </ul>
-                
-                {/* click, {this.state.click} */}
-                <CandidateContext.Provider value={this.state.candidateList.filter(candidate => candidate.votelist === this.state.click + 1)}>
-                    <VoteGrid />
-                    {/* <VoteGrid list={this.state.candidateList.filter(candidate => (
-                        candidate.votelist === this.state.click
-                    ))} /> */}
-                </CandidateContext.Provider>
+                <div className="tabspace">                    
+                    <ul className="votetab">
+                        {this.state.voteList.map((vote, i) => {
+                            if (vote.valid) {
+                                return <VoteTab key={vote.id} i={i} name={vote.name} click={this.state.click} cnt={this.state.cnt} />
+                            } else {
+                                return null
+                            }
+                        })}
+                    </ul>
+                </div>
 
-                {/* {this.state.click} */}
-                {/* {this.state.candidateList} */}
-                {/* <VoteCandidate list={this.state.candidateList.filter(candidate => (
-                    candidate.votelist === this.state.click
-                ))} /> */}
-                <VoteContext.Provider value={this.state.voteList.filter(vote => vote.valid === 1)}>
-                    <Select />
-                </VoteContext.Provider>
+                <div className="">
+                    {/* <h1>ddd</h1>
+                    <h1>ddd</h1>
+                    <h1>ddd</h1>
+                    <h1>ddd</h1>
+                    <h1>ddd</h1>
+                    <h1>ddd</h1>
+                    <h1>ddd</h1> */}
+
+                    <CandidateContext.Provider value={this.state.candidateList.filter(candidate => candidate.votelist === this.state.click + 1)}>
+                        <VoteGrid />
+                    </CandidateContext.Provider>
+
+                </div>
+                <div className="selectspace">
+                    <VoteContext.Provider value={this.state.voteList.filter(vote => vote.valid === 1)}>
+                        <Select />
+                    </VoteContext.Provider>
+                </div>
                 <Footer />
             </Fragment>
         )

@@ -29,19 +29,6 @@ const Select = props => {
     return (
         <div className={classes.root}>
             <Typography variant="h5" component="h2">
-                {/* <Grid container spacing={3}> */}
-                    {/* <Grid item xs> */}
-                        <Box display="flex" justifyContent="center">
-                            {votelist.map((vote, i) => {
-                                return (
-                                    <div className={classes.space}>
-                                        <Avatar variant="rounded" className={classes.rounded}>{vote.name}</Avatar>
-                                    </div>
-                                )
-                            })}
-                        </Box>
-                    {/* </Grid> */}
-                {/* </Grid> */}
                 <Grid container spacing={3}>
                     <Grid item xs>
                     </Grid>

@@ -7,7 +7,7 @@ import {
     Container,
     Grid
 } from '@material-ui/core'
-// import {makeStyles} from '@material-ui/core/styles'
+import {makeStyles} from '@material-ui/core/styles'
 
 import CandidateContext from '../../context/CandidateContext';
 
@@ -15,18 +15,19 @@ import CandidateContext from '../../context/CandidateContext';
 // import Typography from '@material-ui/core/Typography';
 // import Container from '@material-ui/core/Container';
 
-// const useStyles = makeStyles(theme => ({
-//     center: {
-//         justify: 'center'
-//     }
-// }))
+const useStyles = makeStyles(theme => ({
+    // padding-top:calc(48px + 32px*var(--n))
+    mainspace: {
+        paddingTop: '150px'
+    }
+}))
 
 const VoteGrid = props => {
     const candidateList = useContext(CandidateContext);
-    // const classes = useStyles();
+    const classes = useStyles();
 
     return (
-        <Fragment>
+        <div className={classes.mainspace}>
         <CssBaseline />
         <Container>
             {/* height: '100vh' */}
@@ -47,7 +48,7 @@ const VoteGrid = props => {
                 </Grid>
             </Typography>
         </Container>
-        </Fragment>
+        </div>
     );
 }
 
