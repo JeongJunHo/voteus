@@ -139,7 +139,7 @@ def get_name(img):
     #cv2.imshow(img)
     #print("이미지")
     X_img = img;
-    print("예측 전 디버그")
+    #print("예측 전 디버그")
     predictions = predict(X_img, model_path="examples/trained_knn_model.clf")
     return show_prediction_labels_on_image(predictions)
 
