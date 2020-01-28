@@ -54,7 +54,7 @@ def predict(X_img, knn_clf=None, model_path=None, distance_threshold=0.6):
 
     # Load image file and find face locations
     # X_img = frame[:, :, ::-1] #np.array(frame)
-    # print("X_img")
+    print("X_img why not working")
     # print(X_img)
     X_img = face_recognition.load_image_file(X_img)
     print(X_img)
