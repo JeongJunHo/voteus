@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import MaterialTable from "material-table";
+import date_to_str from "../../common.js";
 
 import axios from "axios";
 
@@ -17,59 +18,38 @@ export default function MaterialTableDemo() {
       {
         title: "분류",
         field: "middlepart",
-        lookup: { string: "지선", 11: "대선" }
+        lookup: { ji: "지선", dae: "대선" }
       },
       {
         title: "시작일자",
-        field: "start"
-        // type: "numeric"
+        field: "start",
+        type: "datetime"
       },
       {
         title: "종료일자",
-        field: "end"
+        field: "end",
+        type: "datetime"
       }
     ],
+    // data:
     data: [
       {
-        name: "제 1회 대통령 선거",
-        type: "jiseon",
-        startDate: "2020-01-22",
-        endDate: "2020-01-25"
+        code: "1",
+        name: "111111",
+        middlepart: "ji",
+        start: "2020-01-22",
+        end: "2020-01-25"
       },
       {
-        name: "제 1회 인천 시의원 선거",
-        type: "daeseon",
-        startDate: "2020-01-22",
-        endDate: "2020-01-25"
-      },
-      {
-        name: "제 2회 인천 시의원 선거",
-        type: "daeseon",
-        startDate: "2020-01-22",
-        endDate: "2020-01-25"
-      },
-      {
-        name: "제 3회 인천 시의원 선거",
-        type: "daeseon",
-        startDate: "2020-01-22",
-        endDate: "2020-01-25"
-      },
-      {
-        name: "제 4회 인천 시의원 선거",
-        type: "daeseon",
-        startDate: "2020-01-22",
-        endDate: "2020-01-25"
-      },
-      {
-        name: "제 5회 인천 시의원 선거",
-        type: "daeseon",
-        startDate: "2020-01-22",
-        endDate: "2020-01-25"
+        code: "2",
+        name: "2222222",
+        middlepart: "dae",
+        start: "2020-01-22",
+        end: "2020-01-25"
       }
     ]
   });
 
-  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -78,11 +58,15 @@ export default function MaterialTableDemo() {
       setLoading(true);
       try {
         const response = await axios.get(
-          "http://192.168.100.73:8080/api/vote/getVoteAllList"
+          "http://54.180.134.217:8080/api/vote/getVoteAllList"
+          // "data/dummy.json"
         );
-        console.log(state.data);
-        console.log(response.data);
-        setState(...state.data, response.data);
+        const restate = {
+          ...state,
+          data: response.data
+        };
+        console.log(restate);
+        setState(restate);
       } catch (e) {
         console.log(e);
       }
@@ -90,6 +74,10 @@ export default function MaterialTableDemo() {
     };
     fetchData();
   }, []);
+
+  if (loading) {
+    return <>대기중</>;
+  }
 
   return (
     <MaterialTable
@@ -101,6 +89,20 @@ export default function MaterialTableDemo() {
           new Promise(resolve => {
             setTimeout(() => {
               resolve();
+
+              let insertData = { ...newData };
+              insertData.start = date_to_str(insertData.start);
+              insertData.end = date_to_str(insertData.end);
+              axios
+                .post(
+                  "http://54.180.134.217:8080/api/vote/insertVote",
+                  JSON.stringify(insertData),
+                  {
+                    headers: { "Content-Type": "application/json" }
+                  }
+                )
+                .then(ret => console.log(ret));
+
               setState(prevState => {
                 const data = [...prevState.data];
                 data.push(newData);
@@ -125,6 +127,13 @@ export default function MaterialTableDemo() {
           new Promise(resolve => {
             setTimeout(() => {
               resolve();
+
+              axios
+                .delete(
+                  "http://54.180.134.217:8080/api/vote/delVote/" + oldData.code
+                )
+                .then(ret => console.log(ret));
+
               setState(prevState => {
                 const data = [...prevState.data];
                 data.splice(data.indexOf(oldData), 1);

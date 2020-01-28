@@ -14,10 +14,12 @@ const useStyles = makeStyles(theme => ({}));
 const VoteList = props => {
   const classes = useStyles();
 
+  const testData = { test: "test123", test2: "test4321" };
+
   return (
     <ViewContext.Provider value={{}}>
       <Layout>
-        <MaterialTable />
+        <MaterialTable testData={testData} />
       </Layout>
     </ViewContext.Provider>
   );
