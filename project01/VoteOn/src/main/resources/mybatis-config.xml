@@ -9,6 +9,9 @@
 		<typeAlias type="com.ssafy.vote.dto.VoteVO" alias="vote" />
 		<typeAlias type="com.ssafy.vote.dto.VoterVO" alias="voter" />
 		<typeAlias type="com.ssafy.vote.dto.CandidateVO" alias="candi" />
+		<typeAlias type="com.ssafy.vote.dto.AreaVO" alias="area" />
+		<typeAlias type="com.ssafy.vote.dto.MainpartVO" alias="main" />
+		<typeAlias type="com.ssafy.vote.dto.MiddlepartVO" alias="middle" />
 	</typeAliases>
 	<!-- 디비연결정보는 스프링이 연동하면서 생략가능 -->
 
@@ -17,5 +20,8 @@
 		<mapper resource="voteMapper.xml" />
 		<mapper resource="voterMapper.xml" />
 		<mapper resource="candiMapper.xml" />
+		<mapper resource="areaMapper.xml" />
+		<mapper resource="mainpartMapper.xml" />
+		<mapper resource="middlepartMapper.xml" />
 	</mappers>
 </configuration>

@@ -44,8 +44,27 @@ create table candidate(
 create table voter(
 	code int primary key,
     name varchar(200),
-    area varchar(100)
-);*/
+    areaCode varchar(100)
+);
+
+create table area(
+	areaCode varchar(100) primary key,
+    name varchar(200)
+);
+
+create table middlepart(
+	code varchar(100) primary key,
+    name varchar(100),
+    mainpart varchar(100),
+    areaCode varchar(100)
+);
+
+create table mainpart(
+	code varchar(100) primary key,
+    name varchar(100)
+);
+
+drop table voter;*/
 
 @CrossOrigin(origins = {"*"}, maxAge = 6000)
 @RestController
