@@ -45,7 +45,8 @@ def predict(X_img, knn_clf=None, model_path=None, distance_threshold=0.6):
     print(model_path)
     if knn_clf is None:
         with open(model_path, 'rb') as f:
-            print(f + "before open")
+            print(f)
+            print("before open")
             knn_clf = pickle.load(f)
             print("is_open?")
 
