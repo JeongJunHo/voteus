@@ -48,6 +48,7 @@ def predict(X_img, knn_clf=None, model_path=None, distance_threshold=0.6):
             print(f)
             knn_clf = pickle.load(f)
 
+
     # Grab a single frame of video
     # ret, frame = X_img_path.read()
 
@@ -136,7 +137,7 @@ def show_prediction_labels_on_image(predictions):
 
 def get_name(img):
     #cv2.imshow(img)
-    print("이미지")
+    #print("이미지")
     X_img = img;
     print("예측 전 디버그")
     predictions = predict(X_img, model_path="examples/trained_knn_model.clf")
