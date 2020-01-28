@@ -7,6 +7,7 @@ import math
 from sklearn import neighbors
 import numpy as np
 import cv2
+import time
 import os
 import os.path
 import pickle
@@ -57,11 +58,17 @@ def predict(X_img, knn_clf=None, model_path=None, distance_threshold=0.6):
     # X_img = frame[:, :, ::-1] #np.array(frame)
     print("X_img why not working")
     # print(X_img)
+    startTime = time.time()
     X_img = face_recognition.load_image_file(X_img)
-    print(X_img)
+    print("face_recognition : load img")
+    print(startTime - time.time())
 
+    startTime = time.time()
     X_face_locations = face_recognition.face_locations(X_img)
+    print("face location")
+    print(startTime - time.time())
     print(len(X_face_locations))
+
     # cv2.imshow("asdf", X_face_locations)
     # If no faces are found in the image, return an empty result.
     if len(X_face_locations) == 0:
@@ -84,12 +91,17 @@ def predict(X_img, knn_clf=None, model_path=None, distance_threshold=0.6):
     #             break;
     #     else:
     #         break;
-    print(X_face_locations)
-
+    #print(X_face_locations)
+    startTime = time.time()
     faces_encodings = face_recognition.face_encodings(X_img, known_face_locations=X_face_locations)
-    print(faces_encodings)
+    print("encoding")
+    print(startTime - time.time())
+    #print(faces_encodings)
+    startTime = time.time()
     # Use the KNN model to find the best matches for the test face
     closest_distances = knn_clf.kneighbors(faces_encodings, n_neighbors=1)
+    print("kneighbors")
+    print(startTime - time.time())
     # closest_distances = knn_clf.kneighbors(faces_encodings, n_neighbors=1)
     are_matches = [closest_distances[0][i][0] <= distance_threshold for i in range(len(X_face_locations))]
 
