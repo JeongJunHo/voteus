@@ -59,14 +59,16 @@ def predict(X_img, knn_clf=None, model_path=None, distance_threshold=0.6):
     print("X_img why not working")
     # print(X_img)
     startTime = time.time()
+
     X_img = face_recognition.load_image_file(X_img)
     print("face_recognition : load img")
-    print(startTime - time.time())
+    print(time.time() - startTime)
 
     startTime = time.time()
+
     X_face_locations = face_recognition.face_locations(X_img)
     print("face location")
-    print(startTime - time.time())
+    print(time.time() - startTime)
     print(len(X_face_locations))
 
     # cv2.imshow("asdf", X_face_locations)
@@ -95,13 +97,13 @@ def predict(X_img, knn_clf=None, model_path=None, distance_threshold=0.6):
     startTime = time.time()
     faces_encodings = face_recognition.face_encodings(X_img, known_face_locations=X_face_locations)
     print("encoding")
-    print(startTime - time.time())
+    print(time.time() - startTime)
     #print(faces_encodings)
     startTime = time.time()
     # Use the KNN model to find the best matches for the test face
     closest_distances = knn_clf.kneighbors(faces_encodings, n_neighbors=1)
     print("kneighbors")
-    print(startTime - time.time())
+    print(time.time() - startTime)
     # closest_distances = knn_clf.kneighbors(faces_encodings, n_neighbors=1)
     are_matches = [closest_distances[0][i][0] <= distance_threshold for i in range(len(X_face_locations))]
 
@@ -153,6 +155,9 @@ def get_name(img):
     #print("이미지")
     X_img = img;
     #print("예측 전 디버그")
+
+    #img2 = cv2.imread(img, cv2.IMREAD_COLOR)
+    #cv2.imshow("asdf",img)
     predictions = predict(X_img, model_path="examples/trained_knn_model.clf")
     return show_prediction_labels_on_image(predictions)
 
