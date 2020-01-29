@@ -61,7 +61,7 @@ export default function TemporaryDrawer() {
           },
           {
             name: "선거 분류 관리",
-            url: "/"
+            url: "/MainPartList"
           },
           {
             name: "투표자 등록",
