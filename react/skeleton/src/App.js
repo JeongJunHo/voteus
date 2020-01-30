@@ -9,6 +9,7 @@ import SignInSide from "./pages/SignInSide";
 import VoteList from "./pages/VoteList";
 import MainPartList from "./pages/MainPartList";
 import MiddlePartList from "./pages/MiddlePartList";
+import AreaList from "./pages/AreaList";
 
 import { koKR } from "@material-ui/core/locale";
 
@@ -49,8 +50,12 @@ const App = () => {
             <Route path="/SignInSide" component={SignInSide} />
             <Route path="/VoteMain" component={VoteMain} />
             <Route path="/VoteList" component={VoteList} />
+            <Route path="/AreaList" component={AreaList} />
             <Route path="/MainPartList" component={MainPartList} />
-            <Route path="/MiddlePartList/:code" component={MiddlePartList} />
+            <Route
+              path="/MiddlePartList/:code/:name"
+              component={MiddlePartList}
+            />
             <Route path="/not-found" component={NotFound} />
             {/* <Route path="/CandidateList" component={CandidateList} /> */}
             <Redirect to="/not-found" />
