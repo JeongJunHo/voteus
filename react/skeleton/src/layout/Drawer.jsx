@@ -57,7 +57,7 @@ export default function TemporaryDrawer() {
           },
           {
             name: "지역구 관리",
-            url: "/"
+            url: "/AreaList"
           },
           {
             name: "선거 분류 관리",
