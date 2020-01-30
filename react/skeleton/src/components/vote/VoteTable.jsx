@@ -6,12 +6,20 @@ import LinearProgress from "@material-ui/core/LinearProgress";
 
 import axios from "axios";
 
-export default function VoteTable() {
+export default function VoteTable(props) {
+  console.log(props.middlepart);
+  const middlepart = {};
+  for (let i in props.middlepart) {
+    middlepart[props.middlepart[i].code] = props.middlepart[i].name;
+  }
+  console.log(middlepart);
+
   const [state, setState] = React.useState({
     columns: [
       {
-        title: "코드",
-        field: "middlepart"
+        title: "선거분류",
+        field: "middlepart",
+        lookup: middlepart
       },
       {
         title: "투표명",
@@ -21,6 +29,16 @@ export default function VoteTable() {
             {rowData.name}
           </Link>
         )
+      },
+      {
+        title: "시작일",
+        field: "start",
+        type: "datetime"
+      },
+      {
+        title: "종료일",
+        field: "end",
+        type: "datetime"
       }
     ],
     // data:
@@ -68,6 +86,7 @@ export default function VoteTable() {
           searchPlaceholder: "검색"
         },
         body: {
+          emptyDataSourceMessage: "데이터가 존재하지 않습니다.",
           editTooltip: "수정",
           deleteTooltip: "삭제",
           editRow: {
