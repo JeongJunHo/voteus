@@ -1,14 +1,56 @@
-import React, { Fragment } from 'react';
+import React, { useState, Fragment } from 'react';
 
-import UserAuthWebcam from './UserAuthWebcam';
+import UserAuthFaceWebcam from './UserAuthFaceWebcam';
 
 const UserAuthFace = props => {
-    return (
-        <Fragment>
-            <h1>얼굴 인증</h1>
-            <UserAuthWebcam />
-        </Fragment>
-    )
+    const [result, setResult] = useState('face')
+
+    const nextPage = () => {
+        // console.log(props.number)
+        props.setNumber(number => number + 1)
+    }
+
+    const returnPage = () => {
+        setResult(result => 'face')
+    }
+    
+    if (result === 'set') {
+        return (
+            <Fragment>
+                <div>
+                    인증중...
+                </div>
+            </Fragment>
+        )
+    } else if (result === 'true') {
+        return (
+            <Fragment>
+                <div>
+                    인증이 완료되었습니다.
+                    <button onClick={nextPage}>다음</button>
+                </div>
+            </Fragment>
+        )
+    } else if (result === 'false') {
+        return (
+            <Fragment>
+                <div>
+                    인증이 실패되었습니다.
+                    다시 인증하세요.
+                    <button onClick={returnPage}>다시하기</button>
+                </div>
+            </Fragment>
+        ) 
+    } else {
+        return (
+            <Fragment>
+                <h1>얼굴 인증</h1>
+                {props.number}
+                <UserAuthFaceWebcam result={result} setResult={setResult} />
+            </Fragment>
+        )
+    }
+
 }
 
 export default UserAuthFace;

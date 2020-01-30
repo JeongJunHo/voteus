@@ -1,10 +1,16 @@
-import React, { Fragment } from 'react';
+import React from 'react';
+
+import UserVoteList from '../components/main/UserVoteList';
+
+import VoteListContext from '../context/VoteListContext';
 
 const UserVoteBody = props => {
+
     return (
-        <Fragment>
+        <VoteListContext.Provider>
             <h1>VoteBody</h1>
-        </Fragment>
+            <UserVoteList />
+        </VoteListContext.Provider>
     )
 }
 

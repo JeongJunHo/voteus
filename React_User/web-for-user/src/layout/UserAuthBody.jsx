@@ -5,52 +5,42 @@ import UserAuthFace from '../components/main/UserAuthFace';
 import UserAuthFinger from '../components/main/UserAuthFinger';
 import UserAuthComplete from '../components/main/UserAuthComplete';
 
+import VoteListContext from '../context/VoteListContext';
+
 const UserAuthBody = props => {
     const [number, setNumber] = useState(0);
+    const [userinfo, setUserInfo] = useState('');
+    const [votelist, setVoteList] = useState('');
     
     if ( number === 0 ) {
         return (
             <Fragment>
                 {number}
-                <UserAuthName setNumber={setNumber} />
+                <UserAuthName number={number} setNumber={setNumber} userinfo={userinfo} setUserInfo={setUserInfo}/>
             </Fragment>
         )
     } else if ( number === 1 ) {
         return (
             <Fragment>
                 {number}
-                <UserAuthFace />
+                <UserAuthFace number={number} setNumber={setNumber} userinfocode={userinfo.code}/>
             </Fragment>
         )
     } else if ( number === 2 ) {
         return (
             <Fragment>
                 {number}
-                <UserAuthFinger />
+                <UserAuthFinger number={number} setNumber={setNumber} userinfocode={userinfo.code} setVoteList={setVoteList}/>
             </Fragment>
         )
     } else {
         return (
-            <Fragment>
+            <VoteListContext.Provider value={votelist}>
                 {number}
                 <UserAuthComplete />
-            </Fragment>
+            </VoteListContext.Provider>
         )
     }
-
-    // return (
-    //     <Fragment>
-    //         <h1>body</h1>
-    //         if ( number === 0 ) {
-    //             <UserAuthName />
-    //         } else if ( number === 1 ) {
-    //             <UserAuthFace />
-    //         } else {
-    //             <UserAuthFinger />
-    //         }
-
-    //     </Fragment>
-    // )
 }
 
 export default UserAuthBody;
