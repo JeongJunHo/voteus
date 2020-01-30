@@ -60,7 +60,7 @@ def predict(X_img, knn_clf=None, model_path=None, distance_threshold=0.6):
     # print(X_img)
     startTime = time.time()
 
-    X_img = face_recognition.load_image_file(X_img)
+    X_img = face_recognition.load_image_file('find.jpg')
     print("face_recognition : load img")
     print(time.time() - startTime)
 
@@ -68,6 +68,7 @@ def predict(X_img, knn_clf=None, model_path=None, distance_threshold=0.6):
 
     X_face_locations = face_recognition.face_locations(X_img)
     print("face location")
+    print(X_face_locations)
     print(time.time() - startTime)
     print(len(X_face_locations))
 
