@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from "react";
 import MaterialTable from "material-table";
-import date_to_str from "../../common.js";
 import Link from "@material-ui/core/Link";
 import LinearProgress from "@material-ui/core/LinearProgress";
 
 import axios from "axios";
 
-export default function MiddlePartTable() {
+export default function MainPartTable() {
   const [state, setState] = React.useState({
     columns: [
       {
         title: "코드",
-        field: "code"
+        field: "code",
+        editable: "onAdd"
       },
       {
         title: "분류명",
         field: "name",
         render: rowData => {
-          const href = "/middlepart/" + rowData.code;
+          const href = "/MiddlePartList/" + rowData.code + "/" + rowData.name;
           return (
             <Link key={rowData.index} href={href} color="inherit">
               {rowData.name}
@@ -70,6 +70,7 @@ export default function MiddlePartTable() {
           searchPlaceholder: "검색"
         },
         body: {
+          emptyDataSourceMessage: "데이터가 존재하지 않습니다.",
           editTooltip: "수정",
           deleteTooltip: "삭제",
           editRow: {
@@ -96,20 +97,20 @@ export default function MiddlePartTable() {
               let insertData = { ...newData };
               axios
                 .post(
-                  "http://192.168.100.73:8080/api/mainpart/insertMainpart",
+                  "http://54.180.134.217:8080/api/mainpart/insertMainpart",
                   JSON.stringify(insertData),
                   {
                     headers: { "Content-Type": "application/json" }
                   }
                 )
                 .then(ret => {
-                  console.log(ret);
-
-                  setState(prevState => {
-                    const data = [...prevState.data];
-                    data.push(newData);
-                    return { ...prevState, data };
-                  });
+                  if (ret.data === "success") {
+                    setState(prevState => {
+                      const data = [...prevState.data];
+                      data.push(newData);
+                      return { ...prevState, data };
+                    });
+                  }
                 })
                 .catch(error => console.log(error));
             }, 600);
@@ -128,16 +129,19 @@ export default function MiddlePartTable() {
                     headers: { "Content-Type": "application/json" }
                   }
                 )
-                .then(ret => console.log(ret))
+                .then(ret => {
+                  console.log(ret);
+                  if (ret.data === "success") {
+                    if (oldData) {
+                      setState(prevState => {
+                        const data = [...prevState.data];
+                        data[data.indexOf(oldData)] = newData;
+                        return { ...prevState, data };
+                      });
+                    }
+                  }
+                })
                 .catch(error => console.log(error));
-
-              if (oldData) {
-                setState(prevState => {
-                  const data = [...prevState.data];
-                  data[data.indexOf(oldData)] = newData;
-                  return { ...prevState, data };
-                });
-              }
             }, 600);
           }),
         onRowDelete: oldData =>
@@ -150,14 +154,16 @@ export default function MiddlePartTable() {
                   "http://54.180.134.217:8080/api/mainpart/delMainpart/" +
                     oldData.code
                 )
-                .then(ret => console.log(ret))
+                .then(ret => {
+                  if (ret.data === "success") {
+                    setState(prevState => {
+                      const data = [...prevState.data];
+                      data.splice(data.indexOf(oldData), 1);
+                      return { ...prevState, data };
+                    });
+                  }
+                })
                 .catch(error => console.log(error));
-
-              setState(prevState => {
-                const data = [...prevState.data];
-                data.splice(data.indexOf(oldData), 1);
-                return { ...prevState, data };
-              });
             }, 600);
           })
       }}
