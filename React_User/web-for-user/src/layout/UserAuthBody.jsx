@@ -3,9 +3,8 @@ import React, { useState, Fragment } from 'react';
 import UserAuthName from '../components/main/UserAuthName';
 import UserAuthFace from '../components/main/UserAuthFace';
 import UserAuthFinger from '../components/main/UserAuthFinger';
-import UserAuthComplete from '../components/main/UserAuthComplete';
+import UserAuthComplete from '../components/main/UserAuthComplete'
 
-import VoteListContext from '../context/VoteListContext';
 import UserNameContext from '../context/UserNameContext';
 
 const UserAuthBody = props => {
@@ -39,10 +38,6 @@ const UserAuthBody = props => {
             <Fragment>
                 <UserAuthComplete votelist={votelist} />
             </Fragment>
-            // <VoteListContext.Provider value={votelist}>
-            //     {number}
-            //     <UserAuthComplete />
-            // </VoteListContext.Provider>
         )
     }
 }

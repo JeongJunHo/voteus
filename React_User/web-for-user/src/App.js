@@ -7,8 +7,14 @@ import UserHome from './pages/UserHome';
 import UserAuthentication from './pages/UserAuthentication';
 import UserVote from './pages/UserVote';
 
-
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      uservotelist: null
+    }
+  }
+
   render() {
     return (
       <Router>
@@ -16,6 +22,7 @@ class App extends Component {
           <Route exact path="/" component={UserHome} />
           <Route exact path="/user-auth" component={UserAuthentication} />
           <Route exact path="/user-vote" component={UserVote} />
+          {/* <Route exact path="/user-vote/:code" component={UserVote} /> */}
         </div>
       </Router>
     );

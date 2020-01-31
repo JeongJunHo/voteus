@@ -12,7 +12,7 @@ const UserVoteList = props => {
     return (
         <div>
             uservotelist
-            {/* {vote} */}
+            {/* {vote.data.map((eachvote)=>eachvote.name)} */}
             <button onClick={test}>test</button>
         </div>
     )
