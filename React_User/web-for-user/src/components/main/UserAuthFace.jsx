@@ -38,6 +38,7 @@ const UserAuthFace = props => {
                     인증이 실패되었습니다.
                     다시 인증하세요.
                     <button onClick={returnPage}>다시하기</button>
+                    {/* 처음 화면으로 돌아가는 버튼 필요 (이름 잘못 입력했을 경우) */}
                 </div>
             </Fragment>
         ) 

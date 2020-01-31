@@ -12,9 +12,7 @@ const UserVoteList = props => {
     return (
         <div>
             uservotelist
-            {/* {vote[0].map((eachvote) => {
-                return <div>eachvote</div>
-            })} */}
+            {/* {vote} */}
             <button onClick={test}>test</button>
         </div>
     )

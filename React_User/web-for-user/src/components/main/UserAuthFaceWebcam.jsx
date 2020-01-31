@@ -1,7 +1,9 @@
-import React, { useState, Fragment, useRef } from 'react';
+import React, { useContext, useState, Fragment, useRef } from 'react';
 import Webcam from 'react-webcam';
 
 import axios from 'axios';
+
+import UserNameContext from '../../context/UserNameContext';
 
 const videoConstraints = {
     width: 300,
@@ -11,6 +13,8 @@ const videoConstraints = {
 
 const UserAuthWebcam = props => {
     const [screenshot, setScreenShot] = useState('');
+
+    const username = useContext(UserNameContext);
 
     const webcamRef = React.useRef(null);
 
@@ -32,21 +36,19 @@ const UserAuthWebcam = props => {
     }
 
     const sendFace = () => {
-        const data = {
-            fd: screenshot,
-            code: props.userinfocode
-        }
+        const fd = screenshot;
+        console.log(username)
+        // const data = {
+        //     fd: screenshot,
+        //     // code: props.userinfocode
+        //     name: '이름'
+        // }
         
-        // const fd = screenshot;
-        // axios.post('http://192.168.100.71:5000/getImg', {img: fd})
-        axios.post('주소', data)
-        .then(res => console.log(res))
-        .catch(error => console.log(error))
-        
-        axios.get('주소')
+        // axios.post('주소', {img: fd, name: username})
+        axios.post('http://192.168.100.71:5000/getImg', {img: fd, name: username})
         .then(res => {
-            console.log(res) // 수정 필요
-            if (res === 'true') {
+            console.log('resss', res.data) // 수정 필요
+            if (res.data === true) {
                 props.setResult(result => 'true')
             } else {
                 props.setResult(result => 'false')
@@ -54,7 +56,7 @@ const UserAuthWebcam = props => {
         })
         .catch(error => console.log(error))
 
-        props.setResult(result => 'true') // 테스트용(삭제 필요)
+        // props.setResult(result => 'true') // 테스트용(삭제 필요)
     }
 
     return (

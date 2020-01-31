@@ -26,10 +26,6 @@ const UserAuthFingerRecognition = props => {
 
         // 지문을 어떻게 받아올 것인지 생각해봐야 함
         axios.post('주소', data)
-        .then(res => console.log(res))
-        .catch(error => console.log(error))
-        
-        axios.get('주소')
         .then(res => {
             // 수정 필요
             if (res === 'true') {

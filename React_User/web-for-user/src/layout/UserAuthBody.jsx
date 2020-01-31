@@ -6,6 +6,7 @@ import UserAuthFinger from '../components/main/UserAuthFinger';
 import UserAuthComplete from '../components/main/UserAuthComplete';
 
 import VoteListContext from '../context/VoteListContext';
+import UserNameContext from '../context/UserNameContext';
 
 const UserAuthBody = props => {
     const [number, setNumber] = useState(0);
@@ -21,10 +22,10 @@ const UserAuthBody = props => {
         )
     } else if ( number === 1 ) {
         return (
-            <Fragment>
+            <UserNameContext.Provider value={userinfo.name}>
                 {number}
                 <UserAuthFace number={number} setNumber={setNumber} userinfocode={userinfo.code}/>
-            </Fragment>
+            </UserNameContext.Provider>
         )
     } else if ( number === 2 ) {
         return (
@@ -35,10 +36,13 @@ const UserAuthBody = props => {
         )
     } else {
         return (
-            <VoteListContext.Provider value={votelist}>
-                {number}
-                <UserAuthComplete />
-            </VoteListContext.Provider>
+            <Fragment>
+                <UserAuthComplete votelist={votelist} />
+            </Fragment>
+            // <VoteListContext.Provider value={votelist}>
+            //     {number}
+            //     <UserAuthComplete />
+            // </VoteListContext.Provider>
         )
     }
 }

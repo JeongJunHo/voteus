@@ -39,11 +39,7 @@ const UserAuthName = props => {
 
             // axios
             // axios.get('http://54.180.134.217:8080/api/vote/getVoteAllList/'+registration_number, data)
-            axios.post('주소'+registration_number, data)
-            .then(res => console.log(res))
-            .catch(error => console.log(error))
-
-            axios.get('주소'+registration_number)
+            axios.get('주소'+registration_number, data)
             .then(res => {
                 console.log(res)
                 if (res === 'true') {
