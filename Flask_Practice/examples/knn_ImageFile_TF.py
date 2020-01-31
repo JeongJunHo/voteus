@@ -67,8 +67,8 @@ def predict(X_img, knn_clf=None, model_path=None, distance_threshold=0.6):
 
     startTime = time.time()
 
-    #X_face_locations = face_recognition.face_locations(X_img)
-    X_face_locations = fd.get_face()
+    X_face_locations = face_recognition.face_locations(X_img)
+    #X_face_locations = fd.get_face()
     print("face location")
     print(X_face_locations)
     print(time.time() - startTime)
