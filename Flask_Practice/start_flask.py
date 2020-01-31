@@ -28,6 +28,8 @@ def getData():
 def put_img():
     print(1)
     data = request.get_json()
+    name = data['name']
+    print(name)
     print(data)
     img = data['img']
     print(img)
@@ -45,9 +47,16 @@ def put_img():
     print(2)
     # print(f)
     file = open('find.jpg', 'r')
-    data = json.dumps(knn.get_name(file))
+    tmpname = knn.get_name(file)
+    if tmpname==name:
+        data = json.dumps(True)
+    else:
+        data = json.dumps(False)
+    #data = json.dumps()
     print(3)
     return data
+
+    #return data
 
 @app.route('/getJJ', methods=['post'])
 def jj():
