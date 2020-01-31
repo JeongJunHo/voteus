@@ -142,7 +142,8 @@ export default function MainPartTable() {
 
               axios
                 .delete(
-                  "http://54.180.134.217:8080/api/delParty/" + oldData.code
+                  "http://54.180.134.217:8080/api/party/delParty/" +
+                    oldData.p_code
                 )
                 .then(ret => {
                   if (ret.data === "success") {
