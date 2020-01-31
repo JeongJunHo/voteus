@@ -10,6 +10,7 @@ import VoteList from "./pages/VoteList";
 import MainPartList from "./pages/MainPartList";
 import MiddlePartList from "./pages/MiddlePartList";
 import AreaList from "./pages/AreaList";
+import PartyList from "./pages/PartyList";
 
 import { koKR } from "@material-ui/core/locale";
 
@@ -50,6 +51,7 @@ const App = () => {
             <Route path="/SignInSide" component={SignInSide} />
             <Route path="/VoteMain" component={VoteMain} />
             <Route path="/VoteList" component={VoteList} />
+            <Route path="/PartyList" component={PartyList} />
             <Route path="/AreaList" component={AreaList} />
             <Route path="/MainPartList" component={MainPartList} />
             <Route
