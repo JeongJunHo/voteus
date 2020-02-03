@@ -15,38 +15,38 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ssafy.vote.dto.VoterVO;
-import com.ssafy.vote.service.IVoterService;
+import com.ssafy.vote.dto.AreaVO;
+import com.ssafy.vote.service.IAreaService;
 
 import io.swagger.annotations.ApiOperation;
 
-@CrossOrigin(origins = {"*"}, maxAge = 6000)
+@CrossOrigin(origins = { "*" }, maxAge = 6000)
 @RestController
-@RequestMapping("/api/voter")
-public class RestVoterController {
-	
+@RequestMapping("/api/area")
+public class RestAreaController {
+
 	@Autowired
-	private IVoterService ser;
+	IAreaService ser;
 	
-	@ApiOperation(value = "모든 투표자를 조회합니다.")
-	@GetMapping("/getVoterAllList")
-	public ResponseEntity<List<VoterVO>> getVoterAllList() {
-		ResponseEntity<List<VoterVO>> re = null;
+	@ApiOperation(value = "모든 지역을 조회합니다.")
+	@GetMapping("/getAreaAllList")
+	public ResponseEntity<List<AreaVO>> getAreaAllList() {
+		ResponseEntity<List<AreaVO>> re = null;
 		try {
-			List<VoterVO> list = ser.getVoterAllList();
-			re = new ResponseEntity<List<VoterVO>>(list, HttpStatus.OK);
+			List<AreaVO> list = ser.getAreaAllList();
+			re = new ResponseEntity<List<AreaVO>>(list, HttpStatus.OK);
 		} catch (Exception e) {
-			re = new ResponseEntity("모든 투표자 데이터 조회 실패 문제가 생겼다!", HttpStatus.OK);
+			re = new ResponseEntity("모든 지역 데이터 조회 실패 문제가 생겼다!", HttpStatus.OK);
 		}
 		return re;
 	}
 
-	@ApiOperation(value = "투표자를 등록합니다.")
-	@PostMapping("/insertVoter")
-	public ResponseEntity<String> insertVoter(@RequestBody VoterVO voter) {
+	@ApiOperation(value = "지역을 등록합니다.")
+	@PostMapping("/insertArea")
+	public ResponseEntity<String> insertArea(@RequestBody AreaVO area) {
 		ResponseEntity<String> re = null;
 		try {
-			ser.insertVoter(voter.getCode(),voter.getName(), voter.getAreaCode());
+			ser.insertArea(area.getAreaCode(), area.getName());
 			re = new ResponseEntity<String>("잘 들어 갔어용~", HttpStatus.OK);
 		} catch (Exception e) {
 			re = new ResponseEntity<String>("입력 실패 문제가 생겼다!", HttpStatus.OK);
@@ -54,13 +54,12 @@ public class RestVoterController {
 		return re;
 	}
 
-	@ApiOperation(value = "투표자를 삭제합니다.")
-	@DeleteMapping(value = "/delVoter/{code}")
-	public ResponseEntity<String> delVoter(@PathVariable String code) {
+	@ApiOperation(value = "지역을 삭제합니다.")
+	@DeleteMapping(value = "/delArea/{areaCode}")
+	public ResponseEntity<String> delArea(@PathVariable String areaCode) {
 		ResponseEntity<String> re = null;
 		try {
-			int ncode = Integer.parseInt(code);
-			ser.delVoter(ncode);
+			ser.delArea(areaCode);
 			re = new ResponseEntity<String>("잘 들어 갔어용~", HttpStatus.OK);
 		} catch (Exception e) {
 			re = new ResponseEntity<String>("삭제 실패 문제가 생겼다!", HttpStatus.OK);
@@ -68,12 +67,12 @@ public class RestVoterController {
 		return re;
 	}
 
-	@ApiOperation(value = "투표자를 수정합니다.")
-	@PutMapping(value = "/updateVoter")
-	public ResponseEntity<String> updateVoter(@RequestBody VoterVO voter) {
+	@ApiOperation(value = "지역을 수정합니다.")
+	@PutMapping(value = "/updateArea")
+	public ResponseEntity<String> updateArea(@RequestBody  AreaVO area) {
 		ResponseEntity<String> re = null;
 		try {
-			ser.updateVoter(voter.getCode(), voter.getName(), voter.getAreaCode());
+			ser.updateArea(area.getAreaCode(), area.getName());
 			re = new ResponseEntity<String>("업데이트 성공 ", HttpStatus.OK);
 		} catch (Exception e) {
 			re = new ResponseEntity<String>("업데이트 실패", HttpStatus.OK);
@@ -81,4 +80,6 @@ public class RestVoterController {
 		return re;
 	}
 
+	
+	
 }

@@ -17,7 +17,7 @@ public interface IVoterService {
 	 * 기능 : 투표자를 등록하는 함수
 	 * @Date : 2020. 1. 23.
 	 */
-	public boolean insertVoter(int code, String name, String area);
+	public boolean insertVoter(int code, String name, String areaCode);
 	/**
 	 * @author : 선한빛
 	 * 기능 : 투표자를 삭제하는 함수
@@ -29,7 +29,7 @@ public interface IVoterService {
 	 * 기능 : 투표자를 수정하는 함수
 	 * @Date : 2020. 1. 23.
 	 */
-	public boolean updateVoter(int code, String name, String area);
+	public boolean updateVoter(int code, String name, String areaCode);
 
 	
 }
