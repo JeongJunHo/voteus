@@ -69,7 +69,8 @@ def get_face():
             print('box = ', box)
             # Draw a rectangle.
             draw.rectangle(box, outline='red')
-            return box
+            return img.crop(box)
+            #return box
     else:
         print('No object detected!')
 

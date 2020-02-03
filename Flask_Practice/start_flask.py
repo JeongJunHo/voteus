@@ -48,6 +48,7 @@ def put_img():
     # print(f)
     file = open('find.jpg', 'r')
     tmpname = knn.get_name(file)
+    print('tmpname : ' + tmpname)
     if tmpname==name:
         data = json.dumps(True)
     else:
