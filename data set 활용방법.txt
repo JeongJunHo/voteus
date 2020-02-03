@@ -1,0 +1,4 @@
+preprocess.ipynb를 보면 glob, os를 통해 경로에 담긴 파일들을 읽어와 각 데이터셋을 생성하는데 굳이 전처리된 dataset을 사용하지 않고 preprocess를 통해 우리팀원들의 지문과 함께 dataset을 저장하면 될듯
+예상되는 작업으로는 Rasberry Pi나 AWS에 Anaconda과 Pycharm을 설치해 
+FingerPrint Recognition 코드를 학습할 환경만들고, socofing data에 팀원들의 데이터를 저장한 후 preprocess에 경로를 설정해 data를 읽어와 dataset을 생성
+그 후 train.ipynb를 실행해 학습하면 될듯
