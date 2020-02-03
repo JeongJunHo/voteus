@@ -8,7 +8,7 @@ const UserAuthFinger = props => {
     const [result, setResult] = useState('finger')
     
     const nextPage = () => {
-        console.log(props.userinfocode)
+        // console.log(props.userinfocode)
 
         // vote 페이지에서 axios하도록 만들예정
         // // 지문인증까지 완료하면 votelist를 받아온다.

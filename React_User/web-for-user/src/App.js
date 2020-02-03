@@ -20,9 +20,10 @@ class App extends Component {
       <Router>
         <div>
           <Route exact path="/" component={UserHome} />
-          <Route exact path="/user-auth" component={UserAuthentication} />
-          <Route exact path="/user-vote" component={UserVote} />
-          {/* <Route exact path="/user-vote/:code" component={UserVote} /> */}
+          <Route path="/user-home" component={UserHome} />
+          <Route path="/user-auth" component={UserAuthentication} />
+          {/* <Route exact path="/user-vote" component={UserVote} /> */}
+          <Route path="/user-vote/:code" component={UserVote} />
         </div>
       </Router>
     );

@@ -10,7 +10,6 @@ import UserNameContext from '../context/UserNameContext';
 const UserAuthBody = props => {
     const [number, setNumber] = useState(0);
     const [userinfo, setUserInfo] = useState('');
-    const [votelist, setVoteList] = useState('');
     
     if ( number === 0 ) {
         return (
@@ -30,13 +29,13 @@ const UserAuthBody = props => {
         return (
             <Fragment>
                 {number}
-                <UserAuthFinger number={number} setNumber={setNumber} userinfocode={userinfo.code} setVoteList={setVoteList}/>
+                <UserAuthFinger number={number} setNumber={setNumber} userinfocode={userinfo.code} />
             </Fragment>
         )
     } else {
         return (
             <Fragment>
-                <UserAuthComplete votelist={votelist} />
+                <UserAuthComplete userinfocode={userinfo.code}/>
             </Fragment>
         )
     }
