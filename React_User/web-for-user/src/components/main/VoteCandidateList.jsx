@@ -8,15 +8,15 @@ const VoteCandidateList = props => {
 
     const candidatelist = useContext(CandidateListContext);
 
-    // 수정중입니다.
-    useEffect(() => {
-        if (candidatelist !== null) {
-            setLoading(true)
-            candidatelist.map((each) => (
-                setCandidate(each.name)
-            ))
-        }
-    }, [])
+    // // 수정중입니다.
+    // useEffect(() => {
+    //     if (candidatelist !== null) {
+    //         setLoading(true)
+    //         candidatelist.map((each) => (
+    //             setCandidate(each.name)
+    //         ))
+    //     }
+    // }, [])
 
     const test = () => {
         console.log(candidatelist.map((candidate)=>(candidate.name)))
