@@ -31,7 +31,8 @@ const useStyles = makeStyles(theme => ({
     height: "100vh"
   },
   image: {
-    backgroundImage: "url(https://source.unsplash.com/random)",
+    // backgroundImage: "url(https://source.unsplash.com/random)",
+    backgroundImage: "url(img/vote.jpg)",
     backgroundRepeat: "no-repeat",
     backgroundColor:
       theme.palette.type === "dark"
@@ -101,7 +102,7 @@ export default function SignInSide() {
               control={<Checkbox value="remember" color="primary" />}
               label="아이디 기억"
             />
-            <Link href="/VoteMain">
+            <Link href="/VoteList">
               <Button
                 // type="submit"
                 type="button"
