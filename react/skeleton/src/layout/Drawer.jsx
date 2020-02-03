@@ -56,12 +56,16 @@ export default function TemporaryDrawer() {
             url: "/VoteList"
           },
           {
+            name: "정당 관리",
+            url: "/PartyList"
+          },
+          {
             name: "지역구 관리",
-            url: "/"
+            url: "/AreaList"
           },
           {
             name: "선거 분류 관리",
-            url: "/"
+            url: "/MainPartList"
           },
           {
             name: "투표자 등록",
