@@ -8,8 +8,8 @@
 		select * from voter;
 	</select>
 	<insert id="insertVoter" parameterType="voter">
-		insert into voter(code, name, area) 
-		values(#{code}, #{name}, #{area});
+		insert into voter(code, name, areaCode) 
+		values(#{code}, #{name}, #{areaCode});
 	</insert>
 	<delete id="delVoter" parameterType="int">
 		delete from voter 
@@ -17,7 +17,7 @@
 	</delete>
 	<update id="updateVoter" parameterType="voter">
 		update voter 
-		set name = #{name}, area = #{area}
+		set name = #{name}, areaCode = #{areaCode}
 		where code = #{code};
 	</update>
 </mapper>

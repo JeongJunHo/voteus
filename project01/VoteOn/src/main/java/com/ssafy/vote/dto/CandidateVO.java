@@ -59,5 +59,12 @@ public class CandidateVO {
 		this.votecode = votecode;
 		this.pick = pick;
 	}
+	public CandidateVO(String name, String num, String party, int votecode, int pick) {
+		this.name = name;
+		this.num = num;
+		this.party = party;
+		this.votecode = votecode;
+		this.pick = pick;
+	}
 	
 }

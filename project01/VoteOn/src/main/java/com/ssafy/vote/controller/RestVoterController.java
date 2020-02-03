@@ -24,6 +24,7 @@ import io.swagger.annotations.ApiOperation;
 @RestController
 @RequestMapping("/api/voter")
 public class RestVoterController {
+	
 	@Autowired
 	private IVoterService ser;
 	
@@ -35,7 +36,7 @@ public class RestVoterController {
 			List<VoterVO> list = ser.getVoterAllList();
 			re = new ResponseEntity<List<VoterVO>>(list, HttpStatus.OK);
 		} catch (Exception e) {
-			re = new ResponseEntity("모든 투표 데이터 조회 실패 문제가 생겼다!", HttpStatus.OK);
+			re = new ResponseEntity("모든 투표자 데이터 조회 실패 문제가 생겼다!", HttpStatus.OK);
 		}
 		return re;
 	}
@@ -45,7 +46,7 @@ public class RestVoterController {
 	public ResponseEntity<String> insertVoter(@RequestBody VoterVO voter) {
 		ResponseEntity<String> re = null;
 		try {
-			ser.insertVoter(voter.getCode(),voter.getName(), voter.getArea());
+			ser.insertVoter(voter.getCode(),voter.getName(), voter.getAreaCode());
 			re = new ResponseEntity<String>("잘 들어 갔어용~", HttpStatus.OK);
 		} catch (Exception e) {
 			re = new ResponseEntity<String>("입력 실패 문제가 생겼다!", HttpStatus.OK);
@@ -72,7 +73,7 @@ public class RestVoterController {
 	public ResponseEntity<String> updateVoter(@RequestBody VoterVO voter) {
 		ResponseEntity<String> re = null;
 		try {
-			ser.updateVoter(voter.getCode(), voter.getName(), voter.getArea());
+			ser.updateVoter(voter.getCode(), voter.getName(), voter.getAreaCode());
 			re = new ResponseEntity<String>("업데이트 성공 ", HttpStatus.OK);
 		} catch (Exception e) {
 			re = new ResponseEntity<String>("업데이트 실패", HttpStatus.OK);

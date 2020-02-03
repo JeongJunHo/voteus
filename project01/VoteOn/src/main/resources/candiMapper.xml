@@ -7,9 +7,12 @@
 	<select id="getCandiAllList" resultType="candi">
 		select * from candidate;
 	</select>
+	<select id="getCandiCode" resultType="candi" parameterType="int">
+		select * from candidate where code = #{code};
+	</select>
 	<insert id="insertCandi" parameterType="candi">
-		insert into candidate(code, name, area) 
-		values(#{code}, #{name}, #{area});
+		insert into candidate(name, num, party, votecode, pick) 
+		values(#{name}, #{num}, #{party}, #{votecode}, #{pick});
 	</insert>
 	<delete id="delCandi" parameterType="int">
 		delete from candidate 
@@ -17,7 +20,13 @@
 	</delete>
 	<update id="updateCandi" parameterType="candi">
 		update candidate 
-		set name = #{name}, area = #{area}
+		set name = #{name}, num = #{num}, party = #{party}, votecode = #{votecode}, pick = #{pick}
 		where code = #{code};
 	</update>
+	<update id="updateCandiSu" parameterType="int">
+		update candidate 
+		set pick = #{pick}
+		where code = #{code};
+	</update>
+
 </mapper>
