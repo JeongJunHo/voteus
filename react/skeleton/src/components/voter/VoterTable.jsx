@@ -4,17 +4,27 @@ import LinearProgress from "@material-ui/core/LinearProgress";
 
 import axios from "axios";
 
-export default function PartyTable() {
+export default function VoterTable(props) {
+  const areaCode = {};
+  for (let i in props.areaCode) {
+    areaCode[props.areaCode[i].areaCode] = props.areaCode[i].name;
+  }
+
   const [state, setState] = React.useState({
     columns: [
       {
-        title: "코드",
-        field: "p_code",
+        title: "주민등록번호",
+        field: "code",
         editable: "onAdd"
       },
       {
-        title: "정당명",
-        field: "p_name"
+        title: "이름",
+        field: "name"
+      },
+      {
+        title: "지역",
+        field: "areaCode",
+        lookup: areaCode
       }
     ],
     data: []
@@ -27,7 +37,7 @@ export default function PartyTable() {
       setLoading(true);
       try {
         const response = await axios.get(
-          "http://54.180.134.217:8080/api/party/getPartyAllList"
+          "http://54.180.134.217:8080/api/voter/getVoterAllList"
         );
         const restate = {
           ...state,
@@ -52,7 +62,7 @@ export default function PartyTable() {
 
   return (
     <MaterialTable
-      title="정당 관리"
+      title="투표자 관리"
       columns={state.columns}
       data={state.data}
       localization={{
@@ -88,7 +98,7 @@ export default function PartyTable() {
               let insertData = { ...newData };
               axios
                 .post(
-                  "http://54.180.134.217:8080/api/party/insertParty",
+                  "http://54.180.134.217:8080/api/voter/insertVoter",
                   JSON.stringify(insertData),
                   {
                     headers: { "Content-Type": "application/json" }
@@ -114,7 +124,7 @@ export default function PartyTable() {
               let updateData = { ...newData };
               axios
                 .put(
-                  "http://54.180.134.217:8080/api/party/updateParty",
+                  "http://54.180.134.217:8080/api/voter/updateVoter",
                   JSON.stringify(updateData),
                   {
                     headers: { "Content-Type": "application/json" }
@@ -142,8 +152,8 @@ export default function PartyTable() {
 
               axios
                 .delete(
-                  "http://54.180.134.217:8080/api/party/delParty/" +
-                    oldData.p_code
+                  "http://54.180.134.217:8080/api/voter/delVoter/" +
+                    oldData.code
                 )
                 .then(ret => {
                   if (ret.data === "success") {

@@ -3,7 +3,7 @@ import Layout from "../layout/Layout";
 
 import { makeStyles } from "@material-ui/core";
 
-import MiddlePartTable from "../components/middlepart/MiddlePartTable";
+import CandidateTable from "../components/candidate/CandidateTable";
 
 import { ViewContext } from "../context/ViewContext";
 import LinearProgress from "@material-ui/core/LinearProgress";
@@ -12,7 +12,7 @@ import axios from "axios";
 
 const useStyles = makeStyles(theme => ({}));
 
-const MiddlePartList = ({ match }) => {
+const CandidateList = ({ match }) => {
   const classes = useStyles();
 
   const [state, setState] = useState(null);
@@ -23,7 +23,7 @@ const MiddlePartList = ({ match }) => {
       setLoading(true);
       try {
         const response = await axios.get(
-          "http://54.180.134.217:8080/api/area/getAreaAllList"
+          "http://54.180.134.217:8080/api/party/getPartyAllList"
         );
         setState(response.data);
         console.log(response.data);
@@ -46,14 +46,14 @@ const MiddlePartList = ({ match }) => {
   return (
     <ViewContext.Provider value={{}}>
       <Layout>
-        <MiddlePartTable
+        <CandidateTable
           code={match.params.code}
           name={match.params.name}
-          areaCode={state}
+          party={state}
         />
       </Layout>
     </ViewContext.Provider>
   );
 };
 
-export default MiddlePartList;
+export default CandidateList;

@@ -3,16 +3,17 @@ import Layout from "../layout/Layout";
 
 import { makeStyles } from "@material-ui/core";
 
-import MiddlePartTable from "../components/middlepart/MiddlePartTable";
+import VoterTable from "../components/voter/VoterTable";
 
 import { ViewContext } from "../context/ViewContext";
+
 import LinearProgress from "@material-ui/core/LinearProgress";
 
 import axios from "axios";
 
 const useStyles = makeStyles(theme => ({}));
 
-const MiddlePartList = ({ match }) => {
+const VoterList = props => {
   const classes = useStyles();
 
   const [state, setState] = useState(null);
@@ -46,14 +47,10 @@ const MiddlePartList = ({ match }) => {
   return (
     <ViewContext.Provider value={{}}>
       <Layout>
-        <MiddlePartTable
-          code={match.params.code}
-          name={match.params.name}
-          areaCode={state}
-        />
+        <VoterTable areaCode={state} />
       </Layout>
     </ViewContext.Provider>
   );
 };
 
-export default MiddlePartList;
+export default VoterList;

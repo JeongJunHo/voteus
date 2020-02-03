@@ -4,17 +4,27 @@ import LinearProgress from "@material-ui/core/LinearProgress";
 
 import axios from "axios";
 
-export default function PartyTable() {
+export default function CandidateTable(props) {
+  const party = {};
+  for (let i in props.party) {
+    party[props.party[i].p_code] = props.party[i].p_name;
+  }
+
+  const title = "후보자 관리(" + props.name + ")";
   const [state, setState] = React.useState({
     columns: [
       {
-        title: "코드",
-        field: "p_code",
-        editable: "onAdd"
+        title: "후보자명",
+        field: "name"
       },
       {
-        title: "정당명",
-        field: "p_name"
+        title: "기호번호",
+        field: "num"
+      },
+      {
+        title: "정당",
+        field: "party",
+        lookup: party
       }
     ],
     data: []
@@ -27,7 +37,7 @@ export default function PartyTable() {
       setLoading(true);
       try {
         const response = await axios.get(
-          "http://54.180.134.217:8080/api/party/getPartyAllList"
+          "http://54.180.134.217:8080/api/candi/getCandiVotecode/" + props.code
         );
         const restate = {
           ...state,
@@ -52,7 +62,7 @@ export default function PartyTable() {
 
   return (
     <MaterialTable
-      title="정당 관리"
+      title={title}
       columns={state.columns}
       data={state.data}
       localization={{
@@ -86,9 +96,10 @@ export default function PartyTable() {
               resolve();
 
               let insertData = { ...newData };
+              insertData.votecode = props.code;
               axios
                 .post(
-                  "http://54.180.134.217:8080/api/party/insertParty",
+                  "http://54.180.134.217:8080/api/candi/insertCandi",
                   JSON.stringify(insertData),
                   {
                     headers: { "Content-Type": "application/json" }
@@ -114,7 +125,7 @@ export default function PartyTable() {
               let updateData = { ...newData };
               axios
                 .put(
-                  "http://54.180.134.217:8080/api/party/updateParty",
+                  "http://54.180.134.217:8080/api/candi/updateCandi",
                   JSON.stringify(updateData),
                   {
                     headers: { "Content-Type": "application/json" }
@@ -142,8 +153,8 @@ export default function PartyTable() {
 
               axios
                 .delete(
-                  "http://54.180.134.217:8080/api/party/delParty/" +
-                    oldData.p_code
+                  "http://54.180.134.217:8080/api/candi/delCandi/" +
+                    oldData.code
                 )
                 .then(ret => {
                   if (ret.data === "success") {
