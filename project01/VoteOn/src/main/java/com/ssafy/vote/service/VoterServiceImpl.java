@@ -22,8 +22,8 @@ public class VoterServiceImpl implements IVoterService {
 	}
 
 	@Override
-	public boolean insertVoter(int code, String name, String area) {
-		return man.insertVoter(code, name, area);
+	public boolean insertVoter(int code, String name, String areaCode) {
+		return man.insertVoter(code, name, areaCode);
 	}
 
 	@Override
@@ -32,8 +32,8 @@ public class VoterServiceImpl implements IVoterService {
 	}
 
 	@Override
-	public boolean updateVoter(int code, String name, String area) {
-		return man.updateVoter(code, name, area);
+	public boolean updateVoter(int code, String name, String areaCode) {
+		return man.updateVoter(code, name, areaCode);
 	}
 
 }

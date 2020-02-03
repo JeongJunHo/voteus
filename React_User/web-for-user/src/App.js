@@ -3,17 +3,27 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import './App.css';
 
-import VoteHome from './pages/VoteHome';
-import VoteMain from './pages/VoteMain';
-
+import UserHome from './pages/UserHome';
+import UserAuthentication from './pages/UserAuthentication';
+import UserVote from './pages/UserVote';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      uservotelist: null
+    }
+  }
+
   render() {
     return (
       <Router>
         <div>
-          <Route exact path="/" component={VoteMain} />
-          <Route exact path="/home" component={VoteHome} />
+          <Route exact path="/" component={UserHome} />
+          <Route path="/user-home" component={UserHome} />
+          <Route path="/user-auth" component={UserAuthentication} />
+          {/* <Route exact path="/user-vote" component={UserVote} /> */}
+          <Route path="/user-vote/:code" component={UserVote} />
         </div>
       </Router>
     );

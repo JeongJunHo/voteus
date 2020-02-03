@@ -3,7 +3,7 @@ package com.ssafy.vote.dto;
 public class VoterVO {
 	private int code;
 	private String name;
-	private String area;
+	private String areaCode;
 	
 	public int getCode() {
 		return code;
@@ -25,35 +25,31 @@ public class VoterVO {
 	}
 
 
-	public String getArea() {
-		return area;
-	}
-
-
-	public void setArea(String area) {
-		this.area = area;
-	}
 
 
 	public VoterVO() {
 	}
 
 
-	public VoterVO(int code, String name, String area) {
-		super();
+	public VoterVO(int code, String name, String areaCode) {
 		this.code = code;
 		this.name = name;
-		this.area = area;
-	}
-	
-	public VoterVO(String name, String area) {
-		this.name = name;
-		this.area = area;
+		this.areaCode = areaCode;
 	}
 
-	@Override
-	public String toString() {
-		return "VoterVO [code=" + code + ", name=" + name + ", area=" + area + "]";
+	public VoterVO(String name, String areaCode) {
+		this.name = name;
+		this.areaCode = areaCode;
 	}
-	
+
+	public String getAreaCode() {
+		return areaCode;
+	}
+
+
+	public void setAreaCode(String areaCode) {
+		this.areaCode = areaCode;
+	}
+
+
 }
