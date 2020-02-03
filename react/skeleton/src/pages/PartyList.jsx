@@ -9,7 +9,7 @@ import { ViewContext } from "../context/ViewContext";
 
 const useStyles = makeStyles(theme => ({}));
 
-const MainPartList = props => {
+const PartyList = props => {
   const classes = useStyles();
 
   return (
@@ -21,4 +21,4 @@ const MainPartList = props => {
   );
 };
 
-export default MainPartList;
+export default PartyList;
