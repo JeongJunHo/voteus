@@ -1,11 +1,29 @@
-import React, { Fragment } from 'react';
+import React, { Fragment } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles(theme => ({
+  flex: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    position: "absolute",
+    left: 0,
+    bottom: 0,
+    width: "100%"
+  }
+}));
 
 const UserFooter = props => {
-    return (
-        <Fragment>
-            <p>투표 인증 시스템(footer)</p>
-        </Fragment>
-    )
-}
+  const classes = useStyles();
+
+  return (
+    <Fragment>
+      <div className={classes.flex}>
+        <p>Copyright © 25+2d corp. all rights reserved</p>
+      </div>
+    </Fragment>
+  );
+};
 
 export default UserFooter;
