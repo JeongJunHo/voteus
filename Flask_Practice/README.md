@@ -22,5 +22,7 @@
 
 * coral face detection 적용중
 
+### 2020.02.03
 
+* usb로 지문인식 적용중
 
