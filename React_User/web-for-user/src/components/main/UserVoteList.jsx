@@ -3,18 +3,19 @@ import React, { useContext } from 'react';
 import VoteListContext from '../../context/VoteListContext';
 
 const UserVoteList = (props) => {
-    const votelist = useContext(VoteListContext);
+    const vote = useContext(VoteListContext);
+
+    const test = () => {
+        console.log(vote)
+        // console.log(match.params.userinfocode)
+        // console.log(props)
+    }
 
     return (
         <div>
-            {votelist !== null && votelist.map((vote) => {
-                const changeVoteNumber = () => {
-                    props.setVoteNumber(vote.code)
-                }
-                return (
-                    <button key={vote.code} onClick={changeVoteNumber}>{vote.name}</button>
-                )
-            })}
+            uservotelist
+            {/* {vote.data.map((eachvote)=>eachvote.name)} */}
+            <button onClick={test}>test</button>
         </div>
     )
 }
