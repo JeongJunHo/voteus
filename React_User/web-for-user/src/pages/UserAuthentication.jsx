@@ -1,21 +1,19 @@
-import React, { Fragment } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import UserHeader from "../layout/UserHeader";
-import UserAuthBody from "../layout/UserAuthBody";
-import UserFooter from "../layout/UserFooter";
+import React, { Fragment } from 'react';
 
-const useStyles = makeStyles(theme => ({}));
+import UserHeader from '../layout/UserHeader';
+import UserAuthBody from '../layout/UserAuthBody';
+import UserFooter from '../layout/UserFooter';
 
 const UserAuthentication = props => {
-  const classes = useStyles();
-
-  return (
-    <Fragment>
-      <UserHeader />
-      <UserAuthBody />
-      <UserFooter />
-    </Fragment>
-  );
-};
+    return (
+        <Fragment>
+            <UserHeader>
+                <h1>인증 페이지(header)</h1>
+            </UserHeader>
+            <UserAuthBody />
+            <UserFooter />
+        </Fragment>
+    )
+}
 
 export default UserAuthentication;
