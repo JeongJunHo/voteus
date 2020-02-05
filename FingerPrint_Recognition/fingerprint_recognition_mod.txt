@@ -4,4 +4,5 @@
 2. preprocessing.py에서 참조한 utils.py내부의 def가 에러
 	=> 입력받은 image를 1번의 enhancement를 통해 image_enhance를 수행하고, 이를 다시 OpenCV의 Normalize를 수행하는데 변환된 img_e가 Normalize의 src로 적합하지 않았음. 따라서 img_e가 boolean으로 되어있는데, 이를 int형 ndarr로 바꿔주니 해결
 
-3. 현재(2월 4일 오후 17시) - OpenCV의 ORB를 생성해 detectAndCompute 실행했는데 에러뜸...
+3. OpenCV의 ORB를 생성해 detectAndCompute 실행했는데 에러뜸...
+	=> image = np.array(image, dtype=np.uint8)를 먼저 실행한 후 코드 실행하면 됨 / detectAndCompute메소드를 호출하는 대부분의 경우 image = np.array(image, dtype=np.uint8)를 실행하면 됨
