@@ -25,7 +25,6 @@ const UserAuthBody = props => {
   } else if (number === 1) {
     return (
       <UserNameContext.Provider value={userinfo.name}>
-        {number}
         <UserAuthFace
           number={number}
           setNumber={setNumber}
