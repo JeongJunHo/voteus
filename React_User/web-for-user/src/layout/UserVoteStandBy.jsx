@@ -1,10 +1,9 @@
 import React, { useEffect, useState, Fragment } from 'react';
 
-// import VoteListContext from '../context/VoteListContext';
 
 const UserVoteStandBy = props => {
-    // const votelist = useContext(VoteListContext);
     const [votenamelist, setVoteNameList] = useState(null);
+    const [showbutton, setShowButton] = useState(false);
     const [loading, setLoading] = useState(null);
 
     useEffect(() => {
@@ -13,16 +12,18 @@ const UserVoteStandBy = props => {
         const temp_votenamelist = []
         if (props.votelist !== null) {
             for (let eachvote of props.votelist.keys()) {
-                console.log(eachvote)
+                // console.log(eachvote)
                 temp_votenamelist.push(eachvote)
             }
         }
         setVoteNameList(temp_votenamelist)
+
+        setTimeout(() => {setShowButton(true)}, 1000)
         setLoading(false)
     }, [props.votelist])
 
     const changeStatus = () => {
-        props.setStatus(status => 'true')
+        props.setStatus(status => 'vote')
     }
 
     if (loading === false) {        
@@ -30,11 +31,19 @@ const UserVoteStandBy = props => {
             <Fragment>
                 <h1>투표 목록</h1>
                 <div>
-                    {votenamelist.map((vote)=>(
-                        <p key={vote.code}>{vote.name}</p>
-                    ))}
+                    {votenamelist.map((vote)=>{
+                        // console.log(vote)
+                        return (
+                            <p key={vote.code}>{vote.name}</p>
+                        )
+                    })}
                 </div>
-                <button onClick={changeStatus}>(일정 시간 지난 후 보여주기) 투표 시작</button>
+                {/* <button style={{display: {showbutton}}} onClick={changeStatus}>(일정 시간 지난 후 보여주기) 투표 시작</button> */}
+                {showbutton === true ? (
+                    <button onClick={changeStatus}>(일정 시간 지난 후 보여주기) 투표 시작</button>
+                ) : (
+                    <button style={{display: 'none'}} onClick={changeStatus}>(일정 시간 지난 후 보여주기) 투표 시작</button>
+                )}
             </Fragment>
         )
     } else {
