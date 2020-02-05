@@ -57,9 +57,10 @@ const UserVoteBody = props => {
         console.log('data', candidatestring)
         // console.log('http://54.180.134.217:8080/api/candi/updateCandiList/' + candidatestring)
 
-        axios.put('http://54.180.134.217:8080/api/candi/updateCandiList/' + candidatestring)
-        .then(res => console.log(res))
-        .catch(error => console.log(error))
+        // // axios 일단 주석으로
+        // axios.put('http://54.180.134.217:8080/api/candi/updateCandiList/' + candidatestring)
+        // .then(res => console.log(res))
+        // .catch(error => console.log(error))
 
         console.log(voteresult)
         props.setStatus('finish')
