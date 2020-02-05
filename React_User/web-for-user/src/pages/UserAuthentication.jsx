@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import UserHeader from "../layout/UserHeader";
 import UserAuthBody from "../layout/UserAuthBody";
 import UserFooter from "../layout/UserFooter";
+import FlexPaperTemplate from "../components/main/FlexPaperTemplate";
 
 const useStyles = makeStyles(theme => ({}));
 
@@ -12,7 +13,9 @@ const UserAuthentication = props => {
   return (
     <Fragment>
       <UserHeader />
-      <UserAuthBody />
+      <FlexPaperTemplate>
+        <UserAuthBody />
+      </FlexPaperTemplate>
       <UserFooter />
     </Fragment>
   );
