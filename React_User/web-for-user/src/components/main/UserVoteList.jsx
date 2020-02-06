@@ -14,19 +14,11 @@ import {
 } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between",
-    position: "absolute",
-    height: "90%",
-    width: "100%"
-  },
   flex: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "space-between",
+    // justifyContent: "space-between",
     // height: "100%",
     // width: "100%",
     // position: "absolute"
@@ -38,7 +30,7 @@ const useStyles = makeStyles(theme => ({
   body : {
     paddingLeft: theme.spacing(3),
     paddingRight: theme.spacing(3),
-    // margin: theme.spacing(1)
+    marginBottom: theme.spacing(3)
   },
   paperHeader: {
     padding: theme.spacing(2),
@@ -46,10 +38,7 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.text.secondary,
   },
   cardBody: {
-    paddingLeft: theme.spacing(1),
-    paddingRight: theme.spacing(1),
-    paddingTop: theme.spacing(2),
-    paddingBottom: theme.spacing(2),
+    // padding: theme.spacing(1),
     // textAlign: "center",
     // boxShadow: "",
     "&:hover": {
@@ -59,10 +48,10 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: '#fce4ec',
   },
   cardBodySelect: {
-    paddingLeft: theme.spacing(1),
-    paddingRight: theme.spacing(1),
-    paddingTop: theme.spacing(2),
-    paddingBottom: theme.spacing(2),
+    // paddingLeft: theme.spacing(1),
+    // paddingRight: theme.spacing(1),
+    // paddingTop: theme.spacing(2),
+    // paddingBottom: theme.spacing(2),
     // textAlign: "center",
     // boxShadow: "",
     "&:hover": {
@@ -71,15 +60,19 @@ const useStyles = makeStyles(theme => ({
     // color: theme.palette.text.secondary,
     backgroundColor: '#e8f5e9',
   },
-  party: {
-    paddingLeft: theme.spacing(2),
-    paddingRight: theme.spacing(2)
-
+  vote: {
+    padding: theme.spacing(1),
   },
   candidate: {
     paddingTop: theme.spacing(1),
     paddingBottom: theme.spacing(1),
     textAlign: "center",
+  },
+  candidateNone: {
+    paddingTop: theme.spacing(1),
+    paddingBottom: theme.spacing(1),
+    textAlign: "center",
+    color: '#ffa199'
   },
   submitButton: {
     justifyContent: "center"
@@ -127,74 +120,71 @@ const UserVoteList = (props) => {
   if (loading === false) {
     return (
       <Fragment>
-        <div className={classes.root}>
-
-          <div className={classes.flex}>
-            <Grid container spacing={3} className={classes.header}>
+        <div className={classes.flex}>
+          <Grid container spacing={3} className={classes.header}>
+            <Grid item xs={12}>
+              <Paper elevation={0} className={classes.paperHeader}>
+                <h1>투표 목록입니다.</h1>
+                <h2>투표를 선택해주세요.</h2>
+              </Paper>
+            </Grid>
+          </Grid>
+          <Grid container spacing={3} className={classes.body}>
+            {vote.map((eachvote)=>{
+              // console.log(eachvote.vote.code)
+              const changeVoteNumber = () => {
+                props.setVoteNumber(eachvote.vote.code)
+              }
+              if (eachvote.candidate === null) {
+                return (
+                  <Grid item xs={6} key={eachvote.vote.code}>
+                    <Card variant="outlined" onClick={changeVoteNumber} className={classes.cardBody}>
+                      <CardContent>
+                        <Typography className={classes.vote}>
+                          {eachvote.vote.name}
+                        </Typography>
+                        <Typography className={classes.candidateNone}>
+                          후보를 선택해주세요.
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  </Grid>
+                )
+              } else {
+                return (
+                  <Grid item xs={6} key={eachvote.vote.code}>
+                    <Card variant="outlined" onClick={changeVoteNumber} className={classes.cardBodySelect}>
+                      <CardContent>
+                        <Typography className={classes.vote}>
+                          {eachvote.vote.name}
+                        </Typography>
+                        <Typography className={classes.candidate}>
+                          <b>{eachvote.candidate}</b>
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  </Grid>
+                )
+              }
+            })}
+          </Grid>
+          <Grid container spacing={3} className={classes.header}>
+            {props.endvote === true ? (
               <Grid item xs={12}>
                 <Paper elevation={0} className={classes.paperHeader}>
-                  <h1>투표 목록입니다.</h1>
-                  <h2>투표를 선택해주세요.</h2>
+                  <Button onClick={props.finishVote} variant="contained" color="primary" disableElevation className={classes.submitButton} fullWidth="true">
+                    완료
+                  </Button>
                 </Paper>
               </Grid>
-            </Grid>
-            <Grid container spacing={3} className={classes.body}>
-              {vote.map((eachvote)=>{
-                // console.log(eachvote.vote.code)
-                const changeVoteNumber = () => {
-                  props.setVoteNumber(eachvote.vote.code)
-                }
-                if (eachvote.candidate === null) {
-                  return (
-                    <Grid item xs={6} key={eachvote.vote.code}>
-                      <Card variant="outlined" onClick={changeVoteNumber} className={classes.cardBody}>
-                        <CardContent>
-                          <Typography className={classes.party}>
-                            {eachvote.vote.name}
-                          </Typography>
-                        </CardContent>
-                      </Card>
-                    </Grid>
-                  )
-                } else {
-                  return (
-                    <Grid item xs={6} key={eachvote.vote.code}>
-                      <Card variant="outlined" onClick={changeVoteNumber} className={classes.cardBodySelect}>
-                        <CardContent>
-                          <Typography className={classes.party}>
-                            {eachvote.vote.name}
-                          </Typography>
-                          <Typography className={classes.candidate}>
-                            <b>{eachvote.candidate}</b>
-                          </Typography>
-                        </CardContent>
-                      </Card>
-                    </Grid>
-                  )
-                }
-              })}
-            </Grid>
-          </div>
-          <div className={classes.flex}>
-
-            <Grid container spacing={3} className={classes.header}>
-              {props.endvote === true ? (
-                <Grid item xs={12}>
-                  <Paper elevation={0} className={classes.paperHeader}>
-                    <Button onClick={props.finishVote} variant="contained" color="primary" disableElevation className={classes.submitButton} fullWidth="true">
-                      완료
-                    </Button>
-                  </Paper>
-                </Grid>
-              ) : (
-                <Grid item xs={12}>
-                  <Paper elevation={0} className={classes.paperHeader}>
-                    <p>모든 투표를 완료해 주세요.</p>
-                  </Paper>
-                </Grid>
-              )}
-            </Grid>
-          </div>
+            ) : (
+              <Grid item xs={12}>
+                <Paper elevation={0} className={classes.paperHeader}>
+                  <p>모든 투표를 완료해 주세요.</p>
+                </Paper>
+              </Grid>
+            )}
+          </Grid>
         </div>
       </Fragment>
     )
