@@ -32,9 +32,14 @@ const UserAuthWebcam = props => {
   const webcamRef = React.useRef(null);
 
   const capture = React.useCallback(() => {
-    const imageSrc = webcamRef.current.getScreenshot();
-    console.log(imageSrc);
-    setScreenShot(screenshot => imageSrc);
+    if (
+      webcamRef.current.stream !== null &&
+      webcamRef.current.stream !== undefined
+    ) {
+      console.log(webcamRef.current.stream);
+      const imageSrc = webcamRef.current.getScreenshot();
+      setScreenShot(screenshot => imageSrc);
+    }
   }, [webcamRef]);
 
   const reset = React.useCallback(() => {
@@ -44,43 +49,41 @@ const UserAuthWebcam = props => {
   const save = useRef(null);
 
   const send = () => {
-    if (screenshot.length) {
-      props.setResult(result => "set");
-      setTimeout(() => {
-        sendFace();
-      }, 2000);
-    } else {
-      alert("사진을 찍어주세요");
-    }
+    props.setResult("set");
+    setTimeout(() => {
+      sendFace();
+    }, 500);
   };
 
   const sendFace = () => {
-    const fd = screenshot;
-    console.log(username);
-    // const data = {
-    //     fd: screenshot,
-    //     // code: props.userinfocode
-    //     name: '이름'
-    // }
-
     axios
-      .post("주소", { img: fd, name: username })
+      .post("주소", { img: screenshot, name: username })
       // axios.post('http://192.168.100.71:5000/getImg', {img: fd, name: username})
       .then(res => {
-        console.log("resss", res.data); // 수정 필요
         if (res.data === true) {
-          props.setResult(result => "true");
+          props.setResult("true");
         } else {
-          props.setResult(result => "false");
+          props.setResult("false");
         }
       })
       .catch(error => console.log(error));
 
-    props.setResult(result => "true"); // 테스트용(삭제 필요)
+    props.setResult("true"); // 테스트용(삭제 필요)
   };
 
   return (
     <Fragment>
+      {screenshot ? (
+        <>
+          <h2>촬영된 사진을 확인하신 후</h2>
+          <h2>인증 또는 재촬영을 진행해주세요.</h2>
+        </>
+      ) : (
+        <>
+          <h2>{username}님 인증 절차를 진행합니다.</h2>
+          <h2>카메라를 응시 후 촬영을 진행해주세요.</h2>
+        </>
+      )}
       <Grid container spacing={3}>
         <Grid item xs={12} className={classes.mh_600}>
           {screenshot === "" && (
