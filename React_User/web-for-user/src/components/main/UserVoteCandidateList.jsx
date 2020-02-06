@@ -16,9 +16,6 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "flex-start",
-    height: "100%",
-    width: "100%",
-    position: "absolute"
   },
   header: {
     padding: theme.spacing(1),
@@ -27,7 +24,7 @@ const useStyles = makeStyles(theme => ({
   body : {
     paddingLeft: theme.spacing(3),
     paddingRight: theme.spacing(3),
-    // margin: theme.spacing(1)
+    marginBottom: theme.spacing(3)
   },
   paperHeader: {
     padding: theme.spacing(2),
@@ -77,8 +74,8 @@ const UserVoteCandidateList = props => {
               <h2>후보를 선택해주세요.</h2>
             </Paper>
           </Grid>
-         </Grid>
-         <Grid container spacing={3} className={classes.body}>
+        </Grid>
+        <Grid container spacing={3} className={classes.body}>
           {props.candidatelist[0].map((eachcandidate, i) => {
               // console.log(eachcandidate)
               const selectCandidate = () => {

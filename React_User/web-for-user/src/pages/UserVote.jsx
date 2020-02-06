@@ -8,6 +8,8 @@ import UserFooter from '../layout/UserFooter';
 
 import VoteListContext from '../context/VoteListContext';
 
+import FlexPaperTemplate from "../components/main/FlexPaperTemplate";
+
 import axios from 'axios';
 
 const UserVote = ({match}) => {
@@ -62,9 +64,11 @@ const UserVote = ({match}) => {
                     <UserHeader>
                         <h1>투표 페이지(header)</h1>
                     </UserHeader>
-                    <VoteListContext.Provider value={votelist}>
-                        <UserVoteBody user={match.params.code} setStatus={setStatus} result={result} setResult={setResult} />
-                    </VoteListContext.Provider>
+                    <FlexPaperTemplate>
+                        <VoteListContext.Provider value={votelist}>
+                            <UserVoteBody user={match.params.code} setStatus={setStatus} result={result} setResult={setResult} />
+                        </VoteListContext.Provider>
+                    </FlexPaperTemplate>
                     <UserFooter />
                 </Fragment>
             )
@@ -74,7 +78,9 @@ const UserVote = ({match}) => {
                     <UserHeader>
                         <h1>투표 페이지(header)</h1>
                     </UserHeader>
-                    <UserVoteStandBy votelist={votelist} setStatus={setStatus} />
+                    <FlexPaperTemplate>
+                        <UserVoteStandBy votelist={votelist} setStatus={setStatus} />
+                    </FlexPaperTemplate>
                     <UserFooter />
                 </Fragment>
             )
@@ -85,7 +91,9 @@ const UserVote = ({match}) => {
                         <h1>투표 페이지(header)</h1>
                     </UserHeader>                    {/* {result} */}
                     {/* {voteresult} */}
-                    <UserVoteEnd />
+                    <FlexPaperTemplate>
+                        <UserVoteEnd />
+                    </FlexPaperTemplate>
                     <UserFooter />
                 </Fragment>
             )
