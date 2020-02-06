@@ -1,6 +1,8 @@
 package com.ssafy.vote.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,30 +28,37 @@ use voteon;
 
 create table vote(
 	code int auto_increment primary key,
-    name varchar(200),
-    middlepart varchar(200) not null,
+    name varchar(100),
+    middlepart varchar(100) not null,
     start datetime,
     end datetime
 );
 
 create table candidate(
 	code int auto_increment primary key,
-    name varchar(200),
+    name varchar(100),
     num varchar(100),
     party varchar(100),
     votecode int,
     pick int
 );
 
+alter table candidate add unique candi_unique(votecode, num);
+
 create table voter(
-	code int primary key,
-    name varchar(200),
+	code int auto_increment primary key,
+    id_num varchar(100) unique key,
+    name varchar(100),
     areaCode varchar(100)
 );
 
+select * from voter;
+
+drop table voter;
+
 create table area(
 	areaCode varchar(100) primary key,
-    name varchar(200)
+    name varchar(100)
 );
 
 create table middlepart(
@@ -64,7 +73,23 @@ create table mainpart(
     name varchar(100)
 );
 
-drop table voter;*/
+create table votetf(
+	votercode varchar(100),
+    votecode int,
+    constraint votetf_pk primary key(votercode, votecode)
+);
+
+create table partytb(
+	p_code varchar(100) primary key,
+    p_name varchar(100)
+);
+
+create table statistics(
+	s_code int auto_increment primary key,
+    candi_code int,
+    s_date datetime
+);
+*/
 
 @CrossOrigin(origins = {"*"}, maxAge = 6000)
 @RestController
@@ -81,7 +106,7 @@ public class RestVoteController {
 			List<VoteVO> list = ser.getVoteAllList();
 			re = new ResponseEntity<List<VoteVO>>(list, HttpStatus.OK);
 		} catch (Exception e) {
-			re = new ResponseEntity("모든 투표 데이터 조회 실패 문제가 생겼다!", HttpStatus.OK);
+			re = new ResponseEntity("failure", HttpStatus.OK);
 		}
 		return re;
 	}
@@ -92,10 +117,9 @@ public class RestVoteController {
 		ResponseEntity<String> re = null;
 		try {
 			ser.insertVote(vote.getName(), vote.getMiddlepart(), vote.getStart(), vote.getEnd());
-			re = new ResponseEntity<String>("잘 들어 갔어용~", HttpStatus.OK);
+			re = new ResponseEntity<String>("success", HttpStatus.OK);
 		} catch (Exception e) {
-			// HttpStatus 통신은 제대로 된거니까 OK
-			re = new ResponseEntity<String>("입력 실패 문제가 생겼다!", HttpStatus.OK);
+			re = new ResponseEntity<String>("failure", HttpStatus.OK);
 		}
 		return re;
 	}
@@ -107,9 +131,9 @@ public class RestVoteController {
 		try {
 			int ncode = Integer.parseInt(code);
 			ser.delVote(ncode);
-			re = new ResponseEntity<String>("잘 들어 갔어용~", HttpStatus.OK);
+			re = new ResponseEntity<String>("success", HttpStatus.OK);
 		} catch (Exception e) {
-			re = new ResponseEntity<String>("삭제 실패 문제가 생겼다!", HttpStatus.OK);
+			re = new ResponseEntity<String>("failure", HttpStatus.OK);
 		}
 		return re;
 	}
@@ -120,11 +144,42 @@ public class RestVoteController {
 		ResponseEntity<String> re = null;
 		try {
 			ser.updateVote(vote.getCode(), vote.getName(), vote.getMiddlepart(), vote.getStart(), vote.getEnd());
-			re = new ResponseEntity<String>("업데이트 성공 ", HttpStatus.OK);
+			re = new ResponseEntity<String>("success", HttpStatus.OK);
 		} catch (Exception e) {
-			re = new ResponseEntity<String>("업데이트 실패", HttpStatus.OK);
+			re = new ResponseEntity<String>("failure", HttpStatus.OK);
+		}
+		return re;
+	}
+	
+	@ApiOperation(value = "투표자 코드를 입력받은 뒤, 해당되는 투표 리스트를 조회합니다.")
+	@GetMapping("/getVoteList/{votercode}")
+	public ResponseEntity<List<VoteVO>> getVoteList(@PathVariable String votercode) {
+		ResponseEntity<List<VoteVO>> re = null;
+		try {
+			List<VoteVO> list = ser.getVoteList(votercode);
+			re = new ResponseEntity<List<VoteVO>>(list, HttpStatus.OK);
+		} catch (Exception e) {
+			re = new ResponseEntity("failure", HttpStatus.OK);
 		}
 		return re;
 	}
 
+/*
+	@ApiOperation(value = "모든 투표 데이터를 조회합니다.")
+	@GetMapping("/getVoteAllList")
+	public ResponseEntity<Map> getVoteAllList() {
+		ResponseEntity<Map> re = null;
+		Map<String, Object> map = new HashMap<String, Object>();
+		try {
+			List<VoteVO> list = ser.getVoteAllList();
+			map.put("resmsg", "success");
+			map.put("resvalue", list);
+			re = new ResponseEntity<Map>(map, HttpStatus.OK);
+		} catch (Exception e) {
+			map.put("resmsg", "failure");
+			re = new ResponseEntity<Map>(map, HttpStatus.OK);
+		}
+		return re;
+	}
+*/
 }

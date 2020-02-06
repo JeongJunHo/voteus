@@ -48,4 +48,9 @@ public class VoteDaoImpl implements IVoteDao{
 			return false;
 	}
 
+	@Override
+	public List<VoteVO> getVoteList(String votercode) {
+		return session.selectList("vote.getVoteList", votercode);
+	}
+
 }

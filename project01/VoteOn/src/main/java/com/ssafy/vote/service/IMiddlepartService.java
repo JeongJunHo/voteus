@@ -29,5 +29,11 @@ public interface IMiddlepartService {
 	 * @Date : 2020. 1. 28.
 	 */
 	public boolean updateMiddlepart(String code,  String name, String mainpart, String areaCode);
+	/**
+	 * @author : 선한빛
+	 * 기능 : 대분류code에 해당하는 중분류 리스트 뽑기
+	 * @Date : 2020. 1. 29.
+	 */
+	public List<MiddlepartVO> getMaincodeAllList(String maincode);
 	
 }

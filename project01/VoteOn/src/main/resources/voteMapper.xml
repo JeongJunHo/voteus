@@ -19,4 +19,25 @@
 		set name = #{name}, middlepart = #{middlepart}, start =#{start}, end=#{end} 
 		where code = #{code};
 	</update>
+	<select id="getVoteList" resultType="vote" parameterType="String">
+		select 
+			v.*
+		from
+			vote v,
+			middlepart mp,
+			area a,
+			voter vr
+		where 1
+			and v.middlepart=mp.code 
+			and mp.areaCode=a.areacode
+			and a.areacode=vr.areacode
+			and vr.code = #{votercode}
+        	and not exists (select 'X' from votetf vtf where v.code = vtf.votecode and vr.code = vtf.votercode)
+		union
+		select
+			*
+		from  vote
+		where
+		middlepart='D_DAESEON';
+	</select>
 </mapper>

@@ -11,7 +11,7 @@
 		insert into votetf(votercode,votecode)
 		values(#{votercode}, #{votecode});
 	</insert>
-	<delete id="delVotetf" parameterType="map">
+	<delete id="delVotetf" parameterType="votetf">
 		delete from votetf 
 		where votercode = #{votercode} and votecode = #{votecode};
 	</delete>

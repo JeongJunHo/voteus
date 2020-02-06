@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="main">
+<mapper namespace="area">
 
 	<select id="getAreaAllList" resultType="area">
 		select * from area;
@@ -17,6 +17,7 @@
 	<update id="updateArea" parameterType="area">
 		update area 
 		set name = #{name}
-		where areaCode = #{areaCode};
+		where areaCode = #{areaCode}
 	</update>
+
 </mapper>
