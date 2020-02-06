@@ -8,7 +8,7 @@ import UserAuthComplete from "../components/main/UserAuthComplete";
 import UserNameContext from "../context/UserNameContext";
 
 const UserAuthBody = props => {
-  const [number, setNumber] = useState(0);
+  const [number, setNumber] = useState(1);
   const [userinfo, setUserInfo] = useState("");
 
   if (number === 0) {
@@ -25,7 +25,6 @@ const UserAuthBody = props => {
   } else if (number === 1) {
     return (
       <UserNameContext.Provider value={userinfo.name}>
-        {number}
         <UserAuthFace
           number={number}
           setNumber={setNumber}

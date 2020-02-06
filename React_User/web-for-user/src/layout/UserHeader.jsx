@@ -37,6 +37,7 @@ const UserHeader = props => {
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
                 color="inherit"
+                href="/"
               >
                 <HomeRoundedIcon />
               </IconButton>
