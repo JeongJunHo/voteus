@@ -45,6 +45,7 @@ const UserVoteBody = props => {
 
     // modal로 2차확인 필요 (voteresult)
     const finishVote = () => {
+        console.log('finish')
         // result를 candidate만 string으로 전달
         console.log(props.result)
 
@@ -71,12 +72,7 @@ const UserVoteBody = props => {
         if (votenumber === null) {
             return (
                 <Fragment>
-                    <UserVoteList setVoteResult={setVoteResult} setVoteNumber={setVoteNumber} result={props.result} />
-                    {endvote === true ? (
-                        <button onClick={finishVote}>완료</button>
-                    ) : (
-                        <p>모든 투표를 완료해 주세요.</p>
-                    )}
+                    <UserVoteList endvote={endvote} finishVote={finishVote} setVoteResult={setVoteResult} setVoteNumber={setVoteNumber} result={props.result} />
                 </Fragment>
             )
         } else {
