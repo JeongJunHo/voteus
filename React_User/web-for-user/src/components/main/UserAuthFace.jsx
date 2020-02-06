@@ -30,6 +30,9 @@ const useStyles = makeStyles(theme => ({
   },
   vh_80: {
     height: "80vh"
+  },
+  alignCenter: {
+    textAlign: "center"
   }
 }));
 
@@ -154,26 +157,79 @@ const UserAuthFace = props => {
           <DialogTitle id="alert-dialog-title">촬영 전 확인사항</DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
-              <h1>올바른 촬영 자세</h1>
-              <CheckCircleOutlineIcon fontSize="large" color="primary" />
-              <Image
-                src={profileDummy}
-                alt="finger-print"
-                disableSpinner="true"
-                disableTransition="true"
-                style={{ height: "200px", paddingTop: 0 }}
-                imageStyle={{ width: "auto", position: "static" }}
-              />
-              <h1>잘못된 촬영 자세</h1>
-              <HighlightOffIcon fontSize="large" color="secondary" />
-              <Image
-                src={profileDummy}
-                alt="finger-print"
-                disableSpinner="true"
-                disableTransition="true"
-                style={{ height: "200px", paddingTop: 0 }}
-                imageStyle={{ width: "auto", position: "static" }}
-              />
+              <h2 className={classes.alignCenter}>올바른 촬영 자세</h2>
+              <Grid container spacing={1}>
+                <Grid
+                  container
+                  item
+                  xs={12}
+                  alignItems="center"
+                  justify="center"
+                >
+                  <Grid item xs={"auto"}>
+                    <img src={profileDummy} height="200" alt="투표이미지" />
+                  </Grid>
+                </Grid>
+                <Grid
+                  container
+                  item
+                  xs={12}
+                  alignItems="center"
+                  justify="center"
+                >
+                  <Grid item xs={"auto"} justify="center">
+                    <CheckCircleOutlineIcon fontSize="large" color="primary" />
+                  </Grid>
+                </Grid>
+              </Grid>
+
+              <h2 className={classes.alignCenter}>잘못된 촬영 자세</h2>
+              <Grid container spacing={1}>
+                <Grid
+                  container
+                  item
+                  xs={6}
+                  alignItems="center"
+                  justify="center"
+                >
+                  <Grid item xs={"auto"}>
+                    <img src={profileDummy} height="200" alt="투표이미지" />
+                  </Grid>
+                </Grid>
+                <Grid
+                  container
+                  item
+                  xs={6}
+                  alignItems="center"
+                  justify="center"
+                >
+                  <Grid item xs={"auto"}>
+                    <img src={profileDummy} height="200" alt="투표이미지" />
+                  </Grid>
+                </Grid>
+                <Grid
+                  container
+                  item
+                  xs={6}
+                  alignItems="center"
+                  justify="center"
+                >
+                  <Grid item xs={"auto"} justify="center">
+                    <HighlightOffIcon fontSize="large" color="secondary" />
+                  </Grid>
+                </Grid>
+                <Grid
+                  container
+                  item
+                  xs={6}
+                  alignItems="center"
+                  justify="center"
+                >
+                  <Grid item xs={"auto"} justify="center">
+                    <HighlightOffIcon fontSize="large" color="secondary" />
+                  </Grid>
+                </Grid>
+              </Grid>
             </DialogContentText>
           </DialogContent>
           <DialogActions>
