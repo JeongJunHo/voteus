@@ -4,15 +4,9 @@ import axios from "axios";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import { Alert, AlertTitle } from "@material-ui/lab";
 
 const useStyles = makeStyles(theme => ({
-  flex: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    height: "80vh"
-  },
   paper: {
     padding: theme.spacing(2),
     textAlign: "center",
@@ -32,6 +26,7 @@ const UserAuthName = props => {
   const classes = useStyles();
 
   const [commit, setCommit] = useState(false);
+  const [loginState, setLoginState] = useState(true);
   const [name, setName] = useState("");
   const [birth_registration_number, setBirthRegistrationNumber] = useState("");
   const [area_registration_number, setAreaRegistrationNumber] = useState("");
@@ -95,11 +90,6 @@ const UserAuthName = props => {
       birth_registration_number + area_registration_number;
 
     if (!nameError && !birthRegError && !areaRegError) {
-      const data = {
-        id_num: registration_number,
-        name: name
-      };
-
       // axios
       axios
         .get(
@@ -110,16 +100,15 @@ const UserAuthName = props => {
         )
         .then(res => {
           console.log(res);
-          if (res.data != null) {
-            console.log(props.userinfo);
-            props.setUserInfo(data);
+          if (res.data !== "failure") {
+            props.setUserInfo({ code: res.data, name: name });
             props.setNumber(number => number + 1);
+            setLoginState(true);
           } else {
-            alert("정보가 일치하지 않습니다.");
+            setLoginState(false);
           }
-        });
-      props.setUserInfo(data); // test
-      props.setNumber(number => number + 1); // 임시(삭제 필요)
+        })
+        .catch(res => console.log(res));
     }
   };
 
@@ -192,6 +181,16 @@ const UserAuthName = props => {
               }}
             />
           </Grid>
+          {!loginState && (
+            <Grid item xs={12}>
+              <Alert severity="error">
+                <AlertTitle style={{ textAlign: "left", fontWeight: "bold" }}>
+                  인증 실패
+                </AlertTitle>
+                등록된 정보가 없습니다. 이름과 주민등록번호를 확인해주세요.
+              </Alert>
+            </Grid>
+          )}
           <Grid item xs={12}>
             <Button
               variant="contained"
