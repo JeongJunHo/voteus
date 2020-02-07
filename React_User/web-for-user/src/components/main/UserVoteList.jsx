@@ -10,7 +10,11 @@ import {
   Card,
   CardContent,
   Typography,
-  Button
+  Button,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions
 } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
@@ -18,10 +22,6 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    // justifyContent: "space-between",
-    // height: "100%",
-    // width: "100%",
-    // position: "absolute"
   },
   header: {
     padding: theme.spacing(1),
@@ -38,26 +38,15 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.text.secondary,
   },
   cardBody: {
-    // padding: theme.spacing(1),
-    // textAlign: "center",
-    // boxShadow: "",
     "&:hover": {
       boxShadow: "0 4px 20px -6px #880e4f"
     },
-    // color: theme.palette.text.secondary,
     backgroundColor: '#fce4ec',
   },
   cardBodySelect: {
-    // paddingLeft: theme.spacing(1),
-    // paddingRight: theme.spacing(1),
-    // paddingTop: theme.spacing(2),
-    // paddingBottom: theme.spacing(2),
-    // textAlign: "center",
-    // boxShadow: "",
     "&:hover": {
       boxShadow: "0 4px 20px -6px #1b5e20"
     },
-    // color: theme.palette.text.secondary,
     backgroundColor: '#c8e6c9',
   },
   vote: {
@@ -76,12 +65,16 @@ const useStyles = makeStyles(theme => ({
   },
   submitButton: {
     justifyContent: "center"
+  },
+  candidateColor: {
+    backgroundColor: "#e1bee7"
   }
 }));
 
 const UserVoteList = (props) => {
   const classes = useStyles();
 
+  const [dialogopen, setDialogOpen] = useState(false);
   const [vote, setVote] = useState(null);
   const [loading, setLoading] = useState(null);
 
@@ -117,6 +110,15 @@ const UserVoteList = (props) => {
     setLoading(false)
   }, [votelist])
 
+  const dialogOpen = () => {
+    // console.log('dialog')
+    setDialogOpen(true);
+  }
+
+  const dialogClose = () => {
+    setDialogOpen(false);
+  }
+
   if (loading === false) {
     return (
       <Fragment>
@@ -138,7 +140,11 @@ const UserVoteList = (props) => {
               if (eachvote.candidate === null) {
                 return (
                   <Grid item xs={12} key={eachvote.vote.code}>
-                    <Card variant="outlined" onClick={changeVoteNumber} className={classes.cardBody}>
+                    <Card
+                      variant="outlined"
+                      onClick={changeVoteNumber}
+                      className={classes.cardBody}
+                    >
                       <CardContent>
                         <Typography className={classes.vote}>
                           {eachvote.vote.name}
@@ -153,7 +159,11 @@ const UserVoteList = (props) => {
               } else {
                 return (
                   <Grid item xs={12} key={eachvote.vote.code}>
-                    <Card variant="outlined" onClick={changeVoteNumber} className={classes.cardBodySelect}>
+                    <Card
+                      variant="outlined"
+                      onClick={changeVoteNumber}
+                      className={classes.cardBodySelect}
+                    >
                       <CardContent>
                         <Typography className={classes.vote}>
                           {eachvote.vote.name}
@@ -172,8 +182,15 @@ const UserVoteList = (props) => {
             {props.endvote === true ? (
               <Grid item xs={12}>
                 <Paper elevation={0} className={classes.paperHeader}>
-                  <Button onClick={props.finishVote} variant="contained" color="primary" disableElevation className={classes.submitButton} fullWidth="true">
-                    완료
+                  <Button
+                    onClick={dialogOpen}
+                    variant="contained"
+                    color="primary"
+                    disableElevation
+                    className={classes.submitButton}
+                    fullWidth={true}
+                  >
+                    투표 완료
                   </Button>
                 </Paper>
               </Grid>
@@ -186,23 +203,53 @@ const UserVoteList = (props) => {
             )}
           </Grid>
         </div>
+        <Dialog
+          onClose={dialogClose}
+          open={dialogopen}
+          fullWidth={true}
+          maxWidth="xs"
+          PaperProps={{ className: [classes.flex] }}
+        >
+          <DialogTitle>
+            님의 투표 정보입니다.
+          </DialogTitle>
+          <DialogContent>
+            <div>
+              님은
+            </div>
+            {vote.map((eachvote) => {
+              if (eachvote.candidate === '1번투표무효표') {
+                return (
+                  <div key={eachvote.vote.code}>
+                    {eachvote.vote.name}에 <span className={classes.candidateColor}>무효표</span>를
+                  </div>
+                )
+              } else {
+                return (
+                  <div key={eachvote.vote.code}>
+                    {eachvote.vote.name}에 <span className={classes.candidateColor}>{eachvote.candidate}</span> 후보를
+                  </div>
+                )
+              }
+            })}
+            <div>
+              선택하셨습니다.
+            </div>
+          </DialogContent>
+          <DialogContent>
+            <p>투표 하시겠습니까?</p>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={props.finishVote}>
+              확인
+            </Button>
+            <Button onClick={dialogClose}>
+              취소
+            </Button>
+          </DialogActions>
+        </Dialog>
       </Fragment>
     )
-
-    // return (
-    //   <Fragment>
-    //     <h2>투표를 선택하세요.</h2>
-    //     {vote.map((eachvote)=>{
-    //       // console.log(eachvote.vote.code)
-    //       const changeVoteNumber = () => {
-    //         props.setVoteNumber(eachvote.vote.code)
-    //       }
-    //       return (
-    //         <button key={eachvote.vote.code} onClick={changeVoteNumber}>{eachvote.vote.name}{eachvote.candidate}</button>
-    //       )
-    //     })}
-    //   </Fragment>
-    // )
   } else {
     return (
       <Fragment>

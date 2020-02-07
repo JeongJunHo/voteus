@@ -100,7 +100,7 @@ const UserVoteStandBy = props => {
     }
     setVoteNameList(temp_votenamelist)
 
-    setTimeout(() => {setShowButton(true)}, 2000)
+    setTimeout(() => {setShowButton(true)}, 1000)
     setLoading(false)
   }, [props.votelist])
 
@@ -112,7 +112,11 @@ const UserVoteStandBy = props => {
     return (
       <Fragment>
         <div className={classes.flex}>
-          <Grid container spacing={3} className={classes.header}>
+          <Grid
+            container
+            spacing={3}
+            className={classes.header}
+          >
             <Grid item xs={12}>
               <Paper elevation={0} className={classes.paperHeader}>
                 <h1>투표 목록입니다.</h1>
@@ -131,16 +135,41 @@ const UserVoteStandBy = props => {
               )
             })}
           </Grid>
-          {/* <button style={{display: {showbutton}}} onClick={changeStatus}>(일정 시간 지난 후 보여주기) 투표 시작</button> */}
+          <Grid
+            container
+            spacing={3}
+            className={classes.header}
+          >
+            <Grid item xs={12}>
+              <Paper elevation={0} className={classes.paperHeader}>
+                <h2>{votenamelist.length}개의 투표가 있습니다.</h2>
+              </Paper>
+            </Grid>
+          </Grid>
           <Grid container spacing={3} className={classes.header}>
             <Grid item xs={12}>
               <Paper elevation={0} className={classes.paperHeader}>              
                 {showbutton === true ? (
-                  <Button onClick={changeStatus} variant="contained" color="primary" disableElevation className={classes.submitButton} fullWidth="true">
+                  <Button
+                    onClick={changeStatus}
+                    variant="contained"
+                    color="primary"
+                    disableElevation
+                    className={classes.submitButton}
+                    fullWidth={true}
+                  >
                   투표 시작
                 </Button>
                 ) : (
-                  <Button onClick={changeStatus} variant="contained" color="primary" disableElevation className={classes.submitButton} disabled fullWidth="true">
+                  <Button
+                    onClick={changeStatus}
+                    variant="contained"
+                    color="primary"
+                    disableElevation
+                    className={classes.submitButton}
+                    fullWidth={true}
+                    disabled
+                  >
                   투표 시작
                 </Button>
                 )}
@@ -151,8 +180,10 @@ const UserVoteStandBy = props => {
       </Fragment>
     )
   } else {
-    return (
-      <div>로딩중</div>
+      return (
+        <Fragment>
+            <LinearProgress />
+        </Fragment>
     )
   }
 }

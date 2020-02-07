@@ -77,7 +77,6 @@ const UserVoteCandidateList = props => {
         </Grid>
         <Grid container spacing={3} className={classes.body}>
           {props.candidatelist[0].map((eachcandidate, i) => {
-              // console.log(eachcandidate)
               const selectCandidate = () => {
                 props.result.set(props.votenumber, eachcandidate.code)
                 props.setResult(props.result)
@@ -85,12 +84,12 @@ const UserVoteCandidateList = props => {
               }
               
               return (
-                // <button key={eachcandidate.code} onClick={selectCandidate}>{eachcandidate.name}</button>
                 <Grid item xs={6} key={eachcandidate.code}>
-                  {/* <Paper onClick={selectCandidate} className={classes.paperBody}>
-                    <h3>{eachcandidate.name}</h3>
-                  </Paper> */}
-                  <Card variant="outlined" onClick={selectCandidate} className={classes.cardBody}>
+                  <Card
+                    variant="outlined"
+                    onClick={selectCandidate}
+                    className={classes.cardBody}
+                  >
                     <CardContent>
                       <Typography className={classes.party}>
                         <b>기호 {i+1}번</b> {eachcandidate.party}
@@ -107,41 +106,6 @@ const UserVoteCandidateList = props => {
         </div>
       </Fragment>
     )
-
-    // return (
-    //   <Fragment>
-    //     <div className={classes.flex}>
-    //      <Grid container spacing={3} className={classes.header}>
-    //       <Grid item xs={12}>
-    //         <Paper elevation={0} className={classes.paperHeader}>
-    //           <h1>{props.votename} 투표입니다.</h1>
-    //           <h2>후보를 선택해주세요.</h2>
-    //         </Paper>
-    //       </Grid>
-    //      </Grid>
-    //      <Grid container spacing={3} className={classes.body}>
-    //       {props.candidatelist[0].map((eachcandidate) => {
-    //           // console.log(eachcandidate)
-    //           const selectCandidate = () => {
-    //             props.result.set(props.votenumber, eachcandidate.code)
-    //             props.setResult(props.result)
-    //             props.setVoteNumber(null)
-    //           }
-              
-    //           return (
-    //             // <button key={eachcandidate.code} onClick={selectCandidate}>{eachcandidate.name}</button>
-    //             <Grid item xs={6} key={eachcandidate.code}>
-    //               <Paper onClick={selectCandidate} className={classes.paperBody}>
-    //                 <h3>{eachcandidate.name}</h3>
-    //               </Paper>
-    //             </Grid>
-    //           )
-    //         })}
-    //      </Grid>
-    //     </div>
-    //   </Fragment>
-    // )
-
 } else {
     return (
       <Fragment>
