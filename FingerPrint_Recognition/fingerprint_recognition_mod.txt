@@ -1,0 +1,11 @@
+1. 실행 시 필요한 Lib의 경로 문제 - Pyeer와 utils.py의 fprmodules.enhancement
+	=> Pyeer은 github에서 다운받아 직접 Jupyter Notebook이 실행되는 폴더에 넣어줌 / fprmodules.enhancement는 github(Fingerprint-Enhancement-Python)에서 받은 Lib중 image_enhance를 enhancement로 이름 변경 후, fprmodules에 나머지 파일들과 함께 넣어줌
+
+2. preprocessing.py에서 참조한 utils.py내부의 def가 에러
+	=> 입력받은 image를 1번의 enhancement를 통해 image_enhance를 수행하고, 이를 다시 OpenCV의 Normalize를 수행하는데 변환된 img_e가 Normalize의 src로 적합하지 않았음. 따라서 img_e가 boolean으로 되어있는데, 이를 int형 ndarr로 바꿔주니 해결
+
+3. OpenCV의 ORB를 생성해 detectAndCompute 실행했는데 에러뜸...
+	=> image = np.array(image, dtype=np.uint8)를 먼저 실행한 후 코드 실행하면 됨 / detectAndCompute메소드를 호출하는 대부분의 경우 image = np.array(image, dtype=np.uint8)를 실행하면 됨
+
+4. Descriptor와 dataset을 저장해 python 파일로 만들어 다른 환경에서 사용하려고 했는데, 에러가 뜸
+	=> 입력값이나 데이터셋들의 사이즈가 달라서 open source의 코드 값이 적용 안됨 / 입력값이나 데이터셋을 img = cv2.resize(img, dsize=(296, 560), interpolation=cv2.INTER_LINEAR)로 리사이징 하면 됨
