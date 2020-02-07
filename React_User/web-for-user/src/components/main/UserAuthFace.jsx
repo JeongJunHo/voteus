@@ -22,7 +22,10 @@ import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 //image
 import finger from "../../images/finger.png";
 import captureExam from "../../images/captureExam.png";
-import profileDummy from "../../images/profileDummy.jpg";
+import Camera_true from "../../images/Camera_true.png";
+import Camera_false1 from "../../images/Camera_false1.png";
+import Camera_false2 from "../../images/Camera_false2.png";
+
 
 const useStyles = makeStyles(theme => ({
   bold: {
@@ -162,7 +165,7 @@ const UserAuthFace = props => {
             <Grid container spacing={1}>
               <Grid container item xs={12} alignItems="center" justify="center">
                 <Grid item xs={"auto"}>
-                  <img src={profileDummy} height="200" alt="투표이미지" />
+                  <img src={Camera_true} height="200" alt="투표이미지" />
                 </Grid>
               </Grid>
               <Grid container item xs={12} alignItems="center" justify="center">
@@ -176,12 +179,12 @@ const UserAuthFace = props => {
             <Grid container spacing={1}>
               <Grid container item xs={6} alignItems="center" justify="center">
                 <Grid item xs={"auto"}>
-                  <img src={profileDummy} height="200" alt="투표이미지" />
+                  <img src={Camera_false1} height="200" alt="투표이미지" />
                 </Grid>
               </Grid>
               <Grid container item xs={6} alignItems="center" justify="center">
                 <Grid item xs={"auto"}>
-                  <img src={profileDummy} height="200" alt="투표이미지" />
+                  <img src={Camera_false2} height="200" alt="투표이미지" />
                 </Grid>
               </Grid>
               <Grid container item xs={6} alignItems="center" justify="center">

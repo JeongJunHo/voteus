@@ -16,6 +16,9 @@ import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 
 //image
 import fingerprint from "../../images/fingerprint.png";
+import Fingerprint_true from "../../images/Fingerprint_true.png";
+import Fingerprint_false1 from "../../images/Fingerprint_false1.png";
+import Fingerprint_false2 from "../../images/Fingerprint_false2.png";
 
 const useStyles = makeStyles(theme => ({
   bold: {
@@ -140,7 +143,7 @@ const UserAuthFinger = props => {
             <Grid container spacing={1}>
               <Grid container item xs={12} alignItems="center" justify="center">
                 <Grid item xs={"auto"}>
-                  <img src={fingerprint} height="200" alt="지문" />
+                  <img src={Fingerprint_true} height="200" alt="지문" />
                 </Grid>
               </Grid>
               <Grid container item xs={12} alignItems="center" justify="center">
@@ -154,12 +157,12 @@ const UserAuthFinger = props => {
             <Grid container spacing={1}>
               <Grid container item xs={6} alignItems="center" justify="center">
                 <Grid item xs={"auto"}>
-                  <img src={fingerprint} height="200" alt="지문" />
+                  <img src={Fingerprint_false1} height="200" alt="지문" />
                 </Grid>
               </Grid>
               <Grid container item xs={6} alignItems="center" justify="center">
                 <Grid item xs={"auto"}>
-                  <img src={fingerprint} height="200" alt="지문" />
+                  <img src={Fingerprint_false2} height="200" alt="지문" />
                 </Grid>
               </Grid>
               <Grid container item xs={6} alignItems="center" justify="center">
