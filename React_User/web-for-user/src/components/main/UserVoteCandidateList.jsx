@@ -19,7 +19,6 @@ const useStyles = makeStyles(theme => ({
   },
   header: {
     padding: theme.spacing(1),
-    // margin: theme.spacing(1),
   },
   body : {
     paddingLeft: theme.spacing(3),
@@ -32,13 +31,10 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.text.secondary,
   },
   cardBody: {
-    padding: theme.spacing(2),
-    // textAlign: "center",
-    // boxShadow: "",
+    // padding: theme.spacing(2),
     "&:hover": {
       boxShadow: "0 4px 20px -6px #1a237e"
     },
-    // color: theme.palette.text.secondary,
     backgroundColor: '#e8eaf6',
   },
   party: {
@@ -47,8 +43,8 @@ const useStyles = makeStyles(theme => ({
 
   },
   candidate: {
-    paddingTop: theme.spacing(1),
-    paddingBottom: theme.spacing(1),
+    // paddingTop: theme.spacing(1),
+    // paddingBottom: theme.spacing(1),
     textAlign: "center",
   }
 }));

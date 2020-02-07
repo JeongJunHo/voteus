@@ -32,10 +32,10 @@ const UserAuthFingerRecognition = props => {
       // .post("http://192.168.100.121:5000/getData")
       .then(res => {
         console.log("data 확인:::", res);
-        // 수정 필요
+        // 수정 필요 (코드 값은 지문에서)
         if (res.data.code === "05") {
           props.setFinger(res.data.img)
-          props.setResult(result => "true");
+          props.setResult(result => "getimage");
         } else {
           props.setResult(result => "false");
         }

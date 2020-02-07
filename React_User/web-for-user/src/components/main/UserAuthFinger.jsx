@@ -1,7 +1,8 @@
 import React, { useState, Fragment } from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
-import UserAuthFingerRecognition from "../main/UserAuthFingerRecognition";
+import Image from "material-ui-image";
+import UserAuthFingerPicture from "../main/UserAuthFingerPicture";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import Dialog from "@material-ui/core/Dialog";
@@ -31,6 +32,7 @@ const useStyles = makeStyles(theme => ({
 
 const UserAuthFinger = props => {
   const classes = useStyles();
+  const [finger, setFinger] = useState(null);
   const [result, setResult] = useState("finger");
   const [open, setOpen] = React.useState(true);
 
@@ -72,10 +74,18 @@ const UserAuthFinger = props => {
         <div>인증중...</div>
       </Fragment>
     );
-  } else if (result === "true") {
+  } else if (result === "getimage") {
     return (
       <Fragment>
         <div>
+          <Image
+              src={`data:image/bmp;base64,${finger}`}
+              alt="finger-print"
+              // disableSpinner="true"
+              disableTransition="true"
+              style={{ height: "200px", paddingTop: 0 }}
+              imageStyle={{ width: "auto", position: "static" }}
+            />
           인증이 완료되었습니다.
           <Button
             variant="contained"
@@ -121,7 +131,7 @@ const UserAuthFinger = props => {
         </IconButton>
         <h1>지문 인증을 진행합니다.</h1>
 
-        <UserAuthFingerRecognition result={result} setResult={setResult} />
+        <UserAuthFingerPicture result={result} setResult={setResult} setFinger={setFinger} />
         <Dialog
           open={open}
           onClose={handleClose}

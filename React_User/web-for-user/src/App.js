@@ -23,7 +23,7 @@ class App extends Component {
           <Route path="/user-home" component={UserHome} />
           <Route path="/user-auth" component={UserAuthentication} />
           {/* <Route exact path="/user-vote" component={UserVote} /> */}
-          <Route path="/user-vote/:code" component={UserVote} />
+          <Route path="/user-vote/:code/:name" component={UserVote} />
         </div>
       </Router>
     );

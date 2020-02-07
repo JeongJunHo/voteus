@@ -28,7 +28,6 @@ const useStyles = makeStyles(theme => ({
   body : {
     paddingLeft: theme.spacing(3),
     paddingRight: theme.spacing(3),
-    marginBottom: theme.spacing(3)
   },
   paperHeader: {
     padding: theme.spacing(2),
@@ -119,7 +118,7 @@ const UserVoteStandBy = props => {
           >
             <Grid item xs={12}>
               <Paper elevation={0} className={classes.paperHeader}>
-                <h1>투표 목록입니다.</h1>
+                <h1>{props.username}님의 투표 목록입니다.</h1>
               </Paper>
             </Grid>
           </Grid>
@@ -142,7 +141,7 @@ const UserVoteStandBy = props => {
           >
             <Grid item xs={12}>
               <Paper elevation={0} className={classes.paperHeader}>
-                <h2>{votenamelist.length}개의 투표가 있습니다.</h2>
+                <h2>총 {votenamelist.length}개의 투표가 있습니다.</h2>
               </Paper>
             </Grid>
           </Grid>
