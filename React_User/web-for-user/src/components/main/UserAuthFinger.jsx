@@ -1,11 +1,46 @@
 import React, { useState, Fragment } from "react";
 
+import { makeStyles } from "@material-ui/core/styles";
 import UserAuthFingerRecognition from "../main/UserAuthFingerRecognition";
+import Button from "@material-ui/core/Button";
+import Grid from "@material-ui/core/Grid";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import HelpIcon from "@material-ui/icons/Help";
+import IconButton from "@material-ui/core/IconButton";
+import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
+import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 
-// import axios from 'axios';
+//image
+import fingerprint from "../../images/fingerprint.png";
+
+const useStyles = makeStyles(theme => ({
+  bold: {
+    fontWeight: "bold"
+  },
+  vh_80: {
+    height: "80vh"
+  },
+  alignCenter: {
+    textAlign: "center"
+  }
+}));
 
 const UserAuthFinger = props => {
+  const classes = useStyles();
   const [result, setResult] = useState("finger");
+  const [open, setOpen] = React.useState(true);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const nextPage = () => {
     // console.log(props.userinfocode)
@@ -42,7 +77,16 @@ const UserAuthFinger = props => {
       <Fragment>
         <div>
           인증이 완료되었습니다.
-          <button onClick={nextPage}>다음</button>
+          <Button
+            variant="contained"
+            size="large"
+            color="primary"
+            fullWidth="true"
+            onClick={nextPage}
+            autoFocus
+          >
+            다음
+          </Button>
         </div>
       </Fragment>
     );
@@ -51,16 +95,98 @@ const UserAuthFinger = props => {
       <Fragment>
         <div>
           인증이 실패되었습니다. 다시 인증하세요.
-          <button onClick={returnPage}>다시하기</button>
+          <Button
+            variant="contained"
+            size="large"
+            color="primary"
+            fullWidth="true"
+            onClick={returnPage}
+            autoFocus
+          >
+            다시하기
+          </Button>
         </div>
       </Fragment>
     );
   } else {
     return (
       <Fragment>
-        <h1>지문 인증</h1>
-        {result}
+        <IconButton
+          color="secondary"
+          aria-label="도움말"
+          onClick={handleClickOpen}
+        >
+          <HelpIcon fontSize="large" />
+          도움말
+        </IconButton>
+        <h1>지문 인증을 진행합니다.</h1>
+
         <UserAuthFingerRecognition result={result} setResult={setResult} />
+        <Dialog
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+          fullWidth="true"
+          PaperProps={{ className: [classes.vh_80] }}
+        >
+          <DialogTitle id="alert-dialog-title">
+            지문인식 전 확인사항
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              <h2 className={classes.alignCenter}>올바른 지문인식</h2>
+            </DialogContentText>
+            <Grid container spacing={1}>
+              <Grid container item xs={12} alignItems="center" justify="center">
+                <Grid item xs={"auto"}>
+                  <img src={fingerprint} height="200" alt="지문" />
+                </Grid>
+              </Grid>
+              <Grid container item xs={12} alignItems="center" justify="center">
+                <Grid item xs={"auto"} justify="center">
+                  <CheckCircleOutlineIcon fontSize="large" color="primary" />
+                </Grid>
+              </Grid>
+            </Grid>
+
+            <h2 className={classes.alignCenter}>잘못된 지문인식</h2>
+            <Grid container spacing={1}>
+              <Grid container item xs={6} alignItems="center" justify="center">
+                <Grid item xs={"auto"}>
+                  <img src={fingerprint} height="200" alt="지문" />
+                </Grid>
+              </Grid>
+              <Grid container item xs={6} alignItems="center" justify="center">
+                <Grid item xs={"auto"}>
+                  <img src={fingerprint} height="200" alt="지문" />
+                </Grid>
+              </Grid>
+              <Grid container item xs={6} alignItems="center" justify="center">
+                <Grid item xs={"auto"} justify="center">
+                  <HighlightOffIcon fontSize="large" color="secondary" />
+                </Grid>
+              </Grid>
+              <Grid container item xs={6} alignItems="center" justify="center">
+                <Grid item xs={"auto"} justify="center">
+                  <HighlightOffIcon fontSize="large" color="secondary" />
+                </Grid>
+              </Grid>
+            </Grid>
+          </DialogContent>
+          <DialogActions>
+            <Button
+              variant="contained"
+              size="large"
+              color="primary"
+              fullWidth="true"
+              onClick={handleClose}
+              autoFocus
+            >
+              확인
+            </Button>
+          </DialogActions>
+        </Dialog>
       </Fragment>
     );
   }
