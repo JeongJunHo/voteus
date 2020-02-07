@@ -35,10 +35,8 @@ import math
 from sklearn import neighbors
 import os
 import os.path
-import numpy as np
 import pickle
 from PIL import Image, ImageDraw
-import face_detection as fd
 import face_recognition
 import time
 from face_recognition.face_recognition_cli import image_files_in_folder
@@ -96,21 +94,10 @@ def train(train_dir, model_save_path=None, n_neighbors=None, knn_algo='ball_tree
             # print(class_dir+"train_dir : " + train_dir)
             startTime = time.time()
 
-            #face_bounding_boxes = face_recognition.face_locations(image)
-
-            fd_img = fd.get_face(img_path)
-            if fd_img is None:
-                print("is_none")
-                continue
-            cv_image = np.array(fd_img)
-
-
-            print(img_path)
-            print(cv_image)
-
+            face_bounding_boxes = face_recognition.face_locations(image)
             print("face_locations : time : ")
             print(time.time() - startTime)
-            face_bounding_boxes = [(0, cv_image.shape[0], cv_image.shape[1], 0)]
+
             startTime = time.time()
             if len(face_bounding_boxes) != 1:
                 # If there are no people (or too many people) in a training image, skip the image.
@@ -119,8 +106,7 @@ def train(train_dir, model_save_path=None, n_neighbors=None, knn_algo='ball_tree
                         face_bounding_boxes) < 1 else "Found more than one face"))
             else:
                 # Add face encoding for current image to the training set
-                X.append(face_recognition.face_encodings(cv_image, known_face_locations=face_bounding_boxes)[0])
-                #X.append(face_recognition.face_encodings(image, known_face_locations=face_bounding_boxes)[0])
+                X.append(face_recognition.face_encodings(image, known_face_locations=face_bounding_boxes)[0])
                 y.append(class_dir)
             print("face append : ")
             print(time.time() - startTime)

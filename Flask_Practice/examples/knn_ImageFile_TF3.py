@@ -72,7 +72,7 @@ def predict(X_img, knn_clf=None, model_path=None, distance_threshold=0.6):
     print(time.time() - startTime)
     startTime = time.time()
     #print(type((X_face_locations[0])[2]))
-    X_face_locations = fd.get_face("find.jpg")
+    #X_face_locations = fd.get_face()
     #X_face_locations = [(int(X_face_locations[0]), int(X_face_locations[3]), int(X_face_locations[2]), int(X_face_locations[1]))]
     print(X_face_locations)
     # face_bounding_boxes1.append(X_face_locations[0])
@@ -82,12 +82,12 @@ def predict(X_img, knn_clf=None, model_path=None, distance_threshold=0.6):
     print("face location")
     print(X_face_locations)
     print(time.time() - startTime)
-    #print(len(X_face_locations))
+    print(len(X_face_locations))
 
     # cv2.imshow("asdf", X_face_locations)
     # If no faces are found in the image, return an empty result.
-    #if len(X_face_locations) == 0:
-    #    return []
+    if len(X_face_locations) == 0:
+        return []
 
     # Find encodings for faces in the test iamge
     # print(rgb_small_frame)
@@ -108,15 +108,7 @@ def predict(X_img, knn_clf=None, model_path=None, distance_threshold=0.6):
     #         break;
     #print(X_face_locations)
     startTime = time.time()
-    cv_image = np.array(X_face_locations)
-    cv_image = cv_image[:,:,::-1].copy()
-    #faces_encodings = face_recognition.face_encodings(cv_image)
-    #X_face_locations = face_recognition.face_locations(cv_image)
-    X_face_locations = [(0, cv_image.shape[0], cv_image.shape[1], 0)]
-    print("ximg")
-    print(X_face_locations)
-    faces_encodings = face_recognition.face_encodings(cv_image, known_face_locations=X_face_locations)
-    #faces_encodings = [(0,cv_image.shape[0],cv_image.shape[1],0)]
+    faces_encodings = face_recognition.face_encodings(X_img, known_face_locations=X_face_locations)
     print("encoding")
     print(time.time() - startTime)
     #print(faces_encodings)
@@ -126,8 +118,6 @@ def predict(X_img, knn_clf=None, model_path=None, distance_threshold=0.6):
     print("kneighbors")
     print(time.time() - startTime)
     # closest_distances = knn_clf.kneighbors(faces_encodings, n_neighbors=1)
-    a = (1)
-    #are_matches = [closest_distances[0][0][0] <= distance_threshold]
     are_matches = [closest_distances[0][i][0] <= distance_threshold for i in range(len(X_face_locations))]
 
     # Predict classes and remove classifications that aren't within the threshold

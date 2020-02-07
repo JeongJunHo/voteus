@@ -1,6 +1,7 @@
 from flask import Flask, request
 import json
 import examples.knn_ImageFile_TF as knn
+import example_downloadimage as ed
 import base64
 import io
 from flask_cors import CORS
@@ -24,15 +25,37 @@ def getData():
     data = json.dumps(b)
     return data
 
+@app.route('/getFinger', methods=['post'])
+def getFinger():
+    is_true = ed.get_finger()
+    print(is_true)
+    print(type(is_true))
+
+    if is_true == True:
+        with open('fingerprint.bmp', 'rb') as image:
+            b64img = base64.b64encode(image.read())
+        #print(b64img)
+
+        print(type(b64img))
+        #data = {"code": "05", "img": str(b64img)}
+
+        data = json.dumps({"code": "05", "img": str(b64img)[2:-1]})
+        #data = json.dumps(True)
+    else:
+        data = json.dumps({"code" : "04"})
+        #data = json.dumps (False)
+
+    return data
+
 @app.route('/getImg', methods=['post'])
 def put_img():
     print(1)
     data = request.get_json()
     name = data['name']
     print(name)
-    print(data)
+    #print(data)
     img = data['img']
-    print(img)
+    #print(img)
     #print(request.files['img'])
     #f = request.files['img']
     file = base64.b64decode(str(img).split(',')[1])

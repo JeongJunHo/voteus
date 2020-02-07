@@ -41,13 +41,13 @@ from edgetpu.utils import dataset_utils
 from PIL import Image
 from PIL import ImageDraw
 
-def get_face():
+def get_face(path):
     # Initialize engine.
     engine = DetectionEngine("examples/mobilenet_ssd_v2_face_quant_postprocess_edgetpu.tflite")
     # engine = DetectionEngine(args.model)
 
     # Open image.
-    img = Image.open("find.jpg")
+    img = Image.open(path)
     draw = ImageDraw.Draw(img)
 
     # Run inference.
@@ -73,6 +73,7 @@ def get_face():
             #return box
     else:
         print('No object detected!')
+        return None
 
 
 def main():
