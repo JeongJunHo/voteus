@@ -44,9 +44,9 @@ const UserAuthBody = props => {
     );
   } else {
     return (
-      <Fragment>
+      <UserNameContext.Provider value={userinfo.name}>
         <UserAuthComplete userinfocode={userinfo.code} />
-      </Fragment>
+      </UserNameContext.Provider>
     );
   }
 };

@@ -1,7 +1,8 @@
 import React, { useState, Fragment } from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
-import UserAuthFingerRecognition from "../main/UserAuthFingerRecognition";
+import Image from "material-ui-image";
+import UserAuthFingerPicture from "../main/UserAuthFingerPicture";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import Dialog from "@material-ui/core/Dialog";
@@ -34,6 +35,7 @@ const useStyles = makeStyles(theme => ({
 
 const UserAuthFinger = props => {
   const classes = useStyles();
+  const [finger, setFinger] = useState(null);
   const [result, setResult] = useState("finger");
   const [open, setOpen] = React.useState(true);
 
@@ -72,7 +74,36 @@ const UserAuthFinger = props => {
   if (result === "set") {
     return (
       <Fragment>
-        <div>인증중...</div>
+        <h2>지문을 인식하는 중입니다.</h2>
+        <h2>잠시만 기다려주세요.</h2>
+      </Fragment>
+    );
+  } else if (result === "getimage") {
+    return (
+      <Fragment>
+        <div>
+          <Image
+              src={`data:image/bmp;base64,${finger}`}
+              alt="finger-print"
+              // disableSpinner="true"
+              disableTransition="true"
+              style={{ height: "200px", paddingTop: 0 }}
+              imageStyle={{ width: "auto", position: "static" }}
+            />
+          <h2>지문이 인식되었습니다.</h2>
+          <h2>인증 또는 재촬영을 진행해주세요.</h2>
+          {/* 수정필요함 (2020/02/07) */}
+          <Button
+            variant="contained"
+            size="large"
+            color="primary"
+            fullWidth="true"
+            onClick={nextPage}
+            autoFocus
+          >
+            다음
+          </Button>
+        </div>
       </Fragment>
     );
   } else if (result === "true") {
@@ -123,8 +154,8 @@ const UserAuthFinger = props => {
           도움말
         </IconButton>
         <h1>지문 인증을 진행합니다.</h1>
-
-        <UserAuthFingerRecognition result={result} setResult={setResult} />
+        <h2>아래의 버튼을 누른 후 지문인식기에 손가락을 올려주세요.</h2>
+        <UserAuthFingerPicture result={result} setResult={setResult} setFinger={setFinger} />
         <Dialog
           open={open}
           onClose={handleClose}

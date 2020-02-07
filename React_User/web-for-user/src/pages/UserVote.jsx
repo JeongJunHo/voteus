@@ -98,6 +98,7 @@ const UserVote = ({match}) => {
               <UserVoteStandBy
                 votelist={votelist}
                 setStatus={setStatus}
+                username={match.params.name}
               />
             </FlexPaperTemplate>
             <UserFooter />

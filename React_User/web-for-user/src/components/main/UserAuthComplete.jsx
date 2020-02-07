@@ -1,10 +1,14 @@
-import React, { Fragment } from "react";
+import React, { useContext, Fragment } from "react";
+
+import UserNameContext from '../../context/UserNameContext';
 
 import Button from "@material-ui/core/Button";
 import { Link } from "@material-ui/core";
 
 const UserAuthComplete = props => {
-  const url = "/user-vote/" + props.userinfocode;
+  const username = useContext(UserNameContext);
+
+  const url = "/user-vote/" + props.userinfocode + "/" + username;
 
   return (
     <Fragment>

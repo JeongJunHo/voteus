@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext, Fragment } from 'react';
 
+import UserNameContext from '../../context/UserNameContext';
 import VoteListContext from '../../context/VoteListContext';
 
 import {
@@ -25,7 +26,6 @@ const useStyles = makeStyles(theme => ({
   },
   header: {
     padding: theme.spacing(1),
-    // margin: theme.spacing(1),
   },
   body : {
     paddingLeft: theme.spacing(3),
@@ -53,13 +53,9 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(1),
   },
   candidate: {
-    paddingTop: theme.spacing(1),
-    paddingBottom: theme.spacing(1),
     textAlign: "center",
   },
   candidateNone: {
-    paddingTop: theme.spacing(1),
-    paddingBottom: theme.spacing(1),
     textAlign: "center",
     color: '#ffa199'
   },
@@ -73,6 +69,8 @@ const useStyles = makeStyles(theme => ({
 
 const UserVoteList = (props) => {
   const classes = useStyles();
+
+  const username = useContext(UserNameContext);
 
   const [dialogopen, setDialogOpen] = useState(false);
   const [vote, setVote] = useState(null);
@@ -211,7 +209,7 @@ const UserVoteList = (props) => {
           PaperProps={{ className: [classes.flex] }}
         >
           <DialogTitle>
-            님의 투표 정보입니다.
+            {username}님의 투표 정보입니다.
           </DialogTitle>
           <DialogContent>
             <div>
