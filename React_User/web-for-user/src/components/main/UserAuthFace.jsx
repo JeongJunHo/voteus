@@ -158,79 +158,43 @@ const UserAuthFace = props => {
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
               <h2 className={classes.alignCenter}>올바른 촬영 자세</h2>
-              <Grid container spacing={1}>
-                <Grid
-                  container
-                  item
-                  xs={12}
-                  alignItems="center"
-                  justify="center"
-                >
-                  <Grid item xs={"auto"}>
-                    <img src={profileDummy} height="200" alt="투표이미지" />
-                  </Grid>
-                </Grid>
-                <Grid
-                  container
-                  item
-                  xs={12}
-                  alignItems="center"
-                  justify="center"
-                >
-                  <Grid item xs={"auto"} justify="center">
-                    <CheckCircleOutlineIcon fontSize="large" color="primary" />
-                  </Grid>
-                </Grid>
-              </Grid>
-
-              <h2 className={classes.alignCenter}>잘못된 촬영 자세</h2>
-              <Grid container spacing={1}>
-                <Grid
-                  container
-                  item
-                  xs={6}
-                  alignItems="center"
-                  justify="center"
-                >
-                  <Grid item xs={"auto"}>
-                    <img src={profileDummy} height="200" alt="투표이미지" />
-                  </Grid>
-                </Grid>
-                <Grid
-                  container
-                  item
-                  xs={6}
-                  alignItems="center"
-                  justify="center"
-                >
-                  <Grid item xs={"auto"}>
-                    <img src={profileDummy} height="200" alt="투표이미지" />
-                  </Grid>
-                </Grid>
-                <Grid
-                  container
-                  item
-                  xs={6}
-                  alignItems="center"
-                  justify="center"
-                >
-                  <Grid item xs={"auto"} justify="center">
-                    <HighlightOffIcon fontSize="large" color="secondary" />
-                  </Grid>
-                </Grid>
-                <Grid
-                  container
-                  item
-                  xs={6}
-                  alignItems="center"
-                  justify="center"
-                >
-                  <Grid item xs={"auto"} justify="center">
-                    <HighlightOffIcon fontSize="large" color="secondary" />
-                  </Grid>
-                </Grid>
-              </Grid>
             </DialogContentText>
+            <Grid container spacing={1}>
+              <Grid container item xs={12} alignItems="center" justify="center">
+                <Grid item xs={"auto"}>
+                  <img src={profileDummy} height="200" alt="투표이미지" />
+                </Grid>
+              </Grid>
+              <Grid container item xs={12} alignItems="center" justify="center">
+                <Grid item xs={"auto"} justify="center">
+                  <CheckCircleOutlineIcon fontSize="large" color="primary" />
+                </Grid>
+              </Grid>
+            </Grid>
+
+            <h2 className={classes.alignCenter}>잘못된 촬영 자세</h2>
+            <Grid container spacing={1}>
+              <Grid container item xs={6} alignItems="center" justify="center">
+                <Grid item xs={"auto"}>
+                  <img src={profileDummy} height="200" alt="투표이미지" />
+                </Grid>
+              </Grid>
+              <Grid container item xs={6} alignItems="center" justify="center">
+                <Grid item xs={"auto"}>
+                  <img src={profileDummy} height="200" alt="투표이미지" />
+                </Grid>
+              </Grid>
+              <Grid container item xs={6} alignItems="center" justify="center">
+                <Grid item xs={"auto"} justify="center">
+                  <HighlightOffIcon fontSize="large" color="secondary" />
+                </Grid>
+              </Grid>
+              <Grid container item xs={6} alignItems="center" justify="center">
+                <Grid item xs={"auto"} justify="center">
+                  <HighlightOffIcon fontSize="large" color="secondary" />
+                </Grid>
+              </Grid>
+            </Grid>
           </DialogContent>
           <DialogActions>
             <Button
