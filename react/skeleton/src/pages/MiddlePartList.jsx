@@ -26,6 +26,7 @@ const MiddlePartList = ({ match }) => {
           "http://54.180.134.217:8080/api/area/getAreaAllList"
         );
         setState(response.data);
+        console.log(response.data);
       } catch (e) {
         console.log(e);
       }
@@ -48,7 +49,7 @@ const MiddlePartList = ({ match }) => {
         <MiddlePartTable
           code={match.params.code}
           name={match.params.name}
-          mainpart={state}
+          areaCode={state}
         />
       </Layout>
     </ViewContext.Provider>

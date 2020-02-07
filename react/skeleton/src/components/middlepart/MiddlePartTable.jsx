@@ -6,9 +6,9 @@ import LinearProgress from "@material-ui/core/LinearProgress";
 import axios from "axios";
 
 export default function MiddlePartTable(props) {
-  const mainpart = {};
-  for (let i in props.mainpart) {
-    mainpart[props.mainpart[i].areaCode] = props.mainpart[i].name;
+  const areaCode = {};
+  for (let i in props.areaCode) {
+    areaCode[props.areaCode[i].areaCode] = props.areaCode[i].name;
   }
 
   const title = "투표 중분류 관리(" + props.name + ")";
@@ -26,7 +26,7 @@ export default function MiddlePartTable(props) {
       {
         title: "지역",
         field: "areaCode",
-        lookup: mainpart
+        lookup: areaCode
       }
     ],
     data: []
@@ -39,7 +39,7 @@ export default function MiddlePartTable(props) {
       setLoading(true);
       try {
         const response = await axios.get(
-          "http://54.180.134.217:8080/api/middlepart//getMaincodeAllList/" +
+          "http://54.180.134.217:8080/api/middlepart/getMaincodeAllList/" +
             props.code
         );
         const restate = {
