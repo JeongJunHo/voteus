@@ -86,12 +86,17 @@ const useStyles = makeStyles(theme => ({
 const UserVoteEnd = props => {
   const classes = useStyles();
 
+  const [waitnumber, setWaitNumber] = useState(5);
   const [redirect, setRedirect] = useState(false);
 
   const url = "/";
 
   useEffect(() => {
-      setTimeout(()=>{setRedirect(true)}, 5000)
+    setTimeout(()=>{setWaitNumber(4)}, 1000)
+    setTimeout(()=>{setWaitNumber(3)}, 2000)
+    setTimeout(()=>{setWaitNumber(2)}, 3000)
+    setTimeout(()=>{setWaitNumber(1)}, 4000)
+    setTimeout(()=>{setRedirect(true)}, 5000)
   },[])
 
   return (
@@ -102,6 +107,7 @@ const UserVoteEnd = props => {
             <Paper elevation={0} className={classes.paperHeader}>
               <h1>투표가 종료되었습니다.</h1>
               {redirect === true ? <Redirect to="/" /> : <h2>5초 후 처음 화면으로 돌아갑니다.</h2>}
+              <h3>{waitnumber}초</h3>
             </Paper>
           </Grid>
         </Grid>
