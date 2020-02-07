@@ -77,7 +77,7 @@ const UserAuthFace = props => {
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <Image
-              src={finger}
+              src={captureExam}
               alt="finger-print"
               disableSpinner="true"
               disableTransition="true"
