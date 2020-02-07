@@ -71,7 +71,8 @@ const UserAuthFinger = props => {
   if (result === "set") {
     return (
       <Fragment>
-        <div>인증중...</div>
+        <h2>지문을 인식하는 중입니다.</h2>
+        <h2>잠시만 기다려주세요.</h2>
       </Fragment>
     );
   } else if (result === "getimage") {
@@ -86,6 +87,26 @@ const UserAuthFinger = props => {
               style={{ height: "200px", paddingTop: 0 }}
               imageStyle={{ width: "auto", position: "static" }}
             />
+          <h2>지문이 인식되었습니다.</h2>
+          <h2>인증 또는 재촬영을 진행해주세요.</h2>
+          {/* 수정필요함 (2020/02/07) */}
+          <Button
+            variant="contained"
+            size="large"
+            color="primary"
+            fullWidth="true"
+            onClick={nextPage}
+            autoFocus
+          >
+            다음
+          </Button>
+        </div>
+      </Fragment>
+    );
+  } else if (result === "true") {
+    return (
+      <Fragment>
+        <div>
           인증이 완료되었습니다.
           <Button
             variant="contained"
@@ -130,7 +151,7 @@ const UserAuthFinger = props => {
           도움말
         </IconButton>
         <h1>지문 인증을 진행합니다.</h1>
-
+        <h2>아래의 버튼을 누른 후 지문인식기에 손가락을 올려주세요.</h2>
         <UserAuthFingerPicture result={result} setResult={setResult} setFinger={setFinger} />
         <Dialog
           open={open}
