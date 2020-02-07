@@ -91,7 +91,7 @@ const UserVoteEnd = props => {
   const url = "/";
 
   useEffect(() => {
-      setTimeout(()=>{setRedirect(false)}, 5000)
+      setTimeout(()=>{setRedirect(true)}, 5000)
   },[])
 
   return (

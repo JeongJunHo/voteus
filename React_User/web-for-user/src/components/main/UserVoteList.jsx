@@ -58,7 +58,7 @@ const useStyles = makeStyles(theme => ({
       boxShadow: "0 4px 20px -6px #1b5e20"
     },
     // color: theme.palette.text.secondary,
-    backgroundColor: '#e8f5e9',
+    backgroundColor: '#c8e6c9',
   },
   vote: {
     padding: theme.spacing(1),
@@ -137,7 +137,7 @@ const UserVoteList = (props) => {
               }
               if (eachvote.candidate === null) {
                 return (
-                  <Grid item xs={6} key={eachvote.vote.code}>
+                  <Grid item xs={12} key={eachvote.vote.code}>
                     <Card variant="outlined" onClick={changeVoteNumber} className={classes.cardBody}>
                       <CardContent>
                         <Typography className={classes.vote}>
@@ -152,7 +152,7 @@ const UserVoteList = (props) => {
                 )
               } else {
                 return (
-                  <Grid item xs={6} key={eachvote.vote.code}>
+                  <Grid item xs={12} key={eachvote.vote.code}>
                     <Card variant="outlined" onClick={changeVoteNumber} className={classes.cardBodySelect}>
                       <CardContent>
                         <Typography className={classes.vote}>
