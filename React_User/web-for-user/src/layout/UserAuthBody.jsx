@@ -35,7 +35,6 @@ const UserAuthBody = props => {
   } else if (number === 2) {
     return (
       <Fragment>
-        {number}
         <UserAuthFinger
           number={number}
           setNumber={setNumber}
