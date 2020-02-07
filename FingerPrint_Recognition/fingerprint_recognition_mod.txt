@@ -6,3 +6,6 @@
 
 3. OpenCV의 ORB를 생성해 detectAndCompute 실행했는데 에러뜸...
 	=> image = np.array(image, dtype=np.uint8)를 먼저 실행한 후 코드 실행하면 됨 / detectAndCompute메소드를 호출하는 대부분의 경우 image = np.array(image, dtype=np.uint8)를 실행하면 됨
+
+4. Descriptor와 dataset을 저장해 python 파일로 만들어 다른 환경에서 사용하려고 했는데, 에러가 뜸
+	=> 입력값이나 데이터셋들의 사이즈가 달라서 open source의 코드 값이 적용 안됨 / 입력값이나 데이터셋을 img = cv2.resize(img, dsize=(296, 560), interpolation=cv2.INTER_LINEAR)로 리사이징 하면 됨
