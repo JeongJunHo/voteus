@@ -100,7 +100,7 @@ const UserVoteStandBy = props => {
     }
     setVoteNameList(temp_votenamelist)
 
-    setTimeout(() => {setShowButton(true)}, 1000)
+    setTimeout(() => {setShowButton(true)}, 2000)
     setLoading(false)
   }, [props.votelist])
 
