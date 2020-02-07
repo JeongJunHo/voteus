@@ -36,7 +36,6 @@ const UserAuthWebcam = props => {
       webcamRef.current.stream !== null &&
       webcamRef.current.stream !== undefined
     ) {
-      console.log(webcamRef.current.stream);
       const imageSrc = webcamRef.current.getScreenshot();
       setScreenShot(screenshot => imageSrc);
     }
@@ -58,7 +57,11 @@ const UserAuthWebcam = props => {
   const sendFace = () => {
     axios
       .post("주소", { img: screenshot, name: username })
-      // axios.post('http://192.168.100.71:5000/getImg', {img: fd, name: username})
+      // axios
+      //   .post("http://192.168.100.121:5000/getImg", {
+      //     img: screenshot,
+      //     name: username
+      //   })
       .then(res => {
         if (res.data === true) {
           props.setResult("true");
