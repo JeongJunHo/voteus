@@ -54,22 +54,6 @@ export default function TemporaryDrawer() {
           {
             name: "투표 관리",
             url: "/VoteList"
-          },
-          {
-            name: "정당 관리",
-            url: "/PartyList"
-          },
-          {
-            name: "지역구 관리",
-            url: "/AreaList"
-          },
-          {
-            name: "선거 분류 관리",
-            url: "/MainPartList"
-          },
-          {
-            name: "투표자 등록",
-            url: "/"
           }
         ].map((obj, index) => (
           <Link key={index} href={obj.url} color="inherit">
@@ -84,13 +68,54 @@ export default function TemporaryDrawer() {
       </List>
       <Divider />
       <List>
-        {["메뉴1", "메뉴2", "메뉴3"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
+        {[
+          {
+            name: "정당 관리",
+            url: "/PartyList"
+          },
+          {
+            name: "지역구 관리",
+            url: "/AreaList"
+          },
+          {
+            name: "선거 분류 관리",
+            url: "/MainPartList"
+          },
+          {
+            name: "투표자 등록",
+            url: "/VoterList"
+          }
+        ].map((obj, index) => (
+          <Link key={index} href={obj.url} color="inherit">
+            <ListItem button key={obj.name}>
+              <ListItemIcon>
+                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              </ListItemIcon>
+              <ListItemText primary={obj.name} />
+            </ListItem>
+          </Link>
+        ))}
+      </List>
+      <Divider />
+      <List>
+        {[
+          {
+            name: "통계1",
+            url: "/"
+          },
+          {
+            name: "통계2",
+            url: "/"
+          }
+        ].map((obj, index) => (
+          <Link key={index} href={obj.url} color="inherit">
+            <ListItem button key={obj.name}>
+              <ListItemIcon>
+                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              </ListItemIcon>
+              <ListItemText primary={obj.name} />
+            </ListItem>
+          </Link>
         ))}
       </List>
     </div>

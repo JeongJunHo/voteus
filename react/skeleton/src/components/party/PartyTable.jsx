@@ -4,7 +4,7 @@ import LinearProgress from "@material-ui/core/LinearProgress";
 
 import axios from "axios";
 
-export default function MainPartTable() {
+export default function PartyTable() {
   const [state, setState] = React.useState({
     columns: [
       {

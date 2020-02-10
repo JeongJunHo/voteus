@@ -19,7 +19,7 @@ export default function MainPartTable() {
         render: rowData => {
           const href = "/MiddlePartList/" + rowData.code + "/" + rowData.name;
           return (
-            <Link key={rowData.index} href={href} color="inherit">
+            <Link key={rowData.index} href={href}>
               {rowData.name}
             </Link>
           );
