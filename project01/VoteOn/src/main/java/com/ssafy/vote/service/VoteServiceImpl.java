@@ -22,6 +22,11 @@ public class VoteServiceImpl implements IVoteService {
 	public List<VoteVO> getVoteAllList() {
 		return man.getVoteAllList();
 	}
+	
+	@Override
+	public List<VoteVO> getVoteActiveList() {
+		return man.getVoteActiveList();
+	}
 
 	@Override
 	public boolean insertVote(String name, String middlepart, String start, String end) {
@@ -45,6 +50,4 @@ public class VoteServiceImpl implements IVoteService {
 	public List<VoteVO> getVoteList(String votercode) {
 		return man.getVoteList(votercode);
 	}
-
-
 }
