@@ -5,9 +5,9 @@ import {
   LinearProgress,
   Grid,
   Paper,
-  Card,
-  CardContent,
-  Typography,
+  // Card,
+  // CardContent,
+  // Typography,
   Button
 } from "@material-ui/core";
 
@@ -84,7 +84,6 @@ const UserVoteStandBy = props => {
   const classes = useStyles();
 
   const [votenamelist, setVoteNameList] = useState(null);
-  const [showbutton, setShowButton] = useState(false);
   const [loading, setLoading] = useState(null);
 
   useEffect(() => {
@@ -98,8 +97,7 @@ const UserVoteStandBy = props => {
       }
     }
     setVoteNameList(temp_votenamelist)
-
-    setTimeout(() => {setShowButton(true)}, 1000)
+    
     setLoading(false)
   }, [props.votelist])
 
@@ -148,30 +146,16 @@ const UserVoteStandBy = props => {
           <Grid container spacing={3} className={classes.header}>
             <Grid item xs={12}>
               <Paper elevation={0} className={classes.paperHeader}>              
-                {showbutton === true ? (
-                  <Button
-                    onClick={changeStatus}
-                    variant="contained"
-                    color="primary"
-                    disableElevation
-                    className={classes.submitButton}
-                    fullWidth={true}
-                  >
+                <Button
+                  onClick={changeStatus}
+                  variant="contained"
+                  color="primary"
+                  disableElevation
+                  className={classes.submitButton}
+                  fullWidth={true}
+                >
                   투표 시작
                 </Button>
-                ) : (
-                  <Button
-                    onClick={changeStatus}
-                    variant="contained"
-                    color="primary"
-                    disableElevation
-                    className={classes.submitButton}
-                    fullWidth={true}
-                    disabled
-                  >
-                  투표 시작
-                </Button>
-                )}
               </Paper>
             </Grid>
           </Grid>

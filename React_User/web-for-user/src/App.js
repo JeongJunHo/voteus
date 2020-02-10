@@ -7,6 +7,8 @@ import UserHome from "./pages/UserHome";
 import UserAuthentication from "./pages/UserAuthentication";
 import UserVote from "./pages/UserVote";
 
+import TypeContext from "./context/TypeContext";
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -20,10 +22,13 @@ class App extends Component {
       <Router>
         <div>
           <Route exact path="/" component={UserHome} />
-          <Route path="/user-home" component={UserHome} />
-          <Route path="/user-auth" component={UserAuthentication} />
-          {/* <Route exact path="/user-vote" component={UserVote} /> */}
-          <Route path="/user-vote/:code/:name" component={UserVote} />
+            <Route path="/user-home" component={UserHome} />
+            <TypeContext.Provider value={'auth'}>
+              <Route path="/user-auth" component={UserAuthentication} />
+            </TypeContext.Provider>
+            {/* <TypeContext.Provider value={'vote'}> */}
+              <Route path="/user-vote/:code/:name" component={UserVote} />
+            {/* </TypeContext.Provider> */}
         </div>
       </Router>
     );

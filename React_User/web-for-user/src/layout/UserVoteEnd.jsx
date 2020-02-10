@@ -4,12 +4,12 @@ import { Redirect } from 'react-router-dom';
 
 import {
   makeStyles,
-  LinearProgress,
+  // LinearProgress,
   Grid,
   Paper,
-  Card,
-  CardContent,
-  Typography,
+  // Card,
+  // CardContent,
+  // Typography,
   Button
 } from "@material-ui/core";
 

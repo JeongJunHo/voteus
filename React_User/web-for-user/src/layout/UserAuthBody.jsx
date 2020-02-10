@@ -3,7 +3,7 @@ import React, { useState, Fragment } from "react";
 import UserAuthName from "../components/main/UserAuthName";
 import UserAuthFace from "../components/main/UserAuthFace";
 import UserAuthFinger from "../components/main/UserAuthFinger";
-import UserAuthComplete from "../components/main/UserAuthComplete";
+// import UserAuthComplete from "../components/main/UserAuthComplete";
 
 import UserNameContext from "../context/UserNameContext";
 
@@ -32,20 +32,14 @@ const UserAuthBody = props => {
         />
       </UserNameContext.Provider>
     );
-  } else if (number === 2) {
+  } else {
     return (
-      <Fragment>
+      <UserNameContext.Provider value={userinfo.name}>
         <UserAuthFinger
           number={number}
           setNumber={setNumber}
           userinfocode={userinfo.code}
         />
-      </Fragment>
-    );
-  } else {
-    return (
-      <UserNameContext.Provider value={userinfo.name}>
-        <UserAuthComplete userinfocode={userinfo.code} />
       </UserNameContext.Provider>
     );
   }

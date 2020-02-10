@@ -15,7 +15,7 @@ const useStyles = makeStyles({
   }
 });
 
-const style = {};
+// const style = {};
 
 const UserHomeBody = props => {
   const classes = useStyles();
@@ -24,7 +24,7 @@ const UserHomeBody = props => {
     <Fragment>
       <Link href="/user-auth" color="inherit">
         <div className={classes.flex}>
-          <h1 className>전자투표시스템</h1>
+          <h1>전자투표시스템</h1>
           <h1>화면을 터치해주세요.</h1>
         </div>
       </Link>

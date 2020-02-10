@@ -1,8 +1,9 @@
 import React, { useState, Fragment } from "react";
+import UserAuthComplete from "./UserAuthComplete";
+import UserAuthFingerRecognition from "../main/UserAuthFingerRecognition";
 
 import { makeStyles } from "@material-ui/core/styles";
-import Image from "material-ui-image";
-import UserAuthFingerPicture from "../main/UserAuthFingerPicture";
+// import Image from "material-ui-image";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import Dialog from "@material-ui/core/Dialog";
@@ -14,9 +15,12 @@ import HelpIcon from "@material-ui/icons/Help";
 import IconButton from "@material-ui/core/IconButton";
 import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
+import CircularProgress from "@material-ui/core/CircularProgress";
+
+import axios from 'axios';
 
 //image
-import fingerprint from "../../images/fingerprint.png";
+// import fingerprint from "../../images/fingerprint.png";
 import Fingerprint_true from "../../images/Fingerprint_true.png";
 import Fingerprint_false1 from "../../images/Fingerprint_false1.png";
 import Fingerprint_false2 from "../../images/Fingerprint_false2.png";
@@ -35,111 +39,115 @@ const useStyles = makeStyles(theme => ({
 
 const UserAuthFinger = props => {
   const classes = useStyles();
-  const [finger, setFinger] = useState(null);
-  const [result, setResult] = useState("finger");
+  const [fingerprint, setFingerPrint] = useState("");
+  const [result, setResult] = useState("picture");
   const [open, setOpen] = React.useState(true);
+  const [countdown, setCountDown] = useState(20);
 
   const handleClickOpen = () => {
     setOpen(true);
   };
 
   const handleClose = () => {
+    const down = () => {
+      setCountDown(countdown => countdown - 1)
+    }
+
+    let timer = setInterval(down, 1000)
+
+    // test
+    const takePicture = async () => {
+      try {
+        const res = await axios.post(
+          '주소'
+        )
+        console.log(res.data)
+        if (res.data.code === "05") {
+          setFingerPrint(res.data.img)
+          clearInterval(timer)
+        } else {
+          setResult("problem")
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    takePicture()
+
+    // test용도
+    setTimeout(() => {
+      setFingerPrint("image")
+      clearInterval(timer)
+    }, 6000)
+
     setOpen(false);
   };
 
-  const nextPage = () => {
-    // console.log(props.userinfocode)
-
-    // vote 페이지에서 axios하도록 만들예정
-    // // 지문인증까지 완료하면 votelist를 받아온다.
-    // axios.get('http://54.180.134.217:8080/api/vote/getVoteList/'+props.userinfocode)
-    // // axios.get('dummy/vote_list.json')
-    // .then(res => {
-    //     // res 값 확인
-    //     console.log('res', res)
-    //     props.setVoteList(voteList => res)
-    // })
-    // .catch(error => console.log(error))
-
-    // // axios를 받아오는데 걸리는 시간이 필요하다 그 것을 어떤식으로 해결할지 고민중
-    // setTimeout(()=>{props.setNumber(number => number + 1)},2000)
-
-    props.setNumber(number => number + 1);
-  };
-
   const returnPage = () => {
-    setResult(result => "finger");
+    setFingerPrint("")
+    setResult("picture");
   };
 
-  if (result === "set") {
+  if (result === "problem") {
     return (
       <Fragment>
-        <h2>지문을 인식하는 중입니다.</h2>
-        <h2>잠시만 기다려주세요.</h2>
+        <h2>지문 인증에 문제가 발생하였습니다.</h2>
+        <h2>관리자에게 문의해주세요.</h2>
+        <button>돌아가기</button>
       </Fragment>
     );
-  } else if (result === "getimage") {
+  } else if (result === "wait") {
     return (
       <Fragment>
-        <div>
-          <Image
-              src={`data:image/bmp;base64,${finger}`}
+        <CircularProgress />
+      </Fragment>
+    )
+  } else if (result === "set") {
+    return (
+      <Fragment>
+        <h2>지문 인증중입니다.</h2>
+        <h2>잠시만 기다려주세요.</h2>
+        <CircularProgress />
+      </Fragment>
+    )
+  } else if (result === "true") {
+    return (
+      <Fragment>
+        <UserAuthComplete returnPage={returnPage} userinfocode={props.userinfocode}/>
+      </Fragment>
+    );
+  } else if (result === "false" || (fingerprint === "" && countdown < 0)) {
+    return (
+      <Fragment>
+        <Grid container spacing={3}>
+          <Grid item xs={12}>
+            <h1>인증에 실패했습니다.</h1>
+          </Grid>
+          {/* <Grid item xs={12}>
+            <Image
+              src={captureExam}
               alt="finger-print"
-              // disableSpinner="true"
+              disableSpinner="true"
               disableTransition="true"
               style={{ height: "200px", paddingTop: 0 }}
               imageStyle={{ width: "auto", position: "static" }}
             />
-          <h2>지문이 인식되었습니다.</h2>
-          <h2>인증 또는 재촬영을 진행해주세요.</h2>
-          {/* 수정필요함 (2020/02/07) */}
-          <Button
-            variant="contained"
-            size="large"
-            color="primary"
-            fullWidth="true"
-            onClick={nextPage}
-            autoFocus
-          >
-            다음
-          </Button>
-        </div>
-      </Fragment>
-    );
-  } else if (result === "true") {
-    return (
-      <Fragment>
-        <div>
-          인증이 완료되었습니다.
-          <Button
-            variant="contained"
-            size="large"
-            color="primary"
-            fullWidth="true"
-            onClick={nextPage}
-            autoFocus
-          >
-            다음
-          </Button>
-        </div>
-      </Fragment>
-    );
-  } else if (result === "false") {
-    return (
-      <Fragment>
-        <div>
-          인증이 실패되었습니다. 다시 인증하세요.
-          <Button
-            variant="contained"
-            size="large"
-            color="primary"
-            fullWidth="true"
-            onClick={returnPage}
-            autoFocus
-          >
-            다시하기
-          </Button>
-        </div>
+          </Grid> */}
+          <Grid item xs={12}>
+            <p>지문인증을 다시 진행해주세요!</p>
+          </Grid>
+          <Grid item xs={12}>
+            <Button
+              variant="contained"
+              size="large"
+              color="primary"
+              fullWidth="true"
+              onClick={returnPage}
+            >
+              다시하기
+            </Button>
+          </Grid>
+        </Grid>
       </Fragment>
     );
   } else {
@@ -153,9 +161,7 @@ const UserAuthFinger = props => {
           <HelpIcon fontSize="large" />
           도움말
         </IconButton>
-        <h1>지문 인증을 진행합니다.</h1>
-        <h2>아래의 버튼을 누른 후 지문인식기에 손가락을 올려주세요.</h2>
-        <UserAuthFingerPicture result={result} setResult={setResult} setFinger={setFinger} />
+        <UserAuthFingerRecognition result={result} setResult={setResult} fingerprint={fingerprint} setFingerPrint={setFingerPrint} countdown={countdown} setCountDown={setCountDown}/>
         <Dialog
           open={open}
           onClose={handleClose}

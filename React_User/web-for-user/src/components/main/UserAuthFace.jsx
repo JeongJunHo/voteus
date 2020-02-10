@@ -20,7 +20,7 @@ import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 
 //image
-import finger from "../../images/finger.png";
+// import finger from "../../images/finger.png";
 import captureExam from "../../images/captureExam.png";
 import Camera_true from "../../images/Camera_true.png";
 import Camera_false1 from "../../images/Camera_false1.png";
@@ -43,7 +43,7 @@ const UserAuthFace = props => {
   const classes = useStyles();
 
   const [result, setResult] = useState("face");
-  const [capture, setCapture] = useState("capture");
+  // const [capture, setCapture] = useState("capture");
   const [open, setOpen] = React.useState(true);
 
   const handleClickOpen = () => {
@@ -93,7 +93,7 @@ const UserAuthFace = props => {
               variant="contained"
               size="large"
               color="primary"
-              fullWidth="true"
+              fullWidth={true}
               onClick={nextPage}
             >
               다음
@@ -127,7 +127,7 @@ const UserAuthFace = props => {
               variant="contained"
               size="large"
               color="primary"
-              fullWidth="true"
+              fullWidth={true}
               onClick={returnPage}
             >
               재촬영
@@ -154,14 +154,14 @@ const UserAuthFace = props => {
           onClose={handleClose}
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
-          fullWidth="true"
+          fullWidth={true}
           PaperProps={{ className: [classes.vh_80] }}
         >
           <DialogTitle id="alert-dialog-title">촬영 전 확인사항</DialogTitle>
           <DialogContent>
-            <DialogContentText id="alert-dialog-description">
-              <h2 className={classes.alignCenter}>올바른 촬영 자세</h2>
-            </DialogContentText>
+            {/* <DialogContentText id="alert-dialog-description"> */}
+            <h2 className={classes.alignCenter}>올바른 촬영 자세</h2>
+            {/* </DialogContentText> */}
             <Grid container spacing={1}>
               <Grid container item xs={12} alignItems="center" justify="center">
                 <Grid item xs={"auto"}>
@@ -169,7 +169,7 @@ const UserAuthFace = props => {
                 </Grid>
               </Grid>
               <Grid container item xs={12} alignItems="center" justify="center">
-                <Grid item xs={"auto"} justify="center">
+                <Grid item xs={"auto"}>
                   <CheckCircleOutlineIcon fontSize="large" color="primary" />
                 </Grid>
               </Grid>
@@ -188,12 +188,12 @@ const UserAuthFace = props => {
                 </Grid>
               </Grid>
               <Grid container item xs={6} alignItems="center" justify="center">
-                <Grid item xs={"auto"} justify="center">
+                <Grid item xs={"auto"}>
                   <HighlightOffIcon fontSize="large" color="secondary" />
                 </Grid>
               </Grid>
               <Grid container item xs={6} alignItems="center" justify="center">
-                <Grid item xs={"auto"} justify="center">
+                <Grid item xs={"auto"}>
                   <HighlightOffIcon fontSize="large" color="secondary" />
                 </Grid>
               </Grid>
@@ -204,7 +204,7 @@ const UserAuthFace = props => {
               variant="contained"
               size="large"
               color="primary"
-              fullWidth="true"
+              fullWidth={true}
               onClick={handleClose}
               autoFocus
             >
