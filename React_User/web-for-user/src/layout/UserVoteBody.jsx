@@ -4,7 +4,7 @@ import UserVoteList from '../components/main/UserVoteList';
 import UserVoteCandidateList from '../components/main/UserVoteCandidateList';
 import VoteListContext from '../context/VoteListContext';
 
-import axios from 'axios';
+// import axios from 'axios';
 
 import {
   LinearProgress,
@@ -15,8 +15,7 @@ const UserVoteBody = props => {
   const [votename, setVoteName] = useState(null);
   const [candidatelist, setCandidateList] = useState(null);
   const [endvote, setEndVote] = useState(false);
-  const [voteresult, setVoteResult] = useState(null);
-
+  // const [voteresult, setVoteResult] = useState(null);
   const [loading, setLoading] = useState(null);
 
   const votelist = useContext(VoteListContext);
@@ -70,7 +69,7 @@ const UserVoteBody = props => {
           <UserVoteList
             endvote={endvote}
             finishVote={finishVote}
-            setVoteResult={setVoteResult}
+            // setVoteResult={setVoteResult}
             setVoteNumber={setVoteNumber}
             result={props.result}
           />

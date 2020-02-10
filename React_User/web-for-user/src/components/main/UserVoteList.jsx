@@ -71,15 +71,15 @@ const UserVoteList = (props) => {
   const classes = useStyles();
 
   const username = useContext(UserNameContext);
+  const votelist = useContext(VoteListContext);
 
   const [dialogopen, setDialogOpen] = useState(false);
   const [vote, setVote] = useState(null);
   const [loading, setLoading] = useState(null);
 
-  const votelist = useContext(VoteListContext);
-
   useEffect(()=>{
     setLoading(true)
+    
     // console.log(votelist)
     if (votelist !== null) {
       const votecandidate = []
@@ -103,7 +103,7 @@ const UserVoteList = (props) => {
       }
       // console.log('c', votecandidate)
       setVote(votecandidate)
-      props.setVoteResult(votecandidate)
+      // props.setVoteResult(votecandidate)
     }
     setLoading(false)
   }, [votelist])

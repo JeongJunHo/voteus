@@ -1,29 +1,29 @@
 import React, { useState, Fragment, useMemo, useCallback } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+// import { makeStyles } from "@material-ui/core/styles";
 import axios from "axios";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { Alert, AlertTitle } from "@material-ui/lab";
 
-const useStyles = makeStyles(theme => ({
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: "center",
-    color: theme.palette.text.secondary
-  },
-  textField: {
-    marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1),
-    width: 300
-  },
-  margin: {
-    margin: theme.spacing(1)
-  }
-}));
+// const useStyles = makeStyles(theme => ({
+//   paper: {
+//     padding: theme.spacing(2),
+//     textAlign: "center",
+//     color: theme.palette.text.secondary
+//   },
+//   textField: {
+//     marginLeft: theme.spacing(1),
+//     marginRight: theme.spacing(1),
+//     width: 300
+//   },
+//   margin: {
+//     margin: theme.spacing(1)
+//   }
+// }));
 
 const UserAuthName = props => {
-  const classes = useStyles();
+  // const classes = useStyles();
 
   const [commit, setCommit] = useState(false);
   const [loginState, setLoginState] = useState(true);
@@ -196,7 +196,7 @@ const UserAuthName = props => {
               variant="contained"
               size="large"
               color="primary"
-              fullWidth="true"
+              fullWidth={true}
               type="submit"
             >
               인증

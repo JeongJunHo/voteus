@@ -109,7 +109,7 @@ const UserAuthWebcam = props => {
                 variant="contained"
                 size="large"
                 color="primary"
-                fullWidth="true"
+                fullWidth={true}
                 onClick={send}
               >
                 인증
@@ -120,7 +120,7 @@ const UserAuthWebcam = props => {
                 variant="contained"
                 size="large"
                 color="primary"
-                fullWidth="true"
+                fullWidth={true}
                 onClick={reset}
               >
                 재촬영
@@ -133,7 +133,7 @@ const UserAuthWebcam = props => {
               variant="contained"
               size="large"
               color="primary"
-              fullWidth="true"
+              fullWidth={true}
               onClick={capture}
             >
               촬영
