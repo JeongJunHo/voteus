@@ -1,0 +1,27 @@
+지난주까지 했던거 다 포기하고
+다시 원래 했던 https://github.com/kairess/fingerprint_recognition으로 돌아감
+
+종수의 이미지를 넣어서 데이터셋 만드는데 하루 다 감
+데이터셋 만드는 방법
+[ - real에 데이터 조금 줄여서 저장(easy, medium, hard 모두 비슷)
+img_list = sorted(glob.glob('Real_temp/*.BMP'))
+print(len(img_list))
+
+imgs = np.empty((len(img_list), 96, 96, 1), dtype=np.uint8)
+labels = np.empty((len(img_list), 4), dtype=np.uint16)
+
+for i, img_path in enumerate(img_list):
+    img = cv2.imread(img_path, cv2.IMREAD_GRAYSCALE)
+    img = cv2.resize(img, (96, 96))
+    img_r = img[:, :, np.newaxis]
+    imgs[i] = img_r
+    
+    # subject_id, gender, lr, finger
+    labels[i] = extract_label(img_path)
+
+np.savez('dataset/x_real_1.npz', data=imgs)
+np.save('dataset/y_real_1.npy', labels)
+]
+이후 alter 모듈로 이미지 변경해서 alter_easy, medium, hard 효과를 준 이미지 생성
+-테스트는 2장씩 추가
+이후 train 실행
