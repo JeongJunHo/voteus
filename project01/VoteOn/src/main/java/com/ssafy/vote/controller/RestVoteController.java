@@ -110,22 +110,6 @@ public class RestVoteController {
 		}
 		return re;
 	}
-	
-	@ApiOperation(value = "진행중인 투표 데이터를 조회합니다.")
-	@GetMapping("/getVoteActiveList")
-	public ResponseEntity<List<VoteVO>> getVoteActiveList() {
-		ResponseEntity<List<VoteVO>> re = null;
-		try {
-			List<VoteVO> list = ser.getVoteActiveList();
-			System.out.println(list.get(0).toString());
-			System.out.println(list.get(0).getMiddlepartVO().toString());
-			re = new ResponseEntity<List<VoteVO>>(list, HttpStatus.OK);
-		} catch (Exception e) {
-			re = new ResponseEntity("failure", HttpStatus.OK);
-			e.printStackTrace();
-		}
-		return re;
-	}
 
 	@ApiOperation(value = "투표를 등록합니다.")
 	@PostMapping("/insertVote")

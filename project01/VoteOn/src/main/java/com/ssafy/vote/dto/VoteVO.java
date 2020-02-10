@@ -6,15 +6,6 @@ public class VoteVO {
 	private String middlepart;
 	private String start;
 	private String end;
-	
-	private MiddlepartVO middlepartVO;
-	
-	public MiddlepartVO getMiddlepartVO() {
-		return middlepartVO;
-	}
-	public void setMiddlepartVO(MiddlepartVO middlepartVO) {
-		this.middlepartVO = middlepartVO;
-	}
 	public int getCode() {
 		return code;
 	}
