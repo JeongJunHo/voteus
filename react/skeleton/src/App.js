@@ -20,6 +20,9 @@ import "./index.css";
 
 const theme = createMuiTheme(
   {
+    palette: {
+      type: "light"
+    },
     drawerWidth: 320,
     typography: {
       fontFamily: ["Noto Sans KR"].join(","),
