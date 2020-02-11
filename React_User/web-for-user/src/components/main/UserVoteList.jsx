@@ -43,19 +43,21 @@ const useStyles = makeStyles(theme => ({
     },
     // backgroundColor: '#fce4ec',
     borderRadius: theme.spacing(3),
-    background:
-    // 'linear-gradient(34deg, #f44336 0%, #f6685e 29%, #f44336 92%)',
-    'radial-gradient(farthest-side at 20% 20%, #e57373, #ef5350, #f44336)',
+    borderColor: "#f44336"
+    // background:
+    // // 'linear-gradient(34deg, #f44336 0%, #f6685e 29%, #f44336 92%)',
+    // 'radial-gradient(farthest-side at 20% 20%, #e57373, #ef5350, #f44336)',
   },
   cardBodySelect: {
     "&:hover": {
       boxShadow: "0 4px 20px -6px #1b5e20",
     },
-    // backgroundColor: '#c8e6c9',
+    // backgroundColor: "#4caf50",
+    backgroundColor: "#8bc34a",
     borderRadius: theme.spacing(3),
-    background:
-      // 'linear-gradient(34deg, #4caf50 0%, #6fbf73 29%, #4caf50 92%)',
-      'radial-gradient(farthest-side at 20% 20%, #81c784, #66bb6a, #4caf50)',
+    // background:
+    //   // 'linear-gradient(34deg, #4caf50 0%, #6fbf73 29%, #4caf50 92%)',
+    //   'radial-gradient(farthest-side at 20% 20%, #81c784, #66bb6a, #4caf50)',
   },
   vote: {
     padding: theme.spacing(1),
@@ -189,7 +191,7 @@ const UserVoteList = (props) => {
                 return (
                   <Grid item xs={12} key={eachvote.vote.code}>
                     <Card
-                      variant="outlined"
+                      // variant="outlined"
                       onClick={changeVoteNumber}
                       className={classes.cardBodySelect}
                     >

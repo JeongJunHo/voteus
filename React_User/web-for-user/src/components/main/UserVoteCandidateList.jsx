@@ -35,10 +35,10 @@ const useStyles = makeStyles(theme => ({
     "&:hover": {
       boxShadow: "0 4px 20px -6px #1a237e"
     },
-    // backgroundColor: '#e8eaf6',
+    backgroundColor: '#ff9800',
     borderRadius: theme.spacing(3),
-    background:
-      'linear-gradient(34deg, #ff9800 0%, #ffac33 29%, #ff9800 92%)',
+    // background:
+    //   'linear-gradient(34deg, #ff9800 0%, #ffac33 29%, #ff9800 92%)',
   },
   party: {
     textAlign: "left",
@@ -94,7 +94,7 @@ const UserVoteCandidateList = props => {
               return (
                 <Grid item xs={6} key={eachcandidate.code}>
                   <Card
-                    variant="outlined"
+                    // variant="outlined"
                     onClick={selectCandidate}
                     className={classes.cardBody}
                   >
