@@ -67,6 +67,7 @@ const UserVoteBody = props => {
       return (
         <Fragment>
           <UserVoteList
+            username={props.username}
             endvote={endvote}
             finishVote={finishVote}
             // setVoteResult={setVoteResult}

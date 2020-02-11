@@ -99,7 +99,7 @@ const UserAuthName = props => {
             registration_number
         )
         .then(res => {
-          console.log(res);
+          // console.log(res);
           if (res.data !== "failure") {
             props.setUserInfo({ code: res.data, name: name });
             props.setNumber(number => number + 1);

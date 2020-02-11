@@ -12,7 +12,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
+// import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import HelpIcon from "@material-ui/icons/Help";
 import IconButton from "@material-ui/core/IconButton";
@@ -79,8 +79,8 @@ const UserAuthFace = props => {
             <Image
               src={captureExam}
               alt="finger-print"
-              disableSpinner="true"
-              disableTransition="true"
+              disableSpinner={true}
+              disableTransition={true}
               style={{ height: "200px", paddingTop: 0 }}
               imageStyle={{ width: "auto", position: "static" }}
             />
@@ -113,8 +113,8 @@ const UserAuthFace = props => {
             <Image
               src={captureExam}
               alt="finger-print"
-              disableSpinner="true"
-              disableTransition="true"
+              disableSpinner={true}
+              disableTransition={true}
               style={{ height: "200px", paddingTop: 0 }}
               imageStyle={{ width: "auto", position: "static" }}
             />

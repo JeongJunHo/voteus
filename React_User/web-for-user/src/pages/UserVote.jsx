@@ -79,6 +79,7 @@ const UserVote = ({match}) => {
             <VoteListContext.Provider value={votelist}>
               <UserVoteBody
                 user={match.params.code}
+                username={match.params.name}
                 setStatus={setStatus}
                 result={result}
                 setResult={setResult}

@@ -9,7 +9,7 @@ import Grid from "@material-ui/core/Grid";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
+// import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import HelpIcon from "@material-ui/icons/Help";
 import IconButton from "@material-ui/core/IconButton";
@@ -141,7 +141,7 @@ const UserAuthFinger = props => {
               variant="contained"
               size="large"
               color="primary"
-              fullWidth="true"
+              fullWidth={true}
               onClick={returnPage}
             >
               다시하기
@@ -167,16 +167,16 @@ const UserAuthFinger = props => {
           onClose={handleClose}
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
-          fullWidth="true"
+          fullWidth={true}
           PaperProps={{ className: [classes.vh_80] }}
         >
           <DialogTitle id="alert-dialog-title">
             지문인식 전 확인사항
           </DialogTitle>
           <DialogContent>
-            <DialogContentText id="alert-dialog-description">
-              <h2 className={classes.alignCenter}>올바른 지문인식</h2>
-            </DialogContentText>
+            {/* <DialogContentText id="alert-dialog-description"> */}
+            <h2 className={classes.alignCenter}>올바른 지문인식</h2>
+            {/* </DialogContentText> */}
             <Grid container spacing={1}>
               <Grid container item xs={12} alignItems="center" justify="center">
                 <Grid item xs={"auto"}>
@@ -184,7 +184,7 @@ const UserAuthFinger = props => {
                 </Grid>
               </Grid>
               <Grid container item xs={12} alignItems="center" justify="center">
-                <Grid item xs={"auto"} justify="center">
+                <Grid item xs={"auto"}>
                   <CheckCircleOutlineIcon fontSize="large" color="primary" />
                 </Grid>
               </Grid>
@@ -203,12 +203,12 @@ const UserAuthFinger = props => {
                 </Grid>
               </Grid>
               <Grid container item xs={6} alignItems="center" justify="center">
-                <Grid item xs={"auto"} justify="center">
+                <Grid item xs={"auto"}>
                   <HighlightOffIcon fontSize="large" color="secondary" />
                 </Grid>
               </Grid>
               <Grid container item xs={6} alignItems="center" justify="center">
-                <Grid item xs={"auto"} justify="center">
+                <Grid item xs={"auto"}>
                   <HighlightOffIcon fontSize="large" color="secondary" />
                 </Grid>
               </Grid>
@@ -219,7 +219,7 @@ const UserAuthFinger = props => {
               variant="contained"
               size="large"
               color="primary"
-              fullWidth="true"
+              fullWidth={true}
               onClick={handleClose}
               autoFocus
             >

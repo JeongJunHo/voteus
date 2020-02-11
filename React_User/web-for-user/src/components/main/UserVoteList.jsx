@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext, Fragment } from 'react';
 
-import UserNameContext from '../../context/UserNameContext';
+// import UserNameContext from '../../context/UserNameContext';
 import VoteListContext from '../../context/VoteListContext';
 
 import {
@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
   body : {
     paddingLeft: theme.spacing(3),
     paddingRight: theme.spacing(3),
-    marginBottom: theme.spacing(3)
+    marginBottom: theme.spacing(1),
   },
   paperHeader: {
     padding: theme.spacing(2),
@@ -39,15 +39,23 @@ const useStyles = makeStyles(theme => ({
   },
   cardBody: {
     "&:hover": {
-      boxShadow: "0 4px 20px -6px #880e4f"
+      boxShadow: "0 4px 20px -6px #880e4f",
     },
-    backgroundColor: '#fce4ec',
+    // backgroundColor: '#fce4ec',
+    borderRadius: theme.spacing(3),
+    background:
+    // 'linear-gradient(34deg, #f44336 0%, #f6685e 29%, #f44336 92%)',
+    'radial-gradient(farthest-side at 20% 20%, #e57373, #ef5350, #f44336)',
   },
   cardBodySelect: {
     "&:hover": {
-      boxShadow: "0 4px 20px -6px #1b5e20"
+      boxShadow: "0 4px 20px -6px #1b5e20",
     },
-    backgroundColor: '#c8e6c9',
+    // backgroundColor: '#c8e6c9',
+    borderRadius: theme.spacing(3),
+    background:
+      // 'linear-gradient(34deg, #4caf50 0%, #6fbf73 29%, #4caf50 92%)',
+      'radial-gradient(farthest-side at 20% 20%, #81c784, #66bb6a, #4caf50)',
   },
   vote: {
     padding: theme.spacing(1),
@@ -57,20 +65,43 @@ const useStyles = makeStyles(theme => ({
   },
   candidateNone: {
     textAlign: "center",
-    color: '#ffa199'
+    // color: "#ffcdd2",
+    color: "#f7b3b6",
   },
   submitButton: {
-    justifyContent: "center"
+    justifyContent: "center",
   },
   candidateColor: {
-    backgroundColor: "#e1bee7"
-  }
+    backgroundColor: "#e1bee7",
+  },
+  dialog: {
+    // alignItems: "center",
+    paddingTop: theme.spacing(5),
+    paddingBottom: theme.spacing(5),
+  },
+  textCenter: {
+    textAlign: "center",
+  },
+  buttonSpace: {
+    paddingLeft: theme.spacing(3),
+    paddingRight: theme.spacing(3),
+  },
+  cardSpace: {
+    padding: theme.spacing(1),
+    "&:last-child": {
+      paddingBottom: theme.spacing(2)
+    }
+  },
+  selectedVote: {
+    // color: "#757575",
+    color: "#357a38",
+  },
 }));
 
 const UserVoteList = (props) => {
   const classes = useStyles();
 
-  const username = useContext(UserNameContext);
+  // const username = useContext(UserNameContext);
   const votelist = useContext(VoteListContext);
 
   const [dialogopen, setDialogOpen] = useState(false);
@@ -129,7 +160,7 @@ const UserVoteList = (props) => {
               </Paper>
             </Grid>
           </Grid>
-          <Grid container spacing={3} className={classes.body}>
+          <Grid container spacing={2} className={classes.body}>
             {vote.map((eachvote)=>{
               // console.log(eachvote.vote.code)
               const changeVoteNumber = () => {
@@ -143,7 +174,7 @@ const UserVoteList = (props) => {
                       onClick={changeVoteNumber}
                       className={classes.cardBody}
                     >
-                      <CardContent>
+                      <CardContent className={classes.cardSpace}>
                         <Typography className={classes.vote}>
                           {eachvote.vote.name}
                         </Typography>
@@ -162,12 +193,12 @@ const UserVoteList = (props) => {
                       onClick={changeVoteNumber}
                       className={classes.cardBodySelect}
                     >
-                      <CardContent>
+                      <CardContent className={classes.cardSpace}>
                         <Typography className={classes.vote}>
-                          {eachvote.vote.name}
+                          <span className={classes.selectedVote}>{eachvote.vote.name}</span>
                         </Typography>
                         <Typography className={classes.candidate}>
-                          <b>{eachvote.candidate}</b>
+                          <span>{eachvote.candidate}</span>
                         </Typography>
                       </CardContent>
                     </Card>
@@ -202,46 +233,66 @@ const UserVoteList = (props) => {
           </Grid>
         </div>
         <Dialog
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
           onClose={dialogClose}
           open={dialogopen}
           fullWidth={true}
           maxWidth="xs"
-          PaperProps={{ className: [classes.flex] }}
+          PaperProps={{ className: [classes.dialog] }}
         >
           <DialogTitle>
-            {username}님의 투표 정보입니다.
+            <div className={classes.textCenter}>
+              {props.username}님의 투표 정보입니다.
+            </div>
           </DialogTitle>
           <DialogContent>
-            <div>
-              님은
-            </div>
-            {vote.map((eachvote) => {
-              if (eachvote.candidate === '1번투표무효표') {
-                return (
-                  <div key={eachvote.vote.code}>
-                    {eachvote.vote.name}에 <span className={classes.candidateColor}>무효표</span>를
-                  </div>
-                )
-              } else {
-                return (
-                  <div key={eachvote.vote.code}>
-                    {eachvote.vote.name}에 <span className={classes.candidateColor}>{eachvote.candidate}</span> 후보를
-                  </div>
-                )
-              }
-            })}
-            <div>
-              선택하셨습니다.
-            </div>
+            <Grid container justify="center">
+              {/* <Grid item xs></Grid> */}
+              <Grid item xs={"auto"}>
+                <p>{props.username}님은</p>
+                {vote.map((eachvote) => {
+                  if (eachvote.candidate === '1번투표무효표') {
+                    return (
+                      <div key={eachvote.vote.code}>
+                        {eachvote.vote.name}에 <span className={classes.candidateColor}>무효표</span>를
+                      </div>
+                    )
+                  } else {
+                    return (
+                      <div key={eachvote.vote.code}>
+                        {eachvote.vote.name}에 <span className={classes.candidateColor}>{eachvote.candidate}</span> 후보를
+                      </div>
+                    )
+                  }
+                })}
+                <div>
+                  선택하셨습니다.
+                </div>
+                <p>투표를 완료 하시겠습니까?</p>
+              </Grid>
+              {/* <Grid item xs></Grid> */}
+            </Grid>
           </DialogContent>
-          <DialogContent>
-            <p>투표 하시겠습니까?</p>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={props.finishVote}>
+          <DialogActions className={classes.buttonSpace}>
+            <Button
+              onClick={props.finishVote}
+              variant="contained"
+              // size="large"
+              color="primary"
+              fullWidth={true}
+              autoFocus
+            >
               확인
             </Button>
-            <Button onClick={dialogClose}>
+            <Button
+              onClick={dialogClose}
+              variant="contained"
+              // size="large"
+              color="default"
+              fullWidth={true}
+              autoFocus
+            >
               취소
             </Button>
           </DialogActions>

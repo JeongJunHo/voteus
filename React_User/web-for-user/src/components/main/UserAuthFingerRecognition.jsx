@@ -116,7 +116,7 @@ const UserAuthFingerRecognition = props => {
               src={`data:image/bmp;base64,${props.fingerprint}`}
               alt="finger-print"
               // disableSpinner="true"
-              disableTransition="true"
+              disableTransition={true}
               style={{ height: "200px", paddingTop: 0 }}
               imageStyle={{ width: "auto", position: "static" }}
             />
@@ -131,7 +131,7 @@ const UserAuthFingerRecognition = props => {
                 variant="contained"
                 size="large"
                 color="primary"
-                fullWidth="true"
+                fullWidth={true}
                 onClick={send}
               >
                 인증
@@ -142,7 +142,7 @@ const UserAuthFingerRecognition = props => {
                 variant="contained"
                 size="large"
                 color="primary"
-                fullWidth="true"
+                fullWidth={true}
                 onClick={reset}
               >
                 재촬영
@@ -155,7 +155,7 @@ const UserAuthFingerRecognition = props => {
               variant="contained"
               size="large"
               color="primary"
-              fullWidth="true"
+              fullWidth={true}
               disabled
               // onClick={picture}
             >
