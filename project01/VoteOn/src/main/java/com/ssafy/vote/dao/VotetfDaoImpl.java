@@ -27,10 +27,8 @@ public class VotetfDaoImpl implements IVotetfDao{
 
 	@Override
 	public boolean delVotetf(int votercode, int votecode) {
-		HashMap<String, Integer> map = new HashMap<>();
-		map.put("votercode", votercode);
-		map.put("votecode", votecode);
-		int n = session.delete("votetf.delVotetf", map);
+		VotetfVO v = new VotetfVO(votercode, votecode);
+		int n = session.delete("votetf.delVotetf", v);
 		if (n != 0)
 			return true;
 		else

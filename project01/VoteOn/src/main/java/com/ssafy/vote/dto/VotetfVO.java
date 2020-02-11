@@ -3,6 +3,7 @@ package com.ssafy.vote.dto;
 public class VotetfVO {
 	private int votercode;
 	private int votecode;
+
 	public int getVotercode() {
 		return votercode;
 	}
