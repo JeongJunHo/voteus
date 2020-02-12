@@ -60,7 +60,7 @@ const UserAuthFace = props => {
   };
 
   const returnPage = () => {
-    setResult(result => "face");
+    setResult("face");
   };
 
   if (result === "set") {
