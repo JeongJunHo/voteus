@@ -56,11 +56,15 @@
 			and a.areacode=vr.areacode
 			and vr.code = #{votercode}
         	and not exists (select 'X' from votetf vtf where v.code = vtf.votecode and vr.code = vtf.votercode)
+        	AND NOW() BETWEEN v.start AND v.end
 		union
 		select
 			*
-		from  vote
+		from
+			vote v
 		where
-		middlepart='D_DAESEON';
+		v.middlepart='D_DAESEON'
+		AND not exists (select 'X' from votetf vtf WHERE v.code = vtf.votecode and vtf.votercode = #{votercode})
+		AND NOW() BETWEEN v.start AND v.end
 	</select>
 </mapper>
