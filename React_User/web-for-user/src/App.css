@@ -63,3 +63,9 @@ body * {
 .infodiv{
   font-size: 10px;
 }
+
+.endtd{
+  border: 1px;
+  margin-left: auto; 
+  margin-right: auto;
+}

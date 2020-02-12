@@ -2,6 +2,9 @@ import React, { useState, useEffect, Fragment } from 'react';
 
 import { Redirect } from 'react-router-dom';
 
+//image
+import lock from "../images/lock.png";
+
 import {
   makeStyles,
   // LinearProgress,
@@ -105,15 +108,16 @@ const UserVoteEnd = props => {
         <Grid container spacing={3} className={classes.header}>
           <Grid item xs={12}>
             <Paper elevation={0} className={classes.paperHeader}>
-              <h1>투표가 종료되었습니다.</h1>
-              {redirect === true ? <Redirect to="/" /> : <h2>5초 후 처음 화면으로 돌아갑니다.</h2>}
-              <h3>{waitnumber}초</h3>
+              <h2>감사합니다.</h2>
+              <h2>모든 투표가 완료되었습니다.</h2>
+              <img src={lock} height="30" alt="투표 완료 이미지"/>
+              {redirect === true ? <Redirect to="/" /> : <h4> 이 페이지는 {waitnumber}초 후 자동으로 투표가 종료됩니다.</h4>}
             </Paper>
           </Grid>
         </Grid>
         <Grid container spacing={3} className={classes.body}>
           <Grid item xs={12}>
-            <Button variant="contained" color="primary" href={url}>처음 화면으로 돌아가기</Button>
+            <Button variant="contained" color="primary" href={url}>투표 종료</Button>
           </Grid>
         </Grid>
       </div>
