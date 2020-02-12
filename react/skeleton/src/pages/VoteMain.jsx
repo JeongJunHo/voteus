@@ -29,7 +29,6 @@ const VoteMain = props => {
   const [voteData, setVoteData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [selected, setSelected] = React.useState([]);
-  console.log(selected);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -39,6 +38,10 @@ const VoteMain = props => {
           "http://localhost:8080/api/vote/getVoteActiveList"
         );
         setVoteData(response.data);
+        console.log(response.data);
+        if (response.data.length > 0) {
+          setSelected([response.data[0].code]);
+        }
       } catch (e) {
         console.log(e);
       }
@@ -59,7 +62,7 @@ const VoteMain = props => {
         <Layout>
           <Grid container spacing={3}>
             <Grid item xs={12}>
-              <Paper className={classes.paper}>
+              <Paper className={classes.paper} style={{ height: 409.5 }}>
                 <Chart selected={selected} />
               </Paper>
             </Grid>
@@ -71,21 +74,6 @@ const VoteMain = props => {
                   selected={selected}
                 />
               </Paper>
-            </Grid>
-            <Grid item xs={6}>
-              <Paper className={classes.paper}>xs=6</Paper>
-            </Grid>
-            <Grid item xs={3}>
-              <Paper className={classes.paper}>xs=3</Paper>
-            </Grid>
-            <Grid item xs={3}>
-              <Paper className={classes.paper}>xs=3</Paper>
-            </Grid>
-            <Grid item xs={3}>
-              <Paper className={classes.paper}>xs=3</Paper>
-            </Grid>
-            <Grid item xs={3}>
-              <Paper className={classes.paper}>xs=3</Paper>
             </Grid>
           </Grid>
         </Layout>
