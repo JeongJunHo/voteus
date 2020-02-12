@@ -3,6 +3,8 @@ import React, { useState, useEffect, useContext, Fragment } from 'react';
 // import UserNameContext from '../../context/UserNameContext';
 import VoteListContext from '../../context/VoteListContext';
 
+import voteStamp from "../../images/voteStamp.png";
+
 import {
   makeStyles,
   LinearProgress,
@@ -15,7 +17,8 @@ import {
   Dialog,
   DialogTitle,
   DialogContent,
-  DialogActions
+  DialogActions,
+  Checkbox
 } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
@@ -38,23 +41,28 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.text.secondary,
   },
   cardBody: {
+    marginBottom: theme.spacing(0.5),
+    boxShadow: "0 3px 3px rgba(0,0,0,0.23)",
     "&:hover": {
       boxShadow: "0 4px 20px -6px #880e4f",
     },
     // backgroundColor: '#fce4ec',
-    borderRadius: theme.spacing(3),
+    borderRadius: theme.spacing(2),
     borderColor: "#f44336"
     // background:
     // // 'linear-gradient(34deg, #f44336 0%, #f6685e 29%, #f44336 92%)',
     // 'radial-gradient(farthest-side at 20% 20%, #e57373, #ef5350, #f44336)',
   },
   cardBodySelect: {
+    marginBottom: theme.spacing(0.5),
+    boxShadow: "0 3px 3px rgba(0,0,0,0.23)",
     "&:hover": {
       boxShadow: "0 4px 20px -6px #1b5e20",
     },
     // backgroundColor: "#4caf50",
-    backgroundColor: "#8bc34a",
-    borderRadius: theme.spacing(3),
+    backgroundColor: "#ffe082",
+    borderRadius: theme.spacing(2),
+    borderColor: "#ffa000",
     // background:
     //   // 'linear-gradient(34deg, #4caf50 0%, #6fbf73 29%, #4caf50 92%)',
     //   'radial-gradient(farthest-side at 20% 20%, #81c784, #66bb6a, #4caf50)',
@@ -68,10 +76,12 @@ const useStyles = makeStyles(theme => ({
   candidateNone: {
     textAlign: "center",
     // color: "#ffcdd2",
-    color: "#f7b3b6",
+    color: "#f6685e",
   },
   submitButton: {
     justifyContent: "center",
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(2),
   },
   candidateColor: {
     backgroundColor: "#e1bee7",
@@ -96,11 +106,27 @@ const useStyles = makeStyles(theme => ({
   },
   selectedVote: {
     // color: "#757575",
-    color: "#357a38",
+    color: "#f57f17",
   },
+  checkbox: {
+    alignItems: "center",
+  },
+  votestamp: {
+    display: "flex",
+    justifyContent: "center",
+    alignContent: "center",
+  }
 }));
 
 const UserVoteList = (props) => {
+  window.scrollTo(0, props.scrollheight)
+
+  // () => window.scrollTo(0, props.scrollheight)();
+  // (function () {
+  //   console.log('dds', props.scrollheight)
+  //   window.scrollTo(0, props.scrollheight)
+  // })()
+
   const classes = useStyles();
 
   // const username = useContext(UserNameContext);
@@ -109,9 +135,10 @@ const UserVoteList = (props) => {
   const [dialogopen, setDialogOpen] = useState(false);
   const [vote, setVote] = useState(null);
   const [loading, setLoading] = useState(null);
-
+  
   useEffect(()=>{
     setLoading(true)
+    console.log(props.scrollheight)
     
     // console.log(votelist)
     if (votelist !== null) {
@@ -139,7 +166,13 @@ const UserVoteList = (props) => {
       // props.setVoteResult(votecandidate)
     }
     setLoading(false)
+    // window.scrollTo(0, props.scrollheight)
   }, [votelist])
+
+  const scrollToPoint = () => {
+    console.log(props.scrollheight)
+    window.scrollTo(0, props.scrollheight)
+  }
 
   const dialogOpen = () => {
     // console.log('dialog')
@@ -165,7 +198,8 @@ const UserVoteList = (props) => {
           <Grid container spacing={2} className={classes.body}>
             {vote.map((eachvote)=>{
               // console.log(eachvote.vote.code)
-              const changeVoteNumber = () => {
+              const changeVoteNumber = (event) => {
+                props.setScrollHeight(event.pageY-event.clientY)
                 props.setVoteNumber(eachvote.vote.code)
               }
               if (eachvote.candidate === null) {
@@ -176,14 +210,24 @@ const UserVoteList = (props) => {
                       onClick={changeVoteNumber}
                       className={classes.cardBody}
                     >
-                      <CardContent className={classes.cardSpace}>
-                        <Typography className={classes.vote}>
-                          {eachvote.vote.name}
-                        </Typography>
-                        <Typography className={classes.candidateNone}>
-                          후보를 선택해주세요.
-                        </Typography>
-                      </CardContent>
+                      <Grid container className={classes.checkbox}>
+                        <Grid item xs={2}>
+                          <Checkbox />
+                        </Grid>
+                        <Grid item xs>
+                          <CardContent className={classes.cardSpace}>
+                            <Typography className={classes.vote}>
+                              {eachvote.vote.name}
+                            </Typography>
+                            <Typography className={classes.candidateNone}>
+                              후보를 선택해주세요.
+                            </Typography>
+                          </CardContent>
+                        </Grid>
+                        <Grid item xs={2}>
+                          <Checkbox style={{visibility: "hidden"}}/>
+                        </Grid>
+                      </Grid>
                     </Card>
                   </Grid>
                 )
@@ -191,18 +235,28 @@ const UserVoteList = (props) => {
                 return (
                   <Grid item xs={12} key={eachvote.vote.code}>
                     <Card
-                      // variant="outlined"
+                      variant="outlined"
                       onClick={changeVoteNumber}
                       className={classes.cardBodySelect}
                     >
-                      <CardContent className={classes.cardSpace}>
-                        <Typography className={classes.vote}>
-                          <span className={classes.selectedVote}>{eachvote.vote.name}</span>
-                        </Typography>
-                        <Typography className={classes.candidate}>
-                          <span>{eachvote.candidate}</span>
-                        </Typography>
-                      </CardContent>
+                      <Grid container className={classes.checkbox}>
+                        <Grid item xs={2} className={classes.votestamp}>
+                          <img src={voteStamp} height="25" alt="voteStamp" />
+                        </Grid>
+                        <Grid item xs>
+                          <CardContent className={classes.cardSpace}>
+                            <Typography className={classes.vote}>
+                              <span className={classes.selectedVote}>{eachvote.vote.name}</span>
+                            </Typography>
+                            <Typography className={classes.candidate}>
+                              <span>{eachvote.candidate}</span>
+                            </Typography>
+                          </CardContent>
+                        </Grid>
+                        <Grid item xs={2}>
+                          <Checkbox style={{visibility: "hidden"}}/>
+                        </Grid>
+                      </Grid>
                     </Card>
                   </Grid>
                 )
@@ -233,6 +287,7 @@ const UserVoteList = (props) => {
               </Grid>
             )}
           </Grid>
+          <button onClick={scrollToPoint}>test</button>
         </div>
         <Dialog
           aria-labelledby="alert-dialog-title"
