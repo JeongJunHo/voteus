@@ -11,6 +11,12 @@ import {
   Button
 } from "@material-ui/core";
 
+const infoStyle ={
+  textAlign: "center",
+  color:'#D8D8D8',
+  margin : -1 -1 -5
+}
+
 const useStyles = makeStyles(theme => ({
   flex: {
     display: "flex",
@@ -116,7 +122,8 @@ const UserVoteStandBy = props => {
           >
             <Grid item xs={12}>
               <Paper elevation={0} className={classes.paperHeader}>
-                <h1>{props.username}님의 투표 목록입니다.</h1>
+                <h1> {props.username}님, 진행할 투표가 총 <font color="red">{votenamelist.length}</font>개가 있습니다.</h1>
+                 <h3>아래 투표 시작 버튼을 클릭해주세요.</h3>
               </Paper>
             </Grid>
           </Grid>
@@ -127,22 +134,28 @@ const UserVoteStandBy = props => {
                 <Grid item xs={12} key={vote.code}>
                   <Paper elevation={0}>
                     {vote.name}
+                    <hr></hr>
                   </Paper>
                 </Grid>
               )
             })}
-          </Grid>
+            </Grid>
+            <p style={infoStyle} className="infodiv">해당 투표를 모두 완료하셔야 투표가 완료됩니다.</p>
+          {/*
           <Grid
             container
             spacing={3}
             className={classes.header}
           >
+
             <Grid item xs={12}>
               <Paper elevation={0} className={classes.paperHeader}>
                 <h2>총 {votenamelist.length}개의 투표가 있습니다.</h2>
               </Paper>
             </Grid>
+            
           </Grid>
+          */}
           <Grid container spacing={3} className={classes.header}>
             <Grid item xs={12}>
               <Paper elevation={0} className={classes.paperHeader}>              
