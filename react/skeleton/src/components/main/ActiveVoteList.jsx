@@ -191,7 +191,7 @@ export default function EnhancedTable(props) {
     setLoading(true);
     try {
       const response = await axios.get(
-        "http://localhost:8080/api/vote/getVoteActiveList"
+        "http://54.180.134.217:8080/api/vote/getVoteActiveList"
       );
       setRows(response.data);
     } catch (e) {
