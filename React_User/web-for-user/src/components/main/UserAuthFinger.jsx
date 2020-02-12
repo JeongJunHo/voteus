@@ -42,29 +42,75 @@ const UserAuthFinger = props => {
   const [fingerprint, setFingerPrint] = useState("");
   const [result, setResult] = useState("picture");
   const [open, setOpen] = React.useState(true);
-  const [countdown, setCountDown] = useState(20);
+  // const [countdown, setCountDown] = useState(10);
 
   const handleClickOpen = () => {
     setOpen(true);
   };
 
   const handleClose = () => {
-    const down = () => {
-      setCountDown(countdown => countdown - 1)
-    }
+    // const down = () => {
+    //   setCountDown(countdown => countdown - 1)
+    // }
 
-    let timer = setInterval(down, 1000)
+    // let timer = setInterval(down, 1000)
 
     // test
     const takePicture = async () => {
       try {
         const res = await axios.post(
           '주소'
+          // 'http://192.168.100.121:5000/getFinger'
+        )
+        console.log(res.data)
+        if (res.data.code === "00") {
+          setFingerPrint(res.data.img)
+          // clearInterval(timer)
+        } else {
+          setResult("problem")
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    takePicture()
+
+    // test용도
+    setTimeout(() => {
+      setResult("false")
+      // setFingerPrint("image")
+      // setCountDown(-1)
+      // clearInterval(timer)
+      // setCountDown(20)
+    }, 6000)
+
+    setOpen(false);
+  };
+
+  const returnPage = () => {
+    setFingerPrint("")
+    console.log('11')
+    setResult("picture");
+    console.log(result)
+    setFingerPrint("");
+    // props.setCountDown(20)
+
+    // const down = () => {
+    //   props.setCountDown(countdown => countdown - 1)
+    // }
+
+    // let timer = setInterval(down, 1000)
+
+    const takePicture = async () => {
+      try {
+        const res = await axios.post(
+          '주소'
+          // 'http://192.168.100.121:5000/getFinger'
         )
         console.log(res.data)
         if (res.data.code === "05") {
           setFingerPrint(res.data.img)
-          clearInterval(timer)
+          // clearInterval(timer)
         } else {
           setResult("problem")
         }
@@ -77,15 +123,9 @@ const UserAuthFinger = props => {
     // test용도
     setTimeout(() => {
       setFingerPrint("image")
-      clearInterval(timer)
+      console.log("다시하는중")
+      // clearInterval(timer)
     }, 6000)
-
-    setOpen(false);
-  };
-
-  const returnPage = () => {
-    setFingerPrint("")
-    setResult("picture");
   };
 
   if (result === "problem") {
@@ -113,10 +153,13 @@ const UserAuthFinger = props => {
   } else if (result === "true") {
     return (
       <Fragment>
-        <UserAuthComplete returnPage={returnPage} userinfocode={props.userinfocode}/>
+        <UserAuthComplete
+          returnPage={returnPage}
+          userinfocode={props.userinfocode}
+        />
       </Fragment>
     );
-  } else if (result === "false" || (fingerprint === "" && countdown < 0)) {
+  } else if (result === "false") {
     return (
       <Fragment>
         <Grid container spacing={3}>
@@ -161,7 +204,15 @@ const UserAuthFinger = props => {
           <HelpIcon fontSize="large" />
           도움말
         </IconButton>
-        <UserAuthFingerRecognition result={result} setResult={setResult} fingerprint={fingerprint} setFingerPrint={setFingerPrint} countdown={countdown} setCountDown={setCountDown}/>
+        <UserAuthFingerRecognition
+          result={result}
+          setResult={setResult}
+          fingerprint={fingerprint}
+          setFingerPrint={setFingerPrint}
+          // countdown={countdown}
+          // setCountDown={setCountDown}
+          userinfocode={props.userinfocode}
+        />
         <Dialog
           open={open}
           onClose={handleClose}

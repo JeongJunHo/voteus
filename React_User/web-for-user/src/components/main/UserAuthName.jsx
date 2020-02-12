@@ -92,6 +92,7 @@ const UserAuthName = props => {
     if (!nameError && !birthRegError && !areaRegError) {
       // axios
       axios
+        // .get("주소")
         .get(
           "http://54.180.134.217:8080/api/voter/getOnlyVotercode/" +
             name +
@@ -109,6 +110,10 @@ const UserAuthName = props => {
           }
         })
         .catch(res => console.log(res));
+      // // test (삭제 필요)
+      // props.setUserInfo({ code: 1, name: "jsp"})
+      // props.setNumber(number => number + 1)
+      // setLoginState(true);
     }
   };
 

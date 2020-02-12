@@ -19,20 +19,27 @@ const UserAuthFingerRecognition = props => {
   const sendFinger = React.useCallback(() => {
     console.log("지문");
 
-    axios.post('주소')
-    .then(res => {
-      console.log(res.data)
-      if (res.data === "코드1") {
-        props.setResult("true")
-      } else if (res.data === "코드2") {
-        props.setResult("false")
-      } else {
-        props.setResult("problem")
-      }
-    })
-    .catch(error => console.log(error))
+    axios
+      .post("주소")
+      // .post('http://192.168.100.121:5000/compareFinger', {name: 600})
+      .then(res => {
+        console.log(res.data)
+        if (res.data === "00") {
+          props.setResult("true")
+        } else if (res.data === "01") {
+          props.setResult("false")
+        } else {
+          props.setResult("problem")
+        }
+      })
+      .catch(error => console.log(error))
 
-    props.setResult("true") // 삭제 필요
+    setTimeout(() => {
+      props.setResult("true")
+      // clearInterval(timer)
+    }, 1000)
+
+    // props.setResult("true") // 삭제 필요
   }, []);
 
     // const send = () => {
@@ -63,23 +70,24 @@ const UserAuthFingerRecognition = props => {
 
   const reset = React.useCallback(() => {
     props.setFingerPrint("");
-    props.setCountDown(20)
+    // props.setCountDown(20)
 
-    const down = () => {
-      props.setCountDown(countdown => countdown - 1)
-    }
+    // const down = () => {
+    //   props.setCountDown(countdown => countdown - 1)
+    // }
 
-    let timer = setInterval(down, 1000)
+    // let timer = setInterval(down, 1000)
 
     const takePicture = async () => {
       try {
         const res = await axios.post(
           '주소'
+          // 'http://192.168.100.121:5000/getFinger'
         )
         console.log(res.data)
         if (res.data.code === "05") {
           props.setFingerPrint(res.data.img)
-          clearInterval(timer)
+          // clearInterval(timer)
         } else {
           props.setResult("problem")
         }
@@ -92,7 +100,8 @@ const UserAuthFingerRecognition = props => {
     // test용도
     setTimeout(() => {
       props.setFingerPrint("image")
-      clearInterval(timer)
+      console.log("다시하는중")
+      // clearInterval(timer)
     }, 6000)
   }, []);
 
@@ -159,7 +168,8 @@ const UserAuthFingerRecognition = props => {
               disabled
               // onClick={picture}
             >
-              {props.countdown}초 남았습니다.
+              {/* {props.countdown}초 남았습니다. */}
+              "손가락을 올려주세요."
             </Button>
           </Grid>
         )}

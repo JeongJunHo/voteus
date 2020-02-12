@@ -169,10 +169,10 @@ const UserVoteList = (props) => {
     // window.scrollTo(0, props.scrollheight)
   }, [votelist])
 
-  const scrollToPoint = () => {
-    console.log(props.scrollheight)
-    window.scrollTo(0, props.scrollheight)
-  }
+  // const scrollToPoint = () => {
+  //   console.log(props.scrollheight)
+  //   window.scrollTo(0, props.scrollheight)
+  // }
 
   const dialogOpen = () => {
     // console.log('dialog')
@@ -287,7 +287,7 @@ const UserVoteList = (props) => {
               </Grid>
             )}
           </Grid>
-          <button onClick={scrollToPoint}>test</button>
+          {/* <button onClick={scrollToPoint}>test</button> */}
         </div>
         <Dialog
           aria-labelledby="alert-dialog-title"
