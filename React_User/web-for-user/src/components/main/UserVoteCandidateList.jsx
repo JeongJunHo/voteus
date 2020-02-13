@@ -1,4 +1,6 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useContext, useState, useEffect, Fragment } from 'react';
+
+import PartyLicsContext from '../../context/PartyListContext';
 
 import {
   makeStyles,
@@ -66,6 +68,8 @@ const useStyles = makeStyles(theme => ({
 const UserVoteCandidateList = props => {
   const classes = useStyles();
 
+  const partylist = useContext(PartyLicsContext);
+
   const [loading, setLoading] = useState(null);
 
   useEffect(() => {
@@ -87,33 +91,33 @@ const UserVoteCandidateList = props => {
         </Grid>
         <Grid container spacing={3} className={classes.body}>
           {props.candidatelist[0].map((eachcandidate) => {
-              // console.log(eachcandidate)
-              const selectCandidate = () => {
-                props.result.set(props.votenumber, eachcandidate.code)
-                props.setResult(props.result)
-                props.setVoteNumber(null)
-                window.scrollTo(0, props.scrollheight)
-              }
-              
-              return (
-                <Grid item xs={6} key={eachcandidate.code}>
-                  <Card
-                    variant="outlined"
-                    onClick={selectCandidate}
-                    className={classes.cardBody}
-                  >
-                    <CardContent className={classes.cardCandidate}>
-                      <Typography className={classes.party}>
-                        기호 {eachcandidate.num}번 {eachcandidate.party}
-                      </Typography>
-                      <Typography className={classes.candidate}>
-                        {eachcandidate.name}
-                      </Typography>
-                    </CardContent>
-                  </Card>
-                </Grid>
-              )
-            })}
+            // console.log(partylist[eachcandidate.party])
+            // console.log(eachcandidate)
+            const selectCandidate = () => {
+              props.result.set(props.votenumber, eachcandidate.code)
+              props.setResult(props.result)
+              props.setVoteNumber(null)
+              // window.scrollTo(0, props.scrollheight)
+            }
+            return (
+              <Grid item xs={6} key={eachcandidate.code}>
+                <Card
+                  variant="outlined"
+                  onClick={selectCandidate}
+                  className={classes.cardBody}
+                >
+                  <CardContent className={classes.cardCandidate}>
+                    <Typography className={classes.party}>
+                      기호 {eachcandidate.num}번 {partylist[eachcandidate.party]}
+                    </Typography>
+                    <Typography className={classes.candidate}>
+                      {eachcandidate.name}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+            )
+          })}
          </Grid>
         </div>
       </Fragment>

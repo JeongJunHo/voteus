@@ -138,7 +138,7 @@ const UserVoteList = (props) => {
   
   useEffect(()=>{
     setLoading(true)
-    console.log(props.scrollheight)
+    // console.log(props.scrollheight)
     
     // console.log(votelist)
     if (votelist !== null) {
