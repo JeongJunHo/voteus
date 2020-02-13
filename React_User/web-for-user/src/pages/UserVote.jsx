@@ -7,6 +7,7 @@ import UserVoteEnd from '../layout/UserVoteEnd';
 import UserFooter from '../layout/UserFooter';
 
 import VoteListContext from '../context/VoteListContext';
+import PartyListContext from '../context/PartyListContext';
 
 import FlexPaperTemplate from "../components/main/FlexPaperTemplate";
 
@@ -21,14 +22,34 @@ const UserVote = ({match}) => {
   const [status, setStatus] = useState(null);
   const [loading, setLoading] = useState(null);
   const [result, setResult] = useState(null);
+  const [party, setParty] = useState(null);
 
   useEffect(() => {
     setLoading(loading => true)
-    const data = {
-        code: match.params.code
+
+    let tempParty = {}
+    const partyData = async () => {
+      try {
+        const res3 = await axios.get(
+          "http://54.180.134.217:8080/api/party/getPartyAllList/"
+        )
+        for (let index in res3.data) {
+          // console.log(res3.data[index])
+          tempParty[res3.data[index].p_code] = res3.data[index].p_name
+        }
+      } catch (error) {
+        console.log(error)
+      }
+      // console.log(tempParty)
+      setParty(tempParty)
     }
+    partyData();
 
     // axios (Vote & Candidate)
+    const data = {
+      code: match.params.code
+    }
+
     const voteMap = new Map()
     const resultMap = new Map()
     axios.get(
@@ -65,7 +86,7 @@ const UserVote = ({match}) => {
     })
     .catch(error => console.log(error))
 
-    setLoading(loading => false)
+    setLoading(false)
   }, [match.params.code])
 
   if (loading === false) {
@@ -77,13 +98,15 @@ const UserVote = ({match}) => {
           </UserHeader>
           <FlexPaperTemplate>
             <VoteListContext.Provider value={votelist}>
-              <UserVoteBody
-                user={match.params.code}
-                username={match.params.name}
-                setStatus={setStatus}
-                result={result}
-                setResult={setResult}
-              />
+              <PartyListContext.Provider value={party}>
+                <UserVoteBody
+                  user={match.params.code}
+                  username={match.params.name}
+                  setStatus={setStatus}
+                  result={result}
+                  setResult={setResult}
+                />
+              </PartyListContext.Provider>
             </VoteListContext.Provider>
           </FlexPaperTemplate>
           <UserFooter />
