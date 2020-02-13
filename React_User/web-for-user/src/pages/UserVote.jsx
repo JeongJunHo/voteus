@@ -17,7 +17,7 @@ import {
   LinearProgress,
 } from "@material-ui/core";
 
-const UserVote = ({match}) => {
+const UserVote = ({match, history}) => {
   const [votelist, setVoteList] = useState(null);
   const [status, setStatus] = useState(null);
   const [loading, setLoading] = useState(null);
@@ -85,7 +85,7 @@ const UserVote = ({match}) => {
       setStatus('standby')
     })
     .catch(error => console.log(error))
-
+    console.log(history)
     setLoading(false)
   }, [match.params.code])
 
