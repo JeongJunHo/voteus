@@ -14,6 +14,11 @@ const UserAuthComplete = props => {
 
   const url = "/user-vote/" + props.userinfocode + "/" + username;
 
+  const click = () => {
+    // 로컬 스토리지에 저장 (모든 인증을 완료했을 경우에 저장)
+    sessionStorage.setItem("user", props.userinfocode)
+  }
+
   return (
     <Fragment>
       <table align = "center">
@@ -37,7 +42,7 @@ const UserAuthComplete = props => {
       </table>
       <p bold style={{color: "#151515"}}>위의 사항에 대해 동의합니다.</p>
       <Link href={url}>
-        <Button variant="contained" color="primary">
+        <Button variant="contained" color="primary" onClick={click}>
           동의 함
         </Button>
       </Link>

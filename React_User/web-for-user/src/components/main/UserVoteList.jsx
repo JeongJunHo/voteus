@@ -296,6 +296,7 @@ const UserVoteList = (props) => {
           open={dialogopen}
           fullWidth={true}
           maxWidth="xs"
+          disableBackdropClick={true}
           PaperProps={{ className: [classes.dialog] }}
         >
           <DialogTitle>
