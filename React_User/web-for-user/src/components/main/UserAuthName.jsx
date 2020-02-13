@@ -103,6 +103,8 @@ const UserAuthName = props => {
           // console.log(res);
           if (res.data !== "failure") {
             props.setUserInfo({ code: res.data, name: name });
+            // 로컬 스토리지에 저장 (모든 인증을 완료했을 경우에 저장)
+            sessionStorage.setItem("user", res.data)
             props.setNumber(number => number + 1);
             setLoginState(true);
           } else {

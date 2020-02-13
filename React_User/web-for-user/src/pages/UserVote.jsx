@@ -6,6 +6,8 @@ import UserVoteStandBy from '../layout/UserVoteStandBy';
 import UserVoteEnd from '../layout/UserVoteEnd';
 import UserFooter from '../layout/UserFooter';
 
+import { Redirect } from 'react-router-dom';
+
 import VoteListContext from '../context/VoteListContext';
 import PartyListContext from '../context/PartyListContext';
 
@@ -23,127 +25,145 @@ const UserVote = ({match, history}) => {
   const [loading, setLoading] = useState(null);
   const [result, setResult] = useState(null);
   const [party, setParty] = useState(null);
+  const [available, setAvailable] = useState(true)
 
   useEffect(() => {
-    setLoading(loading => true)
+    setLoading(true)
+    // console.log(sessionStorage.getItem("user"), match.params.code)
 
-    let tempParty = {}
-    const partyData = async () => {
-      try {
-        const res3 = await axios.get(
-          "http://54.180.134.217:8080/api/party/getPartyAllList/"
-        )
-        for (let index in res3.data) {
-          // console.log(res3.data[index])
-          tempParty[res3.data[index].p_code] = res3.data[index].p_name
-        }
-      } catch (error) {
-        console.log(error)
-      }
-      // console.log(tempParty)
-      setParty(tempParty)
-    }
-    partyData();
-
-    // axios (Vote & Candidate)
-    const data = {
-      code: match.params.code
-    }
-
-    const voteMap = new Map()
-    const resultMap = new Map()
-    axios.get(
-      'http://54.180.134.217:8080/api/vote/getVoteList/'
-      + match.params.code,
-      data
-    )
-    .then(res => {
-      // console.log(res.data)
-      for (let vote of res.data) {
-        // console.log('vote', vote)
-        const candidatelist = []
-        const candidateData = async () => {
-          try {
-            const res2 = await axios.get(
-              'http://54.180.134.217:8080/api/candi/getCandiVotecode/'
-              + vote.code,
-              {votecode: vote.code}
-            )
-            candidatelist.push(res2.data)
-          } catch (error) {
-            console.log(error)
+    if (sessionStorage.getItem("user") === match.params.code) {
+      // history.push('/');
+      setAvailable(true)
+      
+      let tempParty = {}
+      const partyData = async () => {
+        try {
+          const res3 = await axios.get(
+            "http://54.180.134.217:8080/api/party/getPartyAllList/"
+          )
+          for (let index in res3.data) {
+            // console.log(res3.data[index])
+            tempParty[res3.data[index].p_code] = res3.data[index].p_name
           }
+        } catch (error) {
+          console.log(error)
         }
-        candidateData();
-
-        voteMap.set(vote, candidatelist)
-        setVoteList(voteMap)
-        
-        resultMap.set(vote.code, null)
-        setResult(resultMap)
+        // console.log(tempParty)
+        setParty(tempParty)
       }
-      setStatus('standby')
-    })
-    .catch(error => console.log(error))
-    console.log(history)
+      partyData();
+  
+      // axios (Vote & Candidate)
+      const data = {
+        code: match.params.code
+      }
+  
+      const voteMap = new Map()
+      const resultMap = new Map()
+      axios.get(
+        'http://54.180.134.217:8080/api/vote/getVoteList/'
+        + match.params.code,
+        data
+      )
+      .then(res => {
+        // console.log(res.data)
+        for (let vote of res.data) {
+          // console.log('vote', vote)
+          const candidatelist = []
+          const candidateData = async () => {
+            try {
+              const res2 = await axios.get(
+                'http://54.180.134.217:8080/api/candi/getCandiVotecode/'
+                + vote.code,
+                {votecode: vote.code}
+              )
+              candidatelist.push(res2.data)
+            } catch (error) {
+              console.log(error)
+            }
+          }
+          candidateData();
+  
+          voteMap.set(vote, candidatelist)
+          setVoteList(voteMap)
+          
+          resultMap.set(vote.code, null)
+          setResult(resultMap)
+        }
+        setStatus('standby')
+      })
+      .catch(error => console.log(error))
+    } else {
+      setAvailable(false)
+    }
     setLoading(false)
   }, [match.params.code])
 
   if (loading === false) {
-    if (status === 'vote') {
-      return (
-        <Fragment>
-          <UserHeader>
-            <h1>투표 페이지(header)</h1>
-          </UserHeader>
-          <FlexPaperTemplate>
-            <VoteListContext.Provider value={votelist}>
-              <PartyListContext.Provider value={party}>
-                <UserVoteBody
-                  user={match.params.code}
-                  username={match.params.name}
+    if (available === true) {
+      if (status === 'vote') {
+        return (
+          <Fragment>
+            <UserHeader>
+              <h1>투표 페이지(header)</h1>
+            </UserHeader>
+            <FlexPaperTemplate>
+              <VoteListContext.Provider value={votelist}>
+                <PartyListContext.Provider value={party}>
+                  <UserVoteBody
+                    user={match.params.code}
+                    username={match.params.name}
+                    setStatus={setStatus}
+                    result={result}
+                    setResult={setResult}
+                  />
+                </PartyListContext.Provider>
+              </VoteListContext.Provider>
+            </FlexPaperTemplate>
+            <UserFooter />
+          </Fragment>
+        )
+      } else if (status === 'standby') {
+          return (
+            <Fragment>
+              <UserHeader>
+                <h1>투표 페이지(header)</h1>
+              </UserHeader>
+              <FlexPaperTemplate>
+                <UserVoteStandBy
+                  votelist={votelist}
                   setStatus={setStatus}
-                  result={result}
-                  setResult={setResult}
+                  username={match.params.name}
                 />
-              </PartyListContext.Provider>
-            </VoteListContext.Provider>
-          </FlexPaperTemplate>
-          <UserFooter />
-        </Fragment>
-      )
-    } else if (status === 'standby') {
+              </FlexPaperTemplate>
+              <UserFooter />
+            </Fragment>
+          )
+      } else if (status === 'finish') {
+          return (
+            <Fragment>
+              <UserHeader>
+                <h1>투표 페이지(header)</h1>
+              </UserHeader>
+              <FlexPaperTemplate>
+                <UserVoteEnd />
+              </FlexPaperTemplate>
+              <UserFooter />
+            </Fragment>
+          )
+      } else {
         return (
           <Fragment>
-            <UserHeader>
-              <h1>투표 페이지(header)</h1>
-            </UserHeader>
-            <FlexPaperTemplate>
-              <UserVoteStandBy
-                votelist={votelist}
-                setStatus={setStatus}
-                username={match.params.name}
-              />
-            </FlexPaperTemplate>
-            <UserFooter />
+            <LinearProgress />
           </Fragment>
         )
-    } else if (status === 'finish') {
-        return (
-          <Fragment>
-            <UserHeader>
-              <h1>투표 페이지(header)</h1>
-            </UserHeader>
-            <FlexPaperTemplate>
-              <UserVoteEnd />
-            </FlexPaperTemplate>
-            <UserFooter />
-          </Fragment>
-        )
+      }
     } else {
       return (
         <Fragment>
-          <LinearProgress />
+          <UserHeader />
+          <Redirect to="/" />
+          <UserFooter />
         </Fragment>
       )
     }
