@@ -1,6 +1,6 @@
 '''
+박종수
 image file을 받고 img를 누구인지를 판별한 후 그사람의 이름을 출력해주는 함수
-
 '''
 
 import numpy as np
@@ -19,7 +19,9 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'jfif'}
 #X_img; #= frame[:, :, ::-1]  # np.array(frame)
 ans = 0
 
-
+'''
+img를 읽어 face_locations와 face_encoding을 한 후 knn모델에서 얼굴을 분류하여 가장 일치율이 높은 얼굴을 반환하는 코드
+'''
 def predict(X_img, knn_clf=None, model_path=None, distance_threshold=0.6):
     """
     Recognizes faces in given image using a trained KNN classifier
@@ -39,6 +41,8 @@ def predict(X_img, knn_clf=None, model_path=None, distance_threshold=0.6):
     #     raise Exception("Must supply knn classifier either thourgh knn_clf or model_path")
     #
     # # Load a trained KNN model (if one was passed in)
+    
+    #knn_clf가 없을 시 model_path에서 모델을 읽어오는 코드
     print(model_path)
     if knn_clf is None:
         with open(model_path, 'rb') as f:
@@ -52,7 +56,8 @@ def predict(X_img, knn_clf=None, model_path=None, distance_threshold=0.6):
 
     # Load image file and find face locations
     # X_img = frame[:, :, ::-1] #np.array(frame)
-    print("X_img why not working")
+    
+    #find.jpg에서 이미지를 읽음
     # print(X_img)
     startTime = time.time()
 
@@ -60,61 +65,26 @@ def predict(X_img, knn_clf=None, model_path=None, distance_threshold=0.6):
     print("face_recognition : load img")
     print(time.time() - startTime)
 
+    #face_recognition에서 face_locations를 통해 얼굴의 위치를 찾음
     startTime = time.time()
-
     X_face_locations = face_recognition.face_locations(X_img)
-    print(X_face_locations)
-    print(time.time() - startTime)
-    startTime = time.time()
-    #print(type((X_face_locations[0])[2]))
-    #X_face_locations = fd.get_face("find.jpg")
-    #X_face_locations = [(int(X_face_locations[0]), int(X_face_locations[3]), int(X_face_locations[2]), int(X_face_locations[1]))]
-    print(X_face_locations)
-    # face_bounding_boxes1.append(X_face_locations[0])
-    # face_bounding_boxes1.append(X_face_locations[1])
-    # face_bounding_boxes1.append(X_face_locations[2])
-    # face_bounding_boxes1.append(X_face_locations[3])
-    print("face location")
-    print(X_face_locations)
-    print(time.time() - startTime)
-    #print(len(X_face_locations))
 
-    # cv2.imshow("asdf", X_face_locations)
-    # If no faces are found in the image, return an empty result.
-    #if len(X_face_locations) == 0:
-    #    return []
-
-    # Find encodings for faces in the test iamge
-    # print(rgb_small_frame)
-    print("X_face_locations")
-    print(X_face_locations)
-
-    # cap = cv2.VideoCapture(0)
-    # ret1, frame1 = cap.read()
-
-    # while True:
-    #
-    #     if ret:
-    #         cv2.imshow("video", X_img)
-    #
-    #         if cv2.waitKey(1) & 0xFF == ord('q'):
-    #             break;
-    #     else:
-    #         break;
     #print(X_face_locations)
+    print(time.time() - startTime)
+
+    #cv_image를 face_locations로 바꾼 것을 numarry로 변환
     startTime = time.time()
-    cv_image = np.array(X_face_locations)
-    cv_image = cv_image[:,:,::-1].copy()
-    #faces_encodings = face_recognition.face_encodings(cv_image)
-    #X_face_locations = face_recognition.face_locations(cv_image)
-    X_face_locations = [(0, cv_image.shape[0], cv_image.shape[1], 0)]
-    print("ximg")
-    print(X_face_locations)
-    faces_encodings = face_recognition.face_encodings(cv_image, known_face_locations=X_face_locations)
+    # cv_image = np.array(X_face_locations)
+    # cv_image = cv_image[:,:,::-1].copy()
+    # X_face_locations = [(0, cv_image.shape[0], cv_image.shape[1], 0)]
+
+    #그 후 face_encoding을 통해 128차원으로 얼굴 피러를 사전화...
+    faces_encodings = face_recognition.face_encodings(X_img, known_face_locations=X_face_locations)
     #faces_encodings = [(0,cv_image.shape[0],cv_image.shape[1],0)]
     print("encoding")
     print(time.time() - startTime)
-    #print(faces_encodings)
+
+    #knn 모델을 통해 threshold 이하의 얼굴 특징을 찾아 넣음
     startTime = time.time()
     # Use the KNN model to find the best matches for the test face
     closest_distances = knn_clf.kneighbors(faces_encodings, n_neighbors=1)
@@ -130,43 +100,6 @@ def predict(X_img, knn_clf=None, model_path=None, distance_threshold=0.6):
             zip(knn_clf.predict(faces_encodings), X_face_locations, are_matches)]
 
 
-def show_prediction_labels_on_image(predictions):
-    global ans
-    """
-    Shows the face recognition results visually.
-
-    :param img_path: path to image to be recognized
-    :param predictions: results of the predict function
-    :return:
-    """
-    # pil_image = Image.open(img_path).convert("RGB")
-    # draw = ImageDraw.Draw(pil_image)
-
-    for name, (top, right, bottom, left) in predictions:
-        return name;
-        # Draw a box around the face using the Pillow module
-        # draw.rectangle(((left, top), (right, bottom)), outline=(0, 0, 255))
-        cv2.rectangle(frame, (left, top), (right, bottom), (0, 0, 255))
-        cv2.rectangle(frame, (left, bottom - 35), (right, bottom), (0, 0, 255), cv2.FILLED)
-        # There's a bug in Pillow where it blows up with non-UTF-8 text
-        # when using the default bitmap font
-        print(name)
-        # name = name.encode("UTF-8")
-        print(name)
-        font = cv2.FONT_HERSHEY_DUPLEX
-        cv2.putText(frame, name, (left + 6, bottom - 6), font, 1.0, (255, 255, 255), 1)
-        if name == "jsp":
-            ans += 1
-        # Draw a label with a name below the face
-        # text_width, text_height = draw.textsize(name)
-        # draw.rectangle(((left, bottom - text_height - 10), (right, bottom)), fill=(0, 0, 255), outline=(0, 0, 255))
-        # draw.text((left + 6, bottom - text_height - 5), name, fill=(255, 255, 255, 255))
-
-    # Remove the drawing library from memory as per the Pillow docs
-    # del draw
-    # cv2.imshow("file", X_img)
-    # Display the resulting image
-    # pil_image.show()
 
 def get_name(img):
     #cv2.imshow(img)
@@ -176,34 +109,12 @@ def get_name(img):
 
     #img2 = cv2.imread(img, cv2.IMREAD_COLOR)
     #cv2.imshow("asdf",img)
-    predictions = predict(X_img, model_path="examples/trained_knn_model.clf")
-    return show_prediction_labels_on_image(predictions)
+    #return predict(X_img, model_path="examples/trained_knn_model.clf")
+    return predict(X_img, model_path="face/examples/trained_knn_model.clf")
+    # for i in predictions:
+    #     print(i)
+    # return show_prediction_labels_on_image(predictions)
 
-# if __name__ == "__main__":
-#     # STEP 1: Train the KNN classifier and save it to disk
-#     # Once the model is trained and saved, you can skip this step next time.
-#     # video_capture = cv2.VideoCapture(0)
-#     cnt = 0
-#     ans = 0
-#     while True:
-#         if cnt > 10:
-#             break;
-#         ret, frame = video_capture.read()
 #
-#         X_img = frame[:, :, ::-1]  # np.array(frame)
-#         predictions = predict(model_path="trained_knn_model.clf")
-#         show_prediction_labels_on_image(predictions)
-#         cv2.imshow("video", frame)
-#         if cv2.waitKey(1) & 0xFF == ord('q'):
-#             break;
-#         cnt += 1
-#
-#     if ans > 5:
-#         print("맞")
-#     else:
-#         print("아니")
-#     video_capture.release()
-#     cv2.destroyAllWindows()
-
 
 

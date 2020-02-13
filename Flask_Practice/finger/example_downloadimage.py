@@ -18,6 +18,7 @@ import time
 code
 00 : 저장 성공
 01 : 저장 실패
+02 : 센서 인식 불가
 03 : 시간 초과
 
 최종 수정일 2020.02.05 09:32
@@ -29,6 +30,7 @@ def get_finger():
     try:
         '''
         usb port에 연결하여 지문센서 연결 여부를 확인
+        센서가 연결이 되어있지 않을 시 code 02반환
         '''
         f = PyFingerprint('/dev/ttyUSB0', 57600, 0xFFFFFFFF, 0x00000000)
         print('get print')
@@ -39,11 +41,12 @@ def get_finger():
         print('The fingerprint sensor could not be initialized!')
         print('Exception message: ' + str(e))
         #exit(1)
-        return "01"
+        return "02"
 
     ## Gets some sensor information
     # print('Currently used templates: ' + str(f.getTemplateCount()) +'/'+ str(f.getStorageCapacity()))
 
+    #시간 측정을 위한 starttime
     startTime = time.time()
     print(startTime)
     ## Tries to read image and download it
@@ -53,9 +56,10 @@ def get_finger():
         '''
         print('Waiting for finger...')
 
-        ## Wait that finger is read
+
+        #15초가 지날 시 code 03;
         while (f.readImage() == False):
-            if startTime-time.time() > 10000:
+            if time.time() - startTime > 15:
                 return "03"
             pass
 
@@ -63,10 +67,7 @@ def get_finger():
 
         '''
         지문 센서로 부터 이미지를 얻어서 imageDestination에 저장하는 코드
-        현재 imageDestination은 라즈베리파이의 root폴더 아래의 tmp폴더에
-        fingerprint.bmp라는 파일명으로 저장되게 되어있다.
-
-        issue 지문 저장장소가 tmp폴더에 되어있는데 이것을 지금 위치의 폴더에 저장해야 할듯....
+        finger/fingerprint.bmp로 저장하고 성공시 00, 실패시 01
         '''
         imageDestination =  tempfile.gettempdir() + '/fingerprint.bmp'
         print(imageDestination)

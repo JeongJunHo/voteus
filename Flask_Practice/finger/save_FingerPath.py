@@ -74,9 +74,9 @@ def save_finger(path, gender):
             gender = 'M'
         if gender == 'f':
             gender = 'F'
-        imageDestination =  tempfile.gettempdir() + '/fingerprint.bmp'
+        imageDestination =  tempfile.gettempdir() + '/fingerprint.BMP'
         print(imageDestination)
-        imageDestination = os.path.dirname(os.path.realpath(__file__))+"/"+path+"__"+gender+"_Right_index_finger.bmp"
+        imageDestination = os.path.dirname(os.path.realpath(__file__))+"/"+path+"__"+gender+"_Right_index_finger.BMP"
         f.downloadImage(imageDestination)
 
         print('The image was saved to "' + imageDestination + '".')

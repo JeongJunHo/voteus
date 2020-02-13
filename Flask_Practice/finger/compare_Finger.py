@@ -13,6 +13,7 @@ import random
 from keras.models import model_from_json
 
 def compareFinger(name):
+
     # model과 model weight를 확인함
     json_file = open("finger/model.json", "r")
     loaded_model_json = json_file.read()
@@ -28,11 +29,13 @@ def compareFinger(name):
     # label.p 파일로 부터 객체 읽기
 
     with open('finger/label.p', 'rb') as file:
-        label_val = pickle.load(file)
+        #label_val = pickle.load(file)
         x_real = pickle.load(file)
         y_real = pickle.load(file)
         label_real_dict = pickle.load(file)
 
+
+    #받은 코드와 일치하는 label을 y_real에서 찾음
     idx = 0
     print("label_val : ", len(y_real))
     for i in range(1, len(y_real)):
@@ -45,6 +48,7 @@ def compareFinger(name):
     print(y_real[idx])
     random_idx = idx
 
+    #img를 불러오고, resize, 하고 random_label에 찾은 라벨을 넣음
     path = "finger/fingerprint.bmp"  # glob.glob("Real_temp/601__M_Left_1_2.bmp")
     print(path)
     random_img = cv2.imread(path, cv2.IMREAD_GRAYSCALE)
@@ -66,14 +70,28 @@ def compareFinger(name):
     rx = temp_match.astype(np.float32) / 255.
     ry = y_real[label_real_dict[match_key]]
 
+    #모델을 통해 이미지 예측
     pred_rx = model.predict([random_img_rr, rx])
 
-    # unmatched image
-    unmatch_key, unmatch_idx = random.choice(list(label_real_dict.items()))
-
-    temp_unmatch = x_real[unmatch_idx][np.newaxis]
-    ux = temp_unmatch.astype(np.float32) / 255.
     print('0: %.02f, %s' % (pred_rx, ry))
+    if pred_rx > 0.75:
+        return pred_rx
+
+    for cnt in range(10):
+        get_img = cv2.imread(path, cv2.IMREAD_GRAYSCALE)
+        height, width = get_img.shape
+
+        matrix = cv2.getRotationMatrix2D((width/2, height/2), 30*cnt, 1)
+        rotate_img = cv2.resize((cv2.warpAffine(get_img, matrix,(width,height))),(96,96))
+
+        img_rotate_r = rotate_img[:, :, np.newaxis]
+
+        auth_img_rotate_r = img_rotate_r[np.newaxis]
+        auth_img_rotate_rr = auth_img_rotate_r.astype(np.float32) / 255.
+        pred_rx_rotate = model.predict([auth_img_rotate_rr, rx])
+        print(cnt, pred_rx_rotate)
+        if pred_rx_rotate > 0.75:
+            return pred_rx_rotate
 
     return pred_rx
 
