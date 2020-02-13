@@ -8,7 +8,7 @@ import UserAuthFinger from "../components/main/UserAuthFinger";
 import UserNameContext from "../context/UserNameContext";
 
 const UserAuthBody = props => {
-  const [number, setNumber] = useState(0);
+  const [number, setNumber] = useState(2);
   const [userinfo, setUserInfo] = useState("");
 
   if (number === 0) {
