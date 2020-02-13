@@ -59,6 +59,7 @@ const UserVoteBody = props => {
     //   + candidatestring)
     // .then(res => console.log(res))
     // .catch(error => console.log(error))
+    sessionStorage.clear();
 
     props.setStatus('finish')
   }

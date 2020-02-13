@@ -148,6 +148,10 @@ const UserAuthFinger = props => {
     }, 6000)
   };
 
+  const clear = () => {
+    sessionStorage.clear();
+  }
+
   if (result === "problem") {
     return (
       <Fragment>
@@ -158,6 +162,7 @@ const UserAuthFinger = props => {
             variant="contained"
             size="large"
             color="primary"
+            onClick={clear}
           >
             돌아가기
           </Button>

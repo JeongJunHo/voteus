@@ -27,6 +27,10 @@ const UserHeader = props => {
 
   const type = useContext(TypeContext);
   
+  const clear = () => {
+    sessionStorage.clear();
+  }
+
   return (
     <Fragment>
       <div className={classes.root}>
@@ -56,6 +60,7 @@ const UserHeader = props => {
                   aria-controls="menu-appbar"
                   aria-haspopup="true"
                   color="inherit"
+                  onClick={clear}
                   href="/"
                 >
                   <HomeRoundedIcon />
