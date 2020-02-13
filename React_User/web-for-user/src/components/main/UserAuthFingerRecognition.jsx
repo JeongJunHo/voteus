@@ -36,47 +36,25 @@ const UserAuthFingerRecognition = props => {
 
     setTimeout(() => {
       props.setResult("true")
-      // clearInterval(timer)
     }, 1000)
 
     // props.setResult("true") // 삭제 필요
   }, []);
 
-    // const send = () => {
-  //   props.setResult("set");
-  //   setTimeout(() => {
-  //     sendFinger()
-  //   }, 500)
-  // }
-  
-  // const sendFinger = () => {
-  //   console.log("지문");
-
-  //   axios.post('주소')
-  //   .then(res => {
-  //     console.log(res.data)
-  //     if (res.data === "코드1") {
-  //       props.setResult("true")
-  //     } else if (res.data === "코드2") {
-  //       props.setResult("false")
-  //     } else {
-  //       props.setResult("problem")
-  //     }
-  //   })
-  //   .catch(error => console.log(error))
-
-  //   props.setResult("true") // 삭제 필요
-  // }
-
   const reset = React.useCallback(() => {
     props.setFingerPrint("");
-    // props.setCountDown(20)
+    props.setWait(null);
 
-    // const down = () => {
-    //   props.setCountDown(countdown => countdown - 1)
-    // }
+    const down = () => {
+      console.log(props.countdown)
+      props.setCountDown(countdown => countdown - 1)
+    }
+    let timer = setInterval(down, 1000);
 
-    // let timer = setInterval(down, 1000)
+    setTimeout(function(){
+      clearInterval(timer)
+      props.setWait("wait")
+    }, 15001)
 
     const takePicture = async () => {
       try {
@@ -85,10 +63,16 @@ const UserAuthFingerRecognition = props => {
           // 'http://192.168.100.121:5000/getFinger'
         )
         console.log(res.data)
-        if (res.data.code === "05") {
+        if (res.data.code === "00") {
+          clearInterval(timer)
+          props.setCountDown(15)
+          props.setWait(null)
           props.setFingerPrint(res.data.img)
           // clearInterval(timer)
         } else {
+          clearInterval(timer)
+          props.setCountDown(15)
+          props.setWait(null)
           props.setResult("problem")
         }
       } catch (error) {
@@ -99,9 +83,10 @@ const UserAuthFingerRecognition = props => {
 
     // test용도
     setTimeout(() => {
+      clearInterval(timer)
+      props.setCountDown(15)
+      props.setWait(null)
       props.setFingerPrint("image")
-      console.log("다시하는중")
-      // clearInterval(timer)
     }, 6000)
   }, []);
 
@@ -158,7 +143,7 @@ const UserAuthFingerRecognition = props => {
               </Button>
             </Grid>
           </>
-        ) : (
+        ) : ( props.wait === "wait" ? (
           <Grid item xs={12}>
             <Button
               variant="contained"
@@ -168,10 +153,36 @@ const UserAuthFingerRecognition = props => {
               disabled
               // onClick={picture}
             >
-              {/* {props.countdown}초 남았습니다. */}
-              "손가락을 올려주세요."
+              잠시만 기다려주세요.
             </Button>
           </Grid>
+          ) : (
+            <Grid item xs={12}>
+            <Button
+              variant="contained"
+              size="large"
+              color="primary"
+              fullWidth={true}
+              disabled
+              // onClick={picture}
+            >
+              {props.countdown}초 남았습니다.
+            </Button>
+          </Grid>
+          )
+          // <Grid item xs={12}>
+          //   <Button
+          //     variant="contained"
+          //     size="large"
+          //     color="primary"
+          //     fullWidth={true}
+          //     disabled
+          //     // onClick={picture}
+          //   >
+          //     {props.countdown}초 남았습니다.
+          //     "손가락을 올려주세요."
+          //   </Button>
+          // </Grid>
         )}
       </Grid>
 

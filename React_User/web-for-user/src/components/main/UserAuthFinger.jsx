@@ -5,6 +5,7 @@ import UserAuthFingerRecognition from "../main/UserAuthFingerRecognition";
 import { makeStyles } from "@material-ui/core/styles";
 // import Image from "material-ui-image";
 import Button from "@material-ui/core/Button";
+import { Link } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -42,18 +43,25 @@ const UserAuthFinger = props => {
   const [fingerprint, setFingerPrint] = useState("");
   const [result, setResult] = useState("picture");
   const [open, setOpen] = React.useState(true);
-  // const [countdown, setCountDown] = useState(10);
+  const [countdown, setCountDown] = useState(15);
+  const [wait, setWait] = useState(null)
 
   const handleClickOpen = () => {
     setOpen(true);
   };
 
   const handleClose = () => {
-    // const down = () => {
-    //   setCountDown(countdown => countdown - 1)
-    // }
 
-    // let timer = setInterval(down, 1000)
+    const down = () => {
+      console.log(countdown)
+      setCountDown(countdown => countdown - 1)
+    }
+    let timer = setInterval(down, 1000);
+
+    setTimeout(function(){
+      clearInterval(timer)
+      setWait("wait")
+    }, 15001)
 
     // test
     const takePicture = async () => {
@@ -64,9 +72,14 @@ const UserAuthFinger = props => {
         )
         console.log(res.data)
         if (res.data.code === "00") {
+          clearInterval(timer)
+          setCountDown(15)
+          setWait(null)
           setFingerPrint(res.data.img)
-          // clearInterval(timer)
         } else {
+          clearInterval(timer)
+          setCountDown(15)
+          setWait(null)
           setResult("problem")
         }
       } catch (error) {
@@ -77,29 +90,30 @@ const UserAuthFinger = props => {
 
     // test용도
     setTimeout(() => {
+      clearInterval(timer)
+      setCountDown(15)
+      setWait(null)
       setResult("false")
-      // setFingerPrint("image")
-      // setCountDown(-1)
-      // clearInterval(timer)
-      // setCountDown(20)
-    }, 6000)
+    }, 3000)
 
     setOpen(false);
   };
 
   const returnPage = () => {
     setFingerPrint("")
-    console.log('11')
-    setResult("picture");
-    console.log(result)
-    setFingerPrint("");
-    // props.setCountDown(20)
+    setWait(null)
+    setResult("picture")
 
-    // const down = () => {
-    //   props.setCountDown(countdown => countdown - 1)
-    // }
+    const down = () => {
+      console.log(countdown)
+      setCountDown(countdown => countdown - 1)
+    }
+    let timer = setInterval(down, 1000);
 
-    // let timer = setInterval(down, 1000)
+    setTimeout(function(){
+      clearInterval(timer)
+      setWait("wait")
+    }, 15001)
 
     const takePicture = async () => {
       try {
@@ -108,10 +122,15 @@ const UserAuthFinger = props => {
           // 'http://192.168.100.121:5000/getFinger'
         )
         console.log(res.data)
-        if (res.data.code === "05") {
+        if (res.data.code === "00") {
+          clearInterval(timer)
+          setCountDown(15)
+          setWait(null)
           setFingerPrint(res.data.img)
-          // clearInterval(timer)
         } else {
+          clearInterval(timer)
+          setCountDown(15)
+          setWait(null)
           setResult("problem")
         }
       } catch (error) {
@@ -122,9 +141,10 @@ const UserAuthFinger = props => {
 
     // test용도
     setTimeout(() => {
+      clearInterval(timer)
+      setCountDown(15)
+      setWait(null)
       setFingerPrint("image")
-      console.log("다시하는중")
-      // clearInterval(timer)
     }, 6000)
   };
 
@@ -133,7 +153,15 @@ const UserAuthFinger = props => {
       <Fragment>
         <h2>지문 인증에 문제가 발생하였습니다.</h2>
         <h2>관리자에게 문의해주세요.</h2>
-        <button>돌아가기</button>
+        <Link href="/">
+          <Button
+            variant="contained"
+            size="large"
+            color="primary"
+          >
+            돌아가기
+          </Button>
+        </Link>
       </Fragment>
     );
   } else if (result === "wait") {
@@ -209,8 +237,10 @@ const UserAuthFinger = props => {
           setResult={setResult}
           fingerprint={fingerprint}
           setFingerPrint={setFingerPrint}
-          // countdown={countdown}
-          // setCountDown={setCountDown}
+          countdown={countdown}
+          setCountDown={setCountDown}
+          wait={wait}
+          setWait={setWait}
           userinfocode={props.userinfocode}
         />
         <Dialog
