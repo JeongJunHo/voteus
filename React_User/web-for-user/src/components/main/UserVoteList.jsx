@@ -300,38 +300,41 @@ const UserVoteList = (props) => {
         >
           <DialogTitle>
             <div className={classes.textCenter}>
-              {props.username}님의 투표 정보입니다.
+              {props.username}님의 투표 정보
             </div>
           </DialogTitle>
           <DialogContent>
-            <Grid container justify="center">
-              {/* <Grid item xs></Grid> */}
+            <Grid container justify="center" >
               <Grid item xs={"auto"}>
-                <p>{props.username}님은</p>
+                {/*<p>{props.username}님은</p>*/}
                 {vote.map((eachvote) => {
                   if (eachvote.candidate === '1번투표무효표') {
                     return (
                       <div key={eachvote.vote.code}>
-                        {eachvote.vote.name}에 <span className={classes.candidateColor}>무효표</span>를
+                        {eachvote.vote.name} -> <span className={classes.candidateColor}>무효표</span>
                       </div>
                     )
                   } else {
                     return (
                       <div key={eachvote.vote.code}>
-                        {eachvote.vote.name}에 <span className={classes.candidateColor}>{eachvote.candidate}</span> 후보를
+                        {eachvote.vote.name} -> <span className={classes.candidateColor}>{eachvote.candidate}</span> 후보
                       </div>
                     )
                   }
                 })}
-                <div>
+                {/*<div>
                   선택하셨습니다.
                 </div>
-                <p>투표를 완료 하시겠습니까?</p>
+                <p>투표를 완료 하시겠습니까?</p>*/}
               </Grid>
               {/* <Grid item xs></Grid> */}
             </Grid>
           </DialogContent>
           <DialogActions className={classes.buttonSpace}>
+            <Grid container justify="center">
+              <Grid item xs={"auto"}>
+                <Grid container>
+                  <Grid item> 
             <Button
               onClick={props.finishVote}
               variant="contained"
@@ -342,6 +345,9 @@ const UserVoteList = (props) => {
             >
               확인
             </Button>
+            </Grid>
+            &nbsp;&nbsp;
+            <Grid item>
             <Button
               onClick={dialogClose}
               variant="contained"
@@ -352,6 +358,10 @@ const UserVoteList = (props) => {
             >
               취소
             </Button>
+            </Grid>
+            </Grid>
+            </Grid>
+            </Grid>
           </DialogActions>
         </Dialog>
       </Fragment>
