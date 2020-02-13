@@ -53,12 +53,13 @@ const UserVoteBody = props => {
     // back에 넘겨주는 string
     // console.log('data', candidatestring)
 
-    // axios 일단 주석으로
-    axios.put(
-      'http://54.180.134.217:8080/api/candi/updateCandiList/'
-      + candidatestring)
-    .then(res => console.log(res))
-    .catch(error => console.log(error))
+    // // axios 일단 주석으로
+    // axios.put(
+    //   'http://54.180.134.217:8080/api/candi/updateCandiList/'
+    //   + candidatestring)
+    // .then(res => console.log(res))
+    // .catch(error => console.log(error))
+    
     sessionStorage.clear();
 
     props.setStatus('finish')
