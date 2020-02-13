@@ -20,8 +20,8 @@ const UserAuthFingerRecognition = props => {
     console.log("지문");
 
     axios
-      .post("주소")
-      // .post('http://192.168.100.121:5000/compareFinger', {name: 600})
+      // .post("주소")
+      .post('http://192.168.100.121:5000/compareFinger', {name: 1})
       .then(res => {
         console.log(res.data)
         if (res.data === "00") {
@@ -59,8 +59,8 @@ const UserAuthFingerRecognition = props => {
     const takePicture = async () => {
       try {
         const res = await axios.post(
-          '주소'
-          // 'http://192.168.100.121:5000/getFinger'
+          // '주소'
+          'http://192.168.100.121:5000/getFinger'
         )
         console.log(res.data)
         if (res.data.code === "00") {
@@ -81,13 +81,13 @@ const UserAuthFingerRecognition = props => {
     }
     takePicture()
 
-    // test용도
-    setTimeout(() => {
-      clearInterval(timer)
-      props.setCountDown(15)
-      props.setWait(null)
-      props.setFingerPrint("image")
-    }, 6000)
+    // // test용도
+    // setTimeout(() => {
+    //   clearInterval(timer)
+    //   props.setCountDown(15)
+    //   props.setWait(null)
+    //   props.setFingerPrint("image")
+    // }, 6000)
   }, []);
 
   return (

@@ -67,8 +67,8 @@ const UserAuthFinger = props => {
     const takePicture = async () => {
       try {
         const res = await axios.post(
-          '주소'
-          // 'http://192.168.100.121:5000/getFinger'
+          // '주소'
+          'http://192.168.100.121:5000/getFinger'
         )
         console.log(res.data)
         if (res.data.code === "00") {
@@ -88,13 +88,13 @@ const UserAuthFinger = props => {
     }
     takePicture()
 
-    // test용도
-    setTimeout(() => {
-      clearInterval(timer)
-      setCountDown(15)
-      setWait(null)
-      setResult("false")
-    }, 3000)
+    // // test용도
+    // setTimeout(() => {
+    //   clearInterval(timer)
+    //   setCountDown(15)
+    //   setWait(null)
+    //   setResult("false")
+    // }, 3000)
 
     setOpen(false);
   };
@@ -118,8 +118,8 @@ const UserAuthFinger = props => {
     const takePicture = async () => {
       try {
         const res = await axios.post(
-          '주소'
-          // 'http://192.168.100.121:5000/getFinger'
+          // '주소'
+          'http://192.168.100.121:5000/getFinger'
         )
         console.log(res.data)
         if (res.data.code === "00") {
@@ -139,13 +139,13 @@ const UserAuthFinger = props => {
     }
     takePicture()
 
-    // test용도
-    setTimeout(() => {
-      clearInterval(timer)
-      setCountDown(15)
-      setWait(null)
-      setFingerPrint("image")
-    }, 6000)
+    // // test용도
+    // setTimeout(() => {
+    //   clearInterval(timer)
+    //   setCountDown(15)
+    //   setWait(null)
+    //   setFingerPrint("image")
+    // }, 6000)
   };
 
   const clear = () => {

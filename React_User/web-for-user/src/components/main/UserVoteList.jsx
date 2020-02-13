@@ -60,7 +60,7 @@ const useStyles = makeStyles(theme => ({
       boxShadow: "0 4px 20px -6px #1b5e20",
     },
     // backgroundColor: "#4caf50",
-    backgroundColor: "#ffe082",
+    backgroundColor: "#ffecb3",
     borderRadius: theme.spacing(2),
     borderColor: "#ffa000",
     // background:
@@ -190,7 +190,7 @@ const UserVoteList = (props) => {
           <Grid container spacing={3} className={classes.header}>
             <Grid item xs={12}>
               <Paper elevation={0} className={classes.paperHeader}>
-                <h1>투표 목록입니다.</h1>
+                <h1 style={{color: "black"}}>투표 목록</h1>
                 <h2>투표를 선택해주세요.</h2>
               </Paper>
             </Grid>

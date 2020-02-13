@@ -56,12 +56,12 @@ const UserAuthWebcam = props => {
 
   const sendFace = () => {
     axios
-      .post("주소", { img: screenshot, name: username })
+      // .post("주소", { img: screenshot, name: username })
       // axios
-      //   .post("http://192.168.100.121:5000/getImg", {
-      //     img: screenshot,
-      //     name: username
-      //   })
+      .post("http://192.168.100.121:5000/getImg", {
+        img: screenshot,
+        name: username
+      })
       .then(res => {
         if (res.data === true) {
           props.setResult("true");
@@ -71,7 +71,7 @@ const UserAuthWebcam = props => {
       })
       .catch(error => console.log(error));
 
-    props.setResult("true"); // 테스트용(삭제 필요)
+    // props.setResult("true"); // 테스트용(삭제 필요)
   };
 
   return (

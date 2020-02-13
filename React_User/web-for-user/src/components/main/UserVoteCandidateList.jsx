@@ -38,7 +38,7 @@ const useStyles = makeStyles(theme => ({
     "&:hover": {
       boxShadow: "0 4px 20px -6px #1a237e"
     },
-    backgroundColor: '#e1bee7',
+    backgroundColor: '#e3f2fd',
     borderRadius: theme.spacing(3),
     // borderColor: "#7b1fa2",
     borderColor: "#757575",
@@ -50,7 +50,7 @@ const useStyles = makeStyles(theme => ({
     paddingLeft: theme.spacing(2),
     paddingRight: theme.spacing(2),
     // color: "#9e9e9e",
-    color: "#6a1b9a",
+    color: "#3f51b5",
   },
   candidate: {
     paddingTop: theme.spacing(1),
@@ -84,7 +84,7 @@ const UserVoteCandidateList = props => {
          <Grid container spacing={3} className={classes.header}>
           <Grid item xs={12}>
             <Paper elevation={0} className={classes.paperHeader}>
-              <h1>{props.votename} 투표입니다.</h1>
+              <h1 style={{color: "black"}}>{props.votename}</h1>
               <h2>후보를 선택해주세요.</h2>
             </Paper>
           </Grid>
