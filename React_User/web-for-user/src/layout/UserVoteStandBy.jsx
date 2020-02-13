@@ -13,7 +13,7 @@ import {
 
 const infoStyle ={
   textAlign: "center",
-  color:'#D8D8D8',
+  color:'#bdbdbd',
   margin : -1 -1 -5
 }
 
