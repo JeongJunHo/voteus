@@ -30,7 +30,7 @@ const UserAuthComplete = props => {
       <p style={{textAlign:"left"}}>전자 투표로 진행함에 있어 부정 투표를 방지하기 위하여
          투표 진행 시 <span style={{color: "#819FF7"}}>개개인의 투표 정보가 기록</span>됩니다.<br></br>
         만약 아래 사항을 <span style={{color: "#819FF7"}}>위반할 경우 관련법에 따라 조치될 수 있음</span>을 알려드립니다. </p>
-      <p style={{textAlign:"left"}}> &nbsp;&nbsp; 1. 본인 외 다른 사람의 대리 투표를 하지 않는다.<br></br>
+      <p style={{textAlign:"left", fontSize:"small"}}> &nbsp;&nbsp; 1. 본인 외 다른 사람의 대리 투표를 하지 않는다.<br></br>
       &nbsp;&nbsp; 2. 본인 인증에 사용된 사진 및 지문 촬영본 기록을 남기는 것에 대해 동의한다.</p>
       </table>
       <table align = "center"  style={{padding: 40}}>
