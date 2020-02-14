@@ -91,7 +91,7 @@ create table statistics(
 );
 */
 
-@CrossOrigin(origins = {"*"}, maxAge = 6000)
+@CrossOrigin(origins = { "*" }, maxAge = 6000)
 @RestController
 @RequestMapping("/api/vote")
 public class RestVoteController {
@@ -117,8 +117,6 @@ public class RestVoteController {
 		ResponseEntity<List<VoteVO>> re = null;
 		try {
 			List<VoteVO> list = ser.getVoteActiveList();
-			System.out.println(list.get(0).toString());
-			System.out.println(list.get(0).getMiddlepartVO().toString());
 			re = new ResponseEntity<List<VoteVO>>(list, HttpStatus.OK);
 		} catch (Exception e) {
 			re = new ResponseEntity("failure", HttpStatus.OK);
