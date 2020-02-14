@@ -21,22 +21,23 @@ const UserAuthFingerRecognition = props => {
 
     axios
       // .post("주소")
-      .post('http://192.168.100.121:5000/compareFinger', {name: 1})
+      .post('http://192.168.100.121:5000/compareFinger', {name: props.userinfocode})
       .then(res => {
         console.log(res.data)
-        if (res.data === "00") {
+        if (res.data.code === "00") {
           props.setResult("true")
-        } else if (res.data === "01") {
+        } else if (res.data.code === "01") {
           props.setResult("false")
         } else {
           props.setResult("problem")
         }
       })
       .catch(error => console.log(error))
-
-    setTimeout(() => {
-      props.setResult("true")
-    }, 1000)
+    
+    // 주석
+    // setTimeout(() => {
+    //   props.setResult("true")
+    // }, 1000)
 
     // props.setResult("true") // 삭제 필요
   }, []);
