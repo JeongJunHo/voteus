@@ -112,7 +112,7 @@ export default function SignInSide(props) {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            VOTE ON REGISTER
+            VOTE ON ADMIN
           </Typography>
           <form className={classes.form} noValidate onSubmit={loginfunc}>
             <TextField
