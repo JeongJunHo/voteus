@@ -13,6 +13,7 @@ import AreaList from "./pages/AreaList";
 import PartyList from "./pages/PartyList";
 import CandidateList from "./pages/CandidateList";
 import VoterList from "./pages/VoterList";
+import PrivateRoute from "./components/login/PrivateRoute";
 
 import { koKR } from "@material-ui/core/locale";
 
@@ -54,17 +55,17 @@ const App = () => {
           <Switch>
             <Route exact path="/" component={SignInSide} />
             <Route path="/SignInSide" component={SignInSide} />
-            <Route path="/VoteMain" component={VoteMain} />
-            <Route path="/VoteList" component={VoteList} />
-            <Route path="/PartyList" component={PartyList} />
-            <Route path="/AreaList" component={AreaList} />
-            <Route path="/VoterList" component={VoterList} />
-            <Route path="/MainPartList" component={MainPartList} />
-            <Route
+            <PrivateRoute path="/VoteMain" component={VoteMain} />
+            <PrivateRoute path="/VoteList" component={VoteList} />
+            <PrivateRoute path="/PartyList" component={PartyList} />
+            <PrivateRoute path="/AreaList" component={AreaList} />
+            <PrivateRoute path="/VoterList" component={VoterList} />
+            <PrivateRoute path="/MainPartList" component={MainPartList} />
+            <PrivateRoute
               path="/CandidateList/:code/:name"
               component={CandidateList}
             />
-            <Route
+            <PrivateRoute
               path="/MiddlePartList/:code/:name"
               component={MiddlePartList}
             />

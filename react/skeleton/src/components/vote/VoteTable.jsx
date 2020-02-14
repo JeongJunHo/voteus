@@ -52,9 +52,12 @@ export default function VoteTable(props) {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await axios.get(
-          "http://54.180.134.217:8080/api/vote/getVoteAllList"
-        );
+        const token = "Bearer " + sessionStorage.getItem("token");
+        const response = await axios({
+          method: "GET",
+          url: "http://54.180.134.217:8080/api/vote/getVoteAllList",
+          headers: { Authorization: token }
+        });
         const restate = {
           ...state,
           data: response.data

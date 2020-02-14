@@ -12,6 +12,8 @@ import Grid from "@material-ui/core/Grid";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
+import { Alert, AlertTitle } from "@material-ui/lab";
+import axios from "axios";
 
 function Copyright() {
   return (
@@ -60,8 +62,45 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function SignInSide() {
+export default function SignInSide(props) {
   const classes = useStyles();
+  const [id, setId] = React.useState(null);
+  const [pw, setPw] = React.useState(null);
+  const [loginFail, setLoginFail] = React.useState(false);
+
+  const updateId = e => {
+    setId(e.target.value);
+  };
+
+  const updatePw = e => {
+    setPw(e.target.value);
+  };
+
+  const loginfunc = event => {
+    event.preventDefault();
+    const token = sessionStorage.getItem("token");
+
+    axios
+      .post(
+        "http://54.180.134.217:8080/authenticate",
+        JSON.stringify({ username: id, password: pw }),
+        {
+          headers: {
+            "Content-Type": "application/json"
+          }
+        }
+      )
+      .then(ret => {
+        console.log(ret.data.token);
+        sessionStorage.setItem("token", ret.data.token);
+        props.history.push("/VoteMain");
+      })
+      .catch(error => {
+        console.log(error);
+        setLoginFail(true);
+        props.history.push("/SignInSide");
+      });
+  };
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -75,7 +114,7 @@ export default function SignInSide() {
           <Typography component="h1" variant="h5">
             VOTE ON REGISTER
           </Typography>
-          <form className={classes.form} noValidate>
+          <form className={classes.form} noValidate onSubmit={loginfunc}>
             <TextField
               variant="outlined"
               margin="normal"
@@ -86,6 +125,7 @@ export default function SignInSide() {
               name="email"
               autoComplete="off"
               autoFocus
+              onChange={updateId}
             />
             <TextField
               variant="outlined"
@@ -97,35 +137,28 @@ export default function SignInSide() {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={updatePw}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="아이디 기억"
             />
-            <Link href="/VoteList">
-              <Button
-                // type="submit"
-                type="button"
-                fullWidth
-                variant="contained"
-                color="primary"
-                className={classes.submit}
-              >
-                로그인
-              </Button>
-            </Link>
-            <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  비밀번호 찾기
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link href="#" variant="body2">
-                  {"회원가입"}
-                </Link>
-              </Grid>
-            </Grid>
+            {loginFail ? (
+              <Alert severity="error">
+                <AlertTitle>로그인 실패</AlertTitle>
+                아이디 또는 비밀번호를 확인해주세요.
+              </Alert>
+            ) : null}
+
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
+              로그인
+            </Button>
             <Box mt={5}>
               <Copyright />
             </Box>

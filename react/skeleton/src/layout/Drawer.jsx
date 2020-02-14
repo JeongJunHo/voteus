@@ -1,7 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
-import Button from "@material-ui/core/Button";
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
@@ -12,6 +11,11 @@ import MailIcon from "@material-ui/icons/Mail";
 import { IconButton } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import Link from "@material-ui/core/Link";
+import HowToVoteIcon from "@material-ui/icons/HowToVote";
+import HomeWorkIcon from "@material-ui/icons/HomeWork";
+import AccountBalanceIcon from "@material-ui/icons/AccountBalance";
+import ClassIcon from "@material-ui/icons/Class";
+import PermIdentityIcon from "@material-ui/icons/PermIdentity";
 
 const useStyles = makeStyles({
   list: {
@@ -53,14 +57,13 @@ export default function TemporaryDrawer() {
         {[
           {
             name: "투표 관리",
-            url: "/VoteList"
+            url: "/VoteList",
+            img: <HowToVoteIcon />
           }
         ].map((obj, index) => (
           <Link key={index} href={obj.url} color="inherit">
             <ListItem button key={obj.name}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
+              <ListItemIcon>{obj.img}</ListItemIcon>
               <ListItemText primary={obj.name} />
             </ListItem>
           </Link>
@@ -71,48 +74,28 @@ export default function TemporaryDrawer() {
         {[
           {
             name: "정당 관리",
-            url: "/PartyList"
+            url: "/PartyList",
+            img: <AccountBalanceIcon />
           },
           {
             name: "지역구 관리",
-            url: "/AreaList"
+            url: "/AreaList",
+            img: <HomeWorkIcon />
           },
           {
             name: "선거 분류 관리",
-            url: "/MainPartList"
+            url: "/MainPartList",
+            img: <ClassIcon />
           },
           {
             name: "투표자 등록",
-            url: "/VoterList"
+            url: "/VoterList",
+            img: <PermIdentityIcon />
           }
         ].map((obj, index) => (
           <Link key={index} href={obj.url} color="inherit">
             <ListItem button key={obj.name}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={obj.name} />
-            </ListItem>
-          </Link>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {[
-          {
-            name: "통계1",
-            url: "/"
-          },
-          {
-            name: "통계2",
-            url: "/"
-          }
-        ].map((obj, index) => (
-          <Link key={index} href={obj.url} color="inherit">
-            <ListItem button key={obj.name}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
+              <ListItemIcon>{obj.img}</ListItemIcon>
               <ListItemText primary={obj.name} />
             </ListItem>
           </Link>

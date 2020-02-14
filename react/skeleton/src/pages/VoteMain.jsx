@@ -34,9 +34,12 @@ const VoteMain = props => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await axios.get(
-          "http://localhost:8080/api/vote/getVoteActiveList"
-        );
+        const token = "Bearer " + sessionStorage.getItem("token");
+        const response = await axios({
+          method: "GET",
+          url: "http://54.180.134.217:8080/api/vote/getVoteActiveList",
+          headers: { Authorization: token }
+        });
         setVoteData(response.data);
         console.log(response.data);
         if (response.data.length > 0) {
