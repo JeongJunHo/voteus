@@ -26,9 +26,9 @@ const theme = createMuiTheme(
     },
     drawerWidth: 320,
     typography: {
-      fontFamily: ["Noto Sans KR"].join(","),
+      fontFamily: ["CookieRun-Regular"].join(","),
       button: {
-        fontFamily: "Noto Sans KR"
+        fontFamily: "CookieRun-Regular"
       },
       body1: {
         fontWeight: 500
