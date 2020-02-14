@@ -132,12 +132,12 @@ const UserAuthName = props => {
   };
 
   const keyChangeName = input => {
-    // console.log(Hangul.assemble(input)[0])
+    console.log(Hangul.assemble(input)[0])
     setName(Hangul.assemble(input))
   }
 
   const keyPressName = (button) => {
-    // console.log("keypress", button)
+    console.log("keypress", button)
     if (button === "{shift}" || button === "{lock}") {
       handleShift()
     }

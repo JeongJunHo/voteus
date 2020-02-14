@@ -8,8 +8,8 @@ const NameKeyboard = props => {
       layoutName={props.layoutname}
       onChange={props.keyChangeName}
       onKeyPress={props.keyPressName}
-      useMouseEvents={true}
-      useTouchEvents={true}
+      // useMouseEvents={true}
+      // useTouchEvents={true}
       layout={{
         default: [
           "` 1 2 3 4 5 6 7 8 9 0 - = {bksp}",
