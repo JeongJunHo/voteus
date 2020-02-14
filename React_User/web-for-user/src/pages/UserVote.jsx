@@ -118,9 +118,7 @@ const UserVote = ({match, history}) => {
         if (status === 'vote') {
           return (
             <Fragment>
-              <UserHeader>
-                <h1>투표 페이지(header)</h1>
-              </UserHeader>
+              <UserHeader />
               <FlexPaperTemplate>
                 <VoteListContext.Provider value={votelist}>
                   <PartyListContext.Provider value={party}>
@@ -140,9 +138,7 @@ const UserVote = ({match, history}) => {
         } else if (status === 'standby') {
             return (
               <Fragment>
-                <UserHeader>
-                  <h1>투표 페이지(header)</h1>
-                </UserHeader>
+                <UserHeader />
                 <FlexPaperTemplate>
                   <UserVoteStandBy
                     votelist={votelist}
@@ -156,9 +152,7 @@ const UserVote = ({match, history}) => {
         } else if (status === 'finish') {
             return (
               <Fragment>
-                <UserHeader>
-                  <h1>투표 페이지(header)</h1>
-                </UserHeader>
+                <UserHeader />
                 <FlexPaperTemplate>
                   <UserVoteEnd />
                 </FlexPaperTemplate>
