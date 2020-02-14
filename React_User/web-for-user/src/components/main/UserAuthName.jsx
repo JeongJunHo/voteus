@@ -272,7 +272,7 @@ const UserAuthName = props => {
                   InputLabelProps={{
                     shrink: true
                   }}
-                  type="text"
+                  type="password"
                   value={area_registration_number}
                   onChange={handleChangeAreaRegistrationNumber}
                   autoComplete="off"
