@@ -6,6 +6,12 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { Alert, AlertTitle } from "@material-ui/lab";
 
+import NameKeyboard from "../keyboard/NameKeyboard";
+import BirthKeyboard from "../keyboard/BirthKeyboard";
+import AreaKeyboard from "../keyboard/AreaKeyboard";
+
+import * as Hangul from 'hangul-js';
+
 // const useStyles = makeStyles(theme => ({
 //   paper: {
 //     padding: theme.spacing(2),
@@ -30,6 +36,10 @@ const UserAuthName = props => {
   const [name, setName] = useState("");
   const [birth_registration_number, setBirthRegistrationNumber] = useState("");
   const [area_registration_number, setAreaRegistrationNumber] = useState("");
+  const [layoutname, setLayoutName] = useState("default");
+  const [showkeyboardname, setShowKeyboardName] = useState(false);
+  const [showkeyboardbirth, setShowKeyboardBirth] = useState(false);
+  const [showkeyboardarea, setShowKeyboardArea] = useState(false);
 
   const nameError = useMemo(() => (name.length < 2 ? true : false), [name]);
   const namePopup = useMemo(() => {
@@ -44,6 +54,7 @@ const UserAuthName = props => {
     () => (birth_registration_number.length === 6 ? false : true),
     [birth_registration_number]
   );
+
   const birthRegPopup = useMemo(() => {
     if (commit) {
       return birth_registration_number.length === 6 ? false : true;
@@ -71,6 +82,7 @@ const UserAuthName = props => {
   }, [area_registration_number, commit]);
 
   const handleChangeName = useCallback(e => {
+    // console.log(e.target.value)
     setName(e.target.value);
   }, []);
 
@@ -119,9 +131,70 @@ const UserAuthName = props => {
     }
   };
 
+  const keyChangeName = input => {
+    // console.log(Hangul.assemble(input)[0])
+    setName(Hangul.assemble(input))
+  }
+
+  const keyPressName = (button) => {
+    // console.log("keypress", button)
+    if (button === "{shift}" || button === "{lock}") {
+      handleShift()
+    }
+  }
+
+  const handleShift = () => {
+    if (layoutname === "default") {
+      setLayoutName("shift")
+    } else {
+      setLayoutName("default")
+    }
+  }
+
+  const keyChangeBirth = input => {
+    // console.log(input)
+    setBirthRegistrationNumber(input)
+  }
+
+  const keyPressBirth = (button) => {
+    // console.log(button)
+  }
+
+  const keyChangeArea = input => {
+    setAreaRegistrationNumber(input)
+  }
+
+  const keyPressArea = (button) => {
+    // console.log(button)
+  }
+
+  const keyboardClickName = () => {
+    setShowKeyboardBirth(false)
+    setShowKeyboardArea(false)
+    setShowKeyboardName(true)
+  }
+
+  const keyboardClickBirth = () => {
+    setShowKeyboardName(false)
+    setShowKeyboardArea(false)
+    setShowKeyboardBirth(true)
+  }
+
+  const keyboardClickArea = () => {
+    setShowKeyboardName(false)
+    setShowKeyboardBirth(false)
+    setShowKeyboardArea(true)
+  }
+
+  const outClick = () => {
+    setShowKeyboardName(false)
+    setShowKeyboardArea(false)
+    setShowKeyboardBirth(false)
+  }
+
   return (
     <Fragment>
-      <h1>투표 시작 전 인증을 시작합니다.</h1>
+      <h1 onClick={outClick}>투표 시작 전 인증을 시작합니다.</h1>
       <form onSubmit={handleSubmit}>
         <Grid container spacing={3}>
           <Grid item xs={12}>
@@ -140,54 +213,106 @@ const UserAuthName = props => {
               onChange={handleChangeName}
               autoComplete="off"
               error={namePopup}
+              onClick={keyboardClickName}
             />
+            {showkeyboardname === true ? (
+              <NameKeyboard
+                layoutname={layoutname}
+                keyChangeName={keyChangeName}
+                keyPressName={keyPressName}
+              />
+            ):(
+              null
+            )}
           </Grid>
-          <Grid item xs={6}>
-            <TextField
-              id="standard-full-width"
-              label="주민등록번호"
-              placeholder="앞번호 6자리"
-              helperText={
-                birthRegPopup ? "주민등록번호 앞 6자리를 입력해주세요." : " "
-              }
-              fullWidth
-              margin="normal"
-              InputLabelProps={{
-                shrink: true
-              }}
-              type="text"
-              value={birth_registration_number}
-              onChange={handleChangeBirthRegistrationNumber}
-              autoComplete="off"
-              error={birthRegPopup}
-              inputProps={{
-                maxLength: 6
-              }}
-            />
+          <Grid item xs={12}>
+            <Grid container>
+              <Grid item xs={6}>
+                <TextField
+                  id="standard-full-width"
+                  label="주민등록번호"
+                  placeholder="앞번호 6자리"
+                  helperText={
+                    birthRegPopup ? "주민등록번호 앞 6자리를 입력해주세요." : " "
+                  }
+                  fullWidth
+                  margin="normal"
+                  InputLabelProps={{
+                    shrink: true
+                  }}
+                  type="text"
+                  value={birth_registration_number}
+                  onChange={handleChangeBirthRegistrationNumber}
+                  autoComplete="off"
+                  error={birthRegPopup}
+                  inputProps={{
+                    maxLength: 6
+                  }}
+                  onClick={keyboardClickBirth}
+                />
+                {/* {showkeyboardbirth === true ? (
+                  <BirthKeyboard
+                    keyChangeBirth={keyChangeBirth}
+                    keyPressBirth={keyPressBirth}
+                  />
+                ):(
+                  null
+                )} */}
+              </Grid>
+              <Grid item xs={6}>
+                <TextField
+                  id="standard-full-width"
+                  label=" "
+                  placeholder="뒷번호 7자리"
+                  helperText={
+                    areaRegPopup ? "주민등록번호 뒷 7자리를 입력해주세요." : " "
+                  }
+                  fullWidth
+                  margin="normal"
+                  InputLabelProps={{
+                    shrink: true
+                  }}
+                  type="text"
+                  value={area_registration_number}
+                  onChange={handleChangeAreaRegistrationNumber}
+                  autoComplete="off"
+                  error={areaRegPopup}
+                  inputProps={{
+                    maxLength: 7
+                  }}
+                  onClick={keyboardClickArea}
+                />
+                {/* {showkeyboardarea === true ? (
+                  <AreaKeyboard
+                    keyChangeArea={keyChangeArea}
+                    keyPressArea={keyPressArea}
+                  />
+                ):(
+                  null
+                )} */}
+              </Grid>
+            </Grid>
+
+            <Grid item xs={12}>
+              {showkeyboardbirth === true ? (
+                <BirthKeyboard
+                  keyChangeBirth={keyChangeBirth}
+                  keyPressBirth={keyPressBirth}
+                />
+              ):(
+                null
+              )}
+              {showkeyboardarea === true ? (
+                <AreaKeyboard
+                  keyChangeArea={keyChangeArea}
+                  keyPressArea={keyPressArea}
+                />
+              ):(
+                null
+              )}
+            </Grid>
           </Grid>
-          <Grid item xs={6}>
-            <TextField
-              id="standard-full-width"
-              label=" "
-              placeholder="뒷번호 7자리"
-              helperText={
-                areaRegPopup ? "주민등록번호 뒷 7자리를 입력해주세요." : " "
-              }
-              fullWidth
-              margin="normal"
-              InputLabelProps={{
-                shrink: true
-              }}
-              type="text"
-              value={area_registration_number}
-              onChange={handleChangeAreaRegistrationNumber}
-              autoComplete="off"
-              error={areaRegPopup}
-              inputProps={{
-                maxLength: 7
-              }}
-            />
-          </Grid>
+          
           {!loginState && (
             <Grid item xs={12}>
               <Alert severity="error">
