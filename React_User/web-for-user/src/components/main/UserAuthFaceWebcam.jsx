@@ -60,7 +60,7 @@ const UserAuthWebcam = props => {
       // axios
       .post("http://192.168.100.121:5000/getImg", {
         img: screenshot,
-        name: username
+        name: props.userinfocode
       })
       .then(res => {
         if (res.data === true) {

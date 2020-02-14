@@ -148,7 +148,7 @@ const UserAuthFace = props => {
           도움말
         </IconButton>
 
-        <UserAuthFaceWebcam result={result} setResult={setResult} />
+        <UserAuthFaceWebcam result={result} setResult={setResult} userinfocode={props.userinfocode}/>
         <Dialog
           open={open}
           onClose={handleClose}
