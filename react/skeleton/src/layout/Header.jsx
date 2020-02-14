@@ -11,7 +11,7 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { CommonContext } from "../context/CommonContext";
 import Icon from "@material-ui/core/Icon";
 import Drawer from "./Drawer";
-import Link from "@material-ui/core/Link";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   appBar: {
@@ -38,7 +38,9 @@ const Header = props => {
       <Toolbar>
         <Drawer />
         <Typography variant="h6" className={classes.title}>
-          Vote Admin
+          <Link to="/" style={{ color: "white", textDecorationLine: "none" }}>
+            VOTE ON ADMIN
+          </Link>
         </Typography>
         <IconButton
           aria-label="account of current user"
@@ -49,7 +51,12 @@ const Header = props => {
           href="/SignInSide"
           onClick={logOutEvent}
         >
-          <ExitToAppIcon />
+          <Link
+            to="/SignInSide"
+            style={{ color: "white", textDecorationLine: "none" }}
+          >
+            <ExitToAppIcon />
+          </Link>
         </IconButton>
       </Toolbar>
     </AppBar>
