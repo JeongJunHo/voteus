@@ -17,6 +17,8 @@ import axios from 'axios';
 
 import {
   LinearProgress,
+  Link,
+  Button
 } from "@material-ui/core";
 
 const UserVote = ({match, history}) => {
@@ -68,8 +70,10 @@ const UserVote = ({match, history}) => {
       )
       .then(res => {
         // console.log(res.data)
-        if (res.data === []) {
+        console.log(res.data.length)
+        if (res.data.length === 0) {
           setIsVote(false)
+          console.log(isvote)
         } else {
           for (let vote of res.data) {
             // console.log('vote', vote)
@@ -103,6 +107,10 @@ const UserVote = ({match, history}) => {
     }
     setLoading(false)
   }, [match.params.code])
+
+  const clear = () => {
+    sessionStorage.clear();
+  }
 
   if (loading === false) {
     if (available === true) {
@@ -170,6 +178,16 @@ const UserVote = ({match, history}) => {
             <UserHeader />
               <FlexPaperTemplate>
                 <h1>투표 정보가 없습니다.</h1>
+                <Link href="/">
+                  <Button
+                    variant="contained"
+                    size="large"
+                    color="primary"
+                    onClick={clear}
+                  >
+                    돌아가기
+                  </Button>
+                </Link>
               </FlexPaperTemplate>
             <UserFooter />
           </Fragment>

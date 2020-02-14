@@ -132,12 +132,12 @@ const UserAuthName = props => {
   };
 
   const keyChangeName = input => {
-    // console.log(Hangul.assemble(input)[0])
+    console.log(Hangul.assemble(input)[0])
     setName(Hangul.assemble(input))
   }
 
   const keyPressName = (button) => {
-    // console.log("keypress", button)
+    console.log("keypress", button)
     if (button === "{shift}" || button === "{lock}") {
       handleShift()
     }
@@ -188,8 +188,8 @@ const UserAuthName = props => {
 
   const outClick = () => {
     setShowKeyboardName(false)
-    setShowKeyboardArea(false)
     setShowKeyboardBirth(false)
+    setShowKeyboardArea(false)
   }
 
   return (
@@ -272,7 +272,7 @@ const UserAuthName = props => {
                   InputLabelProps={{
                     shrink: true
                   }}
-                  type="text"
+                  type="password"
                   value={area_registration_number}
                   onChange={handleChangeAreaRegistrationNumber}
                   autoComplete="off"
@@ -330,6 +330,7 @@ const UserAuthName = props => {
               color="primary"
               fullWidth={true}
               type="submit"
+              onClick={outClick}
             >
               인증
             </Button>
