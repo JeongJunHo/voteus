@@ -74,24 +74,9 @@ def compareFinger(name):
     pred_rx = model.predict([random_img_rr, rx])
 
     print('0: %.02f, %s' % (pred_rx, ry))
+    return pred_rx
     if pred_rx > 0.75:
         return pred_rx
 
-    for cnt in range(10):
-        get_img = cv2.imread(path, cv2.IMREAD_GRAYSCALE)
-        height, width = get_img.shape
 
-        matrix = cv2.getRotationMatrix2D((width/2, height/2), 30*cnt, 1)
-        rotate_img = cv2.resize((cv2.warpAffine(get_img, matrix,(width,height))),(96,96))
-
-        img_rotate_r = rotate_img[:, :, np.newaxis]
-
-        auth_img_rotate_r = img_rotate_r[np.newaxis]
-        auth_img_rotate_rr = auth_img_rotate_r.astype(np.float32) / 255.
-        pred_rx_rotate = model.predict([auth_img_rotate_rr, rx])
-        print(cnt, pred_rx_rotate)
-        if pred_rx_rotate > 0.75:
-            return pred_rx_rotate
-
-    return pred_rx
 
