@@ -6,11 +6,9 @@ import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
 import { IconButton } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
-import Link from "@material-ui/core/Link";
+import { Link } from "react-router-dom";
 import HowToVoteIcon from "@material-ui/icons/HowToVote";
 import HomeWorkIcon from "@material-ui/icons/HomeWork";
 import AccountBalanceIcon from "@material-ui/icons/AccountBalance";
@@ -23,6 +21,11 @@ const useStyles = makeStyles({
   },
   fullList: {
     width: "auto"
+  },
+  link: {
+    // color: "rgba(0, 0, 0, 0.87)",
+    color: "inherit",
+    textDecorationLine: "none"
   }
 });
 
@@ -61,7 +64,7 @@ export default function TemporaryDrawer() {
             img: <HowToVoteIcon />
           }
         ].map((obj, index) => (
-          <Link key={index} href={obj.url} color="inherit">
+          <Link key={index} to={obj.url} className={classes.link}>
             <ListItem button key={obj.name}>
               <ListItemIcon>{obj.img}</ListItemIcon>
               <ListItemText primary={obj.name} />
@@ -93,7 +96,7 @@ export default function TemporaryDrawer() {
             img: <PermIdentityIcon />
           }
         ].map((obj, index) => (
-          <Link key={index} href={obj.url} color="inherit">
+          <Link key={index} to={obj.url} className={classes.link}>
             <ListItem button key={obj.name}>
               <ListItemIcon>{obj.img}</ListItemIcon>
               <ListItemText primary={obj.name} />
