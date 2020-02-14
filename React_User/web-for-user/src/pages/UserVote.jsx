@@ -17,6 +17,8 @@ import axios from 'axios';
 
 import {
   LinearProgress,
+  Link,
+  Button
 } from "@material-ui/core";
 
 const UserVote = ({match, history}) => {
@@ -68,8 +70,10 @@ const UserVote = ({match, history}) => {
       )
       .then(res => {
         // console.log(res.data)
-        if (res.data === []) {
+        console.log(res.data.length)
+        if (res.data.length === 0) {
           setIsVote(false)
+          console.log(isvote)
         } else {
           for (let vote of res.data) {
             // console.log('vote', vote)
@@ -104,15 +108,17 @@ const UserVote = ({match, history}) => {
     setLoading(false)
   }, [match.params.code])
 
+  const clear = () => {
+    sessionStorage.clear();
+  }
+
   if (loading === false) {
     if (available === true) {
       if (isvote === true) {
         if (status === 'vote') {
           return (
             <Fragment>
-              <UserHeader>
-                <h1>투표 페이지(header)</h1>
-              </UserHeader>
+              <UserHeader />
               <FlexPaperTemplate>
                 <VoteListContext.Provider value={votelist}>
                   <PartyListContext.Provider value={party}>
@@ -132,9 +138,7 @@ const UserVote = ({match, history}) => {
         } else if (status === 'standby') {
             return (
               <Fragment>
-                <UserHeader>
-                  <h1>투표 페이지(header)</h1>
-                </UserHeader>
+                <UserHeader />
                 <FlexPaperTemplate>
                   <UserVoteStandBy
                     votelist={votelist}
@@ -148,9 +152,7 @@ const UserVote = ({match, history}) => {
         } else if (status === 'finish') {
             return (
               <Fragment>
-                <UserHeader>
-                  <h1>투표 페이지(header)</h1>
-                </UserHeader>
+                <UserHeader />
                 <FlexPaperTemplate>
                   <UserVoteEnd />
                 </FlexPaperTemplate>
@@ -170,6 +172,16 @@ const UserVote = ({match, history}) => {
             <UserHeader />
               <FlexPaperTemplate>
                 <h1>투표 정보가 없습니다.</h1>
+                <Link href="/">
+                  <Button
+                    variant="contained"
+                    size="large"
+                    color="primary"
+                    onClick={clear}
+                  >
+                    돌아가기
+                  </Button>
+                </Link>
               </FlexPaperTemplate>
             <UserFooter />
           </Fragment>

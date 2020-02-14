@@ -7,8 +7,8 @@ const BirthKeyboard = props => {
     <Keyboard
       onChange={props.keyChangeBirth}
       onKeyPress={props.keyPressBirth}
-      useMouseEvents={true}
-      useTouchEvents={true}
+      // useMouseEvents={true}
+      // useTouchEvents={true}
       maxLength={6}
       layout={{
         default: [

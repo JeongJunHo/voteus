@@ -82,7 +82,7 @@ def compareFinger():
         print("arc", arc)
 
         #일치률이 80%이상이면 일치 아니면 불일치
-        if arc[0][0] >= 0.75:
+        if arc >= 0.75:
             data = json.dumps({"code": "00"})
         else:
             data = json.dumps({"code": "01"})
@@ -127,9 +127,9 @@ def getImg():
 
         # tmpname에 knn으로 부터 얻은 코드를 저장
         tmpname = knn.get_name(file)
-        for i in tmpname:
-            print(i)
-            if int(i[0]) is name:
+        for predictname, (top, right, bottom, left) in tmpname:
+            print(predictname)
+            if int(predictname) == name:
                 data = json.dumps({"code": "00"})
                 return data
         #print('tmpname : ' + tmpname)

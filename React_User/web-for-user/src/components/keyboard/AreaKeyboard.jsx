@@ -7,8 +7,8 @@ const AreaKeyboard = props => {
     <Keyboard
       onChange={props.keyChangeArea}
       onKeyPress={props.keyPressArea}
-      useMouseEvents={true}
-      useTouchEvents={true}
+      // useMouseEvents={true}
+      // useTouchEvents={true}
       maxLength={7}
       layout={{
         default: [
