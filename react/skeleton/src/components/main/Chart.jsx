@@ -109,9 +109,6 @@ const Chart = props => {
                 fill={`#${Math.round(Math.random() * 0xffffff).toString(16)}`}
               />
             ))}
-            {/* <Bar dataKey="선한빛" fill="#82ca00" />
-            <Bar dataKey="장인호" fill="#82ca9d" />
-            <Bar dataKey="박종수" fill="#82caff" /> */}
             <Brush dataKey="name" height={50} stroke="#8884d8" />
           </BarChart>
         </ResponsiveContainer>
