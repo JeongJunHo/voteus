@@ -99,24 +99,46 @@ const UserVoteCandidateList = props => {
               props.setVoteNumber(null)
               // window.scrollTo(0, props.scrollheight)
             }
-            return (
-              <Grid item xs={6} key={eachcandidate.code}>
-                <Card
-                  variant="outlined"
-                  onClick={selectCandidate}
-                  className={classes.cardBody}
-                >
-                  <CardContent className={classes.cardCandidate}>
-                    <Typography className={classes.party}>
-                      기호 {eachcandidate.num}번 {partylist[eachcandidate.party]}
-                    </Typography>
-                    <Typography className={classes.candidate}>
-                      {eachcandidate.name}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-            )
+
+            if (partylist[eachcandidate.party] === "정당없음") {
+              return (
+                <Grid item xs={6} key={eachcandidate.code}>
+                  <Card
+                    variant="outlined"
+                    onClick={selectCandidate}
+                    className={classes.cardBody}
+                  >
+                    <CardContent className={classes.cardCandidate}>
+                      <Typography className={classes.party}>
+                        기호 없음
+                      </Typography>
+                      <Typography className={classes.candidate}>
+                        {eachcandidate.name}
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </Grid>
+              )
+            } else {
+              return (
+                <Grid item xs={6} key={eachcandidate.code}>
+                  <Card
+                    variant="outlined"
+                    onClick={selectCandidate}
+                    className={classes.cardBody}
+                  >
+                    <CardContent className={classes.cardCandidate}>
+                      <Typography className={classes.party}>
+                        기호 {eachcandidate.num}번 {partylist[eachcandidate.party]}
+                      </Typography>
+                      <Typography className={classes.candidate}>
+                        {eachcandidate.name}
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </Grid>
+              )
+            }
           })}
          </Grid>
         </div>

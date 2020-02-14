@@ -309,7 +309,7 @@ const UserVoteList = (props) => {
               <Grid item xs={"auto"}>
                 {/*<p>{props.username}님은</p>*/}
                 {vote.map((eachvote) => {
-                  if (eachvote.candidate === '1번투표무효표') {
+                  if (eachvote.candidate === '무효표') {
                     return (
                       <div key={eachvote.vote.code}>
                         {eachvote.vote.name} -> <span className={classes.candidateColor}>무효표</span>
