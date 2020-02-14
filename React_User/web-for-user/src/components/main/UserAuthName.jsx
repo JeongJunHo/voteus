@@ -188,8 +188,8 @@ const UserAuthName = props => {
 
   const outClick = () => {
     setShowKeyboardName(false)
-    setShowKeyboardArea(false)
     setShowKeyboardBirth(false)
+    setShowKeyboardArea(false)
   }
 
   return (
@@ -330,6 +330,7 @@ const UserAuthName = props => {
               color="primary"
               fullWidth={true}
               type="submit"
+              onClick={outClick}
             >
               인증
             </Button>

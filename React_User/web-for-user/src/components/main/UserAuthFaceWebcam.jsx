@@ -63,7 +63,7 @@ const UserAuthWebcam = props => {
         name: props.userinfocode
       })
       .then(res => {
-        if (res.data === true) {
+        if (res.data === "00") {
           props.setResult("true");
         } else {
           props.setResult("false");
