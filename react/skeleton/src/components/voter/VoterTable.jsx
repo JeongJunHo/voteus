@@ -13,7 +13,7 @@ export default function VoterTable(props) {
   const [state, setState] = React.useState({
     columns: [
       {
-        title: "주민등록번호",
+        title: "등록번호",
         field: "code",
         editable: "onAdd"
       },
