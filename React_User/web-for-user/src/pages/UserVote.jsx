@@ -1,20 +1,26 @@
 import React, { useEffect, useState, Fragment } from 'react';
 
+// component
 import UserHeader from '../layout/UserHeader';
 import UserVoteBody from '../layout/UserVoteBody';
 import UserVoteStandBy from '../layout/UserVoteStandBy';
 import UserVoteEnd from '../layout/UserVoteEnd';
 import UserFooter from '../layout/UserFooter';
 
+// redirect
 import { Redirect } from 'react-router-dom';
 
+// context
 import VoteListContext from '../context/VoteListContext';
 import PartyListContext from '../context/PartyListContext';
 
+// template
 import FlexPaperTemplate from "../components/main/FlexPaperTemplate";
 
+// axios
 import axios from 'axios';
 
+// material-ui
 import {
   LinearProgress,
   Link,

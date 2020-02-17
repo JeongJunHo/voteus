@@ -6,7 +6,7 @@ import "./App.css";
 import UserHome from "./pages/UserHome";
 import UserAuthentication from "./pages/UserAuthentication";
 import UserVote from "./pages/UserVote";
-import PageNotFound from "./pages/PageNotFound";
+// import PageNotFound from "./pages/PageNotFound";
 
 import TypeContext from "./context/TypeContext";
 
@@ -21,7 +21,7 @@ class App extends Component {
               <Route path="/user-auth" component={UserAuthentication} />
             </TypeContext.Provider>
             <Route path="/user-vote/:code/:name" component={UserVote} />
-            {/* <Route path="*" component={PageNotFound} /> */}
+            {/* <Route component={PageNotFound} /> */}
         </div>
       </Router>
     );
