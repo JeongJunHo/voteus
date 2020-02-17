@@ -38,7 +38,10 @@ const Header = props => {
       <Toolbar>
         <Drawer />
         <Typography variant="h6" className={classes.title}>
-          <Link to="/" style={{ color: "white", textDecorationLine: "none" }}>
+          <Link
+            to="/VoteMain"
+            style={{ color: "white", textDecorationLine: "none" }}
+          >
             VOTE ON ADMIN
           </Link>
         </Typography>
