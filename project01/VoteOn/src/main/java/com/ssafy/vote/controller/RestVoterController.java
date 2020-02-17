@@ -1,5 +1,6 @@
 package com.ssafy.vote.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
@@ -142,5 +143,22 @@ public class RestVoterController {
 		}
 		return re;
 	}
-
+	
+	@ApiOperation(value = "해당 투표의 투표자 통계용 데이터를 반환합니다.")
+	@GetMapping(value = "/voteProgressData/{voteCode}")
+	public ResponseEntity<HashMap<String,Object>> voteProgressData(@PathVariable String voteCode){
+		ResponseEntity<HashMap<String,Object>> entity = null;
+		HashMap<String, Object> data = new HashMap<String, Object>();
+		try {
+			HashMap<String, Object> map = ser.getVoteProgressData(voteCode);
+			data.put("result", map);
+			data.put("resmsg", "success");
+		} catch (Exception e) {
+			data.put("resmsg", "failure");
+		}finally {
+			entity = new ResponseEntity<HashMap<String,Object>>(data, HttpStatus.OK);
+		}
+		
+		return entity;
+	}
 }
