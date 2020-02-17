@@ -19,10 +19,7 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
-      <Link color="inherit" href="http://127.0.0.1:3000">
-        Vote On
-      </Link>{" "}
-      {new Date().getFullYear()}
+      Vote On {new Date().getFullYear()}
       {"."}
     </Typography>
   );
@@ -34,7 +31,7 @@ const useStyles = makeStyles(theme => ({
   },
   image: {
     // backgroundImage: "url(https://source.unsplash.com/random)",
-    backgroundImage: "url(img/vote.jpg)",
+    backgroundImage: "url(img/vote2.png)",
     backgroundRepeat: "no-repeat",
     backgroundColor:
       theme.palette.type === "dark"
