@@ -33,6 +33,10 @@ thead * {
   font-family: "CookieRunOTF-Bold" !important;
 }
 
+.material-icons {
+  font-family: "Material Icons" !important;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
