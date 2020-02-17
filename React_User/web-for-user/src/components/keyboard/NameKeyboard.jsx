@@ -8,6 +8,8 @@ const NameKeyboard = props => {
       layoutName={props.layoutname}
       onChange={props.keyChangeName}
       onKeyPress={props.keyPressName}
+      // 뒤에서부터 지워지도록 설정
+      disableCaretPositioning={true}
       // useMouseEvents={true}
       // useTouchEvents={true}
       layout={{
