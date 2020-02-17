@@ -18,6 +18,11 @@ public class VoteDaoImpl implements IVoteDao{
 	public List<VoteVO> getVoteAllList() {
 		return session.selectList("vote.getVoteAllList");
 	}
+	
+	@Override
+	public List<VoteVO> getVoteActiveList() {
+		return session.selectList("vote.getVoteActiveList");
+	}
 
 	@Override
 	public boolean insertVote(String name, String middlepart, String start, String end) {
@@ -48,4 +53,8 @@ public class VoteDaoImpl implements IVoteDao{
 			return false;
 	}
 
+	@Override
+	public List<VoteVO> getVoteList(String votercode) {
+		return session.selectList("vote.getVoteList", votercode);
+	}
 }

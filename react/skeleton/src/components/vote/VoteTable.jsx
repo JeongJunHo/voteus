@@ -7,12 +7,10 @@ import LinearProgress from "@material-ui/core/LinearProgress";
 import axios from "axios";
 
 export default function VoteTable(props) {
-  console.log(props.middlepart);
   const middlepart = {};
   for (let i in props.middlepart) {
     middlepart[props.middlepart[i].code] = props.middlepart[i].name;
   }
-  console.log(middlepart);
 
   const [state, setState] = React.useState({
     columns: [
@@ -24,11 +22,14 @@ export default function VoteTable(props) {
       {
         title: "투표명",
         field: "name",
-        render: rowData => (
-          <Link key={rowData.index} href="/${}" color="inherit">
-            {rowData.name}
-          </Link>
-        )
+        render: rowData => {
+          const href = "/CandidateList/" + rowData.code + "/" + rowData.name;
+          return (
+            <Link key={rowData.index} href={href}>
+              {rowData.name}
+            </Link>
+          );
+        }
       },
       {
         title: "시작일",
@@ -51,9 +52,12 @@ export default function VoteTable(props) {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await axios.get(
-          "http://54.180.134.217:8080/api/vote/getVoteAllList"
-        );
+        const token = "Bearer " + sessionStorage.getItem("token");
+        const response = await axios({
+          method: "GET",
+          url: "http://54.180.134.217:8080/api/vote/getVoteAllList",
+          headers: { Authorization: token }
+        });
         const restate = {
           ...state,
           data: response.data

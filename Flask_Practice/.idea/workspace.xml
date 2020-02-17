@@ -1,7 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1ce4702f-6b30-495d-ab83-8fac4e9c107a" name="Default Changelist" comment="" />
+    <list default="true" id="1ce4702f-6b30-495d-ab83-8fac4e9c107a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/5/000001.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/5/000002.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/5/000003.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/5/000004.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/5/000005.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/6/KakaoTalk_20200203_140802697.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/6/KakaoTalk_20200203_140803167.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/6/KakaoTalk_20200203_140803407.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/7/KakaoTalk_20200212_140333183.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/7/KakaoTalk_20200212_140339445.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/7/KakaoTalk_20200212_140353181.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/finger/preprocess_Finger.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example_downloadimage.py" beforeDir="false" afterPath="$PROJECT_DIR$/finger/example_downloadimage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/face_detection.py" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/face_detection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/faster_face_distance.py" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/faster_face_distance.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_ImageFile_TF.py" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_ImageFile_TF.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_ImageFile_TF3.py" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_ImageFile_TF3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/test/00000.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/test/00000.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/test/00005.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/test/00005.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/test/adrian.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/test/adrian.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/test/alex_lacamoire1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/test/alex_lacamoire1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/test/inho.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/test/inho.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/test/iu.jfif" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/test/iu.jfif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/test/jang.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/test/jang.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/test/johnsnow_test1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/test/johnsnow_test1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/test/jsp.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/test/jsp.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/test/kim.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/test/kim.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/test/kit_with_rose.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/test/kit_with_rose.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/test/obama1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/test/obama1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/test/obama_and_biden.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/test/obama_and_biden.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/test/park.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/test/park.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/test/patrick_bateman.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/test/patrick_bateman.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/test/sana.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/test/sana.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/test/shb.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/test/shb.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/test/sunjpg.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/test/sunjpg.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/test/trisha_adrian.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/test/trisha_adrian.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/adrian/00000.png" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/adrian/00000.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/adrian/00001.png" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/adrian/00001.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/adrian/00002.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/adrian/00002.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/adrian/00003.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/adrian/00003.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/adrian/00004.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/adrian/00004.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/adrian/00005.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/adrian/00005.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/alex_lacamoire/img1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/alex_lacamoire/img1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/biden/biden.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/biden/biden.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/biden/biden2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/biden/biden2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/inho/00000.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/4/00000.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/inho/00001.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/4/00001.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/inho/00002.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/4/00002.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/inho/00003.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/4/00003.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/inho/00004.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/4/00004.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/inho/00005.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/4/00005.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/inho/00006.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/4/00006.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/iu/00001.jfif" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/iu/00001.jfif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/iu/00002.jfif" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/iu/00002.jfif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/iu/00003.jfif" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/iu/00003.jfif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/iu/00005.jfif" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/iu/00005.jfif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/iu/00006.jfif" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/iu/00006.jfif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/kim/00000.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/2/00000.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/kim/00001.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/2/00001.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/kim/00002.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/2/00002.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/kim/00003.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/2/00003.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/kim/00004.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/2/00004.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/kim/00005.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/2/00005.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/kit_harington/john1.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/kit_harington/john1.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/kit_harington/john2.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/kit_harington/john2.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/obama/obama.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/obama/obama.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/obama/obama2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/obama/obama2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/parkjongsue/00000.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/1/00000.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/parkjongsue/00001.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/1/00001.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/parkjongsue/00002.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/1/00002.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/parkjongsue/00003.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/1/00003.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/parkjongsue/jsp.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/1/jsp.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/rose_leslie/img1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/rose_leslie/img1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/rose_leslie/img2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/rose_leslie/img2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/sun/00000.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/3/00000.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/sun/00001.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/3/00001.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/sun/00002.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/3/00002.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/sun/00003.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/3/00003.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/sun/00004.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/3/00004.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/trisha/00000.png" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/trisha/00000.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/trisha/00001.png" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/trisha/00001.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/trisha/00002.png" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/trisha/00002.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/trisha/00003.png" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/trisha/00003.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/trisha/00004.png" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/trisha/00004.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_examples/train/trisha/00005.png" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_examples/train/trisha/00005.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_learn.py" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_learn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_learn3.py" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_learn3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/knn_video.py" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/knn_video.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/mobilenet_ssd_v2_face_quant_postprocess_edgetpu.tflite" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/mobilenet_ssd_v2_face_quant_postprocess_edgetpu.tflite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/trained_knn_model.clf" beforeDir="false" afterPath="$PROJECT_DIR$/face/examples/trained_knn_model.clf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fingerprint.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/fingerprint.bmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_practice.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/start_flask.py" beforeDir="false" afterPath="$PROJECT_DIR$/start_flask.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,14 +132,84 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="-1204738847">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.0" value="2" />
+          <entry key="project.opened" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="BMP" value="4" />
+          <entry key="bmp" value="23" />
+          <entry key="ipynb" value="6" />
+          <entry key="jpeg" value="1" />
+          <entry key="jpg" value="2" />
+          <entry key="json" value="1" />
+          <entry key="md" value="1" />
+          <entry key="py" value="33" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="IPNB" value="6" />
+          <entry key="Image" value="30" />
+          <entry key="JSON" value="1" />
+          <entry key="Markdown" value="1" />
+          <entry key="Python" value="33" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="dummy" value="7" />
+          <entry key="py" value="3045" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="PLAIN_TEXT" value="7" />
+          <entry key="Python" value="3045" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/start_flask.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+            <state>
+              <caret line="22" column="45" lean-forward="true" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/face/examples/knn_ImageFile_TF.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="131">
+              <caret line="58" column="54" selection-start-line="58" selection-start-column="51" selection-end-line="58" selection-end-column="54" />
+              <folding>
+                <element signature="e#60#78#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/finger/compare_Finger.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-128">
+              <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+              <folding>
+                <element signature="e#77#87#0" expanded="true" />
+                <marker date="1581495449326" expanded="true" signature="202:2141" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -58,13 +223,48 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>try</find>
+      <find>engine</find>
+      <find>augs</find>
+      <find>603</find>
+      <find>600</find>
+      <find>label_val</find>
+      <find>split</find>
+      <find>predict</find>
+      <find>layers</find>
+      <find>random_idx</find>
+      <find>epoch</find>
+      <find>weight</find>
+      <find>models</find>
+      <find>model</find>
+      <find>compile</find>
+      <find>label</find>
+      <find>get_json</find>
+      <find>request</find>
+      <find>comparefinger</find>
+      <find>jpg</find>
+      <find>real</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/finger_simpletest.py" />
+        <option value="$PROJECT_DIR$/example_downloadimage.py" />
+        <option value="$PROJECT_DIR$/finger/preprocessFinger.py" />
+        <option value="$PROJECT_DIR$/finger/preprocess_Finger.py" />
+        <option value="$PROJECT_DIR$/finger/make_Model.py" />
+        <option value="$PROJECT_DIR$/face/examples/knn_ImageFile_TF.py" />
+        <option value="$PROJECT_DIR$/finger/example_downloadimage.py" />
+        <option value="$PROJECT_DIR$/finger/save_FingerPath.py" />
+        <option value="$PROJECT_DIR$/face/examples/knn_learn.py" />
         <option value="$PROJECT_DIR$/start_flask.py" />
+        <option value="$PROJECT_DIR$/finger/compare_Finger.py" />
       </list>
     </option>
   </component>
@@ -87,6 +287,11 @@
               <item name="Flask_Practice" type="b2602c69:ProjectViewProjectNode" />
               <item name="Flask_Practice" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Flask_Practice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Flask_Practice" type="462c0819:PsiDirectoryNode" />
+              <item name="finger" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -94,7 +299,21 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../s02p12c101/Flask_Practice" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\source\SubPTJ3\s02p13c101\Flask_Practice\face\examples\knn_examples\train\7" />
+      <recent name="D:\source\SubPTJ3\s02p13c101\Flask_Practice\face\examples\knn_examples\train\5" />
+      <recent name="D:\source\SubPTJ3\s02p13c101\Flask_Practice\face\examples\knn_examples\train\6" />
+      <recent name="D:\source\SubPTJ3\s02p13c101\Flask_Practice\finger" />
+      <recent name="D:\source\SubPTJ3\s02p13c101\Flask_Practice\finger\Real" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\source\SubPTJ3\s02p13c101\Flask_Practice\finger" />
+      <recent name="D:\source\SubPTJ3\s02p13c101\Flask_Practice\face" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -108,7 +327,70 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.start_flask">
+    <configuration name="compare_Finger" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Flask_Practice" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/finger" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/finger/compare_Finger.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="make_Model" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Flask_Practice" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/finger" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/finger/make_Model.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="preprocess_Finger" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Flask_Practice" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/finger" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/finger/preprocess_Finger.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="start_flask" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Flask_Practice" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -130,9 +412,18 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Python.start_flask" />
+      <item itemvalue="Python.preprocess_Finger" />
+      <item itemvalue="Python.make_Model" />
+      <item itemvalue="Python.compare_Finger" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.start_flask" />
+        <item itemvalue="Python.compare_Finger" />
+        <item itemvalue="Python.make_Model" />
+        <item itemvalue="Python.preprocess_Finger" />
       </list>
     </recent_temporary>
   </component>
@@ -159,21 +450,22 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="762" y="0" width="781" height="830" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.30510753" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Python Console" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32902297" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3275862" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32954547" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -187,10 +479,217 @@
     <option name="LAST_COMMIT_MESSAGE" value="JSP&#10;First commit&#10;Hello World" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/find.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/finger_simpletest.py" />
+    <entry file="file://$PROJECT_DIR$/test.py" />
+    <entry file="file://$PROJECT_DIR$/ras2ard.py" />
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_practice.py" />
+    <entry file="file://$PROJECT_DIR$/preprocess.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/finger/Altered/Altered-Easy/600__M_Left_index_finger_CR.BMP">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/Lib/zipfile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="1206" selection-start-line="1206" selection-end-line="1206" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/PIL/Image.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="2080" selection-start-line="2080" selection-end-line="2080" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/finger/600__M_Left_index_finger_CR.BMP">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/finger/Altered/Altered-Hard/600__M_Right_index_finger_CR.BMP">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/finger/Real/600__M_Left_index_finger.BMP">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/finger/600__M_Right_index_finger.bmp">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/finger/Real/600__M_Right_index_finger.BMP">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/finger/train.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/sklearn/model_selection/_split.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="1733" selection-start-line="1733" selection-end-line="1733" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/finger/603__M_Right_index_finger.bmp">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/finger/preprocess.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/face/examples/face_detection.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="38" selection-start-line="38" selection-end-line="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/finger/1.bmp">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/finger/save_FingerPath.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="82" column="19" lean-forward="true" selection-start-line="82" selection-start-column="19" selection-end-line="82" selection-end-column="19" />
+          <folding>
+            <element signature="e#155#170#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/finger/finger1__MRight_index_finger.bmp">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/finger/4__M_Right_index_finger.bmp">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/finger/3__F_Right_index_finger.bmp">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/finger/1__M_Right_index_finger.bmp">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/face/examples/knn_examples/train/kit_harington/john1.jpeg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/face/examples/knn_examples/train/6/KakaoTalk_20200203_140802697.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/finger/preprocess_Finger.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="412">
+          <caret line="178" column="1" selection-start-line="178" selection-start-column="1" selection-end-line="178" selection-end-column="1" />
+          <folding>
+            <element signature="e#30#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/finger/model.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/finger/alter_Image.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/finger/make_Model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="218" column="16" selection-start-line="218" selection-start-column="11" selection-end-line="218" selection-end-column="16" />
+          <folding>
+            <element signature="e#21#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/finger/example_downloadimage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="72" column="23" selection-start-line="72" selection-start-column="23" selection-end-line="72" selection-end-column="23" />
+          <folding>
+            <element signature="e#155#170#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/5__M_Right_index_finger.bmp">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2__F_Right_index_finger.bmp">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fingerprint.bmp">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/face/examples/knn_learn3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1059" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/face/examples/knn_learn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="855">
+          <caret line="111" column="44" selection-start-line="111" selection-start-column="44" selection-end-line="111" selection-end-column="44" />
+          <folding>
+            <element signature="e#1494#1505#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/face/examples/knn_ImageFile_TF.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="58" column="54" selection-start-line="58" selection-start-column="51" selection-end-line="58" selection-end-column="54" />
+          <folding>
+            <element signature="e#60#78#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/start_flask.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        <state>
+          <caret line="22" column="45" lean-forward="true" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/finger/fingerprint.bmp">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/finger/compare_Finger.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-128">
+          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+          <folding>
+            <element signature="e#77#87#0" expanded="true" />
+            <marker date="1581495449326" expanded="true" signature="202:2141" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

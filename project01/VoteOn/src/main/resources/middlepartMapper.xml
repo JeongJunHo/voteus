@@ -19,4 +19,8 @@
 		set name = #{name}, mainpart=#{mainpart}, areaCode=#{areaCode}
 		where code = #{code};
 	</update>
+	<select id="getMaincodeAllList" resultType="middle" parameterType="String">
+		select md.code, md.name, md.mainpart, md.areaCode 
+		from middlepart md join mainpart m on m.code=md.mainpart where m.code = #{maincode};
+	</select>
 </mapper>

@@ -51,7 +51,6 @@ public class CandiDaoImpl implements ICandiDao{
 
 	@Override
 	public boolean updateCandiSu(int code, int pick) {
-		System.out.println(pick);
 		HashMap<String, Integer> map = new HashMap<>();
 		map.put("code", code);
 		map.put("pick", pick);
@@ -65,6 +64,11 @@ public class CandiDaoImpl implements ICandiDao{
 	@Override
 	public CandidateVO getCandiCode(int code) {
 		return session.selectOne("candi.getCandiCode",code);
+	}
+
+	@Override
+	public List<CandidateVO> getCandiVotecode(int votecode) {
+		return session.selectList("candi.getCandiVotecode",votecode);
 	}
 
 }

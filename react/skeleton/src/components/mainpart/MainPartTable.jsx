@@ -19,7 +19,7 @@ export default function MainPartTable() {
         render: rowData => {
           const href = "/MiddlePartList/" + rowData.code + "/" + rowData.name;
           return (
-            <Link key={rowData.index} href={href} color="inherit">
+            <Link key={rowData.index} href={href}>
               {rowData.name}
             </Link>
           );
@@ -35,9 +35,12 @@ export default function MainPartTable() {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await axios.get(
-          "http://54.180.134.217:8080/api/mainpart/getMainpartAllList"
-        );
+        const token = "Bearer " + sessionStorage.getItem("token");
+        const response = await axios({
+          method: "get",
+          url: "http://54.180.134.217:8080/api/mainpart/getMainpartAllList",
+          headers: { Authorization: token }
+        });
         const restate = {
           ...state,
           data: response.data

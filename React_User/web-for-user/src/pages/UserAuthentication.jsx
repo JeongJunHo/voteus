@@ -1,19 +1,25 @@
-import React, { Fragment } from 'react';
+import React, { Fragment } from "react";
+// import { makeStyles } from "@material-ui/core/styles";
+import UserHeader from "../layout/UserHeader";
+import UserAuthBody from "../layout/UserAuthBody";
+import UserFooter from "../layout/UserFooter";
+import FlexPaperTemplate from "../components/main/FlexPaperTemplate";
+// import { Alert, AlertTitle } from "@material-ui/lab";
 
-import UserHeader from '../layout/UserHeader';
-import UserAuthBody from '../layout/UserAuthBody';
-import UserFooter from '../layout/UserFooter';
+// const useStyles = makeStyles(theme => ({}));
 
 const UserAuthentication = props => {
-    return (
-        <Fragment>
-            <UserHeader>
-                <h1>인증 페이지(header)</h1>
-            </UserHeader>
-            <UserAuthBody />
-            <UserFooter />
-        </Fragment>
-    )
-}
+  // const classes = useStyles();
+
+  return (
+    <Fragment>
+      <UserHeader />
+      <FlexPaperTemplate>
+        <UserAuthBody />
+      </FlexPaperTemplate>
+      <UserFooter />
+    </Fragment>
+  );
+};
 
 export default UserAuthentication;
