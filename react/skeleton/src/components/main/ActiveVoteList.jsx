@@ -290,7 +290,9 @@ export default function EnhancedTable(props) {
                 })}
               {emptyRows > 0 && (
                 <TableRow style={{ height: 53 * emptyRows }}>
-                  <TableCell colSpan={6} />
+                  <TableCell align="center" colSpan={6}>
+                    {rows.length === 0 ? "데이터가 존재하지 않습니다." : null}
+                  </TableCell>
                 </TableRow>
               )}
             </TableBody>
