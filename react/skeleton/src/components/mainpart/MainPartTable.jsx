@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import MaterialTable from "material-table";
-import Link from "@material-ui/core/Link";
+import { Link } from "react-router-dom";
 import LinearProgress from "@material-ui/core/LinearProgress";
 
 import axios from "axios";
@@ -19,7 +19,11 @@ export default function MainPartTable() {
         render: rowData => {
           const href = "/MiddlePartList/" + rowData.code + "/" + rowData.name;
           return (
-            <Link key={rowData.index} href={href}>
+            <Link
+              key={rowData.index}
+              to={href}
+              style={{ color: "#3f51b5", textDecorationLine: "none" }}
+            >
               {rowData.name}
             </Link>
           );
