@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import MaterialTable from "material-table";
 import date_to_str from "../../common.js";
-import Link from "@material-ui/core/Link";
+import { Link } from "react-router-dom";
 import LinearProgress from "@material-ui/core/LinearProgress";
 
 import axios from "axios";
@@ -25,7 +25,11 @@ export default function VoteTable(props) {
         render: rowData => {
           const href = "/CandidateList/" + rowData.code + "/" + rowData.name;
           return (
-            <Link key={rowData.index} href={href}>
+            <Link
+              key={rowData.index}
+              to={href}
+              style={{ color: "#3f51b5", textDecorationLine: "none" }}
+            >
               {rowData.name}
             </Link>
           );
