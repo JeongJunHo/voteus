@@ -138,8 +138,9 @@ const UserAuthName = props => {
   }
 
   const keyPressName = (button) => {
-    // console.log("keypress", button)
-    if (button === "{shift}" || button === "{lock}") {
+    if (layoutname === "shift") {
+      handleShift()
+    } else if ( button === "{shift}" || button === "{lock}") {
       handleShift()
     }
   }
