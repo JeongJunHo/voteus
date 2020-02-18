@@ -40,6 +40,7 @@ const UserAuthName = props => {
   const [showkeyboardname, setShowKeyboardName] = useState(false);
   const [showkeyboardbirth, setShowKeyboardBirth] = useState(false);
   const [showkeyboardarea, setShowKeyboardArea] = useState(false);
+  const [clickwhere, setClickWhere] = useState(null);
 
   const nameError = useMemo(() => (name.length < 2 ? true : false), [name]);
   const namePopup = useMemo(() => {
@@ -132,12 +133,12 @@ const UserAuthName = props => {
   };
 
   const keyChangeName = input => {
-    console.log(Hangul.assemble(input)[0])
+    // console.log(Hangul.assemble(input)[0])
     setName(Hangul.assemble(input))
   }
 
   const keyPressName = (button) => {
-    console.log("keypress", button)
+    // console.log("keypress", button)
     if (button === "{shift}" || button === "{lock}") {
       handleShift()
     }
@@ -169,18 +170,37 @@ const UserAuthName = props => {
   }
 
   const keyboardClickName = () => {
+    if (clickwhere === "name") {
+      setClickWhere("name")
+    } else {
+      setName("")
+    }
+    setClickWhere("name")
     setShowKeyboardBirth(false)
     setShowKeyboardArea(false)
     setShowKeyboardName(true)
   }
 
   const keyboardClickBirth = () => {
+    // console.log(clickwhere)
+    if (clickwhere === "birth") {
+      setClickWhere("birth")
+    } else {
+      setBirthRegistrationNumber("")
+    }
+    setClickWhere("birth")
     setShowKeyboardName(false)
     setShowKeyboardArea(false)
     setShowKeyboardBirth(true)
   }
 
   const keyboardClickArea = () => {
+    if (clickwhere === "area") {
+      setClickWhere("area")
+    } else {
+      setAreaRegistrationNumber("")
+    }
+    setClickWhere("area")
     setShowKeyboardName(false)
     setShowKeyboardBirth(false)
     setShowKeyboardArea(true)
@@ -190,6 +210,7 @@ const UserAuthName = props => {
     setShowKeyboardName(false)
     setShowKeyboardBirth(false)
     setShowKeyboardArea(false)
+    setClickWhere(null)
   }
 
   return (
