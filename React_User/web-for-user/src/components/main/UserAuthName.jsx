@@ -210,6 +210,7 @@ const UserAuthName = props => {
     setShowKeyboardName(false)
     setShowKeyboardBirth(false)
     setShowKeyboardArea(false)
+    setClickWhere(null)
   }
 
   return (
