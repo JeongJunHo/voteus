@@ -31,11 +31,14 @@ const useStyles = makeStyles(theme => ({
   bold: {
     fontWeight: "bold"
   },
-  vh_80: {
-    height: "80vh"
-  },
+  // vh_80: {
+  //   height: "80vh"
+  // },
   alignCenter: {
     textAlign: "center"
+  },
+  dialogMargin: {
+    marginTop: theme.spacing(3)
   }
 }));
 
@@ -155,13 +158,11 @@ const UserAuthFace = props => {
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
           fullWidth={true}
-          PaperProps={{ className: [classes.vh_80] }}
+          // PaperProps={{ className: [classes.vh_80] }}
         >
           <DialogTitle id="alert-dialog-title">촬영 전 확인사항</DialogTitle>
           <DialogContent>
-            {/* <DialogContentText id="alert-dialog-description"> */}
             <h2 className={classes.alignCenter}>올바른 촬영 자세</h2>
-            {/* </DialogContentText> */}
             <Grid container spacing={1}>
               <Grid container item xs={12} alignItems="center" justify="center">
                 <Grid item xs={"auto"}>
@@ -207,6 +208,7 @@ const UserAuthFace = props => {
               fullWidth={true}
               onClick={handleClose}
               autoFocus
+              className={classes.dialogMargin}
             >
               확인
             </Button>
