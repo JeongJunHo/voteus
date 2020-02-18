@@ -1,4 +1,4 @@
-import React, { useContext, useState, Fragment, useRef } from "react";
+import React, { useEffect, useContext, useState, Fragment, useRef } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Webcam from "react-webcam";
 import Button from "@material-ui/core/Button";
@@ -27,11 +27,16 @@ const UserAuthWebcam = props => {
   const classes = useStyles();
 
   const [screenshot, setScreenShot] = useState("");
+  const [buttondisabled, setButtonDisabled] = useState(true);
+
   const username = useContext(UserNameContext);
 
   const webcamRef = React.useRef(null);
 
   const capture = React.useCallback(() => {
+    setButtonDisabled(true)
+    setTimeout(() => {setButtonDisabled(false)}, 500)
+
     if (
       webcamRef.current.stream !== null &&
       webcamRef.current.stream !== undefined
@@ -103,30 +108,83 @@ const UserAuthWebcam = props => {
           ) : null}
         </Grid>
         {screenshot ? (
-          <>
-            <Grid item xs={6}>
-              <Button
-                variant="contained"
-                size="large"
-                color="primary"
-                fullWidth={true}
-                onClick={send}
-              >
-                인증
-              </Button>
-            </Grid>
-            <Grid item xs={6}>
-              <Button
-                variant="contained"
-                size="large"
-                color="primary"
-                fullWidth={true}
-                onClick={reset}
-              >
-                재촬영
-              </Button>
-            </Grid>
-          </>
+          buttondisabled === true ? (
+            <>
+              <Grid item xs={6}>
+                <Button
+                  variant="contained"
+                  size="large"
+                  color="primary"
+                  fullWidth={true}
+                  onClick={send}
+                  disabled
+                >
+                  인증
+                </Button>
+              </Grid>
+              <Grid item xs={6}>
+                <Button
+                  variant="contained"
+                  size="large"
+                  color="primary"
+                  fullWidth={true}
+                  onClick={reset}
+                  disabled
+                >
+                  재촬영
+                </Button>
+              </Grid>
+            </>
+          ):(
+            <>
+              <Grid item xs={6}>
+                <Button
+                  variant="contained"
+                  size="large"
+                  color="primary"
+                  fullWidth={true}
+                  onClick={send}
+                >
+                  인증
+                </Button>
+              </Grid>
+              <Grid item xs={6}>
+                <Button
+                  variant="contained"
+                  size="large"
+                  color="primary"
+                  fullWidth={true}
+                  onClick={reset}
+                >
+                  재촬영
+                </Button>
+              </Grid>
+            </>
+          )
+          // <>
+          //   <Grid item xs={6}>
+          //     <Button
+          //       variant="contained"
+          //       size="large"
+          //       color="primary"
+          //       fullWidth={true}
+          //       onClick={send}
+          //     >
+          //       인증
+          //     </Button>
+          //   </Grid>
+          //   <Grid item xs={6}>
+          //     <Button
+          //       variant="contained"
+          //       size="large"
+          //       color="primary"
+          //       fullWidth={true}
+          //       onClick={reset}
+          //     >
+          //       재촬영
+          //     </Button>
+          //   </Grid>
+          // </>
         ) : (
           <Grid item xs={12}>
             <Button
