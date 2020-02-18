@@ -28,7 +28,7 @@ const UserHomeBody = props => {
       <Link href="/user-auth" color="inherit">
         <div className={classes.flex}>
           <h1>전자투표시스템</h1>
-          <img src={votelogo} alt="투표로고이미지"/>
+          <img src={votelogo} alt="투표로고이미지" height="40%"/>
           <h1>화면을 터치해주세요.</h1>
         </div>
       </Link>
