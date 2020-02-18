@@ -30,6 +30,9 @@ const theme = createMuiTheme(
       button: {
         fontFamily: "CookieRun-Regular"
       },
+      thead: {
+        fontFamily: "CookieRunOTF-Bold"
+      },
       body1: {
         fontWeight: 500
       }
@@ -38,7 +41,7 @@ const theme = createMuiTheme(
       MuiCssBaseline: {
         "@global": {
           body: {
-            backgroundColor: "white"
+            backgroundColor: "#f7f7f7"
           }
         }
       }
