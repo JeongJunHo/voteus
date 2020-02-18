@@ -66,7 +66,7 @@ const UserAuthFace = props => {
   if (result === "set") {
     return (
       <Fragment>
-        <div>인증중...</div>
+        <p>인증중...</p>
         <CircularProgress />
       </Fragment>
     );
