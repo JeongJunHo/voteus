@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
   },
   image: {
     // backgroundImage: "url(https://source.unsplash.com/random)",
-    backgroundImage: "url(img/vote2.png)",
+    backgroundImage: "url(img/votelogo.png)",
     backgroundRepeat: "no-repeat",
     backgroundColor:
       theme.palette.type === "dark"
