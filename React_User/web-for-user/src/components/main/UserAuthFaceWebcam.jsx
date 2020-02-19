@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState, Fragment, useRef } from "react";
+import React, { useContext, useState, Fragment, useRef } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Webcam from "react-webcam";
 import Button from "@material-ui/core/Button";
@@ -67,8 +67,6 @@ const UserAuthWebcam = props => {
 
   const sendFace = () => {
     axios
-      // .post("주소", { img: screenshot, name: username })
-      // axios
       .post("http://192.168.100.121:5000/getImg", {
         img: screenshot,
         name: props.userinfocode
@@ -81,8 +79,6 @@ const UserAuthWebcam = props => {
         }
       })
       .catch(error => console.log(error));
-
-    // props.setResult("true"); // 테스트용(삭제 필요)
   };
 
   return (
@@ -186,7 +182,6 @@ const UserAuthWebcam = props => {
               <div className={classes.warning}>(카메라를 터치해도 촬영 가능합니다.)</div>
             </Grid>
             <Grid item xs={12}>
-              {/* <div className={classes.warning}>(카메라를 터치해도 촬영 가능합니다.)</div> */}
               <Button
                 variant="contained"
                 size="large"
