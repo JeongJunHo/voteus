@@ -86,6 +86,15 @@ const UserVoteCandidateList = props => {
             <Paper elevation={0} className={classes.paperHeader}>
               <h1 style={{color: "black"}}>{props.votename}</h1>
               <h2>후보를 선택해주세요.</h2>
+              {props.selectname === "무효표" ? (
+                <h4 style={{color: "#9e9e9e"}}>현재 <span style={{color: "#424242"}}>{props.selectname}</span>를 선택하셨습니다.</h4>
+              ):(
+                (props.selectname === null) ? (
+                  null
+                ):(
+                  <h4 style={{color: "#9e9e9e", margin:"0"}}>현재 <span style={{color: "#424242"}}>{props.selectname} 후보</span>에게 투표하셨습니다.</h4>
+                )
+              )}
             </Paper>
           </Grid>
         </Grid>
