@@ -17,6 +17,7 @@ const UserVoteBody = props => {
   const [endvote, setEndVote] = useState(false);
   // const [voteresult, setVoteResult] = useState(null);
   const [scrollheight, setScrollHeight] = useState(0);
+  const [selectname, setSelectName] = useState(null);
   const [loading, setLoading] = useState(null);
 
   const votelist = useContext(VoteListContext);
@@ -78,6 +79,7 @@ const UserVoteBody = props => {
             result={props.result}
             scrollheight={scrollheight}
             setScrollHeight={setScrollHeight}
+            setSelectName={setSelectName}
           />
         </Fragment>
       )
@@ -92,6 +94,7 @@ const UserVoteBody = props => {
             result={props.result}
             setResult={props.setResult}
             scrollheight={scrollheight}
+            selectname={selectname}
           />
         </Fragment>
       )
