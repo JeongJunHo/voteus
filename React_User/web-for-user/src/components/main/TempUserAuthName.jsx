@@ -6,9 +6,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { Alert, AlertTitle } from "@material-ui/lab";
 
-import Keyboard from "react-simple-keyboard";
-import "react-simple-keyboard/build/css/index.css";
-// import NameKeyboard from "../keyboard/NameKeyboard";
+import NameKeyboard from "../keyboard/NameKeyboard";
 import BirthKeyboard from "../keyboard/BirthKeyboard";
 import AreaKeyboard from "../keyboard/AreaKeyboard";
 
@@ -45,14 +43,14 @@ const UserAuthName = props => {
   const [clickwhere, setClickWhere] = useState(null);
 
   const inputRef = React.useRef();
-  // const [selectionStart, setSelectionStart] = useState(null);
-  // const updateSelectionStart = () => {
-  //   // console.log(inputRef.current.selectionStart)
-  //   // setSelectionStart(inputRef.current.selectionStart);
-  //   setSelectionStart(3)
-  // }
+  const [selectionStart, setSelectionStart] = useState(null);
+  const updateSelectionStart = () => {
+    console.log(inputRef.current.selectionStart)
+    // setSelectionStart(inputRef.current.selectionStart);
+    setSelectionStart(3)
+  }
 
-  const keyboard = React.useRef();
+  const keyboardRef = React.useRef();
 
   const nameError = useMemo(() => (name.length < 2 ? true : false), [name]);
   const namePopup = useMemo(() => {
@@ -97,7 +95,6 @@ const UserAuthName = props => {
   const handleChangeName = useCallback(e => {
     // console.log(e.target.value)
     setName(e.target.value);
-    keyboard.current.setInput("김")
   }, []);
 
   const handleChangeBirthRegistrationNumber = useCallback(e => {
@@ -147,12 +144,8 @@ const UserAuthName = props => {
 
   const keyChangeName = input => {
     // console.log(Hangul.assemble(input)[0])
-    // console.log('커서 위치', selectionStart)
-    keyboard.current.setInput(Hangul.assemble(input))
-    // console.log('inputlength', input.length)
-    // console.log(keyboard.current.input)
-    // // keyboard.current.setInput()
-    // console.log(keyboard.current.input)
+    console.log('커서 위치', selectionStart)
+    console.log('inputlength', input.length)
     // console.log(inputRef)
     // console.log(input)
     // console.log(inputRef.current.selectionStart)
@@ -170,18 +163,18 @@ const UserAuthName = props => {
   }
 
   const keyPressName = (button) => {
-    // console.log('커서 위치', selectionStart)
-    // if (button === "{bksp}") {
-    //   console.log(inputRef)
-    //   console.log('백스페이스 누름', inputRef.current.value)
-    //   const temp = []
-    //   let tempInput = Hangul.disassemble(inputRef.current.value)
-    //   let tempWord = Hangul.assemble(tempInput)
-    //   for (let i of tempWord) {
-    //     temp.push(i)
-    //   }
-    //   console.log(temp)
-    // }
+    console.log('커서 위치', selectionStart)
+    if (button === "{bksp}") {
+      console.log(inputRef)
+      console.log('백스페이스 누름', inputRef.current.value)
+      const temp = []
+      let tempInput = Hangul.disassemble(inputRef.current.value)
+      let tempWord = Hangul.assemble(tempInput)
+      for (let i of tempWord) {
+        temp.push(i)
+      }
+      console.log(temp)
+    }
 
     if (layoutname === "shift") {
       handleShift()
@@ -281,35 +274,15 @@ const UserAuthName = props => {
               autoComplete="off"
               error={namePopup}
               onClick={keyboardClickName}
-              // onSelect={updateSelectionStart}
+              onSelect={updateSelectionStart}
               inputRef={inputRef}
             />
             {showkeyboardname === true ? (
-              <Keyboard
-                layoutName={layoutname}
-                onChange={keyChangeName}
-                onKeyPress={keyPressName}
-                keyboardRef={r => (keyboard.current = r)}
-                // 뒤에서부터 지워지도록 설정
-                // disableCaretPositioning={true}
-                // useMouseEvents={true}
-                // useTouchEvents={true}
-                layout={{
-                  default: [
-                    "` 1 2 3 4 5 6 7 8 9 0 - = {bksp}",
-                    "{tab} ㅂ ㅈ ㄷ ㄱ ㅅ ㅛ ㅕ ㅑ ㅐ ㅔ [ ] \\",
-                    "{lock} ㅁ ㄴ ㅇ ㄹ ㅎ ㅗ ㅓ ㅏ ㅣ ; ' {enter}",
-                    "{shift} ㅋ ㅌ ㅊ ㅍ ㅠ ㅜ ㅡ , . / {shift}",
-                    // ".com @ {space}"
-                  ],
-                  shift: [
-                    "~ ! @ # $ % ^ & * ( ) _ + {bksp}",
-                    "{tab} ㅃ ㅉ ㄸ ㄲ ㅆ ㅛ ㅕ ㅑ ㅒ ㅖ { } |",
-                    '{lock} ㅁ ㄴ ㅇ ㄹ ㅎ ㅗ ㅓ ㅏ ㅣ : " {enter}',
-                    "{shift} ㅋ ㅌ ㅊ ㅍ ㅠ ㅜ ㅡ < > ? {shift}",
-                    // ".com @ {space}"
-                  ]
-                }}
+              <NameKeyboard
+                layoutname={layoutname}
+                keyChangeName={keyChangeName}
+                keyPressName={keyPressName}
+                keyboardRef={props.keyboardRef}
               />
             ):(
               null
