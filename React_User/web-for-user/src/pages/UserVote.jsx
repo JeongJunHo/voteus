@@ -27,7 +27,8 @@ import {
   Button
 } from "@material-ui/core";
 
-const UserVote = ({match, history}) => {
+// url의 code와 name을 컴포넌트에서 사용하기 위해 match를 적용.
+const UserVote = ({match}) => {
   const [votelist, setVoteList] = useState(null);
   const [status, setStatus] = useState(null);
   const [loading, setLoading] = useState(null);
@@ -38,12 +39,10 @@ const UserVote = ({match, history}) => {
 
   useEffect(() => {
     setLoading(true)
-    // console.log(sessionStorage.getItem("user"), match.params.code)
 
     if (sessionStorage.getItem("user") === match.params.code) {
-      // history.push('/');
       setAvailable(true)
-      
+
       let tempParty = {}
       const partyData = async () => {
         try {
@@ -51,18 +50,15 @@ const UserVote = ({match, history}) => {
             "http://54.180.134.217:8080/api/party/getPartyAllList/"
           )
           for (let index in res3.data) {
-            // console.log(res3.data[index])
             tempParty[res3.data[index].p_code] = res3.data[index].p_name
           }
         } catch (error) {
           console.log(error)
         }
-        // console.log(tempParty)
         setParty(tempParty)
       }
       partyData();
   
-      // axios (Vote & Candidate)
       const data = {
         code: match.params.code
       }
@@ -75,14 +71,11 @@ const UserVote = ({match, history}) => {
         data
       )
       .then(res => {
-        // console.log(res.data)
-        // console.log(res.data.length)
         if (res.data.length === 0) {
           setIsVote(false)
           console.log(isvote)
         } else {
           for (let vote of res.data) {
-            // console.log('vote', vote)
             const candidatelist = []
             const candidateData = async () => {
               try {

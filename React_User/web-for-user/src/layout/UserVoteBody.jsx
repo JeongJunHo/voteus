@@ -15,7 +15,6 @@ const UserVoteBody = props => {
   const [votename, setVoteName] = useState(null);
   const [candidatelist, setCandidateList] = useState(null);
   const [endvote, setEndVote] = useState(false);
-  // const [voteresult, setVoteResult] = useState(null);
   const [scrollheight, setScrollHeight] = useState(0);
   const [selectname, setSelectName] = useState(null);
   const [loading, setLoading] = useState(null);
@@ -30,11 +29,9 @@ const UserVoteBody = props => {
         setCandidateList(candidate)
       }
     }
-    // console.log(props.result)
 
     let nullCnt = 0
     for (let candidate of props.result.values()) {
-      // console.log(candidate)
       if (candidate === null) {
         nullCnt += 1
       }
@@ -54,7 +51,7 @@ const UserVoteBody = props => {
     // back에 넘겨주는 string
     // console.log('data', candidatestring)
 
-    // axios 일단 주석으로
+    // axios
     axios.put(
       'http://54.180.134.217:8080/api/candi/updateCandiList/'
       + candidatestring)
@@ -74,7 +71,6 @@ const UserVoteBody = props => {
             username={props.username}
             endvote={endvote}
             finishVote={finishVote}
-            // setVoteResult={setVoteResult}
             setVoteNumber={setVoteNumber}
             result={props.result}
             scrollheight={scrollheight}

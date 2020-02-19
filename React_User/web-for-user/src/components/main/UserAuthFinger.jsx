@@ -3,14 +3,12 @@ import UserAuthComplete from "./UserAuthComplete";
 import UserAuthFingerRecognition from "../main/UserAuthFingerRecognition";
 
 import { makeStyles } from "@material-ui/core/styles";
-// import Image from "material-ui-image";
 import Button from "@material-ui/core/Button";
 import { Link } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
-// import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import HelpIcon from "@material-ui/icons/Help";
 import IconButton from "@material-ui/core/IconButton";
@@ -21,7 +19,6 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import axios from 'axios';
 
 //image
-// import fingerprint from "../../images/fingerprint.png";
 import Fingerprint_true from "../../images/Fingerprint_true.png";
 import Fingerprint_false1 from "../../images/Fingerprint_false1.png";
 import Fingerprint_false2 from "../../images/Fingerprint_false2.png";
@@ -30,9 +27,6 @@ const useStyles = makeStyles(theme => ({
   bold: {
     fontWeight: "bold"
   },
-  // vh_80: {
-  //   height: "80vh"
-  // },
   alignCenter: {
     textAlign: "center"
   },
@@ -66,11 +60,9 @@ const UserAuthFinger = props => {
       setWait("wait")
     }, 15001)
 
-    // test
     const takePicture = async () => {
       try {
         const res = await axios.post(
-          // '주소'
           'http://192.168.100.121:5000/getFinger'
         )
         console.log(res.data)
@@ -90,14 +82,6 @@ const UserAuthFinger = props => {
       }
     }
     takePicture()
-
-    // // test용도
-    // setTimeout(() => {
-    //   clearInterval(timer)
-    //   setCountDown(15)
-    //   setWait(null)
-    //   setResult("false")
-    // }, 3000)
 
     setOpen(false);
   };
@@ -121,7 +105,6 @@ const UserAuthFinger = props => {
     const takePicture = async () => {
       try {
         const res = await axios.post(
-          // '주소'
           'http://192.168.100.121:5000/getFinger'
         )
         console.log(res.data)
@@ -141,14 +124,6 @@ const UserAuthFinger = props => {
       }
     }
     takePicture()
-
-    // // test용도
-    // setTimeout(() => {
-    //   clearInterval(timer)
-    //   setCountDown(15)
-    //   setWait(null)
-    //   setFingerPrint("image")
-    // }, 6000)
   };
 
   const clear = () => {
@@ -202,16 +177,6 @@ const UserAuthFinger = props => {
           <Grid item xs={12}>
             <h1>인증에 실패했습니다.</h1>
           </Grid>
-          {/* <Grid item xs={12}>
-            <Image
-              src={captureExam}
-              alt="finger-print"
-              disableSpinner="true"
-              disableTransition="true"
-              style={{ height: "200px", paddingTop: 0 }}
-              imageStyle={{ width: "auto", position: "static" }}
-            />
-          </Grid> */}
           <Grid item xs={12}>
             <p>지문인증을 다시 진행해주세요!</p>
           </Grid>
@@ -257,7 +222,6 @@ const UserAuthFinger = props => {
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
           fullWidth={true}
-          // PaperProps={{ className: [classes.vh_80] }}
         >
           <DialogTitle id="alert-dialog-title">
             지문인식 전 확인사항
