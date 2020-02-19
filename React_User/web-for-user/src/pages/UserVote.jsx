@@ -76,7 +76,7 @@ const UserVote = ({match, history}) => {
       )
       .then(res => {
         // console.log(res.data)
-        console.log(res.data.length)
+        // console.log(res.data.length)
         if (res.data.length === 0) {
           setIsVote(false)
           console.log(isvote)
