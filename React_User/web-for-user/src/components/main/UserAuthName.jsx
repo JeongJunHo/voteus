@@ -42,6 +42,14 @@ const UserAuthName = props => {
   const [showkeyboardarea, setShowKeyboardArea] = useState(false);
   const [clickwhere, setClickWhere] = useState(null);
 
+  const inputRef = React.useRef();
+  const [selectionStart, setSelectionStart] = useState(null);
+  const updateSelectionStart = () => {
+    console.log(inputRef.current.selectionStart)
+    // setSelectionStart(inputRef.current.selectionStart);
+    setSelectionStart(3)
+  }
+
   const nameError = useMemo(() => (name.length < 2 ? true : false), [name]);
   const namePopup = useMemo(() => {
     if (commit) {
@@ -134,10 +142,37 @@ const UserAuthName = props => {
 
   const keyChangeName = input => {
     // console.log(Hangul.assemble(input)[0])
-    setName(Hangul.assemble(input))
+    console.log('keyChangeName', input.length)
+    // console.log(inputRef)
+    // console.log(input)
+    // console.log(inputRef.current.selectionStart)
+    // const temp = []
+    // let tempInput = Hangul.disassemble(input)
+    // let tempWord = Hangul.assemble(tempInput)
+    // console.log(tempInput)
+    // for (let i of tempWord) {
+    //   console.log(i)
+    //   temp.push(i)
+    // }
+    // console.log(temp)
+    let tempname = Hangul.assemble(input)
+    setName(tempname)
   }
 
   const keyPressName = (button) => {
+    console.log('커서 위치', selectionStart)
+    if (button === "{bksp}") {
+      console.log(inputRef)
+      console.log('백스페이스 누름', inputRef.current.value)
+      const temp = []
+      let tempInput = Hangul.disassemble(inputRef.current.value)
+      let tempWord = Hangul.assemble(tempInput)
+      for (let i of tempWord) {
+        temp.push(i)
+      }
+      console.log(temp)
+    }
+
     if (layoutname === "shift") {
       handleShift()
     } else if ( button === "{shift}" || button === "{lock}") {
@@ -236,6 +271,9 @@ const UserAuthName = props => {
               autoComplete="off"
               error={namePopup}
               onClick={keyboardClickName}
+              onSelect={updateSelectionStart}
+              inputRef={inputRef}
+              onFocus={selectionStart}
             />
             {showkeyboardname === true ? (
               <NameKeyboard
