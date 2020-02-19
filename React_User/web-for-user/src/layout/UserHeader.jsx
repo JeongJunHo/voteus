@@ -1,20 +1,20 @@
 import React, { useContext, Fragment } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import IconButton from "@material-ui/core/IconButton";
-import HomeRoundedIcon from "@material-ui/icons/HomeRounded";
 
 import TypeContext from "../context/TypeContext";
+
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  IconButton
+} from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import HomeRoundedIcon from "@material-ui/icons/HomeRounded";
 
 const useStyles = makeStyles(theme => ({
   root: {
     display: "flex",
     flexWrap: "wrap"
-  },
-  menuButton: {
-    marginRight: theme.spacing(2)
   },
   title: {
     flexGrow: 1,
@@ -68,15 +68,6 @@ const UserHeader = props => {
               ) : (
                 null
               )}
-              {/* <IconButton
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                color="inherit"
-                href="/"
-              >
-                <HomeRoundedIcon />
-              </IconButton> */}
             </div>
           </Toolbar>
         </AppBar>

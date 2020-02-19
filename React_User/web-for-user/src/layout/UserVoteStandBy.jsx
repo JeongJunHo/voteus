@@ -5,13 +5,10 @@ import {
   LinearProgress,
   Grid,
   Paper,
-  // Card,
-  // CardContent,
-  // Typography,
   Button
 } from "@material-ui/core";
 
-const infoStyle ={
+const infoStyle = {
   textAlign: "center",
   color:'#bdbdbd',
   margin : -1 -1 -5
@@ -22,10 +19,6 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    // justifyContent: "space-between",
-    // height: "100%",
-    // width: "100%",
-    // position: "absolute"
   },
   header: {
     padding: theme.spacing(1),
@@ -40,49 +33,8 @@ const useStyles = makeStyles(theme => ({
     textAlign: "center",
     color: theme.palette.text.secondary,
   },
-  cardBody: {
-    // padding: theme.spacing(1),
-    // textAlign: "center",
-    // boxShadow: "",
-    "&:hover": {
-      boxShadow: "0 4px 20px -6px #880e4f"
-    },
-    // color: theme.palette.text.secondary,
-    backgroundColor: '#fce4ec',
-  },
-  cardBodySelect: {
-    // paddingLeft: theme.spacing(1),
-    // paddingRight: theme.spacing(1),
-    // paddingTop: theme.spacing(2),
-    // paddingBottom: theme.spacing(2),
-    // textAlign: "center",
-    // boxShadow: "",
-    "&:hover": {
-      boxShadow: "0 4px 20px -6px #1b5e20"
-    },
-    // color: theme.palette.text.secondary,
-    backgroundColor: '#e8f5e9',
-  },
-  vote: {
-    padding: theme.spacing(1),
-  },
-  candidate: {
-    paddingTop: theme.spacing(1),
-    paddingBottom: theme.spacing(1),
-    textAlign: "center",
-  },
-  candidateNone: {
-    paddingTop: theme.spacing(1),
-    paddingBottom: theme.spacing(1),
-    textAlign: "center",
-    color: '#ffa199',
-  },
   submitButton: {
     justifyContent: "center",
-  },
-  submitButtonHidden: {
-    justifyContent: "center",
-    visibility: "hidden",
   },
 }));
 
@@ -94,7 +46,6 @@ const UserVoteStandBy = props => {
 
   useEffect(() => {
     setLoading(true)
-    // console.log(props.votelist)
     const temp_votenamelist = []
     if (props.votelist !== null) {
       for (let eachvote of props.votelist.keys()) {
@@ -129,7 +80,6 @@ const UserVoteStandBy = props => {
           </Grid>
           <Grid container spacing={3} className={classes.body}>
             {votenamelist.map((vote)=>{
-              // console.log(vote)
               return (
                 <Grid item xs={12} key={vote.code}>
                   <Paper elevation={0}>
@@ -141,21 +91,6 @@ const UserVoteStandBy = props => {
             })}
             </Grid>
             <p style={infoStyle} className="infodiv">해당 투표를 모두 완료하셔야 투표가 완료됩니다.</p>
-          {/*
-          <Grid
-            container
-            spacing={3}
-            className={classes.header}
-          >
-
-            <Grid item xs={12}>
-              <Paper elevation={0} className={classes.paperHeader}>
-                <h2>총 {votenamelist.length}개의 투표가 있습니다.</h2>
-              </Paper>
-            </Grid>
-            
-          </Grid>
-          */}
           <Grid container spacing={3} className={classes.header}>
             <Grid item xs={12}>
               <Paper elevation={0} className={classes.paperHeader}>              

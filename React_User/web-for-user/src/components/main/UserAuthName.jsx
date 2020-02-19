@@ -1,5 +1,4 @@
 import React, { useState, Fragment, useMemo, useCallback } from "react";
-// import { makeStyles } from "@material-ui/core/styles";
 import axios from "axios";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
@@ -8,30 +7,12 @@ import { Alert, AlertTitle } from "@material-ui/lab";
 
 import Keyboard from "react-simple-keyboard";
 import "react-simple-keyboard/build/css/index.css";
-// import NameKeyboard from "../keyboard/NameKeyboard";
 import BirthKeyboard from "../keyboard/BirthKeyboard";
 import AreaKeyboard from "../keyboard/AreaKeyboard";
 
 import * as Hangul from 'hangul-js';
 
-// const useStyles = makeStyles(theme => ({
-//   paper: {
-//     padding: theme.spacing(2),
-//     textAlign: "center",
-//     color: theme.palette.text.secondary
-//   },
-//   textField: {
-//     marginLeft: theme.spacing(1),
-//     marginRight: theme.spacing(1),
-//     width: 300
-//   },
-//   margin: {
-//     margin: theme.spacing(1)
-//   }
-// }));
-
 const UserAuthName = props => {
-  // const classes = useStyles();
 
   const [commit, setCommit] = useState(false);
   const [loginState, setLoginState] = useState(true);
@@ -45,13 +26,6 @@ const UserAuthName = props => {
   const [clickwhere, setClickWhere] = useState(null);
 
   const inputRef = React.useRef();
-  // const [selectionStart, setSelectionStart] = useState(null);
-  // const updateSelectionStart = () => {
-  //   // console.log(inputRef.current.selectionStart)
-  //   // setSelectionStart(inputRef.current.selectionStart);
-  //   setSelectionStart(3)
-  // }
-
   const keyboard = React.useRef();
 
   const nameError = useMemo(() => (name.length < 2 ? true : false), [name]);
@@ -118,7 +92,6 @@ const UserAuthName = props => {
     if (!nameError && !birthRegError && !areaRegError) {
       // axios
       axios
-        // .get("주소")
         .get(
           "http://54.180.134.217:8080/api/voter/getOnlyVotercode/" +
             name +
@@ -126,11 +99,8 @@ const UserAuthName = props => {
             registration_number
         )
         .then(res => {
-          // console.log(res);
           if (res.data !== "failure") {
             props.setUserInfo({ code: res.data, name: name });
-            // // 로컬 스토리지에 저장 (모든 인증을 완료했을 경우에 저장)
-            // sessionStorage.setItem("user", res.data)
             props.setNumber(number => number + 1);
             setLoginState(true);
           } else {
@@ -138,51 +108,16 @@ const UserAuthName = props => {
           }
         })
         .catch(res => console.log(res));
-      // // test (삭제 필요)
-      // props.setUserInfo({ code: 1, name: "jsp"})
-      // props.setNumber(number => number + 1)
-      // setLoginState(true);
     }
   };
 
   const keyChangeName = input => {
-    // console.log(Hangul.assemble(input)[0])
-    // console.log('커서 위치', selectionStart)
     keyboard.current.setInput(Hangul.assemble(input))
-    // console.log('inputlength', input.length)
-    // console.log(keyboard.current.input)
-    // // keyboard.current.setInput()
-    // console.log(keyboard.current.input)
-    // console.log(inputRef)
-    // console.log(input)
-    // console.log(inputRef.current.selectionStart)
-    // const temp = []
-    // let tempInput = Hangul.disassemble(input)
-    // let tempWord = Hangul.assemble(tempInput)
-    // console.log(tempInput)
-    // for (let i of tempWord) {
-    //   console.log(i)
-    //   temp.push(i)
-    // }
-    // console.log(temp)
     let tempname = Hangul.assemble(input)
     setName(tempname)
   }
 
   const keyPressName = (button) => {
-    // console.log('커서 위치', selectionStart)
-    // if (button === "{bksp}") {
-    //   console.log(inputRef)
-    //   console.log('백스페이스 누름', inputRef.current.value)
-    //   const temp = []
-    //   let tempInput = Hangul.disassemble(inputRef.current.value)
-    //   let tempWord = Hangul.assemble(tempInput)
-    //   for (let i of tempWord) {
-    //     temp.push(i)
-    //   }
-    //   console.log(temp)
-    // }
-
     if (layoutname === "shift") {
       handleShift()
     } else if ( button === "{shift}" || button === "{lock}") {
@@ -199,12 +134,10 @@ const UserAuthName = props => {
   }
 
   const keyChangeBirth = input => {
-    // console.log(input)
     setBirthRegistrationNumber(input)
   }
 
   const keyPressBirth = (button) => {
-    // console.log(button)
   }
 
   const keyChangeArea = input => {
@@ -212,7 +145,6 @@ const UserAuthName = props => {
   }
 
   const keyPressArea = (button) => {
-    // console.log(button)
   }
 
   const keyboardClickName = () => {
@@ -228,7 +160,6 @@ const UserAuthName = props => {
   }
 
   const keyboardClickBirth = () => {
-    // console.log(clickwhere)
     if (clickwhere === "birth") {
       setClickWhere("birth")
     } else {
@@ -281,7 +212,6 @@ const UserAuthName = props => {
               autoComplete="off"
               error={namePopup}
               onClick={keyboardClickName}
-              // onSelect={updateSelectionStart}
               inputRef={inputRef}
             />
             {showkeyboardname === true ? (
@@ -292,22 +222,18 @@ const UserAuthName = props => {
                 keyboardRef={r => (keyboard.current = r)}
                 // 뒤에서부터 지워지도록 설정
                 // disableCaretPositioning={true}
-                // useMouseEvents={true}
-                // useTouchEvents={true}
                 layout={{
                   default: [
                     "` 1 2 3 4 5 6 7 8 9 0 - = {bksp}",
                     "{tab} ㅂ ㅈ ㄷ ㄱ ㅅ ㅛ ㅕ ㅑ ㅐ ㅔ [ ] \\",
                     "{lock} ㅁ ㄴ ㅇ ㄹ ㅎ ㅗ ㅓ ㅏ ㅣ ; ' {enter}",
                     "{shift} ㅋ ㅌ ㅊ ㅍ ㅠ ㅜ ㅡ , . / {shift}",
-                    // ".com @ {space}"
                   ],
                   shift: [
                     "~ ! @ # $ % ^ & * ( ) _ + {bksp}",
                     "{tab} ㅃ ㅉ ㄸ ㄲ ㅆ ㅛ ㅕ ㅑ ㅒ ㅖ { } |",
                     '{lock} ㅁ ㄴ ㅇ ㄹ ㅎ ㅗ ㅓ ㅏ ㅣ : " {enter}',
                     "{shift} ㅋ ㅌ ㅊ ㅍ ㅠ ㅜ ㅡ < > ? {shift}",
-                    // ".com @ {space}"
                   ]
                 }}
               />
@@ -340,14 +266,6 @@ const UserAuthName = props => {
                   }}
                   onClick={keyboardClickBirth}
                 />
-                {/* {showkeyboardbirth === true ? (
-                  <BirthKeyboard
-                    keyChangeBirth={keyChangeBirth}
-                    keyPressBirth={keyPressBirth}
-                  />
-                ):(
-                  null
-                )} */}
               </Grid>
               <Grid item xs={6}>
                 <TextField
@@ -372,14 +290,6 @@ const UserAuthName = props => {
                   }}
                   onClick={keyboardClickArea}
                 />
-                {/* {showkeyboardarea === true ? (
-                  <AreaKeyboard
-                    keyChangeArea={keyChangeArea}
-                    keyPressArea={keyPressArea}
-                  />
-                ):(
-                  null
-                )} */}
               </Grid>
             </Grid>
 

@@ -7,12 +7,8 @@ import lock from "../images/lock.png";
 
 import {
   makeStyles,
-  // LinearProgress,
   Grid,
   Paper,
-  // Card,
-  // CardContent,
-  // Typography,
   Button
 } from "@material-ui/core";
 
@@ -21,10 +17,6 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    // justifyContent: "space-between",
-    // height: "100%",
-    // width: "100%",
-    // position: "absolute"
   },
   header: {
     padding: theme.spacing(1),
@@ -39,50 +31,6 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(2),
     textAlign: "center",
     color: theme.palette.text.secondary,
-  },
-  cardBody: {
-    // padding: theme.spacing(1),
-    // textAlign: "center",
-    // boxShadow: "",
-    "&:hover": {
-      boxShadow: "0 4px 20px -6px #880e4f"
-    },
-    // color: theme.palette.text.secondary,
-    backgroundColor: '#fce4ec',
-  },
-  cardBodySelect: {
-    // paddingLeft: theme.spacing(1),
-    // paddingRight: theme.spacing(1),
-    // paddingTop: theme.spacing(2),
-    // paddingBottom: theme.spacing(2),
-    // textAlign: "center",
-    // boxShadow: "",
-    "&:hover": {
-      boxShadow: "0 4px 20px -6px #1b5e20"
-    },
-    // color: theme.palette.text.secondary,
-    backgroundColor: '#e8f5e9',
-  },
-  vote: {
-    padding: theme.spacing(1),
-  },
-  candidate: {
-    paddingTop: theme.spacing(1),
-    paddingBottom: theme.spacing(1),
-    textAlign: "center",
-  },
-  candidateNone: {
-    paddingTop: theme.spacing(1),
-    paddingBottom: theme.spacing(1),
-    textAlign: "center",
-    color: '#ffa199',
-  },
-  submitButton: {
-    justifyContent: "center",
-  },
-  submitButtonHidden: {
-    justifyContent: "center",
-    visibility: "hidden",
   },
 }));
 
