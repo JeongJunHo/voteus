@@ -33,17 +33,13 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.text.secondary,
   },
   cardBody: {
-    // padding: theme.spacing(2),
     boxShadow: "0 3px 3px rgba(0,0,0,0.23)",
     "&:hover": {
       boxShadow: "0 4px 20px -6px #1a237e"
     },
     backgroundColor: '#e3f2fd',
     borderRadius: theme.spacing(3),
-    // borderColor: "#7b1fa2",
     borderColor: "#757575",
-    // background:
-    //   'linear-gradient(34deg, #ff9800 0%, #ffac33 29%, #ff9800 92%)',
   },
   party: {
     textAlign: "left",
@@ -100,13 +96,10 @@ const UserVoteCandidateList = props => {
         </Grid>
         <Grid container spacing={3} className={classes.body}>
           {props.candidatelist[0].map((eachcandidate) => {
-            // console.log(partylist[eachcandidate.party])
-            // console.log(eachcandidate)
             const selectCandidate = () => {
               props.result.set(props.votenumber, eachcandidate.code)
               props.setResult(props.result)
               props.setVoteNumber(null)
-              // window.scrollTo(0, props.scrollheight)
             }
 
             if (partylist[eachcandidate.party] === "정당없음") {
