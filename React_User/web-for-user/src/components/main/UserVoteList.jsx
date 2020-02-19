@@ -201,6 +201,7 @@ const UserVoteList = (props) => {
               const changeVoteNumber = (event) => {
                 props.setScrollHeight(event.pageY-event.clientY)
                 props.setVoteNumber(eachvote.vote.code)
+                props.setSelectName(eachvote.candidate)
               }
               if (eachvote.candidate === null) {
                 return (
