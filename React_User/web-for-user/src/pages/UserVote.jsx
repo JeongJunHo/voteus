@@ -23,9 +23,10 @@ import axios from 'axios';
 // material-ui
 import {
   LinearProgress,
-  Link,
+  // Link,
   Button
 } from "@material-ui/core";
+import { Link } from 'react-router-dom';
 
 // url의 code와 name을 컴포넌트에서 사용하기 위해 match를 적용.
 const UserVote = ({match}) => {
@@ -171,7 +172,7 @@ const UserVote = ({match}) => {
             <UserHeader />
               <FlexPaperTemplate>
                 <h1>투표 정보가 없습니다.</h1>
-                <Link href="/">
+                <Link to="/">
                   <Button
                     variant="contained"
                     size="large"
