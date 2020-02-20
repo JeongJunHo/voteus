@@ -5,12 +5,15 @@ import UserAuthBody from "../layout/UserAuthBody";
 import UserFooter from "../layout/UserFooter";
 import FlexPaperTemplate from "../components/main/FlexPaperTemplate";
 
+import TypeContext from "../context/TypeContext";
 
 const UserAuthentication = props => {
 
   return (
     <Fragment>
-      <UserHeader />
+      <TypeContext.Provider value={'auth'}>
+        <UserHeader />
+      </TypeContext.Provider>
       <FlexPaperTemplate>
         <UserAuthBody />
       </FlexPaperTemplate>
