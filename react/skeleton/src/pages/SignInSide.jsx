@@ -18,12 +18,7 @@ import axios from "axios";
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="http://127.0.0.1:3000">
-        Vote On
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
+      Copyright © 25+2d corp. all rights reserved
     </Typography>
   );
 }
@@ -34,7 +29,7 @@ const useStyles = makeStyles(theme => ({
   },
   image: {
     // backgroundImage: "url(https://source.unsplash.com/random)",
-    backgroundImage: "url(img/vote.jpg)",
+    backgroundImage: "url(img/votelogo.png)",
     backgroundRepeat: "no-repeat",
     backgroundColor:
       theme.palette.type === "dark"
@@ -112,7 +107,7 @@ export default function SignInSide(props) {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            VOTE ON ADMIN
+            VOTE US ADMIN
           </Typography>
           <form className={classes.form} noValidate onSubmit={loginfunc}>
             <TextField

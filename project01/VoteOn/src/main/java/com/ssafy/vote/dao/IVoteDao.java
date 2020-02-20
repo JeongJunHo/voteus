@@ -22,5 +22,5 @@ public interface IVoteDao {
 	 * @Date : 2020. 1. 29.
 	 */
 	public List<VoteVO> getVoteList(String votercode);
-
+	public VoteVO getVoteOne(String code);
 }

@@ -1,5 +1,6 @@
 package com.ssafy.vote.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.ssafy.vote.dto.VoterVO;
@@ -42,6 +43,11 @@ public interface IVoterService {
 	 * @Date : 2020. 2. 4.
 	 */
 	public int getOnlyVotercode(String name, String id_num);
-
+	/**
+	 * 작성자 : 정준호
+	 * @param voteCode
+	 * @return 해당투표의 투표자 총원 - totalCnt, 투표완료인원 - completeCnt, 투표미완료인원 - incompleteCnt 반환 (map형태)
+	 */
+	public HashMap<String,Object> getVoteProgressData(String voteCode);
 	
 }

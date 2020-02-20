@@ -1,9 +1,7 @@
 import React, { Fragment } from "react";
-import UserHeader from "../layout/UserHeader";
-import UserFooter from "../layout/UserFooter";
 import FlexPaperTemplate from "../components/main/FlexPaperTemplate";
-import { Link, Button } from "@material-ui/core";
-
+import { Button } from "@material-ui/core";
+import { Link } from 'react-router-dom';
 
 const PageNotFound = props => {
   const clear = () => {
@@ -14,7 +12,7 @@ const PageNotFound = props => {
     <Fragment>
       <FlexPaperTemplate>
         <h1>페이지를 찾을 수 없습니다.</h1>
-        <Link href="/">
+        <Link to="/">
           <Button
             variant="contained"
             size="large"

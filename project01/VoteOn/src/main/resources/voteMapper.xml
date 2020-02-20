@@ -17,6 +17,11 @@
 	<select id="getVoteAllList" resultType="vote">
 		select * from vote;
 	</select>
+	
+	<select id="getVoteOne" resultType="vote">
+		select * from vote where code=#{code}
+	</select>
+	
 	<select id="getVoteActiveList" resultMap="vote">
 		SELECT
 			v.code,

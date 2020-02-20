@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext, Fragment } from 'react';
 
-// import UserNameContext from '../../context/UserNameContext';
 import VoteListContext from '../../context/VoteListContext';
 
 import voteStamp from "../../images/voteStamp.png";
@@ -46,12 +45,8 @@ const useStyles = makeStyles(theme => ({
     "&:hover": {
       boxShadow: "0 4px 20px -6px #880e4f",
     },
-    // backgroundColor: '#fce4ec',
     borderRadius: theme.spacing(2),
     borderColor: "#f44336"
-    // background:
-    // // 'linear-gradient(34deg, #f44336 0%, #f6685e 29%, #f44336 92%)',
-    // 'radial-gradient(farthest-side at 20% 20%, #e57373, #ef5350, #f44336)',
   },
   cardBodySelect: {
     marginBottom: theme.spacing(0.5),
@@ -59,13 +54,9 @@ const useStyles = makeStyles(theme => ({
     "&:hover": {
       boxShadow: "0 4px 20px -6px #1b5e20",
     },
-    // backgroundColor: "#4caf50",
     backgroundColor: "#ffecb3",
     borderRadius: theme.spacing(2),
     borderColor: "#ffa000",
-    // background:
-    //   // 'linear-gradient(34deg, #4caf50 0%, #6fbf73 29%, #4caf50 92%)',
-    //   'radial-gradient(farthest-side at 20% 20%, #81c784, #66bb6a, #4caf50)',
   },
   vote: {
     padding: theme.spacing(1),
@@ -75,7 +66,6 @@ const useStyles = makeStyles(theme => ({
   },
   candidateNone: {
     textAlign: "center",
-    // color: "#ffcdd2",
     color: "#f6685e",
   },
   submitButton: {
@@ -87,7 +77,6 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "#e1bee7",
   },
   dialog: {
-    // alignItems: "center",
     paddingTop: theme.spacing(5),
     paddingBottom: theme.spacing(5),
   },
@@ -105,7 +94,6 @@ const useStyles = makeStyles(theme => ({
     }
   },
   selectedVote: {
-    // color: "#757575",
     color: "#f57f17",
   },
   checkbox: {
@@ -121,15 +109,8 @@ const useStyles = makeStyles(theme => ({
 const UserVoteList = (props) => {
   window.scrollTo(0, props.scrollheight)
 
-  // () => window.scrollTo(0, props.scrollheight)();
-  // (function () {
-  //   console.log('dds', props.scrollheight)
-  //   window.scrollTo(0, props.scrollheight)
-  // })()
-
   const classes = useStyles();
 
-  // const username = useContext(UserNameContext);
   const votelist = useContext(VoteListContext);
 
   const [dialogopen, setDialogOpen] = useState(false);
@@ -138,9 +119,7 @@ const UserVoteList = (props) => {
   
   useEffect(()=>{
     setLoading(true)
-    // console.log(props.scrollheight)
     
-    // console.log(votelist)
     if (votelist !== null) {
       const votecandidate = []
       for (let [onevote, candidatelist] of votelist) {
@@ -161,21 +140,12 @@ const UserVoteList = (props) => {
         }
         votecandidate.push(aboutvote)
       }
-      // console.log('c', votecandidate)
       setVote(votecandidate)
-      // props.setVoteResult(votecandidate)
     }
     setLoading(false)
-    // window.scrollTo(0, props.scrollheight)
   }, [votelist])
 
-  // const scrollToPoint = () => {
-  //   console.log(props.scrollheight)
-  //   window.scrollTo(0, props.scrollheight)
-  // }
-
   const dialogOpen = () => {
-    // console.log('dialog')
     setDialogOpen(true);
   }
 
@@ -197,10 +167,10 @@ const UserVoteList = (props) => {
           </Grid>
           <Grid container spacing={2} className={classes.body}>
             {vote.map((eachvote)=>{
-              // console.log(eachvote.vote.code)
               const changeVoteNumber = (event) => {
                 props.setScrollHeight(event.pageY-event.clientY)
                 props.setVoteNumber(eachvote.vote.code)
+                props.setSelectName(eachvote.candidate)
               }
               if (eachvote.candidate === null) {
                 return (
@@ -287,7 +257,6 @@ const UserVoteList = (props) => {
               </Grid>
             )}
           </Grid>
-          {/* <button onClick={scrollToPoint}>test</button> */}
         </div>
         <Dialog
           aria-labelledby="alert-dialog-title"
@@ -307,7 +276,6 @@ const UserVoteList = (props) => {
           <DialogContent>
             <Grid container justify="center" >
               <Grid item xs={"auto"}>
-                {/*<p>{props.username}님은</p>*/}
                 {vote.map((eachvote) => {
                   if (eachvote.candidate === '무효표') {
                     return (
@@ -323,12 +291,7 @@ const UserVoteList = (props) => {
                     )
                   }
                 })}
-                {/*<div>
-                  선택하셨습니다.
-                </div>
-                <p>투표를 완료 하시겠습니까?</p>*/}
               </Grid>
-              {/* <Grid item xs></Grid> */}
             </Grid>
           </DialogContent>
           <DialogActions className={classes.buttonSpace}>
@@ -339,7 +302,6 @@ const UserVoteList = (props) => {
             <Button
               onClick={props.finishVote}
               variant="contained"
-              // size="large"
               color="primary"
               fullWidth={true}
               autoFocus
@@ -352,7 +314,6 @@ const UserVoteList = (props) => {
             <Button
               onClick={dialogClose}
               variant="contained"
-              // size="large"
               color="default"
               fullWidth={true}
               autoFocus

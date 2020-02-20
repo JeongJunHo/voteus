@@ -1,5 +1,6 @@
 package com.ssafy.vote.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.ssafy.vote.dto.VoterVO;
@@ -22,4 +23,18 @@ public interface IVoterDao {
 	 * @Date : 2020. 2. 4.
 	 */
 	public int getOnlyVotercode(String name, String id_num);
+	/**
+	 * 작성자 : 정준호
+	 * 대선 투표자들의 총원 - totalCnt, 투표완료인원 - completeCnt, 투표미완료인원 - incompleteCnt 반환
+	 * @param voteCode - 선거번호
+	 * @return
+	 */
+	public HashMap<String,Object> getDaeseonVoteProgressData(String voteCode);
+	/**
+	 * 작성자 : 정준호
+	 * 총선,지선 투표자들의 총원 - totalCnt, 투표완료인원 - completeCnt, 투표미완료인원 - incompleteCnt 반환
+	 * @param voteCode - 선거번호
+	 * @return
+	 */
+	public HashMap<String,Object> getNotDaeseonVoteProgressData(String voteCode);
 }

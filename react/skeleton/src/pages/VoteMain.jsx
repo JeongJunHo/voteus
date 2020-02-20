@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Layout from "../layout/Layout";
 
 import Chart from "../components/main/Chart";
+import Circle from "../components/main/Circle";
 import ActiveVoteList from "../components/main/ActiveVoteList";
 
 import { makeStyles } from "@material-ui/core";
@@ -64,7 +65,12 @@ const VoteMain = props => {
       <ViewContext.Provider value={{}}>
         <Layout>
           <Grid container spacing={3}>
-            <Grid item xs={12}>
+            <Grid item xs={12} md={3}>
+              <Paper className={classes.paper} style={{ height: 409.5 }}>
+                <Circle selected={selected} />
+              </Paper>
+            </Grid>
+            <Grid item xs={12} md={9}>
               <Paper className={classes.paper} style={{ height: 409.5 }}>
                 <Chart selected={selected} />
               </Paper>

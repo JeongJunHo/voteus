@@ -27,7 +27,7 @@ const Chart = props => {
       setLoading(true);
       const nowDate = date_to_str_onlyDate(new Date());
       let tmp = [];
-      for (let i = 0; i < 24; i++) {
+      for (let i = 6; i <= 18; i++) {
         tmp.push({ name: (i < 10 ? "0" + i : i) + ":00", time: i });
       }
 
@@ -62,7 +62,6 @@ const Chart = props => {
               }
             }
           }
-
           setData(tmp);
         } catch (e) {
           console.log(e);
@@ -83,8 +82,10 @@ const Chart = props => {
   return (
     <>
       <h1>선거 모니터링 (시간대별 득표수)</h1>
-      {loading || data.length === 0 ? (
+      {loading ? (
         <LinearProgress />
+      ) : data.length === 0 ? (
+        <p>모니터링할 투표를 선택해주세요.</p>
       ) : (
         <ResponsiveContainer width="100%" height={300}>
           <BarChart

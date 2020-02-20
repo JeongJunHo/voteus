@@ -1,5 +1,6 @@
 package com.ssafy.vote.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -57,6 +58,16 @@ public class VoterDaoImpl implements IVoterDao {
 	public int getOnlyVotercode(String name, String id_num) {
 		VoterVO voter = new VoterVO(name, id_num);
 		return session.selectOne("voter.getOnlyVotercode", voter);
+	}
+
+	@Override
+	public HashMap<String, Object> getDaeseonVoteProgressData(String voteCode) {
+		return session.selectOne("voter.getDaeseonVoteProgressData", voteCode);
+	}
+
+	@Override
+	public HashMap<String, Object> getNotDaeseonVoteProgressData(String voteCode) {
+		return session.selectOne("voter.getNotDaeseonVoteProgressData", voteCode);
 	}
 
 }

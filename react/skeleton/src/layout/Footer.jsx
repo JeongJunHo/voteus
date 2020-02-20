@@ -21,7 +21,7 @@ const Footer = props => {
     <AppBar position="fixed" className={classes.appBarFooter}>
       <Toolbar className={classes.toolbar}>
         <Typography variant="body2" noWrap>
-          voteon corps
+          Copyright © 25+2d corp. all rights reserved
         </Typography>
       </Toolbar>
     </AppBar>

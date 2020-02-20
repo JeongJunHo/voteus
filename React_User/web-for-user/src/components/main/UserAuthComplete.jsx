@@ -3,7 +3,8 @@ import React, { useContext, Fragment } from "react";
 import UserNameContext from '../../context/UserNameContext';
 
 import Button from "@material-ui/core/Button";
-import { Link } from "@material-ui/core";
+// import { Link } from "@material-ui/core";
+import { Link } from 'react-router-dom';
 
 //image
 import Election_logo from "../../images/Election_logo.png";
@@ -41,7 +42,7 @@ const UserAuthComplete = props => {
         2. 카메라, 지문 인증 시 기기 및 통신 사정에 따라 3초-1분 이상 걸릴 수 있습니다. </p>
       </table>
       <p bold style={{color: "#151515"}}>위의 사항에 대해 동의합니다.</p>
-      <Link href={url}>
+      <Link to={url}>
         <Button variant="contained" color="primary" onClick={click}>
           동의 함
         </Button>

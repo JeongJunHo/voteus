@@ -1,10 +1,11 @@
 import React, { useState, Fragment } from "react";
 
+// component
 import UserAuthName from "../components/main/UserAuthName";
 import UserAuthFace from "../components/main/UserAuthFace";
 import UserAuthFinger from "../components/main/UserAuthFinger";
-// import UserAuthComplete from "../components/main/UserAuthComplete";
 
+// context
 import UserNameContext from "../context/UserNameContext";
 
 const UserAuthBody = props => {
