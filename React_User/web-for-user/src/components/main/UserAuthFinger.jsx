@@ -4,7 +4,8 @@ import UserAuthFingerRecognition from "../main/UserAuthFingerRecognition";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import { Link } from "@material-ui/core";
+// import { Link } from "@material-ui/core";
+import { Link } from 'react-router-dom';
 import Grid from "@material-ui/core/Grid";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -135,7 +136,7 @@ const UserAuthFinger = props => {
       <Fragment>
         <h2>지문 인증에 문제가 발생하였습니다.</h2>
         <h2>관리자에게 문의해주세요.</h2>
-        <Link href="/">
+        <Link to="/">
           <Button
             variant="contained"
             size="large"
