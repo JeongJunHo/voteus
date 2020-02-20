@@ -13,9 +13,19 @@ export default function VoterTable(props) {
   const [state, setState] = React.useState({
     columns: [
       {
-        title: "등록번호",
-        field: "code",
-        editable: "onAdd"
+        title: "주민등록번호",
+        field: "id_num",
+        editable: "onAdd",
+        render: rowData => {
+          if (rowData.id_num !== null) {
+            return (
+              rowData.id_num.substr(0, 6) +
+              "*".repeat(rowData.id_num.substr(6).length)
+            );
+          } else {
+            return rowData.id_num;
+          }
+        }
       },
       {
         title: "이름",

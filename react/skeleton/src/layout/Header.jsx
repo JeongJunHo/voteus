@@ -42,7 +42,7 @@ const Header = props => {
             to="/VoteMain"
             style={{ color: "white", textDecorationLine: "none" }}
           >
-            VOTE ON ADMIN
+            VOTE US ADMIN
           </Link>
         </Typography>
         <IconButton
