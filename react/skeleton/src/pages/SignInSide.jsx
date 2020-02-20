@@ -18,9 +18,7 @@ import axios from "axios";
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      Vote On {new Date().getFullYear()}
-      {"."}
+      Copyright © 25+2d corp. all rights reserved
     </Typography>
   );
 }
@@ -109,7 +107,7 @@ export default function SignInSide(props) {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            VOTE ON ADMIN
+            VOTE US ADMIN
           </Typography>
           <form className={classes.form} noValidate onSubmit={loginfunc}>
             <TextField
