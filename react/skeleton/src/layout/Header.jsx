@@ -51,7 +51,6 @@ const Header = props => {
           aria-haspopup="true"
           color="inherit"
           size="medium"
-          href="/SignInSide"
           onClick={logOutEvent}
         >
           <Link
